@@ -3,6 +3,7 @@
     <entity name="GameCardCD" representedClassName="GameCardCD" syncable="YES" codeGenerationType="class">
         <attribute name="answer" optional="YES" attributeType="String"/>
         <attribute name="gameId" optional="YES" attributeType="String"/>
+        <attribute name="gameType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="mark" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="place" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -16,7 +17,7 @@
         <relationship name="toGameCardCD" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameCardCD" inverseName="toGameCD" inverseEntity="GameCardCD"/>
     </entity>
     <elements>
+        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="149"/>
         <element name="GameCD" positionX="-63" positionY="-18" width="128" height="89"/>
-        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="148"/>
     </elements>
 </model>

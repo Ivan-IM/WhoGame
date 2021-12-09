@@ -56,19 +56,34 @@ struct NewGameTitleView: View {
                 }
                 Spacer()
                 TextField("Game name", text: $viewModel.name)
+                    .font(.title2)
                     .textFieldStyle(.roundedBorder)
                 HStack {
                     Spacer()
-                    Button {
-                        
-                    } label: {
-                        Image(systemName: "checkmark")
-                            .font(.title.bold())
-                            .foregroundColor(.primary)
-                            .blendMode(.overlay)
+                    Group {
+                        if viewModel.saveGame {
+                            Button {
+                                viewModel.showingNewCard = true
+                            } label: {
+                                Image(systemName: "plus")
+                                    .font(.title.bold())
+                                    .foregroundColor(.primary)
+                                    .blendMode(.overlay)
+                            }
+                        } else {
+                            Button {
+                                viewModel.saveGame = true
+                                viewModel.showingNewCard = true
+                            } label: {
+                                Image(systemName: "checkmark")
+                                    .font(.title.bold())
+                                    .foregroundColor(.primary)
+                                    .blendMode(.overlay)
+                            }
+                        }
                     }
+                    .frame(width: 30, height: 30)
                     .padding(.top, 8)
-                    
                 }
             }
             .padding()
