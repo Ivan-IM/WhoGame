@@ -13,8 +13,9 @@ struct NewGameView: View {
     @EnvironmentObject var gameManager: GameManager
     
     var body: some View {
-        VStack(spacing: 16) {
+        VStack {
             NewGameTitleView(viewModel: viewModel)
+            NewGameCardView(viewModel: NewGameCardViewModel())
         }
     }
 }
@@ -23,6 +24,6 @@ struct NewGameView_Previews: PreviewProvider {
     static var previews: some View {
         NewGameView(viewModel: NewGameViewModel())
             .environmentObject(GameManager())
-            .preferredColorScheme(.dark)
+            .preferredColorScheme(.light)
     }
 }

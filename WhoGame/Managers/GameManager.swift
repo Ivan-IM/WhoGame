@@ -9,5 +9,5 @@ import SwiftUI
 
 final class GameManager: ObservableObject {
     
-    @Published var mainColor = Color.blue
+    @Published var mainColor = Color.purple
 }

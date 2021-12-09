@@ -45,10 +45,15 @@ struct NewGameCardView: View {
                 }
             }
             .padding()
-            .frame(width: 280, height: 200)
+            .frame(width: 300, height: 200)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
         }
-        .frame(width: 280, height: 280)
+        .frame(width: 300, height: 200)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(gameManager.mainColor, lineWidth: 5)
+                .frame(width: 295, height: 195)
+        )
     }
 }
 

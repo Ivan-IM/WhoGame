@@ -18,7 +18,7 @@ struct NewGameTitleView: View {
                 if viewModel.gameType == 1 { Spacer() }
                 RoundedRectangle(cornerRadius: 16)
                     .fill(gameManager.mainColor)
-                    .frame(width: 150, height: 50)
+                    .frame(width: 160, height: 50)
                 if viewModel.gameType == 0 { Spacer() }
             }
             .animation(.easeInOut, value: viewModel.gameType)
@@ -37,7 +37,8 @@ struct NewGameTitleView: View {
                         viewModel.gameType = 0
                     } label: {
                         Text("Who?")
-                            .font(.title3.bold())
+                            .font(.title3)
+                            .fontWeight(.heavy)
                             .foregroundColor(.primary)
                             .blendMode(viewModel.gameType == 0 ? .normal:.overlay)
                     }
@@ -46,7 +47,8 @@ struct NewGameTitleView: View {
                         viewModel.gameType = 1
                     } label: {
                         Text("Place")
-                            .font(.title3.bold())
+                            .font(.title3)
+                            .fontWeight(.heavy)
                             .foregroundColor(.primary)
                             .blendMode(viewModel.gameType == 1 ? .normal:.overlay)
                     }
@@ -66,14 +68,19 @@ struct NewGameTitleView: View {
                             .blendMode(.overlay)
                     }
                     .padding(.top, 8)
-
+                    
                 }
             }
             .padding()
-            .frame(width: 280, height: 160)
+            .frame(width: 300, height: 160)
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
         }
-        .frame(width: 280, height: 120)
+        .frame(width: 300, height: 160)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .stroke(gameManager.mainColor, lineWidth: 5)
+                .frame(width: 295, height: 155)
+        )
     }
 }
 
