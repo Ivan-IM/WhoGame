@@ -55,7 +55,7 @@ struct NewGameCardView: View {
                 HStack {
                     Spacer()
                     Button {
-                        viewModel.showingNewCard.wrappedValue = false
+                        viewModel.saveNewGameCard()
                     } label: {
                         Image(systemName: "checkmark")
                             .font(.title.bold())
@@ -105,7 +105,7 @@ struct NewGameCardView: View {
 
 struct NewGameCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: .constant(true)))
+        NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: .constant(true), gameId: ""))
             .environmentObject(GameManager())
     }
 }

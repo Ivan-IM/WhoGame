@@ -55,9 +55,16 @@ struct NewGameTitleView: View {
                     .frame(maxWidth: .infinity)
                 }
                 Spacer()
-                TextField("Game name", text: $viewModel.name)
-                    .font(.title2)
-                    .textFieldStyle(.roundedBorder)
+                    if viewModel.saveGame {
+                        Text(viewModel.name)
+                            .font(.title)
+                            .fontWeight(.heavy)
+                            .foregroundColor(gameManager.mainColor)
+                    } else {
+                        TextField("Game name", text: $viewModel.name)
+                            .font(.title2)
+                            .textFieldStyle(.roundedBorder)
+                }
                 HStack {
                     Spacer()
                     Group {
@@ -72,8 +79,7 @@ struct NewGameTitleView: View {
                             }
                         } else {
                             Button {
-                                viewModel.saveGame = true
-                                viewModel.showingNewCard = true
+                                viewModel.saveNewGame()
                             } label: {
                                 Image(systemName: "checkmark")
                                     .font(.title.bold())

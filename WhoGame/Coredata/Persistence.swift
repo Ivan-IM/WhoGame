@@ -41,4 +41,46 @@ struct PersistenceController {
             }
         })
     }
+    
+    func save(completion: @escaping (Error?) -> () = {_ in}) {
+        let context = container.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+                completion(nil)
+            } catch {
+                completion(error)
+            }
+        }
+    }
+    
+    func delete(_ object: NSManagedObject, completion: @escaping (Error?) -> () = {_ in}) {
+        let context = container.viewContext
+        context.delete(object)
+        save(completion: completion)
+    }
+    
+    func fetchGames(for gameId: String) -> [GameCD] {
+        let request: NSFetchRequest<GameCD> = GameCD.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", gameId)
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \GameCD.id, ascending: true)]
+        
+        do {
+            return try container.viewContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
+    
+    func fetchGamCards(for gameId: String) -> [GameCardCD] {
+        let request: NSFetchRequest<GameCardCD> = GameCardCD.fetchRequest()
+        request.predicate = NSPredicate(format: "gameId == %@", gameId)
+        request.sortDescriptors = [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)]
+        
+        do {
+            return try container.viewContext.fetch(request)
+        } catch {
+            return []
+        }
+    }
 }

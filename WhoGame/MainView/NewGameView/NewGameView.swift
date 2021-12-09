@@ -15,13 +15,17 @@ struct NewGameView: View {
     private let width = UIScreen.main.bounds.size.width
     
     var body: some View {
-        VStack {
+        VStack(spacing: 16) {
             NewGameTitleView(viewModel: viewModel)
             if viewModel.showingNewCard {
-                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard))
+                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.gameId))
                     .transition(.offset(x: -width))
             }
+            if viewModel.saveGame {
+                NewGameCardListView(gameId: viewModel.gameId)
+            }
         }
+        .padding()
         .animation(.spring(response: 0.6, dampingFraction: 0.6), value: viewModel.showingNewCard)
     }
 }
