@@ -12,13 +12,15 @@ struct NewGameTitleView: View {
     @ObservedObject var viewModel: NewGameViewModel
     @EnvironmentObject var gameManager: GameManager
     
+    let width: CGFloat
+    
     var body: some View {
         ZStack(alignment: .top) {
             HStack {
                 if viewModel.gameType == 1 { Spacer() }
                 RoundedRectangle(cornerRadius: 16)
                     .fill(gameManager.mainColor)
-                    .frame(width: 160, height: 50)
+                    .frame(width: width*0.45, height: 50)
                 if viewModel.gameType == 0 { Spacer() }
             }
             .animation(.easeInOut, value: viewModel.gameType)
@@ -93,21 +95,21 @@ struct NewGameTitleView: View {
                 }
             }
             .padding()
-            .frame(width: 300, height: 160)
+            .frame(width: width*0.9, height: 160)
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
         }
-        .frame(width: 300, height: 160)
+        .frame(width: width*0.9, height: 160)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(gameManager.mainColor, lineWidth: 5)
-                .frame(width: 295, height: 155)
+                .frame(width: width*0.9-6, height: 154)
         )
     }
 }
 
 struct NewGameTitleView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameTitleView(viewModel: NewGameViewModel())
+        NewGameTitleView(viewModel: NewGameViewModel(), width: UIScreen.main.bounds.size.width)
             .environmentObject(GameManager())
     }
 }

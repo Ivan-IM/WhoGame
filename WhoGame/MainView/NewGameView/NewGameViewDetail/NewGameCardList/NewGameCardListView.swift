@@ -9,22 +9,27 @@ import SwiftUI
 
 struct NewGameCardListView: View {
     
-//    let workoutId: String
-//    var exerciseRequest : FetchRequest<ExerciseCD>
-//    var exercises : FetchedResults<ExerciseCD>{exerciseRequest.wrappedValue}
-//
-//    init(workoutId: String) {
-//        self.workoutId = workoutId
-//        self.exerciseRequest = FetchRequest(entity: ExerciseCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \ExerciseCD.order, ascending: true)], predicate: NSPredicate(format: "workoutId == %@", workoutId))
-//    }
+    let gameId: String
+    var gameCardRequest : FetchRequest<GameCardCD>
+    var gameCards : FetchedResults<GameCardCD>{gameCardRequest.wrappedValue}
+
+    init(gameId: String) {
+        self.gameId = gameId
+        self.gameCardRequest = FetchRequest(entity: GameCardCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)], predicate: NSPredicate(format: "gameId == %@", gameId))
+    }
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            ForEach(gameCards) { gameCard in
+                NewGameCardListCellView(gameCrad: gameCard)
+            }
+            .padding(.vertical, 8)
+        }
     }
 }
 
 struct NewGameCardListView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameCardListView()
+        NewGameCardListView(gameId: "")
     }
 }

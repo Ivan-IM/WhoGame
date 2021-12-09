@@ -11,6 +11,7 @@ struct NewGameCardListCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
     var gameCrad: GameCardCD
+    private let width = UIScreen.main.bounds.size.width
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -47,14 +48,14 @@ struct NewGameCardListCellView: View {
                 Text(gameCrad.answer ?? "Unknown")
             }
             .padding()
-            .frame(width: 300, height: 160)
+            .frame(width: width*0.9, height: 160)
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
         }
-        .frame(width: 300, height: 160)
+        .frame(width: width*0.9, height: 160)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(gameManager.mainColor, lineWidth: 5)
-                .frame(width: 295, height: 155)
+                .frame(width: width*0.9-6, height: 154)
         )
     }
 }

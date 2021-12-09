@@ -12,6 +12,8 @@ struct NewGameCardView: View {
     @ObservedObject var viewModel: NewGameCardViewModel
     @EnvironmentObject var gameManager: GameManager
     
+    let width: CGFloat
+    
     var body: some View {
         ZStack(alignment: .top) {
             VStack {
@@ -67,7 +69,7 @@ struct NewGameCardView: View {
                 }
             }
             .padding()
-            .frame(width: 300, height: 210)
+            .frame(width: width*0.9, height: 210)
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
             Group {
                 if viewModel.showMarkMenu {
@@ -87,25 +89,25 @@ struct NewGameCardView: View {
                         }
                     }
                     .padding()
-                    .frame(width: 300, height: 210)
+                    .frame(width: width*0.9, height: 210)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
                     .transition(.opacity)
                 }
             }
             .animation(.easeInOut, value: viewModel.showMarkMenu)
         }
-        .frame(width: 300, height: 210)
+        .frame(width: width*0.9, height: 210)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .stroke(gameManager.mainColor, lineWidth: 5)
-                .frame(width: 295, height: 205)
+                .frame(width: width*0.9-6, height: 204)
         )
     }
 }
 
 struct NewGameCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: .constant(true), gameId: ""))
+        NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: .constant(true), gameId: ""), width: UIScreen.main.bounds.size.width)
             .environmentObject(GameManager())
     }
 }

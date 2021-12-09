@@ -16,16 +16,15 @@ struct NewGameView: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            NewGameTitleView(viewModel: viewModel)
+            NewGameTitleView(viewModel: viewModel, width: width)
             if viewModel.showingNewCard {
-                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.gameId))
+                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.gameId), width: width)
                     .transition(.offset(x: -width))
             }
             if viewModel.saveGame {
                 NewGameCardListView(gameId: viewModel.gameId)
             }
         }
-        .padding()
         .animation(.spring(response: 0.6, dampingFraction: 0.6), value: viewModel.showingNewCard)
     }
 }
