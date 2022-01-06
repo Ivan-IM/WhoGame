@@ -34,7 +34,7 @@ final class NewGameCardViewModel: ObservableObject {
         
         guard let game = PersistenceController.shared.fetchGames(for: gameId).first else { return }
         gameCard.toGameCD = game
-        gameCard.gameType = game.type
+        //gameCard.gameType = game.type
         
         PersistenceController.shared.save { error in
             switch error {

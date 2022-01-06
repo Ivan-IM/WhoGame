@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19461" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="GameCardCD" representedClassName="GameCardCD" syncable="YES" codeGenerationType="class">
         <attribute name="answer" optional="YES" attributeType="String"/>
         <attribute name="gameId" optional="YES" attributeType="String"/>
-        <attribute name="gameType" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="mark" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="place" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="question" optional="YES" attributeType="String"/>
+        <attribute name="score" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
         <relationship name="toGameCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameCD" inverseName="toGameCardCD" inverseEntity="GameCD"/>
     </entity>
     <entity name="GameCD" representedClassName="GameCD" syncable="YES" codeGenerationType="class">
+        <attribute name="author" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="showAnswer" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="showScore" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="theme" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="toGameCardCD" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GameCardCD" inverseName="toGameCD" inverseEntity="GameCardCD"/>
     </entity>
     <elements>
-        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="149"/>
-        <element name="GameCD" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="14"/>
+        <element name="GameCD" positionX="-63" positionY="-18" width="128" height="14"/>
     </elements>
 </model>

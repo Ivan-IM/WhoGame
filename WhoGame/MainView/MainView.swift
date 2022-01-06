@@ -9,15 +9,23 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        VStack {
-            Button {
-                
-            } label: {
-                Text("New Game")
-                    .font(.title2.bold())
-                    .foregroundColor(.primary)
+        NavigationView {
+            VStack(spacing: 32) {
+                NavigationLink {
+                    CreateGameView()
+                } label: {
+                    Text("Create game")
+                        .font(.title2.bold())
+                        .foregroundColor(.primary)
+                }
+                NavigationLink {
+                    
+                } label: {
+                    Text("Play game")
+                        .font(.title2.bold())
+                        .foregroundColor(.primary)
+                }
             }
-
         }
     }
 }

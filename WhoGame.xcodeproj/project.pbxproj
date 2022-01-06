@@ -15,6 +15,8 @@
 		CF08538D2761CF3A001DDC70 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08538C2761CF39001DDC70 /* GameManager.swift */; };
 		CF08538F276204F8001DDC70 /* NewGameCardListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF08538E276204F8001DDC70 /* NewGameCardListView.swift */; };
 		CF085392276247EB001DDC70 /* NewGameCardListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF085391276247EB001DDC70 /* NewGameCardListCellView.swift */; };
+		CF2062CE2787882C00EABCCE /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2062CD2787882C00EABCCE /* CreateGameView.swift */; };
+		CF2062D22787885000EABCCE /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2062D12787885000EABCCE /* CreateGameViewModel.swift */; };
 		CF298941275D159700D3C3C1 /* WhoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF298940275D159700D3C3C1 /* WhoGameApp.swift */; };
 		CF298943275D159700D3C3C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF298942275D159700D3C3C1 /* ContentView.swift */; };
 		CF298945275D159900D3C3C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF298944275D159900D3C3C1 /* Assets.xcassets */; };
@@ -33,6 +35,8 @@
 		CF08538C2761CF39001DDC70 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		CF08538E276204F8001DDC70 /* NewGameCardListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardListView.swift; sourceTree = "<group>"; };
 		CF085391276247EB001DDC70 /* NewGameCardListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardListCellView.swift; sourceTree = "<group>"; };
+		CF2062CD2787882C00EABCCE /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
+		CF2062D12787885000EABCCE /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
 		CF29893D275D159700D3C3C1 /* WhoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF298940275D159700D3C3C1 /* WhoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoGameApp.swift; sourceTree = "<group>"; };
 		CF298942275D159700D3C3C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				CF298953275D162A00D3C3C1 /* MainView.swift */,
+				CF2062D02787883F00EABCCE /* CreateGameView */,
 				CF08537D2761B17C001DDC70 /* NewGameView */,
 			);
 			path = MainView;
@@ -107,6 +112,15 @@
 				CF085391276247EB001DDC70 /* NewGameCardListCellView.swift */,
 			);
 			path = NewGameCardList;
+			sourceTree = "<group>";
+		};
+		CF2062D02787883F00EABCCE /* CreateGameView */ = {
+			isa = PBXGroup;
+			children = (
+				CF2062CD2787882C00EABCCE /* CreateGameView.swift */,
+				CF2062D12787885000EABCCE /* CreateGameViewModel.swift */,
+			);
+			path = CreateGameView;
 			sourceTree = "<group>";
 		};
 		CF298934275D159700D3C3C1 = {
@@ -226,10 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF2062CE2787882C00EABCCE /* CreateGameView.swift in Sources */,
 				CF29894D275D159900D3C3C1 /* WhoGame.xcdatamodeld in Sources */,
 				CF08538B2761CEDC001DDC70 /* NewGameCardViewModel.swift in Sources */,
 				CF29894A275D159900D3C3C1 /* Persistence.swift in Sources */,
 				CF08538D2761CF3A001DDC70 /* GameManager.swift in Sources */,
+				CF2062D22787885000EABCCE /* CreateGameViewModel.swift in Sources */,
 				CF0853862761C01F001DDC70 /* NewGameTitleView.swift in Sources */,
 				CF08538F276204F8001DDC70 /* NewGameCardListView.swift in Sources */,
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,
