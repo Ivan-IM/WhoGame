@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewGameView: View {
+struct NewGameView2: View {
     
     @ObservedObject var viewModel: NewGameViewModel
     @EnvironmentObject var gameManager: GameManager
@@ -18,7 +18,7 @@ struct NewGameView: View {
         VStack(spacing: 16) {
             NewGameTitleView(viewModel: viewModel, width: width)
             if viewModel.showingNewCard {
-                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.gameId), width: width)
+                NewGameCardView2(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.gameId), width: width)
                     .transition(.offset(x: -width))
             }
             if viewModel.saveGame {
@@ -29,9 +29,9 @@ struct NewGameView: View {
     }
 }
 
-struct NewGameView_Previews: PreviewProvider {
+struct NewGameView2_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameView(viewModel: NewGameViewModel())
+        NewGameView2(viewModel: NewGameViewModel())
             .environmentObject(GameManager())
             .preferredColorScheme(.dark)
     }

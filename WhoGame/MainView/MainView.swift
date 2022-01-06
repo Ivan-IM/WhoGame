@@ -12,7 +12,7 @@ struct MainView: View {
         NavigationView {
             VStack(spacing: 32) {
                 NavigationLink {
-                    CreateGameView()
+                    CreateGameView(viewModel: CreateGameViewModel())
                 } label: {
                     Text("Create game")
                         .font(.title2.bold())
@@ -26,6 +26,7 @@ struct MainView: View {
                         .foregroundColor(.primary)
                 }
             }
+            .navigationBarHidden(true)
         }
     }
 }

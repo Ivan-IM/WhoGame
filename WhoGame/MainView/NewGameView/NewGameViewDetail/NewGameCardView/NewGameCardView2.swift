@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NewGameCardView: View {
+struct NewGameCardView2: View {
     
     @ObservedObject var viewModel: NewGameCardViewModel
     @EnvironmentObject var gameManager: GameManager
@@ -107,7 +107,7 @@ struct NewGameCardView: View {
 
 struct NewGameCardView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: .constant(true), gameId: ""), width: UIScreen.main.bounds.size.width)
+        NewGameCardView2(viewModel: NewGameCardViewModel(showingNewCard: .constant(true), gameId: ""), width: UIScreen.main.bounds.size.width)
             .environmentObject(GameManager())
     }
 }
