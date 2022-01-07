@@ -10,6 +10,7 @@ import SwiftUI
 struct CreateGameView: View {
     
     @ObservedObject var viewModel: CreateGameViewModel
+    @Environment(\.editMode) var mode
     
     var body: some View {
         VStack {
@@ -30,26 +31,16 @@ struct CreateGameView: View {
                 
             }
             Button {
-                if viewModel.id.isEmpty {
-                    viewModel.saveNewGame()
-                } else {
-                    if !viewModel.showingNewCard {
-                        viewModel.showingNewCard = true
-                    }
-                }
-            } label: {
-                if viewModel.id.isEmpty {
-                    Text("Save the game")
-                        .font(.title2.bold())
-                } else {
-                    if !viewModel.showingNewCard {
-                        Text("Add question")
-                            .font(.title2.bold())
-                    }
+                if !viewModel.showingNewCard {
+                    viewModel.showingNewCard = true
                 }
                 
+            } label: {
+                if !viewModel.showingNewCard && viewModel.saveGame {
+                    Text("Add question")
+                        .font(.title2.bold())
+                }
             }
-            .disabled(viewModel.isValidForm())
             .padding()
         }
         .navigationBarHidden(false)

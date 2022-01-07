@@ -43,6 +43,23 @@ final class CreateGameViewModel: ObservableObject {
         }
     }
     
+    func updateGame() {
+        guard let game = PersistenceController.shared.fetchGames(for: id).first else { return }
+        game.name = self.name
+        game.theme = self.theme
+        game.showScore = self.showScore
+        game.showAnswer = self.showAnswer
+        
+        PersistenceController.shared.save { error in
+            switch error {
+            case .none:
+                print("Game update")
+            case .some(_):
+                print(String(describing: error?.localizedDescription))
+            }
+        }
+    }
+    
     func isValidForm() -> Bool {
         return name.isEmpty
     }

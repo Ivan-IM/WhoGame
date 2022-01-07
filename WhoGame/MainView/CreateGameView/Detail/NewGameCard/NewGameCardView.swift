@@ -10,11 +10,14 @@ import SwiftUI
 struct NewGameCardView: View {
     
     @ObservedObject var viewModel: NewGameCardViewModel
+    @FocusState private var showingKeyboard: Bool
     
     var body: some View {
         Section {
             TextField("Question", text: $viewModel.question)
+                .focused($showingKeyboard)
             TextField("Answer", text: $viewModel.answer)
+                .focused($showingKeyboard)
             if viewModel.showScore {
                 HStack {
                     Text("Score")
@@ -28,6 +31,7 @@ struct NewGameCardView: View {
                 }
             }
             Button {
+                showingKeyboard = false
                 viewModel.saveNewGameCard()
             } label: {
                 Text("Save question")
