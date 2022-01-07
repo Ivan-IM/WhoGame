@@ -17,6 +17,7 @@ final class CreateGameViewModel: ObservableObject {
     @Published var showScore: Bool = false
     @Published var showAnswer: Bool = false
     
+    @Published var editMode: Bool = false
     @Published var saveGame: Bool = false
     @Published var showingNewCard: Bool = false
     
@@ -54,6 +55,7 @@ final class CreateGameViewModel: ObservableObject {
             switch error {
             case .none:
                 print("Game update")
+                self.editMode = false
             case .some(_):
                 print(String(describing: error?.localizedDescription))
             }

@@ -13,7 +13,17 @@ struct SaveGameView: View {
     
     var body: some View {
         Section {
-            Text(viewModel.name)
+            HStack {
+                Text(viewModel.name)
+                Spacer()
+                Button {
+                    viewModel.editMode = true
+                } label: {
+                    Image(systemName: "pencil.circle")
+                        .font(.title2)
+                        .foregroundColor(.secondary)
+                }
+            }
             if !viewModel.theme.isEmpty {
                 Text(viewModel.theme)
             }
@@ -26,12 +36,14 @@ struct SaveGameView: View {
                 Text("Showing question score")
                 Spacer()
                 Image(systemName: viewModel.showScore ? "checkmark.circle":"multiply.circle")
+                    .font(.title2)
                     .foregroundColor(viewModel.showScore ? .green:.red)
             }
             HStack {
                 Text("Showing answers")
                 Spacer()
                 Image(systemName: viewModel.showAnswer ? "checkmark.circle":"multiply.circle")
+                    .font(.title2)
                     .foregroundColor(viewModel.showAnswer ? .green:.red)
             }
         }

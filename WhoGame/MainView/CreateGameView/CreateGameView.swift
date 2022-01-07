@@ -10,16 +10,15 @@ import SwiftUI
 struct CreateGameView: View {
     
     @ObservedObject var viewModel: CreateGameViewModel
-    @Environment(\.editMode) var mode
     
     var body: some View {
         VStack {
             Form {
                 Group {
-                    if viewModel.saveGame {
-                        SaveGameView(viewModel: viewModel)
-                    } else {
+                    if !viewModel.saveGame || viewModel.editMode {
                         NewGameView(viewModel: viewModel)
+                    } else {
+                        SaveGameView(viewModel: viewModel)
                     }
                 }
                 if viewModel.showingNewCard && !viewModel.id.isEmpty {
