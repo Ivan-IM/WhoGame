@@ -27,6 +27,14 @@ struct NewGameCardView: View {
                     .pickerStyle(.menu)
                 }
             }
+            Button {
+                viewModel.saveNewGameCard()
+            } label: {
+                Text("Save question")
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .disabled(viewModel.isValidForm())
+
         }
         .font(.headline)
     }

@@ -1,13 +1,13 @@
 //
-//  NewGameCardListView.swift
+//  GameCardListIView.swift
 //  WhoGame
 //
-//  Created by Иван Маришин on 09.12.2021.
+//  Created by Иван Маришин on 07.01.2022.
 //
 
 import SwiftUI
 
-struct NewGameCardListView: View {
+struct GameCardListIView: View {
     
     let gameId: String
     var gameCardRequest : FetchRequest<GameCardCD>
@@ -19,17 +19,20 @@ struct NewGameCardListView: View {
     }
     
     var body: some View {
-        ScrollView {
-            ForEach(gameCards) { gameCard in
-                NewGameCardListCellView(gameCrad: gameCard)
+        List(gameCards) { card in
+            HStack {
+                Text("\(card.mark).")
+                    .fontWeight(.semibold)
+                Text("\(card.question ?? "Unknown")")
             }
-            .padding(.vertical, 8)
         }
     }
 }
 
-struct NewGameCardListView_Previews: PreviewProvider {
+struct GameCardListIView_Previews: PreviewProvider {
     static var previews: some View {
-        NewGameCardListView(gameId: "")
+        Form {
+            GameCardListIView(gameId: "")
+        }
     }
 }

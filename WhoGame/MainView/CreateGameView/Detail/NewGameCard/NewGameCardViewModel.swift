@@ -30,6 +30,8 @@ final class NewGameCardViewModel: ObservableObject {
         gameCard.gameId = self.gameId
         gameCard.question = self.question
         gameCard.answer = self.answer
+        gameCard.score = Int64(self.score)
+        gameCard.mark = Int64(PersistenceController.shared.fetchGameCards(for: gameId).count)
         
         guard let game = PersistenceController.shared.fetchGames(for: gameId).first else { return }
         gameCard.toGameCD = game
@@ -43,5 +45,9 @@ final class NewGameCardViewModel: ObservableObject {
                 print(String(describing: error?.localizedDescription))
             }
         }
+    }
+    
+    func isValidForm() -> Bool {
+        return question.isEmpty || answer.isEmpty
     }
 }

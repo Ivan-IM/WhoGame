@@ -31,8 +31,8 @@ struct SaveGameView: View {
             HStack {
                 Text("Showing answers")
                 Spacer()
-                Image(systemName: viewModel.showScore ? "checkmark.circle":"multiply.circle")
-                    .foregroundColor(viewModel.showScore ? .green:.red)
+                Image(systemName: viewModel.showAnswer ? "checkmark.circle":"multiply.circle")
+                    .foregroundColor(viewModel.showAnswer ? .green:.red)
             }
         }
         .font(.headline)

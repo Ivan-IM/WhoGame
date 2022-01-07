@@ -13,9 +13,6 @@ struct CreateGameView: View {
     
     var body: some View {
         VStack {
-//            Text("New game")
-//                .font(.title2.bold())
-//                .foregroundColor(.primary)
             Form {
                 Group {
                     if viewModel.saveGame {
@@ -27,19 +24,41 @@ struct CreateGameView: View {
                 if viewModel.showingNewCard && !viewModel.id.isEmpty {
                     NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
                 }
-
+                if !viewModel.id.isEmpty {
+                    GameCardListIView(gameId: viewModel.id)
+                }
+                
             }
             Button {
-                viewModel.saveNewGame()
+                if viewModel.id.isEmpty {
+                    viewModel.saveNewGame()
+                } else {
+                    if !viewModel.showingNewCard {
+                        viewModel.showingNewCard = true
+                    }
+                }
             } label: {
-                Text("Save the game")
-                    .font(.title2.bold())
+                if viewModel.id.isEmpty {
+                    Text("Save the game")
+                        .font(.title2.bold())
+                } else {
+                    if !viewModel.showingNewCard {
+                        Text("Add question")
+                            .font(.title2.bold())
+                    }
+                }
+                
             }
             .disabled(viewModel.isValidForm())
             .padding()
         }
         .navigationBarHidden(false)
         .navigationTitle("New game")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
+        }
     }
 }
 

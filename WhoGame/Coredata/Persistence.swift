@@ -72,7 +72,7 @@ struct PersistenceController {
         }
     }
     
-    func fetchGamCards(for gameId: String) -> [GameCardCD] {
+    func fetchGameCards(for gameId: String) -> [GameCardCD] {
         let request: NSFetchRequest<GameCardCD> = GameCardCD.fetchRequest()
         request.predicate = NSPredicate(format: "gameId == %@", gameId)
         request.sortDescriptors = [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)]
