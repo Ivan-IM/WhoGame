@@ -25,7 +25,9 @@ struct CreateGameView: View {
                     NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
                 }
                 if !viewModel.id.isEmpty {
-                    GameCardListIView(gameId: viewModel.id)
+                    Section("Game card list") {
+                        GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore)
+                    }
                 }
                 
             }
@@ -36,7 +38,7 @@ struct CreateGameView: View {
                 
             } label: {
                 if !viewModel.showingNewCard && viewModel.saveGame {
-                    Text("Add question")
+                    Text("Add new game card")
                         .font(.title2.bold())
                 }
             }

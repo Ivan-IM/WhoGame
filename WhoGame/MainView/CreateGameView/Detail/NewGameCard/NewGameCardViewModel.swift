@@ -47,22 +47,6 @@ final class NewGameCardViewModel: ObservableObject {
         }
     }
     
-    func updateGameCard(gameCard: GameCardCD) {
-        let gameCard = gameCard
-        gameCard.question = self.question
-        gameCard.answer = self.answer
-        gameCard.score = Int64(self.score)
-        
-        PersistenceController.shared.save { error in
-            switch error {
-            case .none:
-                print("GameCard update")
-            case .some(_):
-                print(String(describing: error?.localizedDescription))
-            }
-        }
-    }
-    
     func isValidForm() -> Bool {
         return question.isEmpty || answer.isEmpty
     }

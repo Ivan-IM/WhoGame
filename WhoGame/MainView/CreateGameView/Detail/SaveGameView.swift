@@ -28,7 +28,7 @@ struct SaveGameView: View {
                 Text(viewModel.theme)
             }
             HStack {
-                Text("Date")
+                Text("Date of creation")
                 Spacer()
                 Text("\(viewModel.date.longDate)")
             }

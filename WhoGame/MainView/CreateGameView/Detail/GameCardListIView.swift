@@ -10,21 +10,27 @@ import SwiftUI
 struct GameCardListIView: View {
     
     let gameId: String
+    let showScore: Bool
     var gameCardRequest : FetchRequest<GameCardCD>
     var gameCards : FetchedResults<GameCardCD>{gameCardRequest.wrappedValue}
     
-    init(gameId: String) {
+    init(gameId: String, showScore: Bool) {
         self.gameId = gameId
         self.gameCardRequest = FetchRequest(entity: GameCardCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)], predicate: NSPredicate(format: "gameId == %@", gameId))
+        self.showScore = showScore
     }
     
     var body: some View {
         List {
             ForEach(gameCards) { card in
-                HStack {
-                    Text("\(card.mark).")
-                        .fontWeight(.semibold)
-                    Text("\(card.question ?? "Unknown")")
+                NavigationLink {
+                    EditGameCardView(viewModel: EditGameCardViewModel(gameCard: card, showScore: showScore))
+                } label: {
+                    HStack {
+                        Text("\(card.mark).")
+                            .fontWeight(.semibold)
+                        Text("\(card.question ?? "Unknown")")
+                    }
                 }
             }
             .onMove(perform: moveGameCard)
@@ -65,7 +71,7 @@ struct GameCardListIView: View {
 struct GameCardListIView_Previews: PreviewProvider {
     static var previews: some View {
         Form {
-            GameCardListIView(gameId: "")
+            GameCardListIView(gameId: "", showScore: true)
         }
     }
 }

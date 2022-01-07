@@ -34,7 +34,7 @@ struct NewGameCardView: View {
                 showingKeyboard = false
                 viewModel.saveNewGameCard()
             } label: {
-                Text("Save question")
+                Text("Save game card")
             }
             .frame(maxWidth: .infinity, alignment: .center)
             .disabled(viewModel.isValidForm())

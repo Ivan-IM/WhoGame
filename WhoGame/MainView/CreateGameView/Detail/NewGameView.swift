@@ -24,7 +24,7 @@ struct NewGameView: View {
             TextField("Theme", text: $viewModel.theme)
                 .focused($showingKeyboard)
             HStack {
-                Text("Date")
+                Text("Date of creation")
                 Spacer()
                 Text("\(viewModel.date.longDate)")
             }
