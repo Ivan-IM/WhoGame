@@ -18,8 +18,8 @@ struct NewGameView2: View {
         VStack(spacing: 16) {
             NewGameTitleView(viewModel: viewModel, width: width)
             if viewModel.showingNewCard {
-                NewGameCardView2(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.gameId), width: width)
-                    .transition(.offset(x: -width))
+//                NewGameCardView2(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.gameId), width: width)
+//                    .transition(.offset(x: -width))
             }
             if viewModel.saveGame {
                 NewGameCardListView(gameId: viewModel.gameId)

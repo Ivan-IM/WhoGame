@@ -13,9 +13,9 @@ struct CreateGameView: View {
     
     var body: some View {
         VStack {
-            Text("New game")
-                .font(.title2.bold())
-                .foregroundColor(.primary)
+//            Text("New game")
+//                .font(.title2.bold())
+//                .foregroundColor(.primary)
             Form {
                 Group {
                     if viewModel.saveGame {
@@ -24,17 +24,22 @@ struct CreateGameView: View {
                         NewGameView(viewModel: viewModel)
                     }
                 }
+                if viewModel.showingNewCard && !viewModel.id.isEmpty {
+                    NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
+                }
 
             }
             Button {
-                
+                viewModel.saveNewGame()
             } label: {
                 Text("Save the game")
                     .font(.title2.bold())
             }
             .disabled(viewModel.isValidForm())
+            .padding()
         }
-        .navigationBarHidden(true)
+        .navigationBarHidden(false)
+        .navigationTitle("New game")
     }
 }
 

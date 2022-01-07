@@ -11,30 +11,28 @@ final class NewGameCardViewModel: ObservableObject {
     
     @Published var question: String = ""
     @Published var answer: String = ""
-    @Published var mark: Int = 1
+    @Published var score: Int = 1
     
-    @Published var showMarkMenu: Bool = false
+    var scoreArray = (1...10).map { $0 }
     
-    let markArray = (1...50).map { $0 }
-    
+    var showScore: Bool
     var showingNewCard: Binding<Bool>
     var gameId: String
-    init(showingNewCard: Binding<Bool>, gameId: String) {
+    init(showingNewCard: Binding<Bool>, gameId: String, showScore: Bool) {
         self.showingNewCard = showingNewCard
         self.gameId = gameId
+        self.showScore = showScore
     }
     
     func saveNewGameCard() {
         let gameCard = GameCardCD(context: PersistenceController.shared.container.viewContext)
         gameCard.id = UUID().uuidString
         gameCard.gameId = self.gameId
-        gameCard.mark = Int64(self.mark)
         gameCard.question = self.question
         gameCard.answer = self.answer
         
         guard let game = PersistenceController.shared.fetchGames(for: gameId).first else { return }
         gameCard.toGameCD = game
-        //gameCard.gameType = game.type
         
         PersistenceController.shared.save { error in
             switch error {
