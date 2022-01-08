@@ -1,5 +1,5 @@
 //
-//  GameListView.swift
+//  PlayGameView.swift
 //  WhoGame
 //
 //  Created by Иван Маришин on 08.01.2022.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct GameListView: View {
+struct PlayGameView: View {
     
     @FetchRequest(entity: GameCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCD.date, ascending: false)]) var games: FetchedResults<GameCD>
     
     var body: some View {
         List {
             ForEach(games) { game in
-                NavigationLink {
-                    CreateGameView(viewModel: CreateGameViewModel(game: game))
+                Button {
+                    
                 } label: {
                     VStack(alignment: .leading, spacing: 3) {
                         Text(game.name ?? "Unknown")
@@ -24,31 +24,20 @@ struct GameListView: View {
                             Text("Theme: \(game.theme ?? "Unknown")")
                                 .font(.subheadline)
                         }
-                        Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
+                        Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
+                    .foregroundColor(.primary)
                 }
             }
-            //.onDelete(perform: removeGame)
         }
         .navigationTitle("Games")
     }
-    
-    private func removeGame(at offsets: IndexSet) {
-        for index in offsets {
-            let game = games[index]
-            PersistenceController.shared.delete(game)
-            let gameCards = PersistenceController.shared.fetchGameCards(for: game.id ?? "")
-            for gameCard in gameCards {
-                PersistenceController.shared.delete(gameCard)
-            }
-        }
-    }
 }
 
-struct GameListView_Previews: PreviewProvider {
+struct PlayGameView_Previews: PreviewProvider {
     static var previews: some View {
-        GameListView()
+        PlayGameView()
     }
 }

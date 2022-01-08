@@ -23,6 +23,6 @@
     </entity>
     <elements>
         <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="149"/>
-        <element name="GameCD" positionX="-63" positionY="-18" width="128" height="14"/>
+        <element name="GameCD" positionX="-63" positionY="-18" width="128" height="164"/>
     </elements>
 </model>

@@ -25,6 +25,13 @@ struct MainView: View {
                         .font(.title2.bold())
                         .foregroundColor(.primary)
                 }
+                NavigationLink {
+                    PlayGameView()
+                } label: {
+                    Text("Play")
+                        .font(.title2.bold())
+                        .foregroundColor(.primary)
+                }
             }
             .navigationBarHidden(true)
         }
