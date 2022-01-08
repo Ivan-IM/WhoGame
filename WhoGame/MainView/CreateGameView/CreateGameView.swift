@@ -10,6 +10,8 @@ import SwiftUI
 struct CreateGameView: View {
     
     @ObservedObject var viewModel: CreateGameViewModel
+    @EnvironmentObject var gameManager: GameManager
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -29,7 +31,6 @@ struct CreateGameView: View {
                         GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore)
                     }
                 }
-                
             }
             Button {
                 if !viewModel.showingNewCard {
@@ -46,9 +47,41 @@ struct CreateGameView: View {
         }
         .navigationBarHidden(false)
         .navigationTitle("New game")
+        .alert("Clear?", isPresented: $viewModel.showingClearAlert) {
+            Button("OK", role: .destructive) {
+                viewModel.clearGame()
+            }
+            Button("Cancel", role: .cancel) {}
+        }
+        .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
+            Button("OK", role: .destructive) {
+                viewModel.deleteGame()
+            }
+            Button("Cancel", role: .cancel) {}
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                EditButton()
+                if !viewModel.id.isEmpty && !viewModel.hideClear {
+                    Button {
+                        viewModel.showingClearAlert = true
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if !viewModel.id.isEmpty {
+                    Button {
+                        viewModel.showingDaleteAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                    }
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                if !viewModel.id.isEmpty {
+                    EditButton()
+                }
             }
         }
     }
@@ -57,5 +90,6 @@ struct CreateGameView: View {
 struct CreateGameView_Previews: PreviewProvider {
     static var previews: some View {
         CreateGameView(viewModel: CreateGameViewModel())
+            .environmentObject(GameManager())
     }
 }

@@ -29,11 +29,13 @@ struct SaveGameView: View {
             }
             HStack {
                 Text("Date of creation")
+                    .foregroundColor(.secondary)
                 Spacer()
                 Text("\(viewModel.date.longDate)")
             }
             HStack {
                 Text("Showing question score")
+                    .foregroundColor(.secondary)
                 Spacer()
                 Image(systemName: viewModel.showScore ? "checkmark.circle":"multiply.circle")
                     .font(.title2)
@@ -41,6 +43,7 @@ struct SaveGameView: View {
             }
             HStack {
                 Text("Showing answers")
+                    .foregroundColor(.secondary)
                 Spacer()
                 Image(systemName: viewModel.showAnswer ? "checkmark.circle":"multiply.circle")
                     .font(.title2)

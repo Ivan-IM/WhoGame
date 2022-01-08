@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditGameCardView: View {
     
-    @ObservedObject var viewModel: EditGameCardViewModel
+    @ObservedObject var viewModel: NewGameCardViewModel
     @Environment(\.presentationMode) var presentationMode
     @FocusState private var showingKeyboard: Bool
     

@@ -24,7 +24,7 @@ struct GameCardListIView: View {
         List {
             ForEach(gameCards) { card in
                 NavigationLink {
-                    EditGameCardView(viewModel: EditGameCardViewModel(gameCard: card, showScore: showScore))
+                    EditGameCardView(viewModel: NewGameCardViewModel(gameCard: card, showScore: showScore))
                 } label: {
                     HStack {
                         Text("\(card.mark).")

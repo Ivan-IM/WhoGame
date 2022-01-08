@@ -20,6 +20,24 @@ final class CreateGameViewModel: ObservableObject {
     @Published var editMode: Bool = false
     @Published var saveGame: Bool = false
     @Published var showingNewCard: Bool = false
+    @Published var hideClear: Bool = false
+    
+    @Published var showingClearAlert: Bool = false
+    @Published var showingDaleteAlert: Bool = false
+    
+    init() { }
+    
+    init(game: GameCD) {
+        self.saveGame = true
+        self.name = game.name ?? "Unknown"
+        self.theme = game.theme ?? "Unknown"
+        self.date = game.date ?? Date()
+        self.type = Int(game.type)
+        self.id = game.id ?? ""
+        self.showScore = game.showScore
+        self.showAnswer = game.showAnswer
+        self.hideClear = true
+    }
     
     func saveNewGame() {
         let game = GameCD(context: PersistenceController.shared.container.viewContext)
@@ -56,6 +74,34 @@ final class CreateGameViewModel: ObservableObject {
             case .none:
                 print("Game update")
                 self.editMode = false
+            case .some(_):
+                print(String(describing: error?.localizedDescription))
+            }
+        }
+    }
+    
+    func clearGame() {
+        self.name = ""
+        self.theme = ""
+        self.type = 0
+        self.id = ""
+        self.showScore = false
+        self.showAnswer = false
+        self.editMode = false
+        self.saveGame = false
+        self.showingNewCard = false
+    }
+    
+    func deleteGame() {
+        guard let game = PersistenceController.shared.fetchGames(for: id).first else { return }
+        let gameCards = PersistenceController.shared.fetchGameCards(for: id)
+        PersistenceController.shared.delete(game) { error in
+            switch error {
+            case .none:
+                for gameCard in gameCards {
+                    PersistenceController.shared.delete(gameCard)
+                }
+                self.clearGame()
             case .some(_):
                 print(String(describing: error?.localizedDescription))
             }

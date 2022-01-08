@@ -18,10 +18,23 @@ final class NewGameCardViewModel: ObservableObject {
     var showScore: Bool
     var showingNewCard: Binding<Bool>
     var gameId: String
+    
+    var gameCard: GameCardCD?
+    
     init(showingNewCard: Binding<Bool>, gameId: String, showScore: Bool) {
         self.showingNewCard = showingNewCard
         self.gameId = gameId
         self.showScore = showScore
+    }
+    
+    init(gameCard: GameCardCD, showScore: Bool) {
+        self.gameCard = gameCard
+        self.gameId = gameCard.gameId ?? ""
+        self.showingNewCard = .constant(false)
+        self.showScore = showScore
+        self.question = gameCard.question ?? "Unknown"
+        self.answer = gameCard.answer ?? "Unknown"
+        self.score = Int(gameCard.score)
     }
     
     func saveNewGameCard() {
@@ -41,6 +54,21 @@ final class NewGameCardViewModel: ObservableObject {
             case .none:
                 print("New gameCard save")
                 self.showingNewCard.wrappedValue = false
+            case .some(_):
+                print(String(describing: error?.localizedDescription))
+            }
+        }
+    }
+    
+    func updateGameCard() {
+        self.gameCard?.question = self.question
+        self.gameCard?.answer = self.answer
+        self.gameCard?.score = Int64(self.score)
+        
+        PersistenceController.shared.save { error in
+            switch error {
+            case .none:
+                print("GameCard update")
             case .some(_):
                 print(String(describing: error?.localizedDescription))
             }

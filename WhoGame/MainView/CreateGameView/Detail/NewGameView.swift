@@ -14,13 +14,8 @@ struct NewGameView: View {
     
     var body: some View {
         Section {
-            if viewModel.editMode {
-                TextEditor(text: $viewModel.name)
-                    .focused($showingKeyboard)
-            } else {
-                TextField("Name", text: $viewModel.name)
-                    .focused($showingKeyboard)
-            }
+            TextField("Name", text: $viewModel.name)
+                .focused($showingKeyboard)
             TextField("Theme", text: $viewModel.theme)
                 .focused($showingKeyboard)
             HStack {

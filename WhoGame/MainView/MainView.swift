@@ -14,14 +14,14 @@ struct MainView: View {
                 NavigationLink {
                     CreateGameView(viewModel: CreateGameViewModel())
                 } label: {
-                    Text("Create game")
+                    Text("Create")
                         .font(.title2.bold())
                         .foregroundColor(.primary)
                 }
                 NavigationLink {
-                    
+                    GameListView()
                 } label: {
-                    Text("Play game")
+                    Text("List")
                         .font(.title2.bold())
                         .foregroundColor(.primary)
                 }

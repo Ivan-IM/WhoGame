@@ -24,7 +24,7 @@
 		CF29894D275D159900D3C3C1 /* WhoGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CF29894B275D159900D3C3C1 /* WhoGame.xcdatamodeld */; };
 		CF298954275D162A00D3C3C1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF298953275D162A00D3C3C1 /* MainView.swift */; };
 		CF2C02D527887F2400392BAA /* EditGameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C02D427887F2400392BAA /* EditGameCardView.swift */; };
-		CF2C02D827887F3600392BAA /* EditGameCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C02D727887F3600392BAA /* EditGameCardViewModel.swift */; };
+		CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C02D92789B46F00392BAA /* GameListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,7 +46,7 @@
 		CF29894C275D159900D3C3C1 /* WhoGame.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhoGame.xcdatamodel; sourceTree = "<group>"; };
 		CF298953275D162A00D3C3C1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CF2C02D427887F2400392BAA /* EditGameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameCardView.swift; sourceTree = "<group>"; };
-		CF2C02D727887F3600392BAA /* EditGameCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameCardViewModel.swift; sourceTree = "<group>"; };
+		CF2C02D92789B46F00392BAA /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +64,7 @@
 			isa = PBXGroup;
 			children = (
 				CF298953275D162A00D3C3C1 /* MainView.swift */,
+				CF2C02DB2789B48000392BAA /* Games */,
 				CF2062D02787883F00EABCCE /* CreateGameView */,
 			);
 			path = MainView;
@@ -101,7 +102,6 @@
 				CF2062D727878DBB00EABCCE /* NewGameView.swift */,
 				CF2062DB278791C100EABCCE /* SaveGameView.swift */,
 				CF2062E22788527C00EABCCE /* GameCardListIView.swift */,
-				CF2C02D627887F2A00392BAA /* New Group */,
 				CF2062DF2788189F00EABCCE /* NewGameCard */,
 			);
 			path = Detail;
@@ -112,6 +112,7 @@
 			children = (
 				CF2062DD2788189600EABCCE /* NewGameCardView.swift */,
 				CF08538A2761CEDC001DDC70 /* NewGameCardViewModel.swift */,
+				CF2C02D427887F2400392BAA /* EditGameCardView.swift */,
 			);
 			path = NewGameCard;
 			sourceTree = "<group>";
@@ -164,13 +165,12 @@
 			path = Coredata;
 			sourceTree = "<group>";
 		};
-		CF2C02D627887F2A00392BAA /* New Group */ = {
+		CF2C02DB2789B48000392BAA /* Games */ = {
 			isa = PBXGroup;
 			children = (
-				CF2C02D427887F2400392BAA /* EditGameCardView.swift */,
-				CF2C02D727887F3600392BAA /* EditGameCardViewModel.swift */,
+				CF2C02D92789B46F00392BAA /* GameListView.swift */,
 			);
-			path = "New Group";
+			path = Games;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,8 +254,8 @@
 				CF2062D527878B6000EABCCE /* DateExt.swift in Sources */,
 				CF2062DC278791C100EABCCE /* SaveGameView.swift in Sources */,
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,
+				CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */,
 				CF298954275D162A00D3C3C1 /* MainView.swift in Sources */,
-				CF2C02D827887F3600392BAA /* EditGameCardViewModel.swift in Sources */,
 				CF298941275D159700D3C3C1 /* WhoGameApp.swift in Sources */,
 				CF2062E32788527C00EABCCE /* GameCardListIView.swift in Sources */,
 				CF2062D827878DBB00EABCCE /* NewGameView.swift in Sources */,
