@@ -19,7 +19,6 @@ struct MainView: View {
                     Spacer()
                     ZStack {
                         Circle()
-                            //.trim(from: 0.0, to: CGFloat(min(animate ? 1.0:0.0, 1.0)))
                             .stroke(.blue, lineWidth: 12)
                             .frame(width: 130, height: 130)
                         .offset(x: gameManager.width*0.22)
@@ -32,6 +31,8 @@ struct MainView: View {
                         .frame(width: 130, height: 130)
                         .offset(x: -gameManager.width*0.22)
                 }
+                .padding(.bottom, animate ? 16:32)
+                .padding(.trailing, animate ? 0:16)
                 Rectangle()
                     .fill(.ultraThinMaterial)
                     .edgesIgnoringSafeArea(.all)
@@ -40,8 +41,8 @@ struct MainView: View {
                     NavigationLink {
                         GameListView(doYouWantToPlay: true)
                     } label: {
-                        Text("Play")
-                            .font(.title2.bold())
+                        Image(systemName: "play")
+                            .font(.title.bold())
                             .foregroundColor(.primary)
                             .frame(width: 130, height: 130)
                     }
@@ -56,8 +57,8 @@ struct MainView: View {
                     NavigationLink {
                         CreateGameView(viewModel: CreateGameViewModel())
                     } label: {
-                        Text("Create")
-                            .font(.title2.bold())
+                        Image(systemName: "plus")
+                            .font(.title.bold())
                             .foregroundColor(.primary)
                             .frame(width: 130, height: 130)
                     }
@@ -70,8 +71,8 @@ struct MainView: View {
                     NavigationLink {
                         GameListView(doYouWantToPlay: false)
                     } label: {
-                        Text("List")
-                            .font(.title2.bold())
+                        Image(systemName: "line.3.horizontal")
+                            .font(.title.bold())
                             .foregroundColor(.primary)
                             .frame(width: 130, height: 130)
                     }
@@ -84,14 +85,13 @@ struct MainView: View {
                             .offset(x: -gameManager.width*0.22)
                     )
                 }
+                .padding(.bottom, 16)
                 .navigationBarHidden(true)
             }
-//            .animation(.easeInOut(duration: 3).repeatForever(), value: animate)
-//            .onAppear() {
-//                withAnimation {
-//                    animate = true
-//                }
-//            }
+            .animation(.easeInOut(duration: 3).repeatForever(), value: animate)
+            .onAppear {
+                animate = true
+            }
         }
     }
 }
@@ -100,6 +100,6 @@ struct MainView_Previews: PreviewProvider {
     static var previews: some View {
         MainView()
             .environmentObject(GameManager())
-            .preferredColorScheme(.light)
+            .preferredColorScheme(.dark)
     }
 }
