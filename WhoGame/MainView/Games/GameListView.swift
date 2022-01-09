@@ -10,27 +10,41 @@ import SwiftUI
 struct GameListView: View {
     
     @FetchRequest(entity: GameCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCD.date, ascending: false)]) var games: FetchedResults<GameCD>
+    let doYouWantToPlay: Bool
     
     var body: some View {
-        List {
-            ForEach(games) { game in
-                NavigationLink {
-                    CreateGameView(viewModel: CreateGameViewModel(game: game))
-                } label: {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(game.name ?? "Unknown")
-                            .font(.headline)
-                        Text("Theme: \(game.theme ?? "Unknown")")
-                            .font(.subheadline)
-                        Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
+        ZStack {
+            Color.mint.edgesIgnoringSafeArea(.all)
+            ScrollView {
+                ForEach(games) { game in
+                    NavigationLink {
+                        if doYouWantToPlay {
+                            GameView(viewModel: GameViewModel(game: game))
+                        } else {
+                            CreateGameView(viewModel: CreateGameViewModel(game: game))
+                        }
+                    } label: {
+                        VStack(alignment: .leading, spacing: 3) {
+                            Text(game.name ?? "Unknown")
+                                .font(.headline)
+                            Text("Theme: \(game.theme ?? "Unknown")")
+                                .font(.subheadline)
+                            if doYouWantToPlay {
+                                Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            } else {
+                                Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
                     }
                 }
+                //.onDelete(perform: removeGame)
             }
-            //.onDelete(perform: removeGame)
+            .navigationTitle("Games")
         }
-        .navigationTitle("Games")
     }
     
     private func removeGame(at offsets: IndexSet) {
@@ -47,6 +61,6 @@ struct GameListView: View {
 
 struct GameListView_Previews: PreviewProvider {
     static var previews: some View {
-        GameListView()
+        GameListView(doYouWantToPlay: false)
     }
 }

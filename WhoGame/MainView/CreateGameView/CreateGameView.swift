@@ -46,6 +46,7 @@ struct CreateGameView: View {
             .padding()
         }
         .navigationBarHidden(false)
+        .navigationBarBackButtonHidden(true)
         .navigationTitle("New game")
         .alert("Clear?", isPresented: $viewModel.showingClearAlert) {
             Button("OK", role: .destructive) {
@@ -61,6 +62,14 @@ struct CreateGameView: View {
             Button("Cancel", role: .cancel) {}
         }
         .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                    viewModel.clearGame()
+                } label: {
+                    Text("Done")
+                }
+            }
             ToolbarItem(placement: .navigationBarTrailing) {
                 if !viewModel.id.isEmpty && !viewModel.hideClear {
                     Button {
