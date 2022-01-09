@@ -15,58 +15,83 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.mint.edgesIgnoringSafeArea(.all)
-                VStack() {
+                VStack {
+                    Spacer()
+                    ZStack {
+                        Circle()
+                            //.trim(from: 0.0, to: CGFloat(min(animate ? 1.0:0.0, 1.0)))
+                            .stroke(.blue, lineWidth: 12)
+                            .frame(width: 130, height: 130)
+                        .offset(x: gameManager.width*0.22)
+                    }
+                    Circle()
+                        .stroke(.purple, lineWidth: 16)
+                        .frame(width: 130, height: 130)
+                    Circle()
+                        .stroke(.green, lineWidth: 16)
+                        .frame(width: 130, height: 130)
+                        .offset(x: -gameManager.width*0.22)
+                }
+                Rectangle()
+                    .fill(.ultraThinMaterial)
+                    .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Spacer()
                     NavigationLink {
                         GameListView(doYouWantToPlay: true)
                     } label: {
-                        Text("Play game")
-                            .font(.title.bold())
+                        Text("Play")
+                            .font(.title2.bold())
                             .foregroundColor(.primary)
-                            .blendMode(.overlay)
+                            .frame(width: 130, height: 130)
                     }
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(.secondary)
-                        .frame(width: gameManager.width*0.55, height: 3)
-                        .blendMode(.overlay)
+                    .offset(x: gameManager.width*0.22)
+                    .background(
+                        Circle()
+                            .frame(width: 130, height: 130)
+                            .blur(radius: 6)
+                            .blendMode(.overlay)
+                            .offset(x: gameManager.width*0.22)
+                    )
                     NavigationLink {
                         CreateGameView(viewModel: CreateGameViewModel())
                     } label: {
-                        Text("Create a game")
-                            .font(.title.bold())
+                        Text("Create")
+                            .font(.title2.bold())
                             .foregroundColor(.primary)
-                            .blendMode(.overlay)
+                            .frame(width: 130, height: 130)
                     }
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(.secondary)
-                        .frame(width: gameManager.width*0.55, height: 3)
-                        .blendMode(.overlay)
+                    .background(
+                        Circle()
+                            .frame(width: 130, height: 130)
+                            .blur(radius: 6)
+                            .blendMode(.overlay)
+                    )
                     NavigationLink {
                         GameListView(doYouWantToPlay: false)
                     } label: {
-                        Text("List of games")
-                            .font(.title.bold())
+                        Text("List")
+                            .font(.title2.bold())
                             .foregroundColor(.primary)
-                            .blendMode(.overlay)
+                            .frame(width: 130, height: 130)
                     }
+                    .offset(x: -gameManager.width*0.22)
+                    .background(
+                        Circle()
+                            .frame(width: 130, height: 130)
+                            .blur(radius: 6)
+                            .blendMode(.overlay)
+                            .offset(x: -gameManager.width*0.22)
+                    )
                 }
-                .frame(width: gameManager.width*0.77, height: gameManager.height*0.3)
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
-                .background(
-                Circle()
-                    .fill(.indigo)
-                    .frame(width: gameManager.height*0.23, height: gameManager.height*0.23)
-                    .blendMode(.normal)
-                    //.scaleEffect(animate ? 1.0:0.88)
-                    //.animation(.easeInOut(duration: 3).repeatForever(), value: animate)
-                )
-            .navigationBarHidden(true)
+                .navigationBarHidden(true)
             }
-        }
-        .onAppear {
-            withAnimation() {
-                animate = true
-            }
+//            .animation(.easeInOut(duration: 3).repeatForever(), value: animate)
+//            .onAppear() {
+//                withAnimation {
+//                    animate = true
+//                }
+//            }
         }
     }
 }

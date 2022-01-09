@@ -14,7 +14,9 @@ struct GameListView: View {
     
     var body: some View {
         ZStack {
-            Color.mint.edgesIgnoringSafeArea(.all)
+            Rectangle()
+                .fill(.ultraThinMaterial)
+                .edgesIgnoringSafeArea(.all)
             ScrollView {
                 ForEach(games) { game in
                     NavigationLink {
