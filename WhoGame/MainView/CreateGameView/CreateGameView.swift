@@ -56,6 +56,7 @@ struct CreateGameView: View {
         .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
             Button("OK", role: .destructive) {
                 viewModel.deleteGame()
+                presentationMode.wrappedValue.dismiss()
             }
             Button("Cancel", role: .cancel) {}
         }

@@ -109,6 +109,6 @@ final class CreateGameViewModel: ObservableObject {
     }
     
     func isValidForm() -> Bool {
-        return name.isEmpty
+        return name.isEmpty || theme.isEmpty
     }
 }

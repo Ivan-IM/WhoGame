@@ -14,16 +14,14 @@ struct PlayGameView: View {
     var body: some View {
         List {
             ForEach(games) { game in
-                Button {
-                    
+                NavigationLink {
+                    GameView(viewModel: GameViewModel(game: game))
                 } label: {
                     VStack(alignment: .leading, spacing: 3) {
                         Text(game.name ?? "Unknown")
                             .font(.headline)
-                        if !(game.theme?.isEmpty ?? false) {
-                            Text("Theme: \(game.theme ?? "Unknown")")
-                                .font(.subheadline)
-                        }
+                        Text("Theme: \(game.theme ?? "Unknown")")
+                            .font(.subheadline)
                         Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
@@ -32,7 +30,7 @@ struct PlayGameView: View {
                 }
             }
         }
-        .navigationTitle("Games")
+        .navigationTitle("Choose the game")
     }
 }
 

@@ -20,10 +20,8 @@ struct GameListView: View {
                     VStack(alignment: .leading, spacing: 3) {
                         Text(game.name ?? "Unknown")
                             .font(.headline)
-                        if !(game.theme?.isEmpty ?? false) {
-                            Text("Theme: \(game.theme ?? "Unknown")")
-                                .font(.subheadline)
-                        }
+                        Text("Theme: \(game.theme ?? "Unknown")")
+                            .font(.subheadline)
                         Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
