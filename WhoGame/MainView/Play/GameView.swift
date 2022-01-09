@@ -23,7 +23,7 @@ struct GameView: View {
                         Text("Right answers: \(viewModel.score)")
                     }
                     Spacer()
-                    HStack(spacing: 32) {
+                    HStack(spacing: 64) {
                         Button {
                             viewModel.clearGame()
                         } label: {
@@ -59,11 +59,21 @@ struct GameView: View {
                             .textFieldStyle(.roundedBorder)
                             .frame(width: 250)
                     case .right:
-                        Text("Right answer")
-                            .foregroundColor(.green)
+                        if viewModel.game.showAnswer {
+                            Text("\(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
+                                .foregroundColor(.green)
+                        } else {
+                            Text("Right answer")
+                                .foregroundColor(.green)
+                        }
                     case .wrong:
-                        Text("Wrong answer")
-                            .foregroundColor(.red)
+                        if viewModel.game.showAnswer {
+                            Text("\(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
+                                .foregroundColor(.red)
+                        } else {
+                            Text("Wrong answer")
+                                .foregroundColor(.red)
+                        }
                     }
                     Button {
                         if viewModel.answerSystem == .text {
