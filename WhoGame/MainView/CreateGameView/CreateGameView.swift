@@ -15,10 +15,10 @@ struct CreateGameView: View {
     
     var body: some View {
         VStack {
-            Form {
                 Group {
                     if !viewModel.saveGame || viewModel.editMode {
                         NewGameView(viewModel: viewModel)
+                            .padding(.horizontal)
                     } else {
                         SaveGameView(viewModel: viewModel)
                     }
@@ -31,7 +31,6 @@ struct CreateGameView: View {
                         GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore)
                     }
                 }
-            }
             Button {
                 if !viewModel.showingNewCard {
                     viewModel.showingNewCard = true
