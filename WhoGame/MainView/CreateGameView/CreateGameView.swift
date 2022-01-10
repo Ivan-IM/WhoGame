@@ -21,6 +21,7 @@ struct CreateGameView: View {
                             .padding(.horizontal)
                     } else {
                         SaveGameView(viewModel: viewModel)
+                            .padding(.horizontal)
                     }
                 }
                 if viewModel.showingNewCard && !viewModel.id.isEmpty {
