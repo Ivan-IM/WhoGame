@@ -10,42 +10,62 @@ import SwiftUI
 struct GameListView: View {
     
     @FetchRequest(entity: GameCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCD.date, ascending: false)]) var games: FetchedResults<GameCD>
+    @Environment(\.presentationMode) var presentationMode
     let doYouWantToPlay: Bool
     
     var body: some View {
         ZStack {
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .edgesIgnoringSafeArea(.all)
-            ScrollView {
-                ForEach(games) { game in
-                    NavigationLink {
+//            Rectangle()
+//                .fill(.ultraThinMaterial)
+//                .edgesIgnoringSafeArea(.all)
+            VStack {
+                HStack {
+                    Group {
                         if doYouWantToPlay {
-                            GameView(viewModel: GameViewModel(game: game))
+                            Text("Games")
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundStyle(
+                                    LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                )
                         } else {
-                            CreateGameView(viewModel: CreateGameViewModel(game: game))
+                            Text("Games")
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundStyle(
+                                    LinearGradient(colors: [Color.indigo, Color.mint], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                )
                         }
+                    }
+                    Spacer()
+                    Button {
+                        presentationMode.wrappedValue.dismiss()
                     } label: {
-                        VStack(alignment: .leading, spacing: 3) {
-                            Text(game.name ?? "Unknown")
-                                .font(.headline)
-                            Text("Theme: \(game.theme ?? "Unknown")")
-                                .font(.subheadline)
+                        Image(systemName: "multiply.circle")
+                            .font(.system(size: 24, weight: .regular))
+                            .imageScale(.large)
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            )
+                    }
+                }
+                .padding(.horizontal)
+                ScrollView {
+                    ForEach(games) { game in
+                        NavigationLink {
                             if doYouWantToPlay {
-                                Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                GameView(viewModel: GameViewModel(game: game))
                             } else {
-                                Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
-                                    .font(.subheadline)
-                                    .foregroundColor(.secondary)
+                                CreateGameView(viewModel: CreateGameViewModel(game: game))
                             }
+                        } label: {
+                            GameListCellView(game: game, symbolType: doYouWantToPlay)
                         }
                     }
                 }
-                //.onDelete(perform: removeGame)
+                .navigationBarHidden(true)
             }
-            .navigationTitle("Games")
         }
     }
     

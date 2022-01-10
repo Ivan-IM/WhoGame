@@ -27,6 +27,7 @@
 		CF298954275D162A00D3C3C1 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF298953275D162A00D3C3C1 /* MainView.swift */; };
 		CF2C02D527887F2400392BAA /* EditGameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C02D427887F2400392BAA /* EditGameCardView.swift */; };
 		CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C02D92789B46F00392BAA /* GameListView.swift */; };
+		CF617528278C387B009953BB /* GameListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617527278C387B009953BB /* GameListCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		CF298953275D162A00D3C3C1 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		CF2C02D427887F2400392BAA /* EditGameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameCardView.swift; sourceTree = "<group>"; };
 		CF2C02D92789B46F00392BAA /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
+		CF617527278C387B009953BB /* GameListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2C02D92789B46F00392BAA /* GameListView.swift */,
+				CF617527278C387B009953BB /* GameListCellView.swift */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				CF2062D527878B6000EABCCE /* DateExt.swift in Sources */,
 				CF2062DC278791C100EABCCE /* SaveGameView.swift in Sources */,
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,
+				CF617528278C387B009953BB /* GameListCellView.swift in Sources */,
 				CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */,
 				CF298954275D162A00D3C3C1 /* MainView.swift in Sources */,
 				CF0A2DE7278AB14200DDDE68 /* GameViewModel.swift in Sources */,
