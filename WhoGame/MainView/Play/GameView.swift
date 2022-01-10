@@ -71,7 +71,6 @@ struct GameView: View {
                                 )
                                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         }
-                        .padding()
                     }
                 } else {
                     VStack {
@@ -177,7 +176,6 @@ struct GameView: View {
                                 }
                             }
                         }
-                        .padding()
                         .opacity(viewModel.answer.isEmpty ? 0.2:1.0)
                         .disabled(viewModel.answer.isEmpty)
                     }
@@ -185,7 +183,7 @@ struct GameView: View {
             }
             .navigationBarHidden(true)
         }
-        .padding(.horizontal)
+        .padding()
     }
 }
 

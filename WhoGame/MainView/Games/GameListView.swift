@@ -73,7 +73,6 @@ struct GameListView: View {
                             )
                     }
                 }
-                .padding(.horizontal)
                 ScrollView {
                     ForEach(games) { game in
                         if doYouWantToPlay {
@@ -94,6 +93,7 @@ struct GameListView: View {
                 }
                 .navigationBarHidden(true)
             }
+            .padding()
         }
     }
     

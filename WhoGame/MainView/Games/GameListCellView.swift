@@ -70,6 +70,5 @@ struct GameListCellView: View {
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-        .padding(.horizontal)
     }
 }

@@ -36,25 +36,21 @@ struct CreateGameView: View {
                         )
                 }
             }
-            .padding(.horizontal)
             Group {
                 if !viewModel.saveGame || viewModel.editMode {
                     NewGameView(viewModel: viewModel)
-                        .padding(.horizontal)
                 } else {
                     SaveGameView(viewModel: viewModel)
-                        .padding(.horizontal)
                 }
             }
             if viewModel.showingNewCard && !viewModel.id.isEmpty {
                 NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
-                    .padding(.horizontal)
             }
             if !viewModel.id.isEmpty {
                 GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore)
-                    .padding(.horizontal)
             }
         }
+        .padding()
         .navigationBarHidden(true)
         .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
             Button("OK", role: .destructive) {

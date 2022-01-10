@@ -62,7 +62,7 @@ struct MainView: View {
                     }
                     .offset(x: -gameManager.width*0.22)
                 }
-                .padding(.bottom, 16)
+                .padding()
                 .navigationBarHidden(true)
             }
 //            .animation(.easeInOut(duration: 3).repeatForever(), value: animate)

@@ -97,6 +97,7 @@ struct EditGameCardView: View {
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+        .padding()
         .navigationBarHidden(true)
         .alert("Delete game card?", isPresented: $viewModel.showingDaleteAlert) {
             Button("OK", role: .destructive) {
