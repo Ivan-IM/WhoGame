@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SaveGameView: View {
     
+    @EnvironmentObject var gameManager: GameManager
     @ObservedObject var viewModel: CreateGameViewModel
     
     var body: some View {
@@ -34,7 +35,7 @@ struct SaveGameView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .green)
                             )
                     } else {
                         Image(systemName: "bolt.slash")
@@ -43,7 +44,7 @@ struct SaveGameView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .red)
                             )
                     }
                     
@@ -56,7 +57,7 @@ struct SaveGameView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .green)
                             )
                     } else {
                         Image(systemName: "eye.slash")
@@ -65,7 +66,7 @@ struct SaveGameView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .red)
                             )
                     }
                     
@@ -83,7 +84,7 @@ struct SaveGameView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .red)
                         )
                 }
                 Button {
@@ -95,7 +96,7 @@ struct SaveGameView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .blue)
                         )
                 }
                 Button {
@@ -107,7 +108,7 @@ struct SaveGameView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .green)
                         )
                 }
                 .opacity(viewModel.showingNewCard ? 0.2:1.0)

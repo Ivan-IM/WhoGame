@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditGameCardView: View {
     
+    @EnvironmentObject var gameManager: GameManager
     @ObservedObject var viewModel: NewGameCardViewModel
     @Environment(\.presentationMode) var presentationMode
     @FocusState private var showingKeyboard: Bool
@@ -30,9 +31,9 @@ struct EditGameCardView: View {
                 .frame(height: 32)
             if viewModel.showScore {
                 HStack {
+                    Spacer()
                     Text("Score")
                         .font(.system(size: 16, weight: .semibold))
-                    Spacer()
                     Picker("Score", selection: $viewModel.score) {
                         ForEach(viewModel.scoreArray, id: \.self) {
                             Image(systemName: "\($0).circle")
@@ -41,7 +42,7 @@ struct EditGameCardView: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
                                     Color.white.opacity(0.8),
-                                    LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    gameManager.mainColorSheme(color: .green)
                                 )
                         }
                     }
@@ -60,7 +61,7 @@ struct EditGameCardView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .red)
                         )
                 }
                 Button {
@@ -73,7 +74,7 @@ struct EditGameCardView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .blue)
                         )
                 }
                 Button {
@@ -87,7 +88,7 @@ struct EditGameCardView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .green)
                         )
                 }
                 .opacity(viewModel.isValidForm() ? 0.2:1.0)

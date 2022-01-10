@@ -19,7 +19,7 @@ struct CreateGameView: View {
                 Text("New game")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(
-                        LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        gameManager.mainColorSheme(color: .red)
                     )
                 Spacer()
                 Button {
@@ -32,7 +32,7 @@ struct CreateGameView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .blue)
                         )
                 }
             }

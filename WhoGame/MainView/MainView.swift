@@ -18,7 +18,7 @@ struct MainView: View {
                 VStack {
                     Spacer()
                     NavigationLink {
-                        GameListView(doYouWantToPlay: true)
+                        GameListView()
                     } label: {
                         Image(systemName: "play")
                             .font(.system(size: 100, weight: .regular))
@@ -26,7 +26,7 @@ struct MainView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .blue)
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             .frame(width: 130, height: 130)
@@ -41,13 +41,13 @@ struct MainView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.purple, Color.mint], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .red)
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             .frame(width: 130, height: 130)
                     }
                     NavigationLink {
-                        GameListView(doYouWantToPlay: false)
+                        GameListView()
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .font(.system(size: 100, weight: .regular))
@@ -55,7 +55,7 @@ struct MainView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.mint, Color.cyan], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .green)
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             .frame(width: 130, height: 130)

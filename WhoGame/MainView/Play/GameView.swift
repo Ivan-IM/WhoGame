@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameView: View {
     
+    @EnvironmentObject var gameManager: GameManager
     @ObservedObject var viewModel: GameViewModel
     @Environment(\.presentationMode) var presentationMode
     
@@ -18,7 +19,7 @@ struct GameView: View {
                 Text("\(viewModel.game.name ?? "Unknown")")
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(
-                        LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        gameManager.mainColorSheme(color: .red)
                     )
                 Spacer()
                 Button {
@@ -31,33 +32,44 @@ struct GameView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .blue)
                         )
                 }
             }
-            .padding(.horizontal)
             Group {
                 if viewModel.endGame {
                     VStack {
                         Spacer()
                         if viewModel.game.showScore {
                             Text("Score: \(viewModel.score)")
+                                .font(.system(size: 33, weight: .semibold))
+                                .foregroundStyle(
+                                    gameManager.mainColorSheme(color: .blue)
+                                )
+                                .padding()
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         } else {
                             Text("Right answers: \(viewModel.score)")
+                                .font(.system(size: 33, weight: .semibold))
+                                .foregroundStyle(
+                                    gameManager.mainColorSheme(color: .blue)
+                                )
+                                .padding()
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         }
                         Spacer()
-                        HStack(spacing: 64) {
-                            Button {
-                                viewModel.clearGame()
-                            } label: {
-                                Image(systemName: "arrow.clockwise")
-                            }
-                            Button {
-                                viewModel.clearGame()
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Image(systemName: "xmark")
-                            }
+                        Button {
+                            viewModel.clearGame()
+                        } label: {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.system(size: 100, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .green)
+                                )
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         }
                         .padding()
                     }
@@ -66,39 +78,60 @@ struct GameView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("Progress: \(viewModel.index+1)/\(viewModel.gameCards.count)")
-                            if viewModel.game.showScore {
-                                Text("Score: \(viewModel.score)")
-                            } else {
-                                Text("Right answers: \(viewModel.score)")
-                            }
+                                if viewModel.game.showScore {
+                                    Text("Score: \(viewModel.score)")
+                                } else {
+                                    Text("Right answers: \(viewModel.score)")
+                                }
                             }
                             Spacer()
                         }
                         .font(.system(size: 16, weight: .semibold))
-                        .padding(.horizontal)
                         Spacer()
                         Text("\(viewModel.gameCards[viewModel.index].question ?? "Unknown")")
+                            .font(.system(size: 18, weight: .regular))
+                            .padding()
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         Spacer()
                         switch viewModel.answerSystem {
                         case .text:
                             TextField("Answer", text: $viewModel.answer)
-                                .textFieldStyle(.roundedBorder)
+                                .multilineTextAlignment(.center)
+                                .font(.system(size: 16, weight: .semibold))
                                 .frame(width: 250)
+                                .padding()
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         case .right:
                             if viewModel.game.showAnswer {
-                                Text("\(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
+                                Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
                                     .foregroundColor(.green)
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .frame(width: 250)
+                                    .padding()
+                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             } else {
                                 Text("Right answer")
                                     .foregroundColor(.green)
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .frame(width: 250)
+                                    .padding()
+                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             }
                         case .wrong:
                             if viewModel.game.showAnswer {
-                                Text("\(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
+                                Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
                                     .foregroundColor(.red)
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .frame(width: 250)
+                                    .padding()
+                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             } else {
                                 Text("Wrong answer")
                                     .foregroundColor(.red)
+                                    .font(.system(size: 16, weight: .semibold))
+                                    .frame(width: 250)
+                                    .padding()
+                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             }
                         }
                         Button {
@@ -115,19 +148,33 @@ struct GameView: View {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
                                         Color.white.opacity(0.8),
-                                        LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                        gameManager.mainColorSheme(color: .blue)
                                     )
                                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             } else {
-                                Image(systemName: "arrow.right")
-                                    .font(.system(size: 100, weight: .regular))
-                                    .symbolVariant(.circle.fill)
-                                    .symbolRenderingMode(.palette)
-                                    .foregroundStyle(
-                                        Color.white.opacity(0.8),
-                                        LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
-                                    )
-                                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                                Group {
+                                    if viewModel.answerSystem == .right {
+                                        Image(systemName: "arrow.right")
+                                            .font(.system(size: 100, weight: .regular))
+                                            .symbolVariant(.circle.fill)
+                                            .symbolRenderingMode(.palette)
+                                            .foregroundStyle(
+                                                Color.white.opacity(0.8),
+                                                gameManager.mainColorSheme(color: .green)
+                                            )
+                                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                                    } else {
+                                        Image(systemName: "arrow.right")
+                                            .font(.system(size: 100, weight: .regular))
+                                            .symbolVariant(.circle.fill)
+                                            .symbolRenderingMode(.palette)
+                                            .foregroundStyle(
+                                                Color.white.opacity(0.8),
+                                                gameManager.mainColorSheme(color: .red)
+                                            )
+                                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                                    }
+                                }
                             }
                         }
                         .padding()
@@ -138,6 +185,7 @@ struct GameView: View {
             }
             .navigationBarHidden(true)
         }
+        .padding(.horizontal)
     }
 }
 

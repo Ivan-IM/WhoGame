@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameCardListIView: View {
     
+    @EnvironmentObject var gameManager: GameManager
     let gameId: String
     let showScore: Bool
     var gameCardRequest : FetchRequest<GameCardCD>
@@ -30,13 +31,14 @@ struct GameCardListIView: View {
                         Text("\(card.mark).")
                             .fontWeight(.semibold)
                         Text("\(card.question ?? "Unknown")")
+                            .lineLimit(1)
                         Spacer()
                         Image(systemName: "chevron.right")
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .blue)
                             )
                     }
                     .font(.system(size: 16, weight: .regular))

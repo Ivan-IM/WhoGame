@@ -9,6 +9,7 @@ import SwiftUI
 
 struct GameListCellView: View {
     
+    @EnvironmentObject var gameManager: GameManager
     var game: GameCD
     let symbolType: Bool
     
@@ -20,18 +21,19 @@ struct GameListCellView: View {
                         Text("\(game.name ?? "Unknown")")
                             .font(.system(size: 24, weight: .bold))
                             .foregroundStyle(
-                                LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .red)
                             )
                         Text("Theme: \(game.theme ?? "Unknown")")
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.secondary)
                         Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
                             .font(.system(size: 16, weight: .ultraLight))
+                            .foregroundColor(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? .red:.primary)
                     } else {
                         Text("\(game.name ?? "Unknown")")
                             .font(.system(size: 24, weight: .bold))
                             .foregroundStyle(
-                                LinearGradient(colors: [Color.indigo, Color.mint], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .green)
                             )
                         Text("Theme: \(game.theme ?? "Unknown")")
                             .font(.system(size: 16, weight: .semibold))
@@ -51,8 +53,9 @@ struct GameListCellView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.orange, Color.purple], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .red)
                         )
+                        .opacity(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? 0.2:1.0)
                 } else {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 44, weight: .regular))
@@ -60,7 +63,7 @@ struct GameListCellView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            gameManager.mainColorSheme(color: .green)
                         )
                 }
             }

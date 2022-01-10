@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NewGameView: View {
     
+    @EnvironmentObject var gameManager: GameManager
     @ObservedObject var viewModel: CreateGameViewModel
     @FocusState private var showingKeyboard: Bool
     
@@ -18,14 +19,14 @@ struct NewGameView: View {
                 .focused($showingKeyboard)
                 .font(.system(size: 18, weight: .semibold))
             RoundedRectangle(cornerRadius: 16)
-                .fill(viewModel.name.isEmpty ? LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing):LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing))
+                .fill(viewModel.name.isEmpty ? gameManager.mainColorSheme(color: .red):gameManager.mainColorSheme(color: .green))
                 .frame(height: 2)
             TextField("Theme", text: $viewModel.theme)
                 .focused($showingKeyboard)
                 .font(.system(size: 18, weight: .semibold))
                 .foregroundColor(.secondary)
             RoundedRectangle(cornerRadius: 16)
-                .fill(viewModel.theme.isEmpty ? LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing):LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing))
+                .fill(viewModel.theme.isEmpty ? gameManager.mainColorSheme(color: .red):gameManager.mainColorSheme(color: .green))
                 .frame(height: 2)
             HStack {
                 Text("Date of creation")
@@ -50,7 +51,7 @@ struct NewGameView: View {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
                                         Color.white.opacity(0.8),
-                                        LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                        gameManager.mainColorSheme(color: .green)
                                     )
                             } else {
                                 Image(systemName: "bolt.slash")
@@ -59,7 +60,7 @@ struct NewGameView: View {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
                                         Color.white.opacity(0.8),
-                                        LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                        gameManager.mainColorSheme(color: .red)
                                     )
                             }
                             
@@ -82,7 +83,7 @@ struct NewGameView: View {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
                                         Color.white.opacity(0.8),
-                                        LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                        gameManager.mainColorSheme(color: .green)
                                     )
                             } else {
                                 Image(systemName: "eye.slash")
@@ -92,7 +93,7 @@ struct NewGameView: View {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
                                         Color.white.opacity(0.8),
-                                        LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                        gameManager.mainColorSheme(color: .red)
                                     )
                             }
                             
@@ -115,7 +116,7 @@ struct NewGameView: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
                                     Color.white.opacity(0.8),
-                                    LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    gameManager.mainColorSheme(color: .green)
                                 )
                         }
                         .disabled(viewModel.isValidForm())
@@ -130,7 +131,7 @@ struct NewGameView: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
                                     Color.white.opacity(0.8),
-                                    LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    gameManager.mainColorSheme(color: .green)
                                 )
                         }
                         .opacity(viewModel.isValidForm() ? 0.2:1.0)

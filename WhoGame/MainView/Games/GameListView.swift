@@ -9,33 +9,57 @@ import SwiftUI
 
 struct GameListView: View {
     
+    @EnvironmentObject var gameManager: GameManager
     @FetchRequest(entity: GameCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCD.date, ascending: false)]) var games: FetchedResults<GameCD>
     @Environment(\.presentationMode) var presentationMode
-    let doYouWantToPlay: Bool
+    @State var doYouWantToPlay = true
     
     var body: some View {
         ZStack {
-//            Rectangle()
-//                .fill(.ultraThinMaterial)
-//                .edgesIgnoringSafeArea(.all)
+            //            Rectangle()
+            //                .fill(.ultraThinMaterial)
+            //                .edgesIgnoringSafeArea(.all)
             VStack {
                 HStack {
                     Group {
                         if doYouWantToPlay {
-                            Text("Games")
+                            Text("Play")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundStyle(
-                                    LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    gameManager.mainColorSheme(color: .red)
                                 )
                         } else {
-                            Text("Games")
+                            Text("Edit")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundStyle(
-                                    LinearGradient(colors: [Color.indigo, Color.mint], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                    gameManager.mainColorSheme(color: .green)
                                 )
                         }
                     }
                     Spacer()
+                    Button {
+                        doYouWantToPlay.toggle()
+                    } label: {
+                        if doYouWantToPlay {
+                            Image(systemName: "line.3.horizontal")
+                                .font(.system(size: 32, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .green)
+                                )
+                        } else {
+                            Image(systemName: "play")
+                                .font(.system(size: 32, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .red)
+                                )
+                        }
+                    }
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
@@ -45,21 +69,26 @@ struct GameListView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                                gameManager.mainColorSheme(color: .blue)
                             )
                     }
                 }
                 .padding(.horizontal)
                 ScrollView {
                     ForEach(games) { game in
-                        NavigationLink {
-                            if doYouWantToPlay {
+                        if doYouWantToPlay {
+                            NavigationLink {
                                 GameView(viewModel: GameViewModel(game: game))
-                            } else {
-                                CreateGameView(viewModel: CreateGameViewModel(game: game))
+                            } label: {
+                                GameListCellView(game: game, symbolType: doYouWantToPlay)
                             }
-                        } label: {
-                            GameListCellView(game: game, symbolType: doYouWantToPlay)
+                            .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
+                        } else {
+                            NavigationLink {
+                                CreateGameView(viewModel: CreateGameViewModel(game: game))
+                            } label: {
+                                GameListCellView(game: game, symbolType: doYouWantToPlay)
+                            }
                         }
                     }
                 }
@@ -82,6 +111,6 @@ struct GameListView: View {
 
 struct GameListView_Previews: PreviewProvider {
     static var previews: some View {
-        GameListView(doYouWantToPlay: false)
+        GameListView()
     }
 }
