@@ -40,8 +40,7 @@ struct GameListView: View {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "multiply.circle")
-                            .font(.system(size: 24, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 32, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(

@@ -45,8 +45,7 @@ struct NewGameView: View {
                         Group {
                             if viewModel.showScore {
                                 Image(systemName: "bolt")
-                                    .font(.system(size: 16, weight: .regular))
-                                    .imageScale(.large)
+                                    .font(.system(size: 18, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
@@ -55,8 +54,7 @@ struct NewGameView: View {
                                     )
                             } else {
                                 Image(systemName: "bolt.slash")
-                                    .font(.system(size: 16, weight: .regular))
-                                    .imageScale(.large)
+                                    .font(.system(size: 18, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
@@ -112,12 +110,11 @@ struct NewGameView: View {
                             showingKeyboard = false
                         } label: {
                             Image(systemName: "arrow.triangle.2.circlepath")
-                                .font(.system(size: 32, weight: .regular))
-                                .imageScale(.large)
+                                .font(.system(size: 44, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
-                                    Color.white.opacity(viewModel.isValidForm() ? 0.0:0.8),
+                                    Color.white.opacity(0.8),
                                     LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
                                 )
                         }
@@ -128,15 +125,15 @@ struct NewGameView: View {
                             showingKeyboard = false
                         } label: {
                             Image(systemName: "checkmark")
-                                .font(.system(size: 32, weight: .regular))
-                                .imageScale(.large)
+                                .font(.system(size: 44, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
-                                    Color.white.opacity(viewModel.isValidForm() ? 0.0:0.8),
+                                    Color.white.opacity(0.8),
                                     LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
                                 )
                         }
+                        .opacity(viewModel.isValidForm() ? 0.2:1.0)
                         .disabled(viewModel.isValidForm())
                     }
                 }

@@ -21,8 +21,7 @@ struct MainView: View {
                         GameListView(doYouWantToPlay: true)
                     } label: {
                         Image(systemName: "play")
-                            .font(.system(size: 80, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 100, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -37,8 +36,7 @@ struct MainView: View {
                         CreateGameView(viewModel: CreateGameViewModel())
                     } label: {
                         Image(systemName: "plus")
-                            .font(.system(size: 80, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 100, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -52,8 +50,7 @@ struct MainView: View {
                         GameListView(doYouWantToPlay: false)
                     } label: {
                         Image(systemName: "line.3.horizontal")
-                            .font(.system(size: 80, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 100, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(

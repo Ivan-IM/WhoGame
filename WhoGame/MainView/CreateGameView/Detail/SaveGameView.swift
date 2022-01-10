@@ -29,8 +29,7 @@ struct SaveGameView: View {
                 Group {
                     if viewModel.showScore {
                         Image(systemName: "bolt")
-                            .font(.system(size: 16, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 18, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -39,8 +38,7 @@ struct SaveGameView: View {
                             )
                     } else {
                         Image(systemName: "bolt.slash")
-                            .font(.system(size: 16, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 18, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -53,8 +51,7 @@ struct SaveGameView: View {
                 Group {
                     if viewModel.showAnswer {
                         Image(systemName: "eye")
-                            .font(.system(size: 16, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 18, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -63,8 +60,7 @@ struct SaveGameView: View {
                             )
                     } else {
                         Image(systemName: "eye.slash")
-                            .font(.system(size: 16, weight: .regular))
-                            .imageScale(.large)
+                            .font(.system(size: 18, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -78,23 +74,44 @@ struct SaveGameView: View {
             }
             HStack {
                 Spacer()
-                Group {
-                    if !viewModel.editMode {
-                        Button {
-                            viewModel.editMode = true
-                        } label: {
-                            Image(systemName: "pencil")
-                                .font(.system(size: 32, weight: .regular))
-                                .imageScale(.large)
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(viewModel.isValidForm() ? 0.0:0.8),
-                                    LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
-                                )
-                        }
-                    }
+                Button {
+                    viewModel.showingDaleteAlert = true
+                } label: {
+                    Image(systemName: "trash")
+                        .font(.system(size: 44, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
                 }
+                Button {
+                    viewModel.editMode = true
+                } label: {
+                    Image(systemName: "pencil")
+                        .font(.system(size: 44, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                }
+                Button {
+                    viewModel.showingNewCard = true
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 44, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                }
+                .opacity(viewModel.showingNewCard ? 0.2:1.0)
+                .disabled(viewModel.showingNewCard)
             }
         }
         .padding()

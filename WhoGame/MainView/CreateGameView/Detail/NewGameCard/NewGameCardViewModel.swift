@@ -13,6 +13,8 @@ final class NewGameCardViewModel: ObservableObject {
     @Published var answer: String = ""
     @Published var score: Int = 1
     
+    @Published var showingDaleteAlert: Bool = false
+    
     var scoreArray = (1...10).map { $0 }
     
     var showScore: Bool
@@ -73,6 +75,11 @@ final class NewGameCardViewModel: ObservableObject {
                 print(String(describing: error?.localizedDescription))
             }
         }
+    }
+    
+    func deleteGameCard() {
+        guard let gameCard = self.gameCard else { return }
+        PersistenceController.shared.delete(gameCard)
     }
     
     func isValidForm() -> Bool {

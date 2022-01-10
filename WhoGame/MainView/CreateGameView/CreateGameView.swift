@@ -15,6 +15,27 @@ struct CreateGameView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                Text("New game")
+                    .font(.system(size: 32, weight: .bold))
+                    .foregroundStyle(
+                        LinearGradient(colors: [Color.red, Color.orange], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                Spacer()
+                Button {
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Image(systemName: "multiply.circle")
+                        .font(.system(size: 32, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                        )
+                }
+            }
+            .padding(.horizontal)
                 Group {
                     if !viewModel.saveGame || viewModel.editMode {
                         NewGameView(viewModel: viewModel)
@@ -26,6 +47,7 @@ struct CreateGameView: View {
                 }
                 if viewModel.showingNewCard && !viewModel.id.isEmpty {
                     NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
+                        .padding(.horizontal)
                 }
                 if !viewModel.id.isEmpty {
                     Section("Game card list") {
@@ -45,9 +67,7 @@ struct CreateGameView: View {
             }
             .padding()
         }
-        .navigationBarHidden(false)
-        .navigationBarBackButtonHidden(true)
-        .navigationTitle("New game")
+        .navigationBarHidden(true)
         .alert("Clear?", isPresented: $viewModel.showingClearAlert) {
             Button("OK", role: .destructive) {
                 viewModel.clearGame()
@@ -60,39 +80,6 @@ struct CreateGameView: View {
                 presentationMode.wrappedValue.dismiss()
             }
             Button("Cancel", role: .cancel) {}
-        }
-        .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                    viewModel.clearGame()
-                } label: {
-                    Text("Done")
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !viewModel.id.isEmpty && !viewModel.hideClear {
-                    Button {
-                        viewModel.showingClearAlert = true
-                    } label: {
-                        Image(systemName: "arrow.clockwise")
-                    }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !viewModel.id.isEmpty {
-                    Button {
-                        viewModel.showingDaleteAlert = true
-                    } label: {
-                        Image(systemName: "trash")
-                    }
-                }
-            }
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !viewModel.id.isEmpty {
-                    EditButton()
-                }
-            }
         }
     }
 }
