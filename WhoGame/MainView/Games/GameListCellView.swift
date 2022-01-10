@@ -47,7 +47,6 @@ struct GameListCellView: View {
                 if symbolType {
                     Image(systemName: "play")
                         .font(.system(size: 44, weight: .regular))
-                        .imageScale(.large)
                         .symbolVariant(.circle.fill)
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
@@ -57,7 +56,6 @@ struct GameListCellView: View {
                 } else {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 44, weight: .regular))
-                        .imageScale(.large)
                         .symbolVariant(.circle.fill)
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(

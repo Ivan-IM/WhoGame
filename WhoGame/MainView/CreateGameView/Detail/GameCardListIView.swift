@@ -21,7 +21,7 @@ struct GameCardListIView: View {
     }
     
     var body: some View {
-        List {
+        ScrollView {
             ForEach(gameCards) { card in
                 NavigationLink {
                     EditGameCardView(viewModel: NewGameCardViewModel(gameCard: card, showScore: showScore))
@@ -30,11 +30,23 @@ struct GameCardListIView: View {
                         Text("\(card.mark).")
                             .fontWeight(.semibold)
                         Text("\(card.question ?? "Unknown")")
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+                            )
                     }
+                    .font(.system(size: 16, weight: .regular))
+                    .foregroundColor(.primary)
                 }
+                .padding()
+                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             }
-            .onMove(perform: moveGameCard)
-            .onDelete(perform: removeGameCard)
+//            .onMove(perform: moveGameCard)
+//            .onDelete(perform: removeGameCard)
         }
     }
     

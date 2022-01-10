@@ -22,7 +22,6 @@ final class CreateGameViewModel: ObservableObject {
     @Published var showingNewCard: Bool = false
     @Published var hideClear: Bool = false
     
-    @Published var showingClearAlert: Bool = false
     @Published var showingDaleteAlert: Bool = false
     
     init() { }

@@ -23,6 +23,7 @@ struct CreateGameView: View {
                     )
                 Spacer()
                 Button {
+                    viewModel.clearGame()
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Image(systemName: "multiply.circle")
@@ -36,44 +37,25 @@ struct CreateGameView: View {
                 }
             }
             .padding(.horizontal)
-                Group {
-                    if !viewModel.saveGame || viewModel.editMode {
-                        NewGameView(viewModel: viewModel)
-                            .padding(.horizontal)
-                    } else {
-                        SaveGameView(viewModel: viewModel)
-                            .padding(.horizontal)
-                    }
-                }
-                if viewModel.showingNewCard && !viewModel.id.isEmpty {
-                    NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
+            Group {
+                if !viewModel.saveGame || viewModel.editMode {
+                    NewGameView(viewModel: viewModel)
+                        .padding(.horizontal)
+                } else {
+                    SaveGameView(viewModel: viewModel)
                         .padding(.horizontal)
                 }
-                if !viewModel.id.isEmpty {
-                    Section("Game card list") {
-                        GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore)
-                    }
-                }
-            Button {
-                if !viewModel.showingNewCard {
-                    viewModel.showingNewCard = true
-                }
-                
-            } label: {
-                if !viewModel.showingNewCard && viewModel.saveGame {
-                    Text("Add new game card")
-                        .font(.title2.bold())
-                }
             }
-            .padding()
+            if viewModel.showingNewCard && !viewModel.id.isEmpty {
+                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
+                    .padding(.horizontal)
+            }
+            if !viewModel.id.isEmpty {
+                GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore)
+                    .padding(.horizontal)
+            }
         }
         .navigationBarHidden(true)
-        .alert("Clear?", isPresented: $viewModel.showingClearAlert) {
-            Button("OK", role: .destructive) {
-                viewModel.clearGame()
-            }
-            Button("Cancel", role: .cancel) {}
-        }
         .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
             Button("OK", role: .destructive) {
                 viewModel.deleteGame()
