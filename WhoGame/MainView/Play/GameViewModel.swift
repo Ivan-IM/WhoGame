@@ -39,7 +39,6 @@ final class GameViewModel: ObservableObject {
     func checkAnswer() -> checkSystem {
         if let answer = self.gameCards[self.index].answer {
             if self.answer == answer {
-                self.score += Int(self.gameCards[self.index].score)
                 return .right
             } else {
                 return .wrong
@@ -50,6 +49,9 @@ final class GameViewModel: ObservableObject {
     }
     
     func nextCard() {
+        if self.answerSystem == .right {
+            self.score += Int(self.gameCards[self.index].score)
+        }
         self.answer.removeAll()
         self.answerSystem = .text
         self.index += 1

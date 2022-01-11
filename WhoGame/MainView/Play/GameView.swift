@@ -82,8 +82,16 @@ struct GameView: View {
                                 Text("Progress: \(viewModel.index+1)/\(viewModel.gameCards.count)")
                                     .lineLimit(1)
                                 if viewModel.game.showScore {
-                                    Text("Score: \(viewModel.score)")
-                                        .lineLimit(1)
+                                    HStack {
+                                        Text("Score: \(viewModel.score)")
+                                            .lineLimit(1)
+                                        if viewModel.answerSystem == .right {
+                                            Text("+ \(viewModel.gameCards[viewModel.index].score)")
+                                                .lineLimit(1)
+                                                .foregroundColor(.green)
+                                        }
+                                        Spacer()
+                                    }
                                 } else {
                                     Text("Right answers: \(viewModel.score)")
                                         .lineLimit(1)
