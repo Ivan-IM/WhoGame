@@ -17,7 +17,7 @@ struct EndStageView: View {
         VStack {
             Spacer()
             if viewModel.game.showScore {
-                Text("Score: \(viewModel.score)")
+                Text("Scores: \(viewModel.score)")
                     .lineLimit(1)
                     .font(.system(size: 33, weight: .semibold))
                     .foregroundStyle(
@@ -26,7 +26,7 @@ struct EndStageView: View {
                     .padding()
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             } else {
-                Text("Right answers: \(viewModel.score)")
+                Text("Right answers: \(viewModel.rightAnswers)")
                     .lineLimit(1)
                     .font(.system(size: 33, weight: .semibold))
                     .foregroundStyle(

@@ -22,7 +22,7 @@ struct GameListCellView: View {
                             .lineLimit(1)
                             .font(.system(size: 24, weight: .bold))
                             .foregroundStyle(
-                                gameManager.mainColorSheme(color: .red)
+                                gameManager.mainColorSheme(color: .blue)
                             )
                         Text("Theme: \(game.theme ?? "Unknown")")
                             .lineLimit(1)
@@ -37,7 +37,7 @@ struct GameListCellView: View {
                             .lineLimit(1)
                             .font(.system(size: 24, weight: .bold))
                             .foregroundStyle(
-                                gameManager.mainColorSheme(color: .green)
+                                gameManager.mainColorSheme(color: .red)
                             )
                         Text("Theme: \(game.theme ?? "Unknown")")
                             .lineLimit(1)
@@ -59,7 +59,7 @@ struct GameListCellView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .red)
+                            gameManager.mainColorSheme(color: .blue)
                         )
                         .opacity(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? 0.2:1.0)
                 } else {
@@ -69,7 +69,7 @@ struct GameListCellView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .green)
+                            gameManager.mainColorSheme(color: .red)
                         )
                 }
             }

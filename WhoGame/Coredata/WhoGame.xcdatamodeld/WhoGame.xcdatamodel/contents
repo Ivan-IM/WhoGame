@@ -25,6 +25,7 @@
     <entity name="GameHistoryCD" representedClassName="GameHistoryCD" syncable="YES" codeGenerationType="class">
         <attribute name="answers" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="gameId" optional="YES" attributeType="String"/>
         <attribute name="gameName" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="player" optional="YES" attributeType="String"/>
@@ -36,6 +37,6 @@
     <elements>
         <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="149"/>
         <element name="GameCD" positionX="-63" positionY="-18" width="128" height="179"/>
-        <element name="GameHistoryCD" positionX="-54" positionY="63" width="128" height="164"/>
+        <element name="GameHistoryCD" positionX="-54" positionY="63" width="128" height="179"/>
     </elements>
 </model>

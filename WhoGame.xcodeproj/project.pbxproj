@@ -31,6 +31,8 @@
 		CF61752A278D69C8009953BB /* StartStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617529278D69C8009953BB /* StartStageView.swift */; };
 		CF61752C278D69D9009953BB /* GameStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61752B278D69D9009953BB /* GameStageView.swift */; };
 		CF61752E278D69E5009953BB /* EndStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61752D278D69E5009953BB /* EndStageView.swift */; };
+		CF617531278D9296009953BB /* GameHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617530278D9296009953BB /* GameHistoryView.swift */; };
+		CF617534278D93C4009953BB /* GameHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617533278D93C4009953BB /* GameHistoryCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		CF617529278D69C8009953BB /* StartStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStageView.swift; sourceTree = "<group>"; };
 		CF61752B278D69D9009953BB /* GameStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageView.swift; sourceTree = "<group>"; };
 		CF61752D278D69E5009953BB /* EndStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageView.swift; sourceTree = "<group>"; };
+		CF617530278D9296009953BB /* GameHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryView.swift; sourceTree = "<group>"; };
+		CF617533278D93C4009953BB /* GameHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				CF298953275D162A00D3C3C1 /* MainView.swift */,
+				CF617532278D929D009953BB /* GameHistory */,
 				CF0A2DE32789CE4000DDDE68 /* Play */,
 				CF2C02DB2789B48000392BAA /* Games */,
 				CF2062D02787883F00EABCCE /* CreateGameView */,
@@ -207,6 +212,15 @@
 			path = GameDetail;
 			sourceTree = "<group>";
 		};
+		CF617532278D929D009953BB /* GameHistory */ = {
+			isa = PBXGroup;
+			children = (
+				CF617530278D9296009953BB /* GameHistoryView.swift */,
+				CF617533278D93C4009953BB /* GameHistoryCellView.swift */,
+			);
+			path = GameHistory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -279,6 +293,7 @@
 			files = (
 				CF61752A278D69C8009953BB /* StartStageView.swift in Sources */,
 				CF2062CE2787882C00EABCCE /* CreateGameView.swift in Sources */,
+				CF617531278D9296009953BB /* GameHistoryView.swift in Sources */,
 				CF2C02D527887F2400392BAA /* EditGameCardView.swift in Sources */,
 				CF29894D275D159900D3C3C1 /* WhoGame.xcdatamodeld in Sources */,
 				CF0A2DE5278AB0F700DDDE68 /* GameView.swift in Sources */,
@@ -295,6 +310,7 @@
 				CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */,
 				CF298954275D162A00D3C3C1 /* MainView.swift in Sources */,
 				CF0A2DE7278AB14200DDDE68 /* GameViewModel.swift in Sources */,
+				CF617534278D93C4009953BB /* GameHistoryCellView.swift in Sources */,
 				CF298941275D159700D3C3C1 /* WhoGameApp.swift in Sources */,
 				CF2062E32788527C00EABCCE /* GameCardListIView.swift in Sources */,
 				CF61752C278D69D9009953BB /* GameStageView.swift in Sources */,

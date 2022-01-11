@@ -26,13 +26,13 @@ struct GameListView: View {
                             Text("Play")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundStyle(
-                                    gameManager.mainColorSheme(color: .red)
+                                    gameManager.mainColorSheme(color: .blue)
                                 )
                         } else {
                             Text("Edit")
                                 .font(.system(size: 32, weight: .bold))
                                 .foregroundStyle(
-                                    gameManager.mainColorSheme(color: .green)
+                                    gameManager.mainColorSheme(color: .red)
                                 )
                         }
                     }
@@ -47,7 +47,7 @@ struct GameListView: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
                                     Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .green)
+                                    gameManager.mainColorSheme(color: .red)
                                 )
                         } else {
                             Image(systemName: "play")
@@ -56,7 +56,7 @@ struct GameListView: View {
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
                                     Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .red)
+                                    gameManager.mainColorSheme(color: .blue)
                                 )
                         }
                     }
@@ -91,8 +91,8 @@ struct GameListView: View {
                         }
                     }
                 }
-                .navigationBarHidden(true)
             }
+            .navigationBarHidden(true)
             .padding()
         }
     }

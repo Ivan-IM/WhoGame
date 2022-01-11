@@ -47,7 +47,7 @@ struct MainView: View {
                             .frame(width: 130, height: 130)
                     }
                     NavigationLink {
-                        GameListView()
+                        GameHistoryView()
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .font(.system(size: 100, weight: .regular))

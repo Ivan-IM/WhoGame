@@ -42,27 +42,21 @@ final class GameViewModel: ObservableObject {
         self.gameCards = fetchGameCards(game: game)
     }
     
-    func saveGameHystory() {
-//        let gameHystory = Ga(context: PersistenceController.shared.container.viewContext)
-//        gameCard.id = UUID().uuidString
-//        gameCard.gameId = self.gameId
-//        gameCard.question = self.question
-//        gameCard.answer = self.answer
-//        gameCard.score = Int64(self.score)
-//        gameCard.mark = Int64(PersistenceController.shared.fetchGameCards(for: gameId).count)
-//
-//        guard let game = PersistenceController.shared.fetchGames(for: gameId).first else { return }
-//        gameCard.toGameCD = game
-//
-//        PersistenceController.shared.save { error in
-//            switch error {
-//            case .none:
-//                print("New gameCard save")
-//                self.showingNewCard.wrappedValue = false
-//            case .some(_):
-//                print(String(describing: error?.localizedDescription))
-//            }
-//        }
+    func saveGameHistory() {
+        let gameHystory = GameHistoryCD(context: PersistenceController.shared.container.viewContext)
+        gameHystory.id = UUID().uuidString
+        gameHystory.player = self.player
+        gameHystory.showScore = self.game.showScore
+        gameHystory.date = Date()
+        gameHystory.answers = self.answers
+        gameHystory.rightAnswers = Int64(self.rightAnswers)
+        gameHystory.score = Int64(self.score)
+        gameHystory.gameName = self.game.name ?? "Unknown"
+        gameHystory.gameId = self.game.id
+        
+        gameHystory.toGameCD = self.game
+        
+        PersistenceController.shared.save()
     }
     
     func fetchGameCards(game: GameCD) -> [GameCardCD] {
@@ -85,30 +79,34 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    func checkStage() -> CheckStageSystem {
+    func checkStage() {
         if self.index < (self.gameCards.count - 1) {
             self.index += 1
-            return .game
+            self.stageSystem = .game
         } else {
-            return .end
+            self.stageSystem = .end
         }
     }
     
     func nextCard() {
         if self.answerSystem == .right {
+            self.rightAnswers += 1
             self.score += Int(self.gameCards[self.index].score)
         }
+        self.answers.append(self.answer)
         self.answer = ""
         self.answerSystem = .text
-        self.stageSystem = checkStage()
+        checkStage()
     }
     
     func clearGame() {
         self.player = ""
         self.answer = ""
-        self.answerSystem = .text
+        self.answers.removeAll()
+        self.rightAnswers = 0
         self.index = 0
         self.score = 0
+        self.answerSystem = .text
         self.stageSystem = .start
         self.rulesSystem = .name
     }

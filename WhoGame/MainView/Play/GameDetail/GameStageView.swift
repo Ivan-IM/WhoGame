@@ -19,11 +19,19 @@ struct GameStageView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     Text("Progress: \(viewModel.index+1)/\(viewModel.gameCards.count)")
                         .lineLimit(1)
-                    Text("Right answers: \(viewModel.score)")
-                        .lineLimit(1)
+                    HStack {
+                        Text("Right answers: \(viewModel.rightAnswers)")
+                            .lineLimit(1)
+                        if viewModel.answerSystem == .right {
+                            Text("+ 1")
+                                .lineLimit(1)
+                                .foregroundColor(.green)
+                        }
+                        Spacer()
+                    }
                     if viewModel.game.showScore {
                         HStack {
-                            Text("Score: \(viewModel.score)")
+                            Text("Scores: \(viewModel.score)")
                                 .lineLimit(1)
                             if viewModel.answerSystem == .right {
                                 Text("+ \(viewModel.gameCards[viewModel.index].score)")
