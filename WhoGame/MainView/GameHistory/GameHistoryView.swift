@@ -12,6 +12,7 @@ struct GameHistoryView: View {
     @EnvironmentObject var gameManager: GameManager
     @FetchRequest(entity: GameHistoryCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameHistoryCD.date, ascending: false)]) var hystory: FetchedResults<GameHistoryCD>
     @Environment(\.presentationMode) var presentationMode
+    @State var showingDaleteAlert = false
     
     var body: some View {
         VStack {
@@ -23,6 +24,20 @@ struct GameHistoryView: View {
                         gameManager.mainColorSheme(color: .green)
                     )
                 Spacer()
+                if !hystory.isEmpty {
+                    Button {
+                        showingDaleteAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .font(.system(size: 32, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .red)
+                            )
+                    }
+                }
                 Button {
                     presentationMode.wrappedValue.dismiss()
                 } label: {
@@ -44,6 +59,14 @@ struct GameHistoryView: View {
         }
         .navigationBarHidden(true)
         .padding()
+        .alert("Delete all history?", isPresented: $showingDaleteAlert) {
+            Button("OK", role: .destructive) {
+                for story in hystory {
+                    PersistenceController.shared.delete(story)
+                }
+            }
+            Button("Cancel", role: .cancel) {}
+        }
     }
 }
 

@@ -100,6 +100,9 @@ final class GameViewModel: ObservableObject {
     }
     
     func clearGame() {
+        if stageSystem == .end {
+            saveGameHistory()
+        }
         self.player = ""
         self.answer = ""
         self.answers.removeAll()
