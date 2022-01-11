@@ -28,6 +28,9 @@
 		CF2C02D527887F2400392BAA /* EditGameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C02D427887F2400392BAA /* EditGameCardView.swift */; };
 		CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2C02D92789B46F00392BAA /* GameListView.swift */; };
 		CF617528278C387B009953BB /* GameListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617527278C387B009953BB /* GameListCellView.swift */; };
+		CF61752A278D69C8009953BB /* StartStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617529278D69C8009953BB /* StartStageView.swift */; };
+		CF61752C278D69D9009953BB /* GameStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61752B278D69D9009953BB /* GameStageView.swift */; };
+		CF61752E278D69E5009953BB /* EndStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61752D278D69E5009953BB /* EndStageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,9 @@
 		CF2C02D427887F2400392BAA /* EditGameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameCardView.swift; sourceTree = "<group>"; };
 		CF2C02D92789B46F00392BAA /* GameListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListView.swift; sourceTree = "<group>"; };
 		CF617527278C387B009953BB /* GameListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameListCellView.swift; sourceTree = "<group>"; };
+		CF617529278D69C8009953BB /* StartStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartStageView.swift; sourceTree = "<group>"; };
+		CF61752B278D69D9009953BB /* GameStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageView.swift; sourceTree = "<group>"; };
+		CF61752D278D69E5009953BB /* EndStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +96,7 @@
 			children = (
 				CF0A2DE4278AB0F700DDDE68 /* GameView.swift */,
 				CF0A2DE6278AB14200DDDE68 /* GameViewModel.swift */,
+				CF61752F278D69EB009953BB /* GameDetail */,
 			);
 			path = Play;
 			sourceTree = "<group>";
@@ -190,6 +197,16 @@
 			path = Games;
 			sourceTree = "<group>";
 		};
+		CF61752F278D69EB009953BB /* GameDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CF617529278D69C8009953BB /* StartStageView.swift */,
+				CF61752B278D69D9009953BB /* GameStageView.swift */,
+				CF61752D278D69E5009953BB /* EndStageView.swift */,
+			);
+			path = GameDetail;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -260,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF61752A278D69C8009953BB /* StartStageView.swift in Sources */,
 				CF2062CE2787882C00EABCCE /* CreateGameView.swift in Sources */,
 				CF2C02D527887F2400392BAA /* EditGameCardView.swift in Sources */,
 				CF29894D275D159900D3C3C1 /* WhoGame.xcdatamodeld in Sources */,
@@ -272,12 +290,14 @@
 				CF2062D527878B6000EABCCE /* DateExt.swift in Sources */,
 				CF2062DC278791C100EABCCE /* SaveGameView.swift in Sources */,
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,
+				CF61752E278D69E5009953BB /* EndStageView.swift in Sources */,
 				CF617528278C387B009953BB /* GameListCellView.swift in Sources */,
 				CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */,
 				CF298954275D162A00D3C3C1 /* MainView.swift in Sources */,
 				CF0A2DE7278AB14200DDDE68 /* GameViewModel.swift in Sources */,
 				CF298941275D159700D3C3C1 /* WhoGameApp.swift in Sources */,
 				CF2062E32788527C00EABCCE /* GameCardListIView.swift in Sources */,
+				CF61752C278D69D9009953BB /* GameStageView.swift in Sources */,
 				CF2062D827878DBB00EABCCE /* NewGameView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
