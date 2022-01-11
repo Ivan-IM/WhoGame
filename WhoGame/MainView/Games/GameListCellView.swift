@@ -19,26 +19,32 @@ struct GameListCellView: View {
                 VStack(alignment: .leading, spacing: 3) {
                     if symbolType {
                         Text("\(game.name ?? "Unknown")")
+                            .lineLimit(1)
                             .font(.system(size: 24, weight: .bold))
                             .foregroundStyle(
                                 gameManager.mainColorSheme(color: .red)
                             )
                         Text("Theme: \(game.theme ?? "Unknown")")
+                            .lineLimit(1)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.secondary)
                         Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
+                            .lineLimit(1)
                             .font(.system(size: 16, weight: .ultraLight))
                             .foregroundColor(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? .red:.primary)
                     } else {
                         Text("\(game.name ?? "Unknown")")
+                            .lineLimit(1)
                             .font(.system(size: 24, weight: .bold))
                             .foregroundStyle(
                                 gameManager.mainColorSheme(color: .green)
                             )
                         Text("Theme: \(game.theme ?? "Unknown")")
+                            .lineLimit(1)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.secondary)
                         Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
+                            .lineLimit(1)
                             .font(.system(size: 16, weight: .ultraLight))
                     }
                 }

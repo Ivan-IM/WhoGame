@@ -15,12 +15,15 @@ struct SaveGameView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(viewModel.name)
+                .lineLimit(1)
                 .font(.system(size: 18, weight: .semibold))
             Text("Theme: \(viewModel.theme)")
+                .lineLimit(1)
                 .font(.system(size: 18, weight: .semibold))
                 .foregroundColor(.secondary)
             HStack {
                 Text("Date of creation")
+                    .lineLimit(1)
                     .font(.system(size: 16, weight: .ultraLight))
                 Spacer()
                 Text("\(viewModel.date.longDate)")
@@ -89,6 +92,7 @@ struct SaveGameView: View {
                 }
                 Button {
                     viewModel.editMode = true
+                    viewModel.showingNewCard = false
                 } label: {
                     Image(systemName: "pencil")
                         .font(.system(size: 44, weight: .regular))

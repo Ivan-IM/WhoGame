@@ -17,6 +17,7 @@ struct CreateGameView: View {
         VStack {
             HStack {
                 Text("New game")
+                    .lineLimit(1)
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(
                         gameManager.mainColorSheme(color: .red)

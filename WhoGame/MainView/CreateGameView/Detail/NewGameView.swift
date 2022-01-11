@@ -30,6 +30,7 @@ struct NewGameView: View {
                 .frame(height: 2)
             HStack {
                 Text("Date of creation")
+                    .lineLimit(1)
                     .font(.system(size: 16, weight: .ultraLight))
                 Spacer()
                 Text("\(viewModel.date.longDate)")

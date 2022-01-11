@@ -17,6 +17,7 @@ struct GameView: View {
         VStack {
             HStack {
                 Text("\(viewModel.game.name ?? "Unknown")")
+                    .lineLimit(1)
                     .font(.system(size: 32, weight: .bold))
                     .foregroundStyle(
                         gameManager.mainColorSheme(color: .red)
@@ -42,6 +43,7 @@ struct GameView: View {
                         Spacer()
                         if viewModel.game.showScore {
                             Text("Score: \(viewModel.score)")
+                                .lineLimit(1)
                                 .font(.system(size: 33, weight: .semibold))
                                 .foregroundStyle(
                                     gameManager.mainColorSheme(color: .blue)
@@ -50,6 +52,7 @@ struct GameView: View {
                                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         } else {
                             Text("Right answers: \(viewModel.score)")
+                                .lineLimit(1)
                                 .font(.system(size: 33, weight: .semibold))
                                 .foregroundStyle(
                                     gameManager.mainColorSheme(color: .blue)
@@ -77,10 +80,13 @@ struct GameView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 3) {
                                 Text("Progress: \(viewModel.index+1)/\(viewModel.gameCards.count)")
+                                    .lineLimit(1)
                                 if viewModel.game.showScore {
                                     Text("Score: \(viewModel.score)")
+                                        .lineLimit(1)
                                 } else {
                                     Text("Right answers: \(viewModel.score)")
+                                        .lineLimit(1)
                                 }
                             }
                             Spacer()
