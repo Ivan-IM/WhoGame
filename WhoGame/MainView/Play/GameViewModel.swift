@@ -9,10 +9,12 @@ import SwiftUI
 
 final class GameViewModel: ObservableObject {
     
+    @Published var answers = [String]()
     @Published var player: String = ""
     @Published var gameType: Int = 0
     @Published var gameCards = [GameCardCD]()
     @Published var score: Int = 0
+    @Published var rightAnswers: Int = 0
     @Published var answer: String = ""
     @Published var index: Int = 0
     @Published var answerSystem: CheckAnswerSystem = .text
@@ -38,6 +40,29 @@ final class GameViewModel: ObservableObject {
     init(game: GameCD) {
         self.game = game
         self.gameCards = fetchGameCards(game: game)
+    }
+    
+    func saveGameHystory() {
+//        let gameHystory = Ga(context: PersistenceController.shared.container.viewContext)
+//        gameCard.id = UUID().uuidString
+//        gameCard.gameId = self.gameId
+//        gameCard.question = self.question
+//        gameCard.answer = self.answer
+//        gameCard.score = Int64(self.score)
+//        gameCard.mark = Int64(PersistenceController.shared.fetchGameCards(for: gameId).count)
+//
+//        guard let game = PersistenceController.shared.fetchGames(for: gameId).first else { return }
+//        gameCard.toGameCD = game
+//
+//        PersistenceController.shared.save { error in
+//            switch error {
+//            case .none:
+//                print("New gameCard save")
+//                self.showingNewCard.wrappedValue = false
+//            case .some(_):
+//                print(String(describing: error?.localizedDescription))
+//            }
+//        }
     }
     
     func fetchGameCards(game: GameCD) -> [GameCardCD] {
@@ -79,11 +104,13 @@ final class GameViewModel: ObservableObject {
     }
     
     func clearGame() {
+        self.player = ""
         self.answer = ""
         self.answerSystem = .text
         self.index = 0
         self.score = 0
         self.stageSystem = .start
+        self.rulesSystem = .name
     }
     
     func isValidForm() -> Bool {
