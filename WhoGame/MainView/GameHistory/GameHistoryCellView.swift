@@ -36,9 +36,12 @@ struct GameHistoryCellView: View {
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.primary)
                 }
-                Text("Date of creation: \(story.date?.longDate ?? "Unknown")")
-                    .lineLimit(1)
-                    .font(.system(size: 16, weight: .ultraLight))
+                HStack {
+                    Text("Date: \(story.date?.longDate ?? "Unknown")")
+                    Text(story.date ?? Date(), style: .time)
+                }
+                .lineLimit(1)
+                .font(.system(size: 16, weight: .ultraLight))
             }
             Spacer()
             VStack(alignment: .trailing) {

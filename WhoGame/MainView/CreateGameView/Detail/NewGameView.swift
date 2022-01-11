@@ -107,20 +107,34 @@ struct NewGameView: View {
                 Spacer()
                 Group {
                     if viewModel.editMode {
-                        Button {
-                            viewModel.updateGame()
-                            showingKeyboard = false
-                        } label: {
-                            Image(systemName: "arrow.triangle.2.circlepath")
-                                .font(.system(size: 44, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .green)
-                                )
+                        HStack {
+                            Button {
+                                viewModel.showingDaleteAlert = true
+                            } label: {
+                                Image(systemName: "trash")
+                                    .font(.system(size: 44, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .red)
+                                    )
+                            }
+                            Button {
+                                viewModel.updateGame()
+                                showingKeyboard = false
+                            } label: {
+                                Image(systemName: "arrow.triangle.2.circlepath")
+                                    .font(.system(size: 44, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .green)
+                                    )
+                            }
+                            .disabled(viewModel.isValidForm())
                         }
-                        .disabled(viewModel.isValidForm())
                     } else {
                         Button {
                             viewModel.saveNewGame()

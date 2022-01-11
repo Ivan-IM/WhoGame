@@ -79,18 +79,6 @@ struct SaveGameView: View {
             HStack {
                 Spacer()
                 Button {
-                    viewModel.showingDaleteAlert = true
-                } label: {
-                    Image(systemName: "trash")
-                        .font(.system(size: 44, weight: .regular))
-                        .symbolVariant(.circle.fill)
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(
-                            Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .red)
-                        )
-                }
-                Button {
                     viewModel.editMode = true
                     viewModel.showingNewCard = false
                 } label: {

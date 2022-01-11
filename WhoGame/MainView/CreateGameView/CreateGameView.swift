@@ -60,6 +60,7 @@ struct CreateGameView: View {
             }
             Button("Cancel", role: .cancel) {}
         }
+
     }
 }
 
