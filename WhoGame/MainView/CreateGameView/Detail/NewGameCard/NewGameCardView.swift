@@ -44,13 +44,13 @@ struct NewGameCardView: View {
                         .font(.system(size: 16, weight: .semibold))
                     Picker("Score", selection: $viewModel.score) {
                         ForEach(viewModel.scoreArray, id: \.self) {
-                            Image(systemName: "\($0).circle")
-                                .font(.system(size: 16, weight: .regular))
+                            Image(systemName: "\($0)")
+                                .font(.system(size: 18, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
                                     Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .green)
+                                    gameManager.mainColorSheme(color: .blue)
                                 )
                         }
                     }

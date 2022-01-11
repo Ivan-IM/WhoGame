@@ -36,6 +36,7 @@ struct GameCardListIView: View {
                             .lineLimit(1)
                         Spacer()
                         Image(systemName: "chevron.right")
+                            .font(.system(size: 18, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
