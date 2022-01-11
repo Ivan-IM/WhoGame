@@ -56,7 +56,7 @@ struct GameStageView: View {
                 TextField("Answer", text: $viewModel.answer)
                     .multilineTextAlignment(.center)
                     .font(.system(size: 16, weight: .semibold))
-                    .frame(width: 250)
+                    .frame(width: gameManager.width*0.66)
                     .padding()
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             case .right:
@@ -64,14 +64,14 @@ struct GameStageView: View {
                     Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
                         .foregroundColor(.green)
                         .font(.system(size: 16, weight: .semibold))
-                        .frame(width: 250)
+                        .frame(width: gameManager.width*0.66)
                         .padding()
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 } else {
                     Text("Right answer")
                         .foregroundColor(.green)
                         .font(.system(size: 16, weight: .semibold))
-                        .frame(width: 250)
+                        .frame(width: gameManager.width*0.66)
                         .padding()
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 }
@@ -80,14 +80,14 @@ struct GameStageView: View {
                     Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
                         .foregroundColor(.red)
                         .font(.system(size: 16, weight: .semibold))
-                        .frame(width: 250)
+                        .frame(width: gameManager.width*0.66)
                         .padding()
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 } else {
                     Text("Wrong answer")
                         .foregroundColor(.red)
                         .font(.system(size: 16, weight: .semibold))
-                        .frame(width: 250)
+                        .frame(width: gameManager.width*0.66)
                         .padding()
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 }

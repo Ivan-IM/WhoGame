@@ -3,6 +3,7 @@
     <entity name="GameCardCD" representedClassName="GameCardCD" syncable="YES" codeGenerationType="class">
         <attribute name="answer" optional="YES" attributeType="String"/>
         <attribute name="gameId" optional="YES" attributeType="String"/>
+        <attribute name="help" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="mark" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="question" optional="YES" attributeType="String"/>
@@ -16,6 +17,7 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="showAnswer" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="showHelp" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="showScore" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="theme" optional="YES" attributeType="String"/>
         <attribute name="type" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
@@ -35,8 +37,8 @@
         <relationship name="toGameCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameCD" inverseName="toGameHistoryCD" inverseEntity="GameCD"/>
     </entity>
     <elements>
-        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="149"/>
-        <element name="GameCD" positionX="-63" positionY="-18" width="128" height="179"/>
+        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="164"/>
+        <element name="GameCD" positionX="-63" positionY="-18" width="128" height="194"/>
         <element name="GameHistoryCD" positionX="-54" positionY="63" width="128" height="179"/>
     </elements>
 </model>

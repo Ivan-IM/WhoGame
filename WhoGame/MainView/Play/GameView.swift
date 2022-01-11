@@ -23,6 +23,20 @@ struct GameView: View {
                         gameManager.mainColorSheme(color: .red)
                     )
                 Spacer()
+                if viewModel.game.showHelp && viewModel.stageSystem == .game {
+                    Button {
+                        viewModel.showingHelpAlert = true
+                    } label: {
+                        Image(systemName: "bell")
+                            .font(.system(size: 32, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .green)
+                            )
+                    }
+                }
                 Button {
                     viewModel.showingExitAlert = true
                 } label: {
@@ -56,6 +70,11 @@ struct GameView: View {
             }
             Button("Cancel", role: .cancel) {}
         }
+        .alert("Help", isPresented: $viewModel.showingHelpAlert, actions: {
+            
+        }, message: {
+            Text("\(viewModel.gameCards[viewModel.index].help ?? "")")
+        })
     }
 }
 

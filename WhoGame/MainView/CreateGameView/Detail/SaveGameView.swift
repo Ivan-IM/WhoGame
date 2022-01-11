@@ -33,7 +33,7 @@ struct SaveGameView: View {
                 Group {
                     if viewModel.showScore {
                         Image(systemName: "bolt")
-                            .font(.system(size: 18, weight: .regular))
+                            .font(.system(size: 22, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -42,7 +42,7 @@ struct SaveGameView: View {
                             )
                     } else {
                         Image(systemName: "bolt.slash")
-                            .font(.system(size: 18, weight: .regular))
+                            .font(.system(size: 22, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -55,7 +55,7 @@ struct SaveGameView: View {
                 Group {
                     if viewModel.showAnswer {
                         Image(systemName: "eye")
-                            .font(.system(size: 18, weight: .regular))
+                            .font(.system(size: 22, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -64,7 +64,7 @@ struct SaveGameView: View {
                             )
                     } else {
                         Image(systemName: "eye.slash")
-                            .font(.system(size: 18, weight: .regular))
+                            .font(.system(size: 22, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -72,7 +72,27 @@ struct SaveGameView: View {
                                 gameManager.mainColorSheme(color: .red)
                             )
                     }
-                    
+                }
+                Group {
+                    if viewModel.showHelp {
+                        Image(systemName: "bell")
+                            .font(.system(size: 22, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .green)
+                            )
+                    } else {
+                        Image(systemName: "bell.slash")
+                            .font(.system(size: 22, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .red)
+                            )
+                    }
                 }
                 Spacer()
             }

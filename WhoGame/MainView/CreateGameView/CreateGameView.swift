@@ -45,10 +45,10 @@ struct CreateGameView: View {
                 }
             }
             if viewModel.showingNewCard && !viewModel.id.isEmpty {
-                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore))
+                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
             }
             if !viewModel.id.isEmpty {
-                GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore)
+                GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
             }
         }
         .padding()

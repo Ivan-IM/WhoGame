@@ -12,20 +12,22 @@ struct GameCardListIView: View {
     @EnvironmentObject var gameManager: GameManager
     let gameId: String
     let showScore: Bool
+    let showHelp: Bool
     var gameCardRequest : FetchRequest<GameCardCD>
     var gameCards : FetchedResults<GameCardCD>{gameCardRequest.wrappedValue}
     
-    init(gameId: String, showScore: Bool) {
+    init(gameId: String, showScore: Bool, showHelp: Bool) {
         self.gameId = gameId
         self.gameCardRequest = FetchRequest(entity: GameCardCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)], predicate: NSPredicate(format: "gameId == %@", gameId))
         self.showScore = showScore
+        self.showHelp = showHelp
     }
     
     var body: some View {
         ScrollView {
             ForEach(gameCards) { card in
                 NavigationLink {
-                    EditGameCardView(viewModel: NewGameCardViewModel(gameCard: card, showScore: showScore))
+                    EditGameCardView(viewModel: NewGameCardViewModel(gameCard: card, showScore: showScore, showHelp: showHelp))
                 } label: {
                     HStack {
                         Text("\(card.mark).")
@@ -84,8 +86,6 @@ struct GameCardListIView: View {
 
 struct GameCardListIView_Previews: PreviewProvider {
     static var previews: some View {
-        Form {
-            GameCardListIView(gameId: "", showScore: true)
-        }
+            GameCardListIView(gameId: "", showScore: true, showHelp: true)
     }
 }

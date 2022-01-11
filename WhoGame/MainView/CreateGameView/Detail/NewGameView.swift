@@ -41,7 +41,7 @@ struct NewGameView: View {
                     viewModel.showScore.toggle()
                 } label: {
                     HStack {
-                        Text("Score")
+                        Text("Scores")
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(viewModel.showScore ? .primary:.secondary)
                         Group {
@@ -68,6 +68,7 @@ struct NewGameView: View {
                         }
                     }
                 }
+                Spacer()
                 Button {
                     viewModel.showAnswer.toggle()
                 } label: {
@@ -78,8 +79,7 @@ struct NewGameView: View {
                         Group {
                             if viewModel.showAnswer {
                                 Image(systemName: "eye")
-                                    .font(.system(size: 16, weight: .regular))
-                                    .imageScale(.large)
+                                    .font(.system(size: 18, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
@@ -88,8 +88,7 @@ struct NewGameView: View {
                                     )
                             } else {
                                 Image(systemName: "eye.slash")
-                                    .font(.system(size: 16, weight: .regular))
-                                    .imageScale(.large)
+                                    .font(.system(size: 18, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
@@ -102,6 +101,36 @@ struct NewGameView: View {
                     }
                 }
                 Spacer()
+                Button {
+                    viewModel.showHelp.toggle()
+                } label: {
+                    HStack {
+                        Text("Help")
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(viewModel.showHelp ? .primary:.secondary)
+                        Group {
+                            if viewModel.showHelp {
+                                Image(systemName: "bell")
+                                    .font(.system(size: 18, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .green)
+                                    )
+                            } else {
+                                Image(systemName: "bell.slash")
+                                    .font(.system(size: 18, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .red)
+                                    )
+                            }
+                        }
+                    }
+                }
             }
             HStack {
                 Spacer()

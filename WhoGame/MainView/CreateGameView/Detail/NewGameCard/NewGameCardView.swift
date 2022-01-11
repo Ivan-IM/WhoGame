@@ -28,6 +28,15 @@ struct NewGameCardView: View {
             RoundedRectangle(cornerRadius: 16)
                 .fill(viewModel.answer.isEmpty ? gameManager.mainColorSheme(color: .red):gameManager.mainColorSheme(color: .green))
                 .frame(height: 2)
+            if viewModel.showHelp {
+                TextField("Help", text: $viewModel.help)
+                    .focused($showingKeyboard)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.secondary)
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(viewModel.help.isEmpty ? gameManager.mainColorSheme(color: .red):gameManager.mainColorSheme(color: .green))
+                    .frame(height: 2)
+            }
             if viewModel.showScore {
                 HStack {
                     Spacer()
@@ -89,7 +98,7 @@ struct NewGameCardView: View {
 struct NewGameCardView_Previews: PreviewProvider {
     static var previews: some View {
         Form {
-            NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: .constant(true), gameId: "", showScore: true))
+            NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: .constant(true), gameId: "", showScore: true, showHelp: true))
         }
     }
 }

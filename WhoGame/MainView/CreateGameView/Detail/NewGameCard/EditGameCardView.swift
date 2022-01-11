@@ -29,6 +29,15 @@ struct EditGameCardView: View {
                 .font(.system(size: 16, weight: .semibold))
                 .foregroundColor(.secondary)
                 .frame(height: 32)
+            if viewModel.showHelp {
+                Text("Help:")
+                    .font(.system(size: 16, weight: .ultraLight))
+                TextEditor(text: $viewModel.help)
+                    .focused($showingKeyboard)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.secondary)
+                    .frame(height: 32)
+            }
             if viewModel.showScore {
                 HStack {
                     Spacer()

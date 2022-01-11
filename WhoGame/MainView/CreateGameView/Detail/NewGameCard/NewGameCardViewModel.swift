@@ -11,6 +11,7 @@ final class NewGameCardViewModel: ObservableObject {
     
     @Published var question: String = ""
     @Published var answer: String = ""
+    @Published var help: String = ""
     @Published var score: Int = 1
     
     @Published var showingDaleteAlert: Bool = false
@@ -18,24 +19,28 @@ final class NewGameCardViewModel: ObservableObject {
     var scoreArray = (1...10).map { $0 }
     
     var showScore: Bool
+    var showHelp: Bool
     var showingNewCard: Binding<Bool>
     var gameId: String
     
     var gameCard: GameCardCD?
     
-    init(showingNewCard: Binding<Bool>, gameId: String, showScore: Bool) {
+    init(showingNewCard: Binding<Bool>, gameId: String, showScore: Bool, showHelp: Bool) {
         self.showingNewCard = showingNewCard
         self.gameId = gameId
         self.showScore = showScore
+        self.showHelp = showHelp
     }
     
-    init(gameCard: GameCardCD, showScore: Bool) {
+    init(gameCard: GameCardCD, showScore: Bool, showHelp: Bool) {
         self.gameCard = gameCard
         self.gameId = gameCard.gameId ?? ""
         self.showingNewCard = .constant(false)
         self.showScore = showScore
+        self.showHelp = showHelp
         self.question = gameCard.question ?? "Unknown"
         self.answer = gameCard.answer ?? "Unknown"
+        self.help = gameCard.help ?? "Unknown"
         self.score = Int(gameCard.score)
     }
     
@@ -46,6 +51,7 @@ final class NewGameCardViewModel: ObservableObject {
         gameCard.question = self.question
         gameCard.answer = self.answer
         gameCard.score = Int64(self.score)
+        gameCard.help = self.help
         gameCard.mark = Int64(PersistenceController.shared.fetchGameCards(for: gameId).count)
         
         guard let game = PersistenceController.shared.fetchGames(for: gameId).first else { return }
@@ -66,6 +72,7 @@ final class NewGameCardViewModel: ObservableObject {
         self.gameCard?.question = self.question
         self.gameCard?.answer = self.answer
         self.gameCard?.score = Int64(self.score)
+        self.gameCard?.help = self.help
         
         PersistenceController.shared.save { error in
             switch error {

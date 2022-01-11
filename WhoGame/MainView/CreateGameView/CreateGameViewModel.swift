@@ -16,11 +16,11 @@ final class CreateGameViewModel: ObservableObject {
     @Published var id = String()
     @Published var showScore: Bool = false
     @Published var showAnswer: Bool = false
+    @Published var showHelp: Bool = false
     
     @Published var editMode: Bool = false
     @Published var saveGame: Bool = false
     @Published var showingNewCard: Bool = false
-    @Published var hideClear: Bool = false
     
     @Published var showingDaleteAlert: Bool = false
     
@@ -35,7 +35,7 @@ final class CreateGameViewModel: ObservableObject {
         self.id = game.id ?? ""
         self.showScore = game.showScore
         self.showAnswer = game.showAnswer
-        self.hideClear = true
+        self.showHelp = game.showHelp
     }
     
     func saveNewGame() {
@@ -47,6 +47,7 @@ final class CreateGameViewModel: ObservableObject {
         game.type = Int64(self.type)
         game.showScore = self.showScore
         game.showAnswer = self.showAnswer
+        game.showHelp = self.showHelp
         
         PersistenceController.shared.save { error in
             switch error {
@@ -67,6 +68,7 @@ final class CreateGameViewModel: ObservableObject {
         game.theme = self.theme
         game.showScore = self.showScore
         game.showAnswer = self.showAnswer
+        game.showHelp = self.showHelp
         
         PersistenceController.shared.save { error in
             switch error {
@@ -86,6 +88,7 @@ final class CreateGameViewModel: ObservableObject {
         self.id = ""
         self.showScore = false
         self.showAnswer = false
+        self.showHelp = false
         self.editMode = false
         self.saveGame = false
         self.showingNewCard = false

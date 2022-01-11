@@ -34,12 +34,16 @@ struct StartStageView: View {
                     Text("Answers will be shown")
                 case .answerOff:
                     Text("Answers will not be shown")
+                case .helpOn:
+                    Text("Help is on")
+                case .helpOff:
+                    Text("Help is off")
                 }
             }
             .lineLimit(1)
             .multilineTextAlignment(.center)
             .font(.system(size: 18, weight: .semibold))
-            .frame(width: 250)
+            .frame(width: gameManager.width*0.66)
             .padding()
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             Spacer()
@@ -102,13 +106,42 @@ struct StartStageView: View {
                         }
                     }
                 }
+                Group {
+                    if viewModel.game.showHelp {
+                        Button {
+                            viewModel.rulesSystem = .helpOn
+                        } label: {
+                            Image(systemName: "bell")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .green)
+                                )
+                        }
+                    } else {
+                        Button {
+                            viewModel.rulesSystem = .helpOff
+                        } label: {
+                            Image(systemName: "bell.slash")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .red)
+                                )
+                        }
+                    }
+                }
                 
             }
             .padding()
             TextField("Player", text: $viewModel.player)
                 .multilineTextAlignment(.center)
                 .font(.system(size: 16, weight: .semibold))
-                .frame(width: 250)
+                .frame(width: gameManager.width*0.66)
                 .padding()
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             Button {

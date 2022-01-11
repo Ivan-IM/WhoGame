@@ -11,7 +11,6 @@ final class GameViewModel: ObservableObject {
     
     @Published var answers = [String]()
     @Published var player: String = ""
-    @Published var gameType: Int = 0
     @Published var gameCards = [GameCardCD]()
     @Published var score: Int = 0
     @Published var rightAnswers: Int = 0
@@ -22,6 +21,7 @@ final class GameViewModel: ObservableObject {
     @Published var rulesSystem: AboutRules = .name
     
     @Published var showingExitAlert: Bool = false
+    @Published var showingHelpAlert: Bool = false
     
     var game: GameCD
     
@@ -34,7 +34,7 @@ final class GameViewModel: ObservableObject {
     }
     
     enum AboutRules {
-        case name, scoreOn, scoreOff, answerOn, answerOff
+        case name, scoreOn, scoreOff, answerOn, answerOff, helpOn, helpOff
     }
     
     init(game: GameCD) {
