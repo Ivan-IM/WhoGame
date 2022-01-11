@@ -52,7 +52,7 @@ final class GameViewModel: ObservableObject {
         if self.answerSystem == .right {
             self.score += Int(self.gameCards[self.index].score)
         }
-        self.answer.removeAll()
+        self.answer = ""
         self.answerSystem = .text
         self.index += 1
         if self.index == self.gameCards.count {
