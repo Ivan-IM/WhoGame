@@ -54,10 +54,16 @@ final class GameViewModel: ObservableObject {
         gameHystory.score = Int64(self.score)
         gameHystory.gameName = self.game.name ?? "Unknown"
         gameHystory.gameId = self.game.id
-        
-        gameHystory.toGameCD = self.game
-        
-        PersistenceController.shared.save()
+                
+        PersistenceController.shared.save { error in
+            switch error {
+            case .none:
+                print("Game history save")
+                self.stageSystem = .end
+            case .some(_):
+                print(String(describing: error?.localizedDescription))
+            }
+        }
     }
     
     func updateGameFavorite() {
@@ -99,7 +105,7 @@ final class GameViewModel: ObservableObject {
             self.index += 1
             self.stageSystem = .game
         } else {
-            self.stageSystem = .end
+            saveGameHistory()
         }
     }
     
@@ -115,9 +121,6 @@ final class GameViewModel: ObservableObject {
     }
     
     func clearGame() {
-        if stageSystem == .end {
-            saveGameHistory()
-        }
         self.player = ""
         self.answer = ""
         self.answers.removeAll()
