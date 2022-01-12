@@ -98,7 +98,7 @@ struct SaveGameView: View {
             }
             HStack {
                 Spacer()
-                if !PersistenceController.shared.fetchGameCards(for: viewModel.id).isEmpty {
+                if PersistenceController.shared.fetchGameCards(for: viewModel.id).count > 1 {
                     Button {
                         viewModel.listEditMode.toggle()
                         viewModel.showingNewCard = false
