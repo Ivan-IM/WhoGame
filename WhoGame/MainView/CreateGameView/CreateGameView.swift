@@ -48,7 +48,7 @@ struct CreateGameView: View {
                 NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
             }
             if !viewModel.id.isEmpty {
-                GameCardListIView(gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
+                GameCardListIView(gameId: viewModel.id, editMode: viewModel.listEditMode, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
             }
         }
         .padding()

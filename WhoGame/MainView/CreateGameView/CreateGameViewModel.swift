@@ -19,6 +19,7 @@ final class CreateGameViewModel: ObservableObject {
     @Published var showHelp: Bool = false
     
     @Published var editMode: Bool = false
+    @Published var listEditMode: Bool = false
     @Published var saveGame: Bool = false
     @Published var showingNewCard: Bool = false
     

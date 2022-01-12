@@ -67,15 +67,28 @@ final class GameViewModel: ObservableObject {
     }
     
     func updateGameFavorite() {
-        self.isFavorite.toggle()
-        self.game.favorite = self.isFavorite
-        
-        PersistenceController.shared.save { error in
-            switch error {
-            case .none:
-                print("Game \(self.isFavorite ? "is":"is not") favorite")
-            case .some(_):
-                print(String(describing: error?.localizedDescription))
+        guard let game = PersistenceController.shared.fetchGames(for: game.id ?? "").first else { return }
+        if isFavorite {
+            game.favorite = false
+            PersistenceController.shared.save { error in
+                switch error {
+                case .none:
+                    print("Game is not favorite")
+                    self.isFavorite = false
+                case .some(_):
+                    print(String(describing: error?.localizedDescription))
+                }
+            }
+        } else {
+            game.favorite = true
+            PersistenceController.shared.save { error in
+                switch error {
+                case .none:
+                    print("Game is favorite")
+                    self.isFavorite = true
+                case .some(_):
+                    print(String(describing: error?.localizedDescription))
+                }
             }
         }
     }

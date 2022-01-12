@@ -98,6 +98,21 @@ struct SaveGameView: View {
             }
             HStack {
                 Spacer()
+                if !PersistenceController.shared.fetchGameCards(for: viewModel.id).isEmpty {
+                    Button {
+                        viewModel.listEditMode.toggle()
+                        viewModel.showingNewCard = false
+                    } label: {
+                        Image(systemName: "list.bullet")
+                            .font(.system(size: 44, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .red)
+                            )
+                    }
+                }
                 Button {
                     viewModel.editMode = true
                     viewModel.showingNewCard = false
