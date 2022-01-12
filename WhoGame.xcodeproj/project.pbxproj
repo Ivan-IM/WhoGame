@@ -33,6 +33,7 @@
 		CF61752E278D69E5009953BB /* EndStageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61752D278D69E5009953BB /* EndStageView.swift */; };
 		CF617531278D9296009953BB /* GameHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617530278D9296009953BB /* GameHistoryView.swift */; };
 		CF617534278D93C4009953BB /* GameHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617533278D93C4009953BB /* GameHistoryCellView.swift */; };
+		CF617536278EDF76009953BB /* FilterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617535278EDF76009953BB /* FilterListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		CF61752D278D69E5009953BB /* EndStageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageView.swift; sourceTree = "<group>"; };
 		CF617530278D9296009953BB /* GameHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryView.swift; sourceTree = "<group>"; };
 		CF617533278D93C4009953BB /* GameHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryCellView.swift; sourceTree = "<group>"; };
+		CF617535278EDF76009953BB /* FilterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2C02D92789B46F00392BAA /* GameListView.swift */,
+				CF617535278EDF76009953BB /* FilterListView.swift */,
 				CF617527278C387B009953BB /* GameListCellView.swift */,
 			);
 			path = Games;
@@ -302,6 +305,7 @@
 				CF08538D2761CF3A001DDC70 /* GameManager.swift in Sources */,
 				CF2062DE2788189600EABCCE /* NewGameCardView.swift in Sources */,
 				CF2062D22787885000EABCCE /* CreateGameViewModel.swift in Sources */,
+				CF617536278EDF76009953BB /* FilterListView.swift in Sources */,
 				CF2062D527878B6000EABCCE /* DateExt.swift in Sources */,
 				CF2062DC278791C100EABCCE /* SaveGameView.swift in Sources */,
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,

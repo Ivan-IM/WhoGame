@@ -62,6 +62,7 @@ final class NewGameCardViewModel: ObservableObject {
             case .none:
                 print("New gameCard save")
                 self.showingNewCard.wrappedValue = false
+                self.gameCard = gameCard
             case .some(_):
                 print(String(describing: error?.localizedDescription))
             }

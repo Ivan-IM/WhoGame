@@ -11,7 +11,7 @@ struct GameListCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
     @State var isFavorite: Bool = false
-    var game: GameCD
+    let game: GameCD
     let symbolType: Bool
     
     var body: some View {

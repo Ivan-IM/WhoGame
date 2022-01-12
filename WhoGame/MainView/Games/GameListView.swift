@@ -12,8 +12,11 @@ struct GameListView: View {
     @EnvironmentObject var gameManager: GameManager
     @FetchRequest(entity: GameCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCD.date, ascending: false)]) var games: FetchedResults<GameCD>
     @Environment(\.presentationMode) var presentationMode
-    @State var doYouWantToPlay = true
+    @FocusState private var showingKeyboard: Bool
+    @State var doYouWantToPlay: Bool = true
     @State var isFavorite: Bool = false
+    @State var showingSearch: Bool = false
+    @State var searchText: String = ""
     
     var body: some View {
         ZStack {
@@ -39,19 +42,23 @@ struct GameListView: View {
                     }
                     Spacer()
                     Button {
-                        isFavorite.toggle()
+                        showingSearch.toggle()
+                        searchText = ""
+                        showingKeyboard = false
+                        isFavorite = false
                     } label: {
-                        Image(systemName: "star")
+                        Image(systemName: "magnifyingglass")
                             .font(.system(size: 32, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
-                                Color.yellow.opacity(isFavorite ? 1.0:0.2),
+                                Color.white.opacity(0.8),
                                 gameManager.mainColorSheme(color: .green)
                             )
                     }
                     Button {
                         doYouWantToPlay.toggle()
+                        showingKeyboard = false
                     } label: {
                         if doYouWantToPlay {
                             Image(systemName: "line.3.horizontal")
@@ -86,49 +93,43 @@ struct GameListView: View {
                             )
                     }
                 }
-                Group {
-                    if isFavorite {
-                        ScrollView {
-                            ForEach(games) { game in
-                                if game.favorite {
-                                    if doYouWantToPlay {
-                                        NavigationLink {
-                                            GameView(viewModel: GameViewModel(game: game))
-                                        } label: {
-                                            GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                                        }
-                                        .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
-                                    } else {
-                                        NavigationLink {
-                                            CreateGameView(viewModel: CreateGameViewModel(game: game))
-                                        } label: {
-                                            GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                                        }
-                                    }
-                                }
-                            }
+                if showingSearch {
+                    HStack {
+                        TextField("Game name", text: $searchText)
+                            .focused($showingKeyboard)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.secondary)
+                        Spacer()
+                        Button {
+                            searchText = ""
+                            showingKeyboard = false
+                        } label: {
+                            Image(systemName: "multiply")
+                                .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.secondary)
                         }
-                    } else {
-                        ScrollView {
-                            ForEach(games) { game in
-                                if doYouWantToPlay {
-                                    NavigationLink {
-                                        GameView(viewModel: GameViewModel(game: game))
-                                    } label: {
-                                        GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                                    }
-                                    .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
-                                } else {
-                                    NavigationLink {
-                                        CreateGameView(viewModel: CreateGameViewModel(game: game))
-                                    } label: {
-                                        GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                                    }
-                                }
-                            }
+                        Button {
+                            showingKeyboard = false
+                        } label: {
+                            Image(systemName: "magnifyingglass")
+                                .font(.system(size: 16, weight: .regular))
+                                .foregroundColor(.secondary)
+                        }
+                        Button {
+                            isFavorite.toggle()
+                            showingKeyboard = false
+                        } label: {
+                            Image(systemName: "star")
+                                .font(.system(size: 16, weight: .regular))
+                                .symbolVariant(isFavorite ? .fill:.none)
+                                .foregroundColor(isFavorite ? .yellow:.secondary)
                         }
                     }
+                    .padding(.horizontal)
+                    .padding(.vertical, 3)
+                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
                 }
+                FilterListView(searchText: searchText, doYouWantToPlay: doYouWantToPlay, isFavorite: isFavorite, showingSearch: showingSearch)
             }
             .navigationBarHidden(true)
             .padding()
