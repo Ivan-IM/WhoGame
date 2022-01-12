@@ -13,6 +13,7 @@ struct GameListView: View {
     @FetchRequest(entity: GameCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCD.date, ascending: false)]) var games: FetchedResults<GameCD>
     @Environment(\.presentationMode) var presentationMode
     @State var doYouWantToPlay = true
+    @State var isFavorite: Bool = false
     
     var body: some View {
         ZStack {
@@ -37,6 +38,18 @@ struct GameListView: View {
                         }
                     }
                     Spacer()
+                    Button {
+                        isFavorite.toggle()
+                    } label: {
+                        Image(systemName: "star")
+                            .font(.system(size: 32, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.yellow.opacity(isFavorite ? 1.0:0.2),
+                                gameManager.mainColorSheme(color: .green)
+                            )
+                    }
                     Button {
                         doYouWantToPlay.toggle()
                     } label: {
@@ -63,7 +76,7 @@ struct GameListView: View {
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Image(systemName: "multiply.circle")
+                        Image(systemName: "multiply")
                             .font(.system(size: 32, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
@@ -73,20 +86,45 @@ struct GameListView: View {
                             )
                     }
                 }
-                ScrollView {
-                    ForEach(games) { game in
-                        if doYouWantToPlay {
-                            NavigationLink {
-                                GameView(viewModel: GameViewModel(game: game))
-                            } label: {
-                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
+                Group {
+                    if isFavorite {
+                        ScrollView {
+                            ForEach(games) { game in
+                                if game.favorite {
+                                    if doYouWantToPlay {
+                                        NavigationLink {
+                                            GameView(viewModel: GameViewModel(game: game))
+                                        } label: {
+                                            GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
+                                        }
+                                        .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
+                                    } else {
+                                        NavigationLink {
+                                            CreateGameView(viewModel: CreateGameViewModel(game: game))
+                                        } label: {
+                                            GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
+                                        }
+                                    }
+                                }
                             }
-                            .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
-                        } else {
-                            NavigationLink {
-                                CreateGameView(viewModel: CreateGameViewModel(game: game))
-                            } label: {
-                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
+                        }
+                    } else {
+                        ScrollView {
+                            ForEach(games) { game in
+                                if doYouWantToPlay {
+                                    NavigationLink {
+                                        GameView(viewModel: GameViewModel(game: game))
+                                    } label: {
+                                        GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
+                                    }
+                                    .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
+                                } else {
+                                    NavigationLink {
+                                        CreateGameView(viewModel: CreateGameViewModel(game: game))
+                                    } label: {
+                                        GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
+                                    }
+                                }
                             }
                         }
                     }
