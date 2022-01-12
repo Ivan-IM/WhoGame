@@ -101,7 +101,7 @@ struct GameStageView: View {
             } label: {
                 if viewModel.answerSystem == .text {
                     Image(systemName: "checkmark")
-                        .font(.system(size: 100, weight: .regular))
+                        .font(.system(size: 88, weight: .regular))
                         .symbolVariant(.circle.fill)
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
@@ -113,7 +113,7 @@ struct GameStageView: View {
                     Group {
                         if viewModel.answerSystem == .right {
                             Image(systemName: "arrow.right")
-                                .font(.system(size: 100, weight: .regular))
+                                .font(.system(size: 88, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(
@@ -123,7 +123,7 @@ struct GameStageView: View {
                                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         } else {
                             Image(systemName: "arrow.right")
-                                .font(.system(size: 100, weight: .regular))
+                                .font(.system(size: 88, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
                                 .foregroundStyle(

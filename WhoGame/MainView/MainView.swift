@@ -15,13 +15,13 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                VStack {
+                VStack(spacing: 16) {
                     Spacer()
                     NavigationLink {
                         GameListView()
                     } label: {
                         Image(systemName: "play")
-                            .font(.system(size: 100, weight: .regular))
+                            .font(.system(size: 88, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -29,14 +29,13 @@ struct MainView: View {
                                 gameManager.mainColorSheme(color: .blue)
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                            .frame(width: 130, height: 130)
                     }
                     .offset(x: gameManager.width*0.22)
                     NavigationLink {
                         CreateGameView(viewModel: CreateGameViewModel())
                     } label: {
                         Image(systemName: "plus")
-                            .font(.system(size: 100, weight: .regular))
+                            .font(.system(size: 88, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -44,13 +43,12 @@ struct MainView: View {
                                 gameManager.mainColorSheme(color: .red)
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                            .frame(width: 130, height: 130)
                     }
                     NavigationLink {
                         GameHistoryView()
                     } label: {
                         Image(systemName: "line.3.horizontal")
-                            .font(.system(size: 100, weight: .regular))
+                            .font(.system(size: 88, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
@@ -58,7 +56,6 @@ struct MainView: View {
                                 gameManager.mainColorSheme(color: .green)
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                            .frame(width: 130, height: 130)
                     }
                     .offset(x: -gameManager.width*0.22)
                 }

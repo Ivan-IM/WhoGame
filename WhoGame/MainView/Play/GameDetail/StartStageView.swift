@@ -148,7 +148,7 @@ struct StartStageView: View {
                 viewModel.stageSystem = .game
             } label: {
                 Image(systemName: "checkmark")
-                    .font(.system(size: 100, weight: .regular))
+                    .font(.system(size: 88, weight: .regular))
                     .symbolVariant(.circle.fill)
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(

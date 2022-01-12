@@ -10,6 +10,7 @@ import SwiftUI
 struct GameListCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @State var isFavorite: Bool = false
     var game: GameCD
     let symbolType: Bool
     
@@ -51,26 +52,67 @@ struct GameListCellView: View {
             }
             
             Spacer()
+            
             Group {
                 if symbolType {
-                    Image(systemName: "play")
-                        .font(.system(size: 44, weight: .regular))
-                        .symbolVariant(.circle.fill)
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(
-                            Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .blue)
-                        )
-                        .opacity(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? 0.2:1.0)
+                    HStack {
+                        if isFavorite {
+                            Image(systemName: "star")
+                                .font(.system(size: 24, weight: .regular))
+                                .symbolVariant(.fill)
+                                .foregroundColor(.yellow)
+                        }
+                        Image(systemName: "play")
+                            .font(.system(size: 44, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .blue)
+                            )
+                            .opacity(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? 0.2:1.0)
+                    }
                 } else {
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 44, weight: .regular))
-                        .symbolVariant(.circle.fill)
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(
-                            Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .red)
-                        )
+                    HStack {
+                        Button {
+                            if isFavorite {
+                                game.favorite = false
+                                PersistenceController.shared.save { error in
+                                    switch error {
+                                    case .none:
+                                        print("Game is not favorite")
+                                        self.isFavorite = false
+                                    case .some(_):
+                                        print(String(describing: error?.localizedDescription))
+                                    }
+                                }
+                            } else {
+                                game.favorite = true
+                                PersistenceController.shared.save { error in
+                                    switch error {
+                                    case .none:
+                                        print("Game is favorite")
+                                        self.isFavorite = true
+                                    case .some(_):
+                                        print(String(describing: error?.localizedDescription))
+                                    }
+                                }
+                            }
+                        } label: {
+                            Image(systemName: "star")
+                                .font(.system(size: 24, weight: .regular))
+                                .symbolVariant(isFavorite ? .fill:.none)
+                                .foregroundColor(isFavorite ? .yellow:.secondary)
+                        }
+                        Image(systemName: "chevron.right")
+                            .font(.system(size: 44, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .red)
+                            )
+                    }
                 }
             }
         }

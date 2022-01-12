@@ -16,6 +16,7 @@ final class GameViewModel: ObservableObject {
     @Published var rightAnswers: Int = 0
     @Published var answer: String = ""
     @Published var index: Int = 0
+    @Published var isFavorite: Bool = false
     @Published var answerSystem: CheckAnswerSystem = .text
     @Published var stageSystem: CheckStageSystem = .start
     @Published var rulesSystem: AboutRules = .name
@@ -57,6 +58,20 @@ final class GameViewModel: ObservableObject {
         gameHystory.toGameCD = self.game
         
         PersistenceController.shared.save()
+    }
+    
+    func updateGameFavorite() {
+        self.isFavorite.toggle()
+        self.game.favorite = self.isFavorite
+        
+        PersistenceController.shared.save { error in
+            switch error {
+            case .none:
+                print("Game \(self.isFavorite ? "is":"is not") favorite")
+            case .some(_):
+                print(String(describing: error?.localizedDescription))
+            }
+        }
     }
     
     func fetchGameCards(game: GameCD) -> [GameCardCD] {

@@ -79,14 +79,14 @@ struct GameListView: View {
                             NavigationLink {
                                 GameView(viewModel: GameViewModel(game: game))
                             } label: {
-                                GameListCellView(game: game, symbolType: doYouWantToPlay)
+                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
                             }
                             .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
                         } else {
                             NavigationLink {
                                 CreateGameView(viewModel: CreateGameViewModel(game: game))
                             } label: {
-                                GameListCellView(game: game, symbolType: doYouWantToPlay)
+                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
                             }
                         }
                     }
