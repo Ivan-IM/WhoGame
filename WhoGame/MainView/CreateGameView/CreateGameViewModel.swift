@@ -87,6 +87,7 @@ final class CreateGameViewModel: ObservableObject {
         self.theme = ""
         self.type = 0
         self.id = ""
+        self.date = Date()
         self.showScore = false
         self.showAnswer = false
         self.showHelp = false

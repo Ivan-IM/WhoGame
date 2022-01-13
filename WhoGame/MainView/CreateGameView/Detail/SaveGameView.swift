@@ -23,12 +23,11 @@ struct SaveGameView: View {
                 .foregroundColor(.secondary)
             HStack {
                 Text("Date of creation")
-                    .lineLimit(1)
-                    .font(.system(size: 16, weight: .ultraLight))
                 Spacer()
                 Text("\(viewModel.date.longDate)")
-                    .font(.system(size: 16, weight: .ultraLight))
             }
+            .lineLimit(1)
+            .font(.system(size: 16, weight: .ultraLight))
             HStack(spacing: 16) {
                 Group {
                     if viewModel.showScore {

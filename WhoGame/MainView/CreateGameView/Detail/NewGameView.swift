@@ -30,12 +30,11 @@ struct NewGameView: View {
                 .frame(height: 2)
             HStack {
                 Text("Date of creation")
-                    .lineLimit(1)
-                    .font(.system(size: 16, weight: .ultraLight))
                 Spacer()
                 Text("\(viewModel.date.longDate)")
-                    .font(.system(size: 16, weight: .ultraLight))
             }
+            .lineLimit(1)
+            .font(.system(size: 16, weight: .ultraLight))
             HStack(spacing: 16) {
                 Button {
                     viewModel.showScore.toggle()
