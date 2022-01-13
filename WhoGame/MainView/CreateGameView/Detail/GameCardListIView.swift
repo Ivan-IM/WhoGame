@@ -14,15 +14,17 @@ struct GameCardListIView: View {
     let gameId: String
     let showScore: Bool
     let showHelp: Bool
+    let gameType: Int
     var gameCardRequest : FetchRequest<GameCardCD>
     var gameCards : FetchedResults<GameCardCD>{gameCardRequest.wrappedValue}
     
-    init(gameId: String, editMode: Bool, showScore: Bool, showHelp: Bool) {
+    init(gameId: String, gameType: Int, editMode: Bool, showScore: Bool, showHelp: Bool) {
         self.gameId = gameId
         self.editMode = editMode
         self.gameCardRequest = FetchRequest(entity: GameCardCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)], predicate: NSPredicate(format: "gameId == %@", gameId))
         self.showScore = showScore
         self.showHelp = showHelp
+        self.gameType = gameType
     }
     
     var body: some View {
@@ -70,7 +72,7 @@ struct GameCardListIView: View {
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 } else {
                     NavigationLink {
-                        EditGameCardView(viewModel: NewGameCardViewModel(gameCard: card, showScore: showScore, showHelp: showHelp))
+                        EditGameCardView(viewModel: NewGameCardViewModel(gameCard: card, gameType: gameType, showScore: showScore, showHelp: showHelp))
                     } label: {
                         HStack {
                             Text("\(card.mark).")
@@ -143,6 +145,6 @@ struct GameCardListIView: View {
 
 struct GameCardListIView_Previews: PreviewProvider {
     static var previews: some View {
-        GameCardListIView(gameId: "", editMode: true, showScore: true, showHelp: true)
+        GameCardListIView(gameId: "", gameType: 0, editMode: true, showScore: true, showHelp: true)
     }
 }

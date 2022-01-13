@@ -27,8 +27,30 @@ struct EditGameCardView: View {
             TextEditor(text: $viewModel.answer)
                 .focused($showingKeyboard)
                 .font(.system(size: 16, weight: .semibold))
-                .foregroundColor(.secondary)
                 .frame(height: 32)
+            Group {
+                if viewModel.gameType == 1 || viewModel.gameType == 2 {
+                    Text("Fake answers:")
+                        .font(.system(size: 16, weight: .ultraLight))
+                    TextEditor(text: $viewModel.fakeAnswerSecond)
+                        .focused($showingKeyboard)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.secondary)
+                        .frame(height: 32)
+                    if viewModel.gameType == 2 {
+                        TextEditor(text: $viewModel.fakeAnswerThird)
+                            .focused($showingKeyboard)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.secondary)
+                            .frame(height: 32)
+                        TextEditor(text: $viewModel.fakeAnswerFourth)
+                            .focused($showingKeyboard)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.secondary)
+                            .frame(height: 32)
+                    }
+                }
+            }
             if viewModel.showHelp {
                 Text("Help:")
                     .font(.system(size: 16, weight: .ultraLight))

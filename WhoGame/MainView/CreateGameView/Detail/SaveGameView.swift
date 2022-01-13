@@ -30,6 +30,46 @@ struct SaveGameView: View {
             .font(.system(size: 16, weight: .ultraLight))
             HStack(spacing: 16) {
                 Group {
+                    Group {
+                        switch viewModel.type {
+                        case 1:
+                            Image(systemName: "2")
+                                .font(.system(size: 22, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .blue)
+                            )
+                        case 2:
+                            Image(systemName: "4")
+                                .font(.system(size: 22, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .blue)
+                            )
+                        case 3:
+                            Image(systemName: "fork.knife")
+                                .font(.system(size: 22, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .blue)
+                            )
+                        default:
+                            Image(systemName: "message")
+                                .font(.system(size: 22, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .blue)
+                            )
+                        }
+                    }
                     if viewModel.showScore {
                         Image(systemName: "bolt")
                             .font(.system(size: 22, weight: .regular))

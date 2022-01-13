@@ -34,6 +34,8 @@
 		CF617531278D9296009953BB /* GameHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617530278D9296009953BB /* GameHistoryView.swift */; };
 		CF617534278D93C4009953BB /* GameHistoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617533278D93C4009953BB /* GameHistoryCellView.swift */; };
 		CF617536278EDF76009953BB /* FilterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF617535278EDF76009953BB /* FilterListView.swift */; };
+		CF61753827901B95009953BB /* TypeGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61753727901B95009953BB /* TypeGameView.swift */; };
+		CF61753A27902594009953BB /* NewGameCardTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61753927902594009953BB /* NewGameCardTestView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,6 +67,8 @@
 		CF617530278D9296009953BB /* GameHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryView.swift; sourceTree = "<group>"; };
 		CF617533278D93C4009953BB /* GameHistoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryCellView.swift; sourceTree = "<group>"; };
 		CF617535278EDF76009953BB /* FilterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListView.swift; sourceTree = "<group>"; };
+		CF61753727901B95009953BB /* TypeGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeGameView.swift; sourceTree = "<group>"; };
+		CF61753927902594009953BB /* NewGameCardTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTestView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,7 @@
 				CF2062D727878DBB00EABCCE /* NewGameView.swift */,
 				CF2062DB278791C100EABCCE /* SaveGameView.swift */,
 				CF2062E22788527C00EABCCE /* GameCardListIView.swift */,
+				CF61753727901B95009953BB /* TypeGameView.swift */,
 				CF2062DF2788189F00EABCCE /* NewGameCard */,
 			);
 			path = Detail;
@@ -141,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2062DD2788189600EABCCE /* NewGameCardView.swift */,
+				CF61753927902594009953BB /* NewGameCardTestView.swift */,
 				CF08538A2761CEDC001DDC70 /* NewGameCardViewModel.swift */,
 				CF2C02D427887F2400392BAA /* EditGameCardView.swift */,
 			);
@@ -310,6 +316,7 @@
 				CF2062DC278791C100EABCCE /* SaveGameView.swift in Sources */,
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,
 				CF61752E278D69E5009953BB /* EndStageView.swift in Sources */,
+				CF61753827901B95009953BB /* TypeGameView.swift in Sources */,
 				CF617528278C387B009953BB /* GameListCellView.swift in Sources */,
 				CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */,
 				CF298954275D162A00D3C3C1 /* MainView.swift in Sources */,
@@ -319,6 +326,7 @@
 				CF2062E32788527C00EABCCE /* GameCardListIView.swift in Sources */,
 				CF61752C278D69D9009953BB /* GameStageView.swift in Sources */,
 				CF2062D827878DBB00EABCCE /* NewGameView.swift in Sources */,
+				CF61753A27902594009953BB /* NewGameCardTestView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

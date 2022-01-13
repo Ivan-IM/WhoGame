@@ -44,11 +44,21 @@ struct CreateGameView: View {
                     SaveGameView(viewModel: viewModel)
                 }
             }
+            if viewModel.id.isEmpty {
+                TypeGameView(viewModel: viewModel)
+            }
             if viewModel.showingNewCard && !viewModel.id.isEmpty {
-                NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                Group {
+                    switch viewModel.type {
+                    case 1, 2:
+                        NewGameCardTestView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                    default:
+                        NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                    }
+                }
             }
             if !viewModel.id.isEmpty {
-                GameCardListIView(gameId: viewModel.id, editMode: viewModel.listEditMode, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
+                GameCardListIView(gameId: viewModel.id, gameType: viewModel.type, editMode: viewModel.listEditMode, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
             }
         }
         .padding()
