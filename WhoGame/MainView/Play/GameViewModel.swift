@@ -51,6 +51,7 @@ final class GameViewModel: ObservableObject {
         gameHystory.date = Date()
         gameHystory.answers = self.answers
         gameHystory.rightAnswers = Int64(self.rightAnswers)
+        gameHystory.questions = Int64(self.gameCards.count)
         gameHystory.score = Int64(self.score)
         gameHystory.gameName = self.game.name ?? "Unknown"
         gameHystory.gameId = self.game.id

@@ -26,7 +26,7 @@ struct GameHistoryCellView: View {
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.primary)
-                Text("Right answers: \(story.rightAnswers)")
+                Text("Right answers: \(story.rightAnswers)/\(story.questions)")
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.primary)
