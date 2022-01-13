@@ -102,6 +102,17 @@ final class GameViewModel: ObservableObject {
         }
     }
     
+    func getAnswers(index: Int) -> [String] {
+        var answersArray = [String]()
+        if game.type == 1 {
+            answersArray.append(contentsOf: [gameCards[index].answer ?? "Unknown", gameCards[index].fakeAnswerSecond ?? "Unknown"])
+            return answersArray.shuffled()
+        } else {
+            answersArray.append(contentsOf: [gameCards[index].answer ?? "Unknown", gameCards[index].fakeAnswerSecond ?? "Unknown", gameCards[index].fakeAnswerThird ?? "Unknown", gameCards[index].fakeAnswerFourth ?? "Unknown"])
+            return answersArray.shuffled()
+        }
+    }
+    
     func checkAnswer() -> CheckAnswerSystem {
         if let answer = self.gameCards[self.index].answer {
             if self.answer == answer {

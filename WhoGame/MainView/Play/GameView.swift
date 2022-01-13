@@ -55,7 +55,12 @@ struct GameView: View {
                 case .start:
                     StartStageView(viewModel: viewModel)
                 case .game:
-                    GameStageView(viewModel: viewModel)
+                    switch viewModel.game.type {
+                    case 1, 2:
+                        GameStageTestView(viewModel: viewModel)
+                    default:
+                        GameStageView(viewModel: viewModel)
+                    }
                 case .end:
                     EndStageView(viewModel: viewModel)
                 }
