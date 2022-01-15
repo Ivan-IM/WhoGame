@@ -88,7 +88,7 @@ struct TypeGameView: View {
                                 gameManager.mainColorSheme(color: viewModel.type == 3 ? .green:.red)
                         )
                         if viewModel.type == 3 {
-                            Text("Tasting")
+                            Text("Blind tasting")
                                 .font(.system(size: 22, weight: .semibold))
                                 .padding(.trailing, 16)
                         }

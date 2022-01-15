@@ -29,10 +29,19 @@ struct GameListCellView: View {
                             .lineLimit(1)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.secondary)
-                        Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
-                            .lineLimit(1)
-                            .font(.system(size: 16, weight: .ultraLight))
-                            .foregroundColor(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? .red:.primary)
+                        switch game.type {
+                        case 3:
+                            Text("Positions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
+                                .lineLimit(1)
+                                .font(.system(size: 16, weight: .ultraLight))
+                                .foregroundColor(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? .red:.primary)
+                        default:
+                            Text("Questions: \(PersistenceController.shared.fetchGameCards(for: game.id ?? "").count)")
+                                .lineLimit(1)
+                                .font(.system(size: 16, weight: .ultraLight))
+                                .foregroundColor(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? .red:.primary)
+                        }
+                        
                     } else {
                         Text("\(game.name ?? "Unknown")")
                             .lineLimit(1)

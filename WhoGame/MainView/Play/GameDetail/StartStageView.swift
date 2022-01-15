@@ -15,12 +15,6 @@ struct StartStageView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Questions: \(viewModel.gameCards.count)")
-                    .lineLimit(1)
-                Spacer()
-            }
-            .font(.system(size: 16, weight: .semibold))
             Spacer()
             Group {
                 switch viewModel.rulesSystem {
@@ -45,7 +39,7 @@ struct StartStageView: View {
                 case .test4:
                     Text("Test game (4 answers)")
                 case .tasty:
-                    Text("Tasty game")
+                    Text("Blind tasting game")
                 }
             }
             .lineLimit(1)

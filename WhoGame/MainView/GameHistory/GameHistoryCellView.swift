@@ -26,15 +26,23 @@ struct GameHistoryCellView: View {
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.primary)
-                Text("Right answers: \(story.rightAnswers)/\(story.questions)")
-                    .lineLimit(1)
-                    .font(.system(size: 16, weight: .semibold))
-                    .foregroundColor(.primary)
-                if story.showScore {
-                    Text("Scores: \(story.score)")
+                switch story.gameType {
+                case 3:
+                    Text("Positions: \(story.answers?.count ?? 0)")
                         .lineLimit(1)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.primary)
+                default:
+                    Text("Right answers: \(story.rightAnswers)/\(story.questions)")
+                        .lineLimit(1)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.primary)
+                    if story.showScore {
+                        Text("Scores: \(story.score)")
+                            .lineLimit(1)
+                            .font(.system(size: 16, weight: .semibold))
+                            .foregroundColor(.primary)
+                    }
                 }
                 HStack {
                     Text("Date: \(story.date?.longDate ?? "Unknown")")

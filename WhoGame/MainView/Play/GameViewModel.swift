@@ -24,6 +24,7 @@ final class GameViewModel: ObservableObject {
     
     @Published var showingExitAlert: Bool = false
     @Published var showingHelpAlert: Bool = false
+    @Published var showingTastyAlert: Bool = false
     
     var game: GameCD
     
@@ -51,13 +52,19 @@ final class GameViewModel: ObservableObject {
         let gameHystory = GameHistoryCD(context: PersistenceController.shared.container.viewContext)
         gameHystory.id = UUID().uuidString
         gameHystory.player = self.player
-        gameHystory.showScore = self.game.showScore
         gameHystory.date = Date()
-        gameHystory.answers = self.answersHystory
-        gameHystory.rightAnswers = Int64(self.rightAnswers)
-        gameHystory.questions = Int64(self.gameCards.count)
-        gameHystory.score = Int64(self.score)
+        switch self.game.type {
+        case 3:
+            gameHystory.answers = self.answersHystory
+        default:
+            gameHystory.showScore = self.game.showScore
+            gameHystory.answers = self.answersHystory
+            gameHystory.rightAnswers = Int64(self.rightAnswers)
+            gameHystory.questions = Int64(self.gameCards.count)
+            gameHystory.score = Int64(self.score)
+        }
         gameHystory.gameName = self.game.name ?? "Unknown"
+        gameHystory.gameType = self.game.type
         gameHystory.gameId = self.game.id
                 
         PersistenceController.shared.save { error in
@@ -65,6 +72,7 @@ final class GameViewModel: ObservableObject {
             case .none:
                 print("Game history save")
                 self.stageSystem = .end
+                print(self.answersHystory)
             case .some(_):
                 print(String(describing: error?.localizedDescription))
             }
@@ -137,6 +145,11 @@ final class GameViewModel: ObservableObject {
         } else {
             saveGameHistory()
         }
+    }
+    
+    func endTastyGame() {
+        self.answersHystory = self.gameCards.compactMap { $0.answer }
+        saveGameHistory()
     }
     
     func nextCard() {

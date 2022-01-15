@@ -30,7 +30,7 @@ struct FilterListView: View {
     var body: some View {
         Group {
             if isFavorite {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(games) { game in
                         if game.favorite {
                             if doYouWantToPlay {
@@ -51,7 +51,7 @@ struct FilterListView: View {
                     }
                 }
             } else {
-                ScrollView {
+                ScrollView(showsIndicators: false) {
                     ForEach(games) { game in
                         if doYouWantToPlay {
                             NavigationLink {

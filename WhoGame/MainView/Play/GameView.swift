@@ -68,6 +68,8 @@ struct GameView: View {
                     }
                 case .end:
                     switch viewModel.game.type {
+                    case 3:
+                        EndStageTastyView(viewModel: viewModel)
                     default:
                         EndStageView(viewModel: viewModel)
                     }

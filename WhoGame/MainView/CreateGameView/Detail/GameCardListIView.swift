@@ -28,7 +28,7 @@ struct GameCardListIView: View {
     }
     
     var body: some View {
-        ScrollView {
+        ScrollView(showsIndicators: false) {
             ForEach(gameCards) { card in
                 if editMode {
                     HStack {
