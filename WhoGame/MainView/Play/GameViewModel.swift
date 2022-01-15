@@ -36,7 +36,7 @@ final class GameViewModel: ObservableObject {
     }
     
     enum AboutRules {
-        case name, scoreOn, scoreOff, answerOn, answerOff, helpOn, helpOff
+        case name, scoreOn, scoreOff, answerOn, answerOff, helpOn, helpOff, classic, test2, test4, tasty
     }
     
     init(game: GameCD) {

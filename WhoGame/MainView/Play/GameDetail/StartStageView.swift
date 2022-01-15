@@ -38,6 +38,14 @@ struct StartStageView: View {
                     Text("Help is on")
                 case .helpOff:
                     Text("Help is off")
+                case .classic:
+                    Text("Classic game")
+                case .test2:
+                    Text("Test game (2 answers)")
+                case .test4:
+                    Text("Test game (4 answers)")
+                case .tasty:
+                    Text("Tasty game")
                 }
             }
             .lineLimit(1)
@@ -48,6 +56,60 @@ struct StartStageView: View {
             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             Spacer()
             HStack {
+                switch viewModel.game.type {
+                case 1:
+                    Button {
+                        viewModel.rulesSystem = .test2
+                    } label: {
+                        Image(systemName: "2")
+                            .font(.system(size: 44, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .blue)
+                            )
+                    }
+                case 2:
+                    Button {
+                        viewModel.rulesSystem = .test2
+                    } label: {
+                        Image(systemName: "4")
+                            .font(.system(size: 44, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .blue)
+                            )
+                    }
+                case 3:
+                    Button {
+                        viewModel.rulesSystem = .tasty
+                    } label: {
+                        Image(systemName: "fork.knife")
+                            .font(.system(size: 44, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .blue)
+                            )
+                    }
+                default:
+                    Button {
+                        viewModel.rulesSystem = .classic
+                    } label: {
+                        Image(systemName: "message")
+                            .font(.system(size: 44, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .blue)
+                            )
+                    }
+                }
                 Group {
                     if viewModel.game.showScore {
                         Button {

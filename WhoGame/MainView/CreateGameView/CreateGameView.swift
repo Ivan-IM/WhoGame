@@ -52,6 +52,8 @@ struct CreateGameView: View {
                     switch viewModel.type {
                     case 1, 2:
                         NewGameCardTestView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                    case 3:
+                        NewGameCardTastyView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
                     default:
                         NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
                     }

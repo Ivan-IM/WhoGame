@@ -53,7 +53,10 @@ struct GameView: View {
             Group {
                 switch viewModel.stageSystem {
                 case .start:
-                    StartStageView(viewModel: viewModel)
+                    switch viewModel.game.type {
+                    default:
+                        StartStageView(viewModel: viewModel)
+                    }
                 case .game:
                     switch viewModel.game.type {
                     case 1, 2:
@@ -62,7 +65,10 @@ struct GameView: View {
                         GameStageView(viewModel: viewModel)
                     }
                 case .end:
-                    EndStageView(viewModel: viewModel)
+                    switch viewModel.game.type {
+                    default:
+                        EndStageView(viewModel: viewModel)
+                    }
                 }
             }
         }

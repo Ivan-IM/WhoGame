@@ -13,8 +13,8 @@ struct FilterListView: View {
     var isFavorite: Bool
     var showingSearch: Bool
     
-    var gameRequest : FetchRequest<GameCD>
-    var games : FetchedResults<GameCD>{gameRequest.wrappedValue}
+    var gameRequest: FetchRequest<GameCD>
+    var games: FetchedResults<GameCD>{gameRequest.wrappedValue}
     
     init(searchText: String, doYouWantToPlay: Bool, isFavorite: Bool, showingSearch: Bool) {
         if searchText.isEmpty {

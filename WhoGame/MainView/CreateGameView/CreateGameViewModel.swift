@@ -40,6 +40,7 @@ final class CreateGameViewModel: ObservableObject {
     }
     
     func saveNewGame() {
+        tastyGameBlock()
         let game = GameCD(context: PersistenceController.shared.container.viewContext)
         game.id = UUID().uuidString
         game.name = self.name
@@ -64,6 +65,7 @@ final class CreateGameViewModel: ObservableObject {
     }
     
     func updateGame() {
+        tastyGameBlock()
         guard let game = PersistenceController.shared.fetchGames(for: id).first else { return }
         game.name = self.name
         game.theme = self.theme
@@ -95,7 +97,7 @@ final class CreateGameViewModel: ObservableObject {
         self.saveGame = false
         self.showingNewCard = false
     }
-    
+        
     func deleteGame() {
         guard let game = PersistenceController.shared.fetchGames(for: id).first else { return }
         let gameCards = PersistenceController.shared.fetchGameCards(for: id)
@@ -114,5 +116,13 @@ final class CreateGameViewModel: ObservableObject {
     
     func isValidForm() -> Bool {
         return name.isEmpty || theme.isEmpty
+    }
+    
+    private func tastyGameBlock() {
+        if type == 3 {
+            self.showScore = false
+            self.showAnswer = false
+            self.showHelp = false
+        }
     }
 }

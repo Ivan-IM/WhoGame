@@ -37,6 +37,7 @@
 		CF61753827901B95009953BB /* TypeGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61753727901B95009953BB /* TypeGameView.swift */; };
 		CF61753A27902594009953BB /* NewGameCardTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61753927902594009953BB /* NewGameCardTestView.swift */; };
 		CF61753C27904369009953BB /* GameStageTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61753B27904369009953BB /* GameStageTestView.swift */; };
+		CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		CF61753727901B95009953BB /* TypeGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeGameView.swift; sourceTree = "<group>"; };
 		CF61753927902594009953BB /* NewGameCardTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTestView.swift; sourceTree = "<group>"; };
 		CF61753B27904369009953BB /* GameStageTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageTestView.swift; sourceTree = "<group>"; };
+		CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTastyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 			children = (
 				CF2062DD2788189600EABCCE /* NewGameCardView.swift */,
 				CF61753927902594009953BB /* NewGameCardTestView.swift */,
+				CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */,
 				CF08538A2761CEDC001DDC70 /* NewGameCardViewModel.swift */,
 				CF2C02D427887F2400392BAA /* EditGameCardView.swift */,
 			);
@@ -319,6 +322,7 @@
 				CF2062D527878B6000EABCCE /* DateExt.swift in Sources */,
 				CF2062DC278791C100EABCCE /* SaveGameView.swift in Sources */,
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,
+				CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */,
 				CF61752E278D69E5009953BB /* EndStageView.swift in Sources */,
 				CF61753827901B95009953BB /* TypeGameView.swift in Sources */,
 				CF617528278C387B009953BB /* GameListCellView.swift in Sources */,

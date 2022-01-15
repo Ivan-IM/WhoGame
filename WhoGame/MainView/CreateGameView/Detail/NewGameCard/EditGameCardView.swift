@@ -16,14 +16,30 @@ struct EditGameCardView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Question:")
-                .font(.system(size: 16, weight: .ultraLight))
+            Group {
+                switch viewModel.gameType {
+                case 3:
+                    Text("Mark your dish:")
+                        .font(.system(size: 16, weight: .ultraLight))
+                default:
+                    Text("Question:")
+                        .font(.system(size: 16, weight: .ultraLight))
+                }
+            }
             TextEditor(text: $viewModel.question)
                 .focused($showingKeyboard)
                 .font(.system(size: 16, weight: .semibold))
                 .frame(height: 128)
-            Text("Answer:")
-                .font(.system(size: 16, weight: .ultraLight))
+            Group {
+                switch viewModel.gameType {
+                case 3:
+                    Text("Dish:")
+                        .font(.system(size: 16, weight: .ultraLight))
+                default:
+                    Text("Answer:")
+                        .font(.system(size: 16, weight: .ultraLight))
+                }
+            }
             TextEditor(text: $viewModel.answer)
                 .focused($showingKeyboard)
                 .font(.system(size: 16, weight: .semibold))
