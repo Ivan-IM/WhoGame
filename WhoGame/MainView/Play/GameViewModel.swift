@@ -9,6 +9,7 @@ import SwiftUI
 
 final class GameViewModel: ObservableObject {
     
+    @Published var answersHystory = [String]()
     @Published var answers = [String]()
     @Published var player: String = ""
     @Published var gameCards = [GameCardCD]()
@@ -41,6 +42,7 @@ final class GameViewModel: ObservableObject {
     init(game: GameCD) {
         self.game = game
         self.gameCards = fetchGameCards(game: game)
+        self.answers = getAnswers()
     }
     
     func saveGameHistory() {
@@ -49,7 +51,7 @@ final class GameViewModel: ObservableObject {
         gameHystory.player = self.player
         gameHystory.showScore = self.game.showScore
         gameHystory.date = Date()
-        gameHystory.answers = self.answers
+        gameHystory.answers = self.answersHystory
         gameHystory.rightAnswers = Int64(self.rightAnswers)
         gameHystory.questions = Int64(self.gameCards.count)
         gameHystory.score = Int64(self.score)
@@ -102,7 +104,7 @@ final class GameViewModel: ObservableObject {
         }
     }
     
-    func getAnswers(index: Int) -> [String] {
+    func getAnswers() -> [String] {
         var answersArray = [String]()
         if game.type == 1 {
             answersArray.append(contentsOf: [gameCards[index].answer ?? "Unknown", gameCards[index].fakeAnswerSecond ?? "Unknown"])
@@ -128,6 +130,7 @@ final class GameViewModel: ObservableObject {
     func checkStage() {
         if self.index < (self.gameCards.count - 1) {
             self.index += 1
+            self.answers = getAnswers()
             self.stageSystem = .game
         } else {
             saveGameHistory()
@@ -139,7 +142,7 @@ final class GameViewModel: ObservableObject {
             self.rightAnswers += 1
             self.score += Int(self.gameCards[self.index].score)
         }
-        self.answers.append(self.answer)
+        self.answersHystory.append(self.answer)
         self.answer = ""
         self.answerSystem = .text
         checkStage()
@@ -148,7 +151,7 @@ final class GameViewModel: ObservableObject {
     func clearGame() {
         self.player = ""
         self.answer = ""
-        self.answers.removeAll()
+        self.answersHystory.removeAll()
         self.rightAnswers = 0
         self.index = 0
         self.score = 0

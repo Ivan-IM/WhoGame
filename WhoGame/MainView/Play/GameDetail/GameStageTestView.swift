@@ -53,15 +53,14 @@ struct GameStageTestView: View {
             Spacer()
             switch viewModel.answerSystem {
             case .text:
-                //wrong update answers
                 VStack {
-                    ForEach(viewModel.getAnswers(index: viewModel.index), id: \.self) { answer in
+                    ForEach(viewModel.answers, id: \.self) { answer in
                         Button {
                             viewModel.answer = answer
                         } label: {
                             HStack {
-                            Text("\(answer)")
-                                .lineLimit(1)
+                                Text("\(answer)")
+                                    .lineLimit(1)
                                 Spacer()
                                 Image(systemName: "checkmark")
                                     .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
@@ -71,46 +70,96 @@ struct GameStageTestView: View {
                                         gameManager.mainColorSheme(color: viewModel.answer == answer ? .green:.blue)
                                     )
                             }
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.primary)
-                                .frame(width: gameManager.width*0.77)
-                                .padding()
-                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.primary)
+                            .frame(width: gameManager.width*0.77)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         }
-
+                        
                     }
                 }
             case .right:
-                if viewModel.game.showAnswer {
-                    Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
-                        .foregroundColor(.green)
-                        .font(.system(size: 16, weight: .semibold))
-                        .frame(width: gameManager.width*0.66)
-                        .padding()
+                VStack {
+                    ForEach(viewModel.answers, id: \.self) { answer in
+                        HStack {
+                            Text("\(answer)")
+                                .lineLimit(1)
+                            Spacer()
+                            Image(systemName: "checkmark")
+                                .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
+                                    gameManager.mainColorSheme(color: viewModel.answer == answer ? .green:.blue)
+                                )
+                        }
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(.primary)
+                        .frame(width: gameManager.width*0.77)
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                } else {
-                    Text("Right answer")
-                        .foregroundColor(.green)
-                        .font(.system(size: 16, weight: .semibold))
-                        .frame(width: gameManager.width*0.66)
-                        .padding()
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    }
                 }
             case .wrong:
                 if viewModel.game.showAnswer {
-                    Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
-                        .foregroundColor(.red)
-                        .font(.system(size: 16, weight: .semibold))
-                        .frame(width: gameManager.width*0.66)
-                        .padding()
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    VStack {
+                        ForEach(viewModel.answers, id: \.self) { answer in
+                            HStack {
+                                Text("\(answer)")
+                                    .lineLimit(1)
+                                Spacer()
+                                if answer == viewModel.gameCards[viewModel.index].answer {
+                                    Image(systemName: "checkmark")
+                                        .symbolVariant(.circle.fill)
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(
+                                            Color.white.opacity(0.8),
+                                            gameManager.mainColorSheme(color: .green)
+                                        )
+                                } else {
+                                Image(systemName: "xmark")
+                                    .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
+                                        gameManager.mainColorSheme(color: viewModel.answer == answer ? .red:.blue)
+                                    )
+                                }
+                            }
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.primary)
+                            .frame(width: gameManager.width*0.77)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                        }
+                    }
                 } else {
-                    Text("Wrong answer")
-                        .foregroundColor(.red)
-                        .font(.system(size: 16, weight: .semibold))
-                        .frame(width: gameManager.width*0.66)
-                        .padding()
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    VStack {
+                        ForEach(viewModel.answers, id: \.self) { answer in
+                            HStack {
+                                Text("\(answer)")
+                                    .lineLimit(1)
+                                Spacer()
+                                Image(systemName: "xmark")
+                                    .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
+                                        gameManager.mainColorSheme(color: viewModel.answer == answer ? .red:.blue)
+                                    )
+                            }
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.primary)
+                            .frame(width: gameManager.width*0.77)
+                            .padding(.horizontal)
+                            .padding(.vertical, 8)
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                        }
+                    }
                 }
             }
             Button {
