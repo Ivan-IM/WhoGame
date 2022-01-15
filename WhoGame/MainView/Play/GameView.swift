@@ -61,6 +61,8 @@ struct GameView: View {
                     switch viewModel.game.type {
                     case 1, 2:
                         GameStageTestView(viewModel: viewModel)
+                    case 3:
+                        GameStageTastyView(viewModel: viewModel)
                     default:
                         GameStageView(viewModel: viewModel)
                     }

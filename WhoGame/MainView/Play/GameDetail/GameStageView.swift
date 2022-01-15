@@ -51,45 +51,47 @@ struct GameStageView: View {
                 .padding()
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             Spacer()
-            switch viewModel.answerSystem {
-            case .text:
-                TextField("Answer", text: $viewModel.answer)
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: 16, weight: .semibold))
-                    .frame(width: gameManager.width*0.66)
-                    .padding()
-                    .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-            case .right:
-                if viewModel.game.showAnswer {
-                    Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
-                        .foregroundColor(.green)
+            Group {
+                switch viewModel.answerSystem {
+                case .text:
+                    TextField("Answer", text: $viewModel.answer)
+                        .multilineTextAlignment(.center)
                         .font(.system(size: 16, weight: .semibold))
                         .frame(width: gameManager.width*0.66)
                         .padding()
                         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                } else {
-                    Text("Right answer")
-                        .foregroundColor(.green)
-                        .font(.system(size: 16, weight: .semibold))
-                        .frame(width: gameManager.width*0.66)
-                        .padding()
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                }
-            case .wrong:
-                if viewModel.game.showAnswer {
-                    Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
-                        .foregroundColor(.red)
-                        .font(.system(size: 16, weight: .semibold))
-                        .frame(width: gameManager.width*0.66)
-                        .padding()
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                } else {
-                    Text("Wrong answer")
-                        .foregroundColor(.red)
-                        .font(.system(size: 16, weight: .semibold))
-                        .frame(width: gameManager.width*0.66)
-                        .padding()
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                case .right:
+                    if viewModel.game.showAnswer {
+                        Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
+                            .foregroundColor(.green)
+                            .font(.system(size: 16, weight: .semibold))
+                            .frame(width: gameManager.width*0.66)
+                            .padding()
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    } else {
+                        Text("Right answer")
+                            .foregroundColor(.green)
+                            .font(.system(size: 16, weight: .semibold))
+                            .frame(width: gameManager.width*0.66)
+                            .padding()
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    }
+                case .wrong:
+                    if viewModel.game.showAnswer {
+                        Text("Answer: \(viewModel.gameCards[viewModel.index].answer ?? "Unknown")")
+                            .foregroundColor(.red)
+                            .font(.system(size: 16, weight: .semibold))
+                            .frame(width: gameManager.width*0.66)
+                            .padding()
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    } else {
+                        Text("Wrong answer")
+                            .foregroundColor(.red)
+                            .font(.system(size: 16, weight: .semibold))
+                            .frame(width: gameManager.width*0.66)
+                            .padding()
+                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    }
                 }
             }
             Button {

@@ -51,13 +51,39 @@ struct GameStageTestView: View {
                 .padding()
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             Spacer()
-            switch viewModel.answerSystem {
-            case .text:
-                VStack {
-                    ForEach(viewModel.answers, id: \.self) { answer in
-                        Button {
-                            viewModel.answer = answer
-                        } label: {
+            Group {
+                switch viewModel.answerSystem {
+                case .text:
+                    VStack {
+                        ForEach(viewModel.answers, id: \.self) { answer in
+                            Button {
+                                viewModel.answer = answer
+                            } label: {
+                                HStack {
+                                    Text("\(answer)")
+                                        .lineLimit(1)
+                                    Spacer()
+                                    Image(systemName: "checkmark")
+                                        .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(
+                                            Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
+                                            gameManager.mainColorSheme(color: viewModel.answer == answer ? .green:.blue)
+                                        )
+                                }
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.primary)
+                                .frame(width: gameManager.width*0.77)
+                                .padding(.horizontal)
+                                .padding(.vertical, 8)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                            }
+                            
+                        }
+                    }
+                case .right:
+                    VStack {
+                        ForEach(viewModel.answers, id: \.self) { answer in
                             HStack {
                                 Text("\(answer)")
                                     .lineLimit(1)
@@ -77,87 +103,63 @@ struct GameStageTestView: View {
                             .padding(.vertical, 8)
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         }
-                        
                     }
-                }
-            case .right:
-                VStack {
-                    ForEach(viewModel.answers, id: \.self) { answer in
-                        HStack {
-                            Text("\(answer)")
-                                .lineLimit(1)
-                            Spacer()
-                            Image(systemName: "checkmark")
-                                .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
-                                    gameManager.mainColorSheme(color: viewModel.answer == answer ? .green:.blue)
-                                )
+                case .wrong:
+                    if viewModel.game.showAnswer {
+                        VStack {
+                            ForEach(viewModel.answers, id: \.self) { answer in
+                                HStack {
+                                    Text("\(answer)")
+                                        .lineLimit(1)
+                                    Spacer()
+                                    if answer == viewModel.gameCards[viewModel.index].answer {
+                                        Image(systemName: "checkmark")
+                                            .symbolVariant(.circle.fill)
+                                            .symbolRenderingMode(.palette)
+                                            .foregroundStyle(
+                                                Color.white.opacity(0.8),
+                                                gameManager.mainColorSheme(color: .green)
+                                            )
+                                    } else {
+                                        Image(systemName: "xmark")
+                                            .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
+                                            .symbolRenderingMode(.palette)
+                                            .foregroundStyle(
+                                                Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
+                                                gameManager.mainColorSheme(color: viewModel.answer == answer ? .red:.blue)
+                                            )
+                                    }
+                                }
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.primary)
+                                .frame(width: gameManager.width*0.77)
+                                .padding(.horizontal)
+                                .padding(.vertical, 8)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                            }
                         }
-                        .font(.system(size: 14, weight: .regular))
-                        .foregroundColor(.primary)
-                        .frame(width: gameManager.width*0.77)
-                        .padding(.horizontal)
-                        .padding(.vertical, 8)
-                        .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                    }
-                }
-            case .wrong:
-                if viewModel.game.showAnswer {
-                    VStack {
-                        ForEach(viewModel.answers, id: \.self) { answer in
-                            HStack {
-                                Text("\(answer)")
-                                    .lineLimit(1)
-                                Spacer()
-                                if answer == viewModel.gameCards[viewModel.index].answer {
-                                    Image(systemName: "checkmark")
-                                        .symbolVariant(.circle.fill)
+                    } else {
+                        VStack {
+                            ForEach(viewModel.answers, id: \.self) { answer in
+                                HStack {
+                                    Text("\(answer)")
+                                        .lineLimit(1)
+                                    Spacer()
+                                    Image(systemName: "xmark")
+                                        .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
                                         .symbolRenderingMode(.palette)
                                         .foregroundStyle(
-                                            Color.white.opacity(0.8),
-                                            gameManager.mainColorSheme(color: .green)
+                                            Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
+                                            gameManager.mainColorSheme(color: viewModel.answer == answer ? .red:.blue)
                                         )
-                                } else {
-                                Image(systemName: "xmark")
-                                    .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
-                                    .symbolRenderingMode(.palette)
-                                    .foregroundStyle(
-                                        Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
-                                        gameManager.mainColorSheme(color: viewModel.answer == answer ? .red:.blue)
-                                    )
                                 }
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.primary)
+                                .frame(width: gameManager.width*0.77)
+                                .padding(.horizontal)
+                                .padding(.vertical, 8)
+                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                             }
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(.primary)
-                            .frame(width: gameManager.width*0.77)
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                        }
-                    }
-                } else {
-                    VStack {
-                        ForEach(viewModel.answers, id: \.self) { answer in
-                            HStack {
-                                Text("\(answer)")
-                                    .lineLimit(1)
-                                Spacer()
-                                Image(systemName: "xmark")
-                                    .symbolVariant(viewModel.answer == answer ? .circle.fill:.circle)
-                                    .symbolRenderingMode(.palette)
-                                    .foregroundStyle(
-                                        Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
-                                        gameManager.mainColorSheme(color: viewModel.answer == answer ? .red:.blue)
-                                    )
-                            }
-                            .font(.system(size: 14, weight: .regular))
-                            .foregroundColor(.primary)
-                            .frame(width: gameManager.width*0.77)
-                            .padding(.horizontal)
-                            .padding(.vertical, 8)
-                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                         }
                     }
                 }
