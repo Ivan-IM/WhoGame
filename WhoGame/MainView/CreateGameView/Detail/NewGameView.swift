@@ -41,6 +41,7 @@ struct NewGameView: View {
                 } label: {
                     HStack {
                         Text("Scores")
+                            .lineLimit(1)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(viewModel.showScore ? .primary:.secondary)
                         Group {
@@ -73,6 +74,7 @@ struct NewGameView: View {
                 } label: {
                     HStack {
                         Text("Answers")
+                            .lineLimit(1)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(viewModel.showAnswer ? .primary:.secondary)
                         Group {
@@ -105,6 +107,7 @@ struct NewGameView: View {
                 } label: {
                     HStack {
                         Text("Help")
+                            .lineLimit(1)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(viewModel.showHelp ? .primary:.secondary)
                         Group {
