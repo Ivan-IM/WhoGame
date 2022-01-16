@@ -23,7 +23,7 @@ struct BackgroundView: View {
             .fill(
                 LinearGradient(colors: [Color("white"), .teal, .blue], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
-            .shadow(color: .black.opacity(0.8), radius: 5, x: 0, y: 5)
+            .shadow(color: .secondary.opacity(0.8), radius: 5, x: 0, y: 5)
             Path { path in
                 path.move(to: CGPoint(x: 0, y: gameManager.height))
                 path.addLine(to: CGPoint(x: 0, y: gameManager.height*0.40))
@@ -34,7 +34,7 @@ struct BackgroundView: View {
             .fill(
                 LinearGradient(colors: [Color("white"), .yellow, .orange, .red], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
-            .shadow(color: .black.opacity(0.8), radius: 5, x: 2.5, y: 5)
+            .shadow(color: .secondary.opacity(0.8), radius: 5, x: 2.5, y: 5)
             Path { path in
                 path.move(to: CGPoint(x: 0, y: gameManager.height))
                 path.addLine(to: CGPoint(x: 0, y: gameManager.height*0.70))
@@ -45,7 +45,7 @@ struct BackgroundView: View {
             .fill(
                 LinearGradient(colors: [Color("white"), .mint, .green], startPoint: .topLeading, endPoint: .bottomTrailing)
             )
-            .shadow(color: .black.opacity(0.8), radius: 5, x: 5, y: 5)
+            .shadow(color: .secondary.opacity(0.8), radius: 5, x: 5, y: 5)
         }
         .background(
             LinearGradient(colors: [Color("white"), .teal], startPoint: .topLeading, endPoint: .bottomTrailing)

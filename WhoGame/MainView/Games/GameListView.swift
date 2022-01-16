@@ -131,6 +131,7 @@ struct GameListView: View {
             }
             .navigationBarHidden(true)
             .padding()
+            .edgesIgnoringSafeArea(.bottom)
         }
     }
     

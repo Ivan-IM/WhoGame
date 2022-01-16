@@ -61,6 +61,7 @@ struct GameHistoryView: View {
             }
             .navigationBarHidden(true)
             .padding()
+            .edgesIgnoringSafeArea(.bottom)
             .alert("Delete all history?", isPresented: $showingDaleteAlert) {
                 Button("OK", role: .destructive) {
                     for story in hystory {
