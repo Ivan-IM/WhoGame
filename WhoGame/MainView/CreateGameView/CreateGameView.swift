@@ -14,63 +14,66 @@ struct CreateGameView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
-            HStack {
-                Text("New game")
-                    .lineLimit(1)
-                    .font(.system(size: 32, weight: .bold))
-                    .foregroundStyle(
-                        gameManager.mainColorSheme(color: .red)
-                    )
-                Spacer()
-                Button {
-                    viewModel.clearGame()
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Image(systemName: "multiply.circle")
-                        .font(.system(size: 32, weight: .regular))
-                        .symbolVariant(.circle.fill)
-                        .symbolRenderingMode(.palette)
+        ZStack {
+            BackgroundView()
+            VStack {
+                HStack {
+                    Text("New game")
+                        .lineLimit(1)
+                        .font(.system(size: 32, weight: .bold))
                         .foregroundStyle(
-                            Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .blue)
+                            gameManager.mainColorSheme(color: .red)
                         )
-                }
-            }
-            Group {
-                if !viewModel.saveGame || viewModel.editMode {
-                    NewGameView(viewModel: viewModel)
-                } else {
-                    SaveGameView(viewModel: viewModel)
-                }
-            }
-            if viewModel.id.isEmpty {
-                TypeGameView(viewModel: viewModel)
-            }
-            if viewModel.showingNewCard && !viewModel.id.isEmpty {
-                Group {
-                    switch viewModel.type {
-                    case 1, 2:
-                        NewGameCardTestView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
-                    case 3:
-                        NewGameCardTastyView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
-                    default:
-                        NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                    Spacer()
+                    Button {
+                        viewModel.clearGame()
+                        presentationMode.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "multiply.circle")
+                            .font(.system(size: 32, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .blue)
+                            )
                     }
                 }
+                Group {
+                    if !viewModel.saveGame || viewModel.editMode {
+                        NewGameView(viewModel: viewModel)
+                    } else {
+                        SaveGameView(viewModel: viewModel)
+                    }
+                }
+                if viewModel.id.isEmpty {
+                    TypeGameView(viewModel: viewModel)
+                }
+                if viewModel.showingNewCard && !viewModel.id.isEmpty {
+                    Group {
+                        switch viewModel.type {
+                        case 1, 2:
+                            NewGameCardTestView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                        case 3:
+                            NewGameCardTastyView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                        default:
+                            NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                        }
+                    }
+                }
+                if !viewModel.id.isEmpty {
+                    GameCardListIView(gameId: viewModel.id, gameType: viewModel.type, editMode: viewModel.listEditMode, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
+                }
             }
-            if !viewModel.id.isEmpty {
-                GameCardListIView(gameId: viewModel.id, gameType: viewModel.type, editMode: viewModel.listEditMode, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
-            }
+            .padding()
+            .navigationBarHidden(true)
+            .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
+                Button("OK", role: .destructive) {
+                    viewModel.deleteGame()
+                    presentationMode.wrappedValue.dismiss()
+                }
+                Button("Cancel", role: .cancel) {}
         }
-        .padding()
-        .navigationBarHidden(true)
-        .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
-            Button("OK", role: .destructive) {
-                viewModel.deleteGame()
-                presentationMode.wrappedValue.dismiss()
-            }
-            Button("Cancel", role: .cancel) {}
         }
 
     }

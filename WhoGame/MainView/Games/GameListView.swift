@@ -20,9 +20,7 @@ struct GameListView: View {
     
     var body: some View {
         ZStack {
-            //            Rectangle()
-            //                .fill(.ultraThinMaterial)
-            //                .edgesIgnoringSafeArea(.all)
+            BackgroundView()
             VStack {
                 HStack {
                     Group {

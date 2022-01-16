@@ -15,6 +15,7 @@ struct MainView: View {
     var body: some View {
         NavigationView {
             ZStack {
+                BackgroundView()
                 VStack(spacing: 16) {
                     Spacer()
                     NavigationLink {
