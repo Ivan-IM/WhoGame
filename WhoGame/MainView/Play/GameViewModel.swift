@@ -72,7 +72,6 @@ final class GameViewModel: ObservableObject {
             case .none:
                 print("Game history save")
                 self.stageSystem = .end
-                print(self.answersHystory)
             case .some(_):
                 print(String(describing: error?.localizedDescription))
             }
