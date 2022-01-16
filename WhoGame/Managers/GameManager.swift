@@ -9,13 +9,21 @@ import SwiftUI
 
 final class GameManager: ObservableObject {
     
-    @Published var player: String = ""
+    @Published var leftHande: Bool {
+        didSet {
+            UserDefaults.standard.set(leftHande, forKey: "Hande")
+        }
+    }
     
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
     
     enum ColorSchemeEnum {
        case red, green, blue
+    }
+    
+    init() {
+        self.leftHande = UserDefaults.standard.object(forKey: "Hande") as? Bool ?? false
     }
     
     func mainColorSheme(color: ColorSchemeEnum) -> LinearGradient {
