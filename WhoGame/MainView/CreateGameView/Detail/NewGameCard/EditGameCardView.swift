@@ -32,6 +32,7 @@ struct EditGameCardView: View {
                     .focused($showingKeyboard)
                     .font(.system(size: 16, weight: .semibold))
                     .frame(height: 128)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 Group {
                     switch viewModel.gameType {
                     case 3:
@@ -46,6 +47,7 @@ struct EditGameCardView: View {
                     .focused($showingKeyboard)
                     .font(.system(size: 16, weight: .semibold))
                     .frame(height: 32)
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 Group {
                     if viewModel.gameType == 1 || viewModel.gameType == 2 {
                         Text("Fake answers:")
@@ -55,17 +57,20 @@ struct EditGameCardView: View {
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.secondary)
                             .frame(height: 32)
+                            .clipShape(RoundedRectangle(cornerRadius: 8))
                         if viewModel.gameType == 2 {
                             TextEditor(text: $viewModel.fakeAnswerThird)
                                 .focused($showingKeyboard)
                                 .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(.secondary)
                                 .frame(height: 32)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
                             TextEditor(text: $viewModel.fakeAnswerFourth)
                                 .focused($showingKeyboard)
                                 .font(.system(size: 16, weight: .semibold))
                                 .foregroundColor(.secondary)
                                 .frame(height: 32)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
                         }
                     }
                 }
@@ -77,6 +82,7 @@ struct EditGameCardView: View {
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.secondary)
                         .frame(height: 32)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
                 if viewModel.showScore {
                     HStack {
@@ -156,5 +162,10 @@ struct EditGameCardView: View {
                 Button("Cancel", role: .cancel) {}
         }
         }
+        .onAppear() {
+                    UITextView.appearance().backgroundColor = .secondarySystemFill
+                }.onDisappear() {
+                    UITextView.appearance().backgroundColor = nil
+                }
     }
 }
