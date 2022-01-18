@@ -62,7 +62,7 @@ struct GameHistoryDetailView: View {
                                 Spacer()
                                 Group {
                                     if story.gameType != 3 {
-                                        if story.answersHistory?[index] == story.rightAnswersHistory?[index] {
+                                        if story.answersHistory?[index].caseInsensitiveCompare(story.rightAnswersHistory?[index] ?? "") == .orderedSame {
                                             Image(systemName: "checkmark")
                                                 .symbolVariant(.circle.fill)
                                                 .symbolRenderingMode(.palette)
