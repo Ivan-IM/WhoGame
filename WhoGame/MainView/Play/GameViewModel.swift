@@ -10,6 +10,7 @@ import SwiftUI
 final class GameViewModel: ObservableObject {
     
     @Published var answersHystory = [String]()
+    @Published var rightAnswersHystory = [String]()
     @Published var answers = [String]()
     @Published var player: String = ""
     @Published var gameCards = [GameCardCD]()
@@ -55,10 +56,11 @@ final class GameViewModel: ObservableObject {
         gameHystory.date = Date()
         switch self.game.type {
         case 3:
-            gameHystory.answers = self.answersHystory
+            gameHystory.answersHistory = self.answersHystory
         default:
             gameHystory.showScore = self.game.showScore
-            gameHystory.answers = self.answersHystory
+            gameHystory.answersHistory = self.answersHystory
+            gameHystory.rightAnswersHistory = self.rightAnswersHystory
             gameHystory.rightAnswers = Int64(self.rightAnswers)
             gameHystory.questions = Int64(self.gameCards.count)
             gameHystory.score = Int64(self.score)
@@ -142,6 +144,7 @@ final class GameViewModel: ObservableObject {
             self.answers = getAnswers()
             self.stageSystem = .game
         } else {
+            self.rightAnswersHystory = self.gameCards.compactMap { $0.answer }
             saveGameHistory()
         }
     }

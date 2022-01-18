@@ -10,7 +10,6 @@ import SwiftUI
 struct GameHistoryCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
-    @State var showingDaleteAlert = false
     var story: GameHistoryCD
     
     var body: some View {
@@ -28,7 +27,7 @@ struct GameHistoryCellView: View {
                     .foregroundColor(.primary)
                 switch story.gameType {
                 case 3:
-                    Text("Positions: \(story.answers?.count ?? 0)")
+                    Text("Positions: \(story.answersHistory?.count ?? 0)")
                         .lineLimit(1)
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.primary)
@@ -53,28 +52,18 @@ struct GameHistoryCellView: View {
             }
             Spacer()
             VStack(alignment: .trailing) {
-                Button {
-                    showingDaleteAlert = true
-                } label: {
-                    Image(systemName: "trash")
+                    Image(systemName: "chevron.right")
                         .font(.system(size: 44, weight: .regular))
                         .symbolVariant(.circle.fill)
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .red)
+                            gameManager.mainColorSheme(color: .blue)
                         )
-                }
                 Spacer()
             }
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-        .alert("Delete history?", isPresented: $showingDaleteAlert) {
-            Button("OK", role: .destructive) {
-                PersistenceController.shared.delete(story)
-            }
-            Button("Cancel", role: .cancel) {}
-        }
     }
 }

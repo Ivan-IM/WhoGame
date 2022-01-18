@@ -55,7 +55,11 @@ struct GameHistoryView: View {
                 }
                 ScrollView(showsIndicators: false) {
                     ForEach(hystory) { story in
-                        GameHistoryCellView(story: story)
+                        NavigationLink {
+                            GameHistoryDetailView(story: story)
+                        } label: {
+                            GameHistoryCellView(story: story)
+                        }
                     }
                 }
             }
