@@ -51,54 +51,7 @@ struct GameHistoryDetailView: View {
                             )
                     }
                 }
-                HStack {
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text("\(story.gameName ?? "Unknown")")
-                            .lineLimit(1)
-                            .font(.system(size: 24, weight: .bold))
-                            .foregroundStyle(
-                                gameManager.mainColorSheme(color: .green)
-                            )
-                        Text("Player: \(story.player ?? "Unknown")")
-                            .lineLimit(1)
-                            .font(.system(size: 16, weight: .semibold))
-                            .foregroundColor(.primary)
-                        switch story.gameType {
-                        case 3:
-                            Text("Positions: \(story.answersHistory?.count ?? 0)")
-                                .lineLimit(1)
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.primary)
-                        default:
-                            Text("Right answers: \(story.rightAnswers)/\(story.questions)")
-                                .lineLimit(1)
-                                .font(.system(size: 16, weight: .semibold))
-                                .foregroundColor(.primary)
-                            if story.showScore {
-                                Text("Scores: \(story.score)")
-                                    .lineLimit(1)
-                                    .font(.system(size: 16, weight: .semibold))
-                                    .foregroundColor(.primary)
-                            }
-                        }
-                        HStack {
-                            Text("Date: \(story.date?.longDate ?? "Unknown")")
-                            Text(story.date ?? Date(), style: .time)
-                        }
-                        .lineLimit(1)
-                        .font(.system(size: 16, weight: .ultraLight))
-                    }
-                    Spacer()
-                }
-                .padding()
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                .alert("Delete history?", isPresented: $showingDaleteAlert) {
-                    Button("OK", role: .destructive) {
-                        PersistenceController.shared.delete(story)
-                        presentationMode.wrappedValue.dismiss()
-                    }
-                    Button("Cancel", role: .cancel) {}
-                }
+                GameHistoryCellView(story: story, showImage: false)
                 ScrollView(showsIndicators: false) {
                     if let answers = story.answersHistory {
                         ForEach(0..<answers.count) { index in
@@ -140,6 +93,13 @@ struct GameHistoryDetailView: View {
             .navigationBarHidden(true)
             .padding()
             .edgesIgnoringSafeArea(.bottom)
+            .alert("Delete history?", isPresented: $showingDaleteAlert) {
+                Button("OK", role: .destructive) {
+                    PersistenceController.shared.delete(story)
+                    presentationMode.wrappedValue.dismiss()
+                }
+                Button("Cancel", role: .cancel) {}
+            }
         }
     }
 }

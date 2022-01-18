@@ -58,7 +58,7 @@ struct GameHistoryView: View {
                         NavigationLink {
                             GameHistoryDetailView(story: story)
                         } label: {
-                            GameHistoryCellView(story: story)
+                            GameHistoryCellView(story: story, showImage: true)
                         }
                     }
                 }

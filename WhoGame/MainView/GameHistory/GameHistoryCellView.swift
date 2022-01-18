@@ -11,6 +11,7 @@ struct GameHistoryCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
     var story: GameHistoryCD
+    var showImage: Bool
     
     var body: some View {
         HStack {
@@ -51,16 +52,20 @@ struct GameHistoryCellView: View {
                 .font(.system(size: 16, weight: .ultraLight))
             }
             Spacer()
-            VStack(alignment: .trailing) {
-                    Image(systemName: "chevron.right")
-                        .font(.system(size: 44, weight: .regular))
-                        .symbolVariant(.circle.fill)
-                        .symbolRenderingMode(.palette)
-                        .foregroundStyle(
-                            Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .blue)
-                        )
-                Spacer()
+            Group {
+                if showImage {
+                    VStack(alignment: .trailing) {
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .blue)
+                                )
+                        Spacer()
+                    }
+                }
             }
         }
         .padding()
