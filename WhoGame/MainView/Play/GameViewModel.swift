@@ -9,16 +9,18 @@ import SwiftUI
 
 final class GameViewModel: ObservableObject {
     
+    @Published var player: String = ""
+    @Published var score: Int = 0
+    @Published var rightAnswers: Int = 0
+    @Published var index: Int = 0
+    
+    @Published var answer: String = ""
+    @Published var gameCards = [GameCardCD]()
     @Published var answersHystory = [String]()
     @Published var rightAnswersHystory = [String]()
     @Published var answers = [String]()
-    @Published var player: String = ""
-    @Published var gameCards = [GameCardCD]()
-    @Published var score: Int = 0
-    @Published var rightAnswers: Int = 0
-    @Published var answer: String = ""
-    @Published var index: Int = 0
     @Published var isFavorite: Bool = false
+    
     @Published var answerSystem: CheckAnswerSystem = .text
     @Published var stageSystem: CheckStageSystem = .start
     @Published var rulesSystem: AboutRules = .name
@@ -169,6 +171,7 @@ final class GameViewModel: ObservableObject {
         self.player = ""
         self.answer = ""
         self.answersHystory.removeAll()
+        self.rightAnswersHystory.removeAll()
         self.rightAnswers = 0
         self.index = 0
         self.score = 0
