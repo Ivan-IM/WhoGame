@@ -56,6 +56,7 @@ struct GameListCellView: View {
                         Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
                             .lineLimit(1)
                             .font(.system(size: 16, weight: .ultraLight))
+                            .foregroundColor(.primary)
                     }
                 }
             }

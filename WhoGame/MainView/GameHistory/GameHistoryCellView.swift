@@ -50,6 +50,7 @@ struct GameHistoryCellView: View {
                 }
                 .lineLimit(1)
                 .font(.system(size: 16, weight: .ultraLight))
+                .foregroundColor(.primary)
             }
             Spacer()
             Group {

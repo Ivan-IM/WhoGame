@@ -14,10 +14,10 @@ struct BackgroundView: View {
     var body: some View {
         ZStack {
             Path { path in
-                path.move(to: CGPoint(x: 0, y: gameManager.height))
-                path.addLine(to: CGPoint(x: 0, y: 0))
-                path.addLine(to: CGPoint(x: gameManager.width, y: gameManager.height*0.93))
-                path.addLine(to: CGPoint(x: gameManager.width, y: gameManager.height))
+                path.move(to: CGPoint(x: gameManager.width, y: gameManager.height))
+                path.addLine(to: CGPoint(x: 0, y: gameManager.height))
+                path.addLine(to: CGPoint(x: 0, y: gameManager.height*0.93))
+                path.addLine(to: CGPoint(x: gameManager.width, y: 0))
                 path.closeSubpath()
             }
             .fill(
@@ -50,7 +50,6 @@ struct BackgroundView: View {
         .background(
             LinearGradient(colors: [Color("white"), .teal], startPoint: .topLeading, endPoint: .bottomTrailing)
         )
-        .rotation3DEffect(.degrees(180), axis: (x: 0, y: 1, z: 0))
     }
 }
 

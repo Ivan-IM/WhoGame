@@ -17,6 +17,14 @@ struct MainView: View {
             ZStack(alignment: .top) {
                 BackgroundView()
                 VStack(spacing: 16) {
+                    Button {
+                        withAnimation(.default) {
+                            gameManager.leftHande.toggle()
+                        }
+                    } label: {
+                        Text("Hand")
+                    }
+
                     Spacer()
                     NavigationLink {
                         GameListView()
@@ -31,7 +39,7 @@ struct MainView: View {
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     }
-                    .offset(x: gameManager.width*0.22)
+                    .offset(x: gameManager.leftHande ? -gameManager.width*0.22:gameManager.width*0.22)
                     NavigationLink {
                         CreateGameView(viewModel: CreateGameViewModel())
                     } label: {
@@ -58,7 +66,7 @@ struct MainView: View {
                             )
                             .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     }
-                    .offset(x: -gameManager.width*0.22)
+                    .offset(x: gameManager.leftHande ? gameManager.width*0.22:-gameManager.width*0.22)
                 }
                 .padding()
                 .navigationBarHidden(true)
