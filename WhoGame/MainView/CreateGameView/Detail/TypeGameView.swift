@@ -26,12 +26,13 @@ struct TypeGameView: View {
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
                                 gameManager.mainColorSheme(color: viewModel.type == 0 ? .green:.red)
-                        )
+                            )
                         if viewModel.type == 0 {
                             Text("Classic")
                                 .font(.system(size: 22, weight: .semibold))
                                 .foregroundColor(.primary)
                                 .padding(.trailing, 16)
+                                .transition(.opacity)
                         }
                     }
                 }
@@ -47,12 +48,13 @@ struct TypeGameView: View {
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
                                 gameManager.mainColorSheme(color: viewModel.type == 1 ? .green:.red)
-                        )
+                            )
                         if viewModel.type == 1 {
                             Text("Test (2 answers)")
                                 .font(.system(size: 22, weight: .semibold))
                                 .foregroundColor(.primary)
                                 .padding(.trailing, 16)
+                                .transition(.opacity)
                         }
                     }
                 }
@@ -68,12 +70,13 @@ struct TypeGameView: View {
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
                                 gameManager.mainColorSheme(color: viewModel.type == 2 ? .green:.red)
-                        )
+                            )
                         if viewModel.type == 2 {
                             Text("Test (4 answers)")
                                 .font(.system(size: 22, weight: .semibold))
                                 .foregroundColor(.primary)
                                 .padding(.trailing, 16)
+                                .transition(.opacity)
                         }
                     }
                 }
@@ -89,17 +92,19 @@ struct TypeGameView: View {
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
                                 gameManager.mainColorSheme(color: viewModel.type == 3 ? .green:.red)
-                        )
+                            )
                         if viewModel.type == 3 {
                             Text("Blind tasting")
                                 .font(.system(size: 22, weight: .semibold))
                                 .foregroundColor(.primary)
                                 .padding(.trailing, 16)
+                                .transition(.opacity)
                         }
                     }
                 }
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             }
+            .animation(.default, value: viewModel.type)
             Spacer()
         }
     }
