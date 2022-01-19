@@ -168,7 +168,9 @@ struct NewGameView: View {
                         }
                     } else {
                         Button {
-                            viewModel.saveNewGame()
+                            withAnimation {
+                                viewModel.saveNewGame()
+                            }
                             showingKeyboard = false
                         } label: {
                             Image(systemName: "checkmark")

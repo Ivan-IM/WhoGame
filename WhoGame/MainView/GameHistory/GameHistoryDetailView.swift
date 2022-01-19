@@ -15,7 +15,7 @@ struct GameHistoryDetailView: View {
     var story: GameHistoryCD
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             BackgroundView()
             VStack {
                 HStack {

@@ -15,7 +15,7 @@ struct GameHistoryView: View {
     @State var showingDaleteAlert = false
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             BackgroundView()
             VStack {
                 HStack {

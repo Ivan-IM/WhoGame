@@ -166,7 +166,9 @@ struct SaveGameView: View {
                         )
                 }
                 Button {
-                    viewModel.showingNewCard = true
+                    withAnimation {
+                        viewModel.showingNewCard = true
+                    }
                 } label: {
                     Image(systemName: "plus")
                         .font(.system(size: 44, weight: .regular))

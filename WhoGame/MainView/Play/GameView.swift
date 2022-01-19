@@ -14,7 +14,7 @@ struct GameView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             BackgroundView()
             VStack {
                 HStack {

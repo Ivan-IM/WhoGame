@@ -60,7 +60,9 @@ struct NewGameCardView: View {
                 Spacer()
                 Button {
                     showingKeyboard = false
-                    viewModel.showingNewCard.wrappedValue = false
+                    withAnimation {
+                        viewModel.showingNewCard.wrappedValue = false
+                    }
                 } label: {
                     Image(systemName: "xmark")
                         .font(.system(size: 44, weight: .regular))
@@ -73,7 +75,9 @@ struct NewGameCardView: View {
                 }
                 Button {
                     showingKeyboard = false
-                    viewModel.saveNewGameCard()
+                    withAnimation {
+                        viewModel.saveNewGameCard()
+                    }
                 } label: {
                     Image(systemName: "checkmark")
                         .font(.system(size: 44, weight: .regular))

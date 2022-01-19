@@ -14,7 +14,7 @@ struct CreateGameView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             BackgroundView()
             VStack {
                 HStack {
@@ -47,7 +47,11 @@ struct CreateGameView: View {
                     }
                 }
                 if viewModel.id.isEmpty {
+                    Spacer()
                     TypeGameView(viewModel: viewModel)
+                        .transition(.move(edge: .leading))
+                        .animation(.default, value: viewModel.id)
+                    Spacer()
                 }
                 if viewModel.showingNewCard && !viewModel.id.isEmpty {
                     Group {
@@ -60,6 +64,8 @@ struct CreateGameView: View {
                             NewGameCardView(viewModel: NewGameCardViewModel(showingNewCard: $viewModel.showingNewCard, gameType: viewModel.type, gameId: viewModel.id, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
                         }
                     }
+                    .transition(.move(edge: .leading))
+                    .animation(.default, value: viewModel.showingNewCard)
                 }
                 if !viewModel.id.isEmpty {
                     GameCardListIView(gameId: viewModel.id, gameType: viewModel.type, editMode: viewModel.listEditMode, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
