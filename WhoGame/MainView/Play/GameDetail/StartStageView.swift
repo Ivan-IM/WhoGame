@@ -35,9 +35,9 @@ struct StartStageView: View {
                 case .classic:
                     Text("Classic game")
                 case .test2:
-                    Text("Test game (2 answers)")
+                    Text("Test (2 answers)")
                 case .test4:
-                    Text("Test game (4 answers)")
+                    Text("Test (4 answers)")
                 case .tasty:
                     Text("Blind tasting game")
                 }

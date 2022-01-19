@@ -27,7 +27,6 @@ struct EndStageView: View {
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
             } else {
                 Text("Right answers: \(viewModel.rightAnswers)")
-                    .lineLimit(1)
                     .font(.system(size: 33, weight: .semibold))
                     .foregroundStyle(
                         gameManager.mainColorSheme(color: .blue)

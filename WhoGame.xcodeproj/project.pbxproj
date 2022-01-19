@@ -39,6 +39,8 @@
 		CF61753C27904369009953BB /* GameStageTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF61753B27904369009953BB /* GameStageTestView.swift */; };
 		CF618B062793E73200B7DC30 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B052793E73200B7DC30 /* BackgroundView.swift */; };
 		CF618B082796854600B7DC30 /* GameHistoryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B072796854600B7DC30 /* GameHistoryDetailView.swift */; };
+		CF618B0A2797F9D300B7DC30 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = CF618B092797F9D300B7DC30 /* Localizable.stringsdict */; };
+		CF618B112798030700B7DC30 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF618B0F2798030700B7DC30 /* Localizable.strings */; };
 		CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */; };
 		CF76C3682792E6E000F13626 /* GameStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3672792E6E000F13626 /* GameStageTastyView.swift */; };
 		CF76C36A2792F7F100F13626 /* EndStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3692792F7F100F13626 /* EndStageTastyView.swift */; };
@@ -78,6 +80,8 @@
 		CF61753B27904369009953BB /* GameStageTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageTestView.swift; sourceTree = "<group>"; };
 		CF618B052793E73200B7DC30 /* BackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		CF618B072796854600B7DC30 /* GameHistoryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameHistoryDetailView.swift; sourceTree = "<group>"; };
+		CF618B092797F9D300B7DC30 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		CF618B102798030700B7DC30 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTastyView.swift; sourceTree = "<group>"; };
 		CF76C3672792E6E000F13626 /* GameStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageTastyView.swift; sourceTree = "<group>"; };
 		CF76C3692792F7F100F13626 /* EndStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageTastyView.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 		CF298934275D159700D3C3C1 = {
 			isa = PBXGroup;
 			children = (
+				CF618B0F2798030700B7DC30 /* Localizable.strings */,
+				CF618B092797F9D300B7DC30 /* Localizable.stringsdict */,
 				CF29893F275D159700D3C3C1 /* WhoGame */,
 				CF29893E275D159700D3C3C1 /* Products */,
 			);
@@ -290,6 +296,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = CF298934275D159700D3C3C1;
 			productRefGroup = CF29893E275D159700D3C3C1 /* Products */;
@@ -307,7 +314,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF298948275D159900D3C3C1 /* Preview Assets.xcassets in Resources */,
+				CF618B112798030700B7DC30 /* Localizable.strings in Resources */,
 				CF298945275D159900D3C3C1 /* Assets.xcassets in Resources */,
+				CF618B0A2797F9D300B7DC30 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -356,11 +365,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		CF618B0F2798030700B7DC30 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF618B102798030700B7DC30 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		CF29894E275D159900D3C3C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -414,6 +436,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -422,6 +445,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_EMPTY_CONTEXT = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -468,6 +493,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};

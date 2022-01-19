@@ -1,0 +1,171 @@
+/* No comment provided by engineer. */
+"Answer" = "Ответ";
+
+/* No comment provided by engineer. */
+"Answer:" = "Ответ:";
+
+/* No comment provided by engineer. */
+"Answer: %@" = "Ответ: %@";
+
+/* No comment provided by engineer. */
+"Answers" = "Ответы";
+
+/* No comment provided by engineer. */
+"Answers will be shown" = "Ответы будут показаны";
+
+/* No comment provided by engineer. */
+"Answers will not be shown" = "Ответы не будут показаны";
+
+/* No comment provided by engineer. */
+"Blind tasting" = "Слепая дегустация";
+
+/* No comment provided by engineer. */
+"Blind tasting game" = "Слепая дегустация";
+
+/* No comment provided by engineer. */
+"Cancel" = "Отмена";
+
+/* No comment provided by engineer. */
+"Classic" = "Классическая";
+
+/* No comment provided by engineer. */
+"Classic game" = "Классическая игра";
+
+/* No comment provided by engineer. */
+"Date of creation" = "Дата создания";
+
+/* No comment provided by engineer. */
+"Date of creation: %@" = "Дата создания: %@";
+
+/* No comment provided by engineer. */
+"Date: %@" = "Дата: %@";
+
+/* No comment provided by engineer. */
+"Delete all history?" = "Очистить историю?";
+
+/* No comment provided by engineer. */
+"Delete game card?" = "Удалить игровую карточку?";
+
+/* No comment provided by engineer. */
+"Delete game?" = "Удалить игру?";
+
+/* No comment provided by engineer. */
+"Delete history?" = "Удалить историю?";
+
+/* No comment provided by engineer. */
+"Dish" = "Блюдо";
+
+/* No comment provided by engineer. */
+"Dish:" = "Блюдо:";
+
+/* No comment provided by engineer. */
+"Edit" = "Править";
+
+/* No comment provided by engineer. */
+"End tasting?" = "Закончить дегустацию?";
+
+/* No comment provided by engineer. */
+"Enter your name" = "Введите ваше имя";
+
+/* No comment provided by engineer. */
+"Fake answer" = "Ложный ответ";
+
+/* No comment provided by engineer. */
+"Fake answers:" = "Ложные ответы:";
+
+/* No comment provided by engineer. */
+"Game name" = "Название игры";
+
+/* No comment provided by engineer. */
+"Help" = "Подсказка";
+
+/* No comment provided by engineer. */
+"Help is off" = "Подсказки выключены";
+
+/* No comment provided by engineer. */
+"Help is on" = "Подсказки включены";
+
+/* No comment provided by engineer. */
+"Help:" = "Подсказка:";
+
+/* No comment provided by engineer. */
+"History" = "История";
+
+/* No comment provided by engineer. */
+"Mark your dish" = "Маркировка вашего блюда";
+
+/* No comment provided by engineer. */
+"Mark your dish:" = "Маркировка вашего блюда:";
+
+/* No comment provided by engineer. */
+"Name" = "Имя";
+
+/* No comment provided by engineer. */
+"New game" = "Новая игра";
+
+/* No comment provided by engineer. */
+"Play" = "Играть";
+
+/* No comment provided by engineer. */
+"Player" = "Игрок";
+
+/* No comment provided by engineer. */
+"Player: %@" = "Игрок: %@";
+
+/* No comment provided by engineer. */
+"Positions: %lld" = "Позиции: %lld";
+
+/* No comment provided by engineer. */
+"Progress: %lld/%lld" = "Прогресс: %lld/%lld";
+
+/* No comment provided by engineer. */
+"Question" = "Вопрос";
+
+/* No comment provided by engineer. */
+"Question:" = "Вопрос:";
+
+/* No comment provided by engineer. */
+"Questions: %lld" = "Вопросы: %lld";
+
+/* No comment provided by engineer. */
+"Quit the game?" = "Выйти из игры?";
+
+/* No comment provided by engineer. */
+"Right answer" = "Правильный ответ";
+
+/* No comment provided by engineer. */
+"Right answers: %lld" = "Правильные ответы: %lld";
+
+/* No comment provided by engineer. */
+"Right answers: %lld/%lld" = "Правильных ответов: %lld/%lld";
+
+/* No comment provided by engineer. */
+"Score" = "Баллы";
+
+/* No comment provided by engineer. */
+"Score system is off" = "Бальная система выключена";
+
+/* No comment provided by engineer. */
+"Score system is on" = "Бальная система включена";
+
+/* No comment provided by engineer. */
+"Scores" = "Баллы";
+
+/* No comment provided by engineer. */
+"Scores: %lld" = "Баллы: %lld";
+
+/* No comment provided by engineer. */
+"Test (2 answers)" = "Тест (2 вопроса)";
+
+/* No comment provided by engineer. */
+"Test (4 answers)" = "Тест (4 вопроса)";
+
+/* No comment provided by engineer. */
+"Theme" = "Тема";
+
+/* No comment provided by engineer. */
+"Theme: %@" = "Тема: %@";
+
+/* No comment provided by engineer. */
+"Wrong answer" = "Неверный ответ";
+
