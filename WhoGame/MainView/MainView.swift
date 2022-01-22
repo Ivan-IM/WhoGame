@@ -22,9 +22,36 @@ struct MainView: View {
                             gameManager.leftHande.toggle()
                         }
                     } label: {
-                        Text("Hand")
+                        HStack {
+                            Image(systemName: "w")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: gameManager.leftHande ? .blue:.green)
+                                )
+                            Image(systemName: "h")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .red)
+                                )
+                            Image(systemName: "o")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: gameManager.leftHande ? .green:.blue)
+                                )
+                        }
+                        .opacity(0.8)
                     }
 
+                    
                     Spacer()
                     NavigationLink {
                         GameListView()
@@ -71,10 +98,10 @@ struct MainView: View {
                 .padding()
                 .navigationBarHidden(true)
             }
-//            .animation(.easeInOut(duration: 3).repeatForever(), value: animate)
-//            .onAppear {
-//                animate = true
-//            }
+            //            .animation(.easeInOut(duration: 3).repeatForever(), value: animate)
+            //            .onAppear {
+            //                animate = true
+            //            }
         }
     }
 }
