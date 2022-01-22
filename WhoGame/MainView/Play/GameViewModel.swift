@@ -170,6 +170,7 @@ final class GameViewModel: ObservableObject {
     func clearGame() {
         self.player = ""
         self.answer = ""
+        self.answers.removeAll()
         self.answersHystory.removeAll()
         self.rightAnswersHystory.removeAll()
         self.rightAnswers = 0

@@ -209,6 +209,11 @@ struct GameStageTestView: View {
             }
             .opacity(viewModel.answer.isEmpty ? 0.2:1.0)
             .disabled(viewModel.answer.isEmpty)
+            .onAppear() {
+                if !viewModel.gameCards.isEmpty {
+                    viewModel.answers = viewModel.getAnswers()
+                }
+            }
         }
     }
 }
