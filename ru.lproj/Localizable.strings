@@ -155,6 +155,9 @@
 "Scores: %lld" = "Баллы: %lld";
 
 /* No comment provided by engineer. */
+"Test" = "Тест";
+
+/* No comment provided by engineer. */
 "Test (2 answers)" = "Тест (2 ответа)";
 
 /* No comment provided by engineer. */

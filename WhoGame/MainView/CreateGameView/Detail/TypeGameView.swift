@@ -41,7 +41,7 @@ struct TypeGameView: View {
                     viewModel.type = 2
                 } label: {
                     HStack {
-                        Image(systemName: "4")
+                        Image(systemName: "hand.raised")
                             .font(.system(size: 44, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
