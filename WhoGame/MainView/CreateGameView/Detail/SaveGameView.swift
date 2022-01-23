@@ -179,7 +179,7 @@ struct SaveGameView: View {
                             gameManager.mainColorSheme(color: .green)
                         )
                 }
-                .opacity(viewModel.showingNewCard ? 0.2:1.0)
+                .opacity(viewModel.showingNewCard ? 0.3:1.0)
                 .disabled(viewModel.showingNewCard)
             }
         }

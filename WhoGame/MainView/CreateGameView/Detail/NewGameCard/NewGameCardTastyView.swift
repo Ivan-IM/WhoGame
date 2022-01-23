@@ -59,7 +59,7 @@ struct NewGameCardTastyView: View {
                             gameManager.mainColorSheme(color: .green)
                         )
                 }
-                .opacity(viewModel.isValidForm() ? 0.2:1.0)
+                .opacity(viewModel.isValidForm() ? 0.3:1.0)
             .disabled(viewModel.isValidForm())
             }
 

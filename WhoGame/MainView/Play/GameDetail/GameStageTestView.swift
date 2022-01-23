@@ -68,7 +68,7 @@ struct GameStageTestView: View {
                                         .symbolRenderingMode(.palette)
                                         .foregroundStyle(
                                             Color.white.opacity(viewModel.answer == answer ? 0.8:0.0),
-                                            gameManager.mainColorSheme(color: viewModel.answer == answer ? .green:.blue)
+                                            gameManager.mainColorSheme(color: .blue)
                                         )
                                 }
                                 .font(.system(size: 14, weight: .regular))

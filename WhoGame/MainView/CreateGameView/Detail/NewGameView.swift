@@ -135,6 +135,40 @@ struct NewGameView: View {
                 }
             }
             HStack {
+                Group {
+                    if viewModel.id.isEmpty {
+                        if viewModel.type == 1 || viewModel.type == 2 {
+                            HStack {
+                                Button {
+                                    viewModel.type = 1
+                                } label: {
+                                    Image(systemName: "2")
+                                        .font(.system(size: 44, weight: .regular))
+                                        .symbolVariant(.circle.fill)
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(
+                                            Color.white.opacity(0.8),
+                                            gameManager.mainColorSheme(color: .blue)
+                                        )
+                                }
+                                .opacity(viewModel.type == 1 ? 1.0:0.3)
+                                Button {
+                                    viewModel.type = 2
+                                } label: {
+                                    Image(systemName: "4")
+                                        .font(.system(size: 44, weight: .regular))
+                                        .symbolVariant(.circle.fill)
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(
+                                            Color.white.opacity(0.8),
+                                            gameManager.mainColorSheme(color: .blue)
+                                        )
+                                }
+                                .opacity(viewModel.type == 2 ? 1.0:0.3)
+                            }
+                        }
+                    }
+                }
                 Spacer()
                 Group {
                     if viewModel.editMode {
@@ -164,6 +198,7 @@ struct NewGameView: View {
                                         gameManager.mainColorSheme(color: .green)
                                     )
                             }
+                            .opacity(viewModel.isValidForm() ? 0.3:1.0)
                             .disabled(viewModel.isValidForm())
                         }
                     } else {
@@ -182,7 +217,7 @@ struct NewGameView: View {
                                     gameManager.mainColorSheme(color: .green)
                                 )
                         }
-                        .opacity(viewModel.isValidForm() ? 0.2:1.0)
+                        .opacity(viewModel.isValidForm() ? 0.3:1.0)
                         .disabled(viewModel.isValidForm())
                     }
                 }

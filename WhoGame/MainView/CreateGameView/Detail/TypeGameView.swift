@@ -38,28 +38,6 @@ struct TypeGameView: View {
                 }
                 .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 Button {
-                    viewModel.type = 1
-                } label: {
-                    HStack {
-                        Image(systemName: "2")
-                            .font(.system(size: 44, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: viewModel.type == 1 ? .green:.red)
-                            )
-                        if viewModel.type == 1 {
-                            Text("Test (2 answers)")
-                                .font(.system(size: 22, weight: .semibold))
-                                .foregroundColor(.primary)
-                                .padding(.trailing, 16)
-                                .transition(.opacity)
-                        }
-                    }
-                }
-                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                Button {
                     viewModel.type = 2
                 } label: {
                     HStack {
@@ -69,10 +47,10 @@ struct TypeGameView: View {
                             .symbolRenderingMode(.palette)
                             .foregroundStyle(
                                 Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: viewModel.type == 2 ? .green:.red)
+                                gameManager.mainColorSheme(color: viewModel.type == 1 || viewModel.type == 2 ? .green:.red)
                             )
-                        if viewModel.type == 2 {
-                            Text("Test (4 answers)")
+                        if viewModel.type == 1 || viewModel.type == 2 {
+                            Text("Test")
                                 .font(.system(size: 22, weight: .semibold))
                                 .foregroundColor(.primary)
                                 .padding(.trailing, 16)

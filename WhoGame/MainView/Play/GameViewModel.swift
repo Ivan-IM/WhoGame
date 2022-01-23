@@ -46,9 +46,6 @@ final class GameViewModel: ObservableObject {
     init(game: GameCD) {
         self.game = game
         self.gameCards = fetchGameCards(game: game)
-        if !gameCards.isEmpty {
-            self.answers = getAnswers()
-        }
     }
     
     func saveGameHistory() {
