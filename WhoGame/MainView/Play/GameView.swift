@@ -85,13 +85,19 @@ struct GameView: View {
                     viewModel.clearGame()
                     presentationMode.wrappedValue.dismiss()
                 }
+                if !viewModel.isFavorite {
+                    Button("Add to favorites", role: .destructive) {
+                        viewModel.updateGameFavorite()
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
                 Button("Cancel", role: .cancel) {}
             }
             .alert("Help", isPresented: $viewModel.showingHelpAlert, actions: {
                 
             }, message: {
                 Text("\(viewModel.gameCards[viewModel.index].help ?? "")")
-        })
+            })
         }
     }
 }

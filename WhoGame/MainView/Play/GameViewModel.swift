@@ -46,6 +46,7 @@ final class GameViewModel: ObservableObject {
     init(game: GameCD) {
         self.game = game
         self.gameCards = fetchGameCards(game: game)
+        self.isFavorite = game.favorite
     }
     
     func saveGameHistory() {
