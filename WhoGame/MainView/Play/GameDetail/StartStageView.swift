@@ -20,6 +20,7 @@ struct StartStageView: View {
                 switch viewModel.rulesSystem {
                 case .name:
                     Text("Enter your name")
+                        .foregroundColor(.secondary)
                 case .scoreOn:
                     Text("Score system is on")
                 case .scoreOff:
