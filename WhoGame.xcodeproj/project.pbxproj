@@ -62,6 +62,7 @@
 		CF618B6427AF9CD100B7DC30 /* FBExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5927AF9CD100B7DC30 /* FBExercise.swift */; };
 		CF618B6527AF9CD100B7DC30 /* FBFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */; };
 		CF618B6627AF9CD100B7DC30 /* FBWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */; };
+		CF618B6827AFC55F00B7DC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */; };
 		CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */; };
 		CF76C3682792E6E000F13626 /* GameStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3672792E6E000F13626 /* GameStageTastyView.swift */; };
 		CF76C36A2792F7F100F13626 /* EndStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3692792F7F100F13626 /* EndStageTastyView.swift */; };
@@ -120,6 +121,9 @@
 		CF618B5927AF9CD100B7DC30 /* FBExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBExercise.swift; sourceTree = "<group>"; };
 		CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendModel.swift; sourceTree = "<group>"; };
 		CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBWorkoutModel.swift; sourceTree = "<group>"; };
+		CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CF618B6927AFC82900B7DC30 /* WhoGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhoGame.entitlements; sourceTree = "<group>"; };
+		CF618B6A27AFC9E000B7DC30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTastyView.swift; sourceTree = "<group>"; };
 		CF76C3672792E6E000F13626 /* GameStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageTastyView.swift; sourceTree = "<group>"; };
 		CF76C3692792F7F100F13626 /* EndStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageTastyView.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 		CF29893F275D159700D3C3C1 /* WhoGame */ = {
 			isa = PBXGroup;
 			children = (
+				CF618B6A27AFC9E000B7DC30 /* Info.plist */,
+				CF618B6927AFC82900B7DC30 /* WhoGame.entitlements */,
 				CF618B4F27AF9CD100B7DC30 /* Models */,
 				CF618B3727AF97CF00B7DC30 /* Login */,
 				CF2062D327878B4600EABCCE /* Extention */,
@@ -242,6 +248,7 @@
 				CF08537C2761B169001DDC70 /* MainView */,
 				CF298955275D169E00D3C3C1 /* Coredata */,
 				CF298940275D159700D3C3C1 /* WhoGameApp.swift */,
+				CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */,
 				CF298942275D159700D3C3C1 /* ContentView.swift */,
 				CF298944275D159900D3C3C1 /* Assets.xcassets */,
 				CF298946275D159900D3C3C1 /* Preview Content */,
@@ -407,6 +414,7 @@
 			files = (
 				CF298948275D159900D3C3C1 /* Preview Assets.xcassets in Resources */,
 				CF618B112798030700B7DC30 /* Localizable.strings in Resources */,
+				CF618B6827AFC55F00B7DC30 /* GoogleService-Info.plist in Resources */,
 				CF298945275D159900D3C3C1 /* Assets.xcassets in Resources */,
 				CF618B0A2797F9D300B7DC30 /* Localizable.stringsdict in Resources */,
 			);
@@ -613,12 +621,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WhoGame/WhoGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhoGame/Preview Content\"";
 				DEVELOPMENT_TEAM = 5S24UZWM65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhoGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -629,7 +639,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.imarishin.WhoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -643,12 +653,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WhoGame/WhoGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"WhoGame/Preview Content\"";
 				DEVELOPMENT_TEAM = 5S24UZWM65;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WhoGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -659,7 +671,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.imarishin.WhoGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

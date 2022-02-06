@@ -30,13 +30,6 @@ struct LoginView: View {
                     .transition(.offset(x: -gameManager.width))
                     .animation(.default, value: viewModel.loginView)
             }
-//            SignInView(viewModel: viewModel)
-//            SignUpView(viewModel: viewModel)
-//                .offset(y: viewModel.showingSingUp ? 0:-height*0.7)
-//                .animation(.spring(response: 0.6, dampingFraction: 0.6), value: viewModel.showingSingUp)
-//            ForgotPasswordView(viewModel: viewModel)
-//                .offset(y: viewModel.showingForgotPassword ? 0:-height*0.7)
-//                .animation(.spring(response: 0.6, dampingFraction: 0.6), value: viewModel.showingForgotPassword)
         }
     }
 }

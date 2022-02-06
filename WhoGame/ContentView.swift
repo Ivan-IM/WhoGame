@@ -10,8 +10,20 @@ import CoreData
 
 struct ContentView: View {
 
+    @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
+    
     var body: some View {
-        LoginView(viewModel: LoginViewModel())
+        Group {
+            if viewModel.isUserAuthenticated == .undefined {
+                Text("Loading...")
+            }
+            else if viewModel.isUserAuthenticated == .signedOut {
+                LoginView(viewModel: viewModel)
+            }
+            else {
+                MainView()
+            }
+        }
     }
 }
 

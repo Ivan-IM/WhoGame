@@ -44,6 +44,10 @@ final class LoginViewModel: ObservableObject {
         case undefined, signedOut, sigenIn
     }
     
+    init() {
+        configureFBStateDidChange()
+    }
+    
     func configureFBStateDidChange() {
         authStateDidChangeListenerHandle = Auth.auth().addStateDidChangeListener({ _, user in
             guard let user = user else {
