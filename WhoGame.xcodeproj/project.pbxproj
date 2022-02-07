@@ -63,6 +63,8 @@
 		CF618B6527AF9CD100B7DC30 /* FBFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */; };
 		CF618B6627AF9CD100B7DC30 /* FBWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */; };
 		CF618B6827AFC55F00B7DC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */; };
+		CF618B6C27B0E6C100B7DC30 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B6B27B0E6C100B7DC30 /* UserInfoView.swift */; };
+		CF618B6F27B10B0100B7DC30 /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B6E27B10B0100B7DC30 /* GameMenuView.swift */; };
 		CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */; };
 		CF76C3682792E6E000F13626 /* GameStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3672792E6E000F13626 /* GameStageTastyView.swift */; };
 		CF76C36A2792F7F100F13626 /* EndStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3692792F7F100F13626 /* EndStageTastyView.swift */; };
@@ -124,6 +126,8 @@
 		CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF618B6927AFC82900B7DC30 /* WhoGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhoGame.entitlements; sourceTree = "<group>"; };
 		CF618B6A27AFC9E000B7DC30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		CF618B6B27B0E6C100B7DC30 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
+		CF618B6E27B10B0100B7DC30 /* GameMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMenuView.swift; sourceTree = "<group>"; };
 		CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTastyView.swift; sourceTree = "<group>"; };
 		CF76C3672792E6E000F13626 /* GameStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageTastyView.swift; sourceTree = "<group>"; };
 		CF76C3692792F7F100F13626 /* EndStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageTastyView.swift; sourceTree = "<group>"; };
@@ -148,7 +152,9 @@
 			isa = PBXGroup;
 			children = (
 				CF298953275D162A00D3C3C1 /* MainView.swift */,
+				CF618B6E27B10B0100B7DC30 /* GameMenuView.swift */,
 				CF618B052793E73200B7DC30 /* BackgroundView.swift */,
+				CF618B6D27B0E6C600B7DC30 /* UserInfo */,
 				CF617532278D929D009953BB /* GameHistory */,
 				CF0A2DE32789CE4000DDDE68 /* Play */,
 				CF2C02DB2789B48000392BAA /* Games */,
@@ -344,6 +350,14 @@
 			path = FireBase;
 			sourceTree = "<group>";
 		};
+		CF618B6D27B0E6C600B7DC30 /* UserInfo */ = {
+			isa = PBXGroup;
+			children = (
+				CF618B6B27B0E6C100B7DC30 /* UserInfoView.swift */,
+			);
+			path = UserInfo;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -442,6 +456,7 @@
 				CF618B4227AF97D000B7DC30 /* ForgotPasswordView.swift in Sources */,
 				CF618B6527AF9CD100B7DC30 /* FBFriendModel.swift in Sources */,
 				CF618B3E27AF97D000B7DC30 /* LoginViewModel.swift in Sources */,
+				CF618B6C27B0E6C100B7DC30 /* UserInfoView.swift in Sources */,
 				CF08538D2761CF3A001DDC70 /* GameManager.swift in Sources */,
 				CF618B062793E73200B7DC30 /* BackgroundView.swift in Sources */,
 				CF2062DE2788189600EABCCE /* NewGameCardView.swift in Sources */,
@@ -457,6 +472,7 @@
 				CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */,
 				CF61752E278D69E5009953BB /* EndStageView.swift in Sources */,
 				CF61753827901B95009953BB /* TypeGameView.swift in Sources */,
+				CF618B6F27B10B0100B7DC30 /* GameMenuView.swift in Sources */,
 				CF617528278C387B009953BB /* GameListCellView.swift in Sources */,
 				CF2C02DA2789B46F00392BAA /* GameListView.swift in Sources */,
 				CF298954275D162A00D3C3C1 /* MainView.swift in Sources */,

@@ -19,15 +19,15 @@ struct LoginView: View {
             switch viewModel.loginView {
             case .signIn:
                 SignInView(viewModel: viewModel)
-                    .transition(.offset(x: -gameManager.width))
+                    .transition(.move(edge: .leading))
                     .animation(.default, value: viewModel.loginView)
             case .forgot:
                 ForgotPasswordView(viewModel: viewModel)
-                    .transition(.offset(x: -gameManager.width))
+                    .transition(.move(edge: .leading))
                     .animation(.default, value: viewModel.loginView)
             case .signUp:
                 SignUpView(viewModel: viewModel)
-                    .transition(.offset(x: -gameManager.width))
+                    .transition(.move(edge: .leading))
                     .animation(.default, value: viewModel.loginView)
             }
         }

@@ -10,98 +10,36 @@ import SwiftUI
 struct MainView: View {
     
     @EnvironmentObject var gameManager: GameManager
-    @State var animate = false
+    @State var translation: CGSize = .zero
     
     var body: some View {
-        NavigationView {
-            ZStack(alignment: .top) {
-                BackgroundView()
-                VStack(spacing: 16) {
-                    Button {
-                        withAnimation(.default) {
-                            gameManager.leftHande.toggle()
-                        }
-                    } label: {
-                        HStack {
-                            Image(systemName: "w")
-                                .font(.system(size: 44, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: gameManager.leftHande ? .blue:.green)
-                                )
-                            Image(systemName: "h")
-                                .font(.system(size: 44, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .red)
-                                )
-                            Image(systemName: "o")
-                                .font(.system(size: 44, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: gameManager.leftHande ? .green:.blue)
-                                )
-                        }
-                        .opacity(0.8)
-                    }
-
-                    
-                    Spacer()
-                    NavigationLink {
-                        GameListView()
-                    } label: {
-                        Image(systemName: "play")
-                            .font(.system(size: 88, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .blue)
-                            )
-                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                    }
-                    .offset(x: gameManager.leftHande ? -gameManager.width*0.22:gameManager.width*0.22)
-                    NavigationLink {
-                        CreateGameView(viewModel: CreateGameViewModel())
-                    } label: {
-                        Image(systemName: "plus")
-                            .font(.system(size: 88, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .red)
-                            )
-                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                    }
-                    NavigationLink {
-                        GameHistoryView()
-                    } label: {
-                        Image(systemName: "line.3.horizontal")
-                            .font(.system(size: 88, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .green)
-                            )
-                            .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                    }
-                    .offset(x: gameManager.leftHande ? gameManager.width*0.22:-gameManager.width*0.22)
-                }
-                .padding()
-                .navigationBarHidden(true)
+        ZStack {
+            UserInfoView()
+            Group {
+                GameMenuView()
             }
-            //            .animation(.easeInOut(duration: 3).repeatForever(), value: animate)
-            //            .onAppear {
-            //                animate = true
-            //            }
+            .mask(RoundedRectangle(cornerRadius: 34))
+            .shadow(color: .secondary.opacity(0.8), radius: 15, x: -5, y: -5)
+            .offset(x: translation.width + gameManager.offSetX)
+            .gesture(
+                DragGesture()
+                    .onChanged({ value in
+                        translation = value.translation
+                    })
+                    .onEnded({ value in
+                        withAnimation {
+                            let snap = translation.width + gameManager.offSetX
+                            
+                            if snap > 35 {
+                                gameManager.offSetX = 70
+                            } else {
+                                gameManager.offSetX = 0
+                            }
+                            translation = .zero
+                        }
+                    })
+            )
+            .ignoresSafeArea()
         }
     }
 }
