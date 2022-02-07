@@ -65,6 +65,10 @@ struct GameHistoryView: View {
             }
             .navigationBarHidden(true)
             .padding()
+            .onAppear {
+                gameManager.showingUserInfo = false
+                gameManager.offSetX = 0
+            }
             .edgesIgnoringSafeArea(.bottom)
             .alert("Delete all history?", isPresented: $showingDaleteAlert) {
                 Button("OK", role: .destructive) {
@@ -73,7 +77,8 @@ struct GameHistoryView: View {
                     }
                 }
                 Button("Cancel", role: .cancel) {}
-        }
+            }
+            
         }
     }
 }

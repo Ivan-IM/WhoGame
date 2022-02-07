@@ -21,14 +21,17 @@ struct LoginView: View {
                 SignInView(viewModel: viewModel)
                     .transition(.move(edge: .leading))
                     .animation(.default, value: viewModel.loginView)
+                    .zIndex(1)
             case .forgot:
                 ForgotPasswordView(viewModel: viewModel)
                     .transition(.move(edge: .leading))
                     .animation(.default, value: viewModel.loginView)
+                    .zIndex(2)
             case .signUp:
                 SignUpView(viewModel: viewModel)
                     .transition(.move(edge: .leading))
                     .animation(.default, value: viewModel.loginView)
+                    .zIndex(3)
             }
         }
     }

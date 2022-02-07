@@ -13,33 +13,37 @@ struct MainView: View {
     @State var translation: CGSize = .zero
     
     var body: some View {
-        ZStack {
-            UserInfoView()
+        ZStack(alignment: .leading) {
+            GameMenuView()
             Group {
-                GameMenuView()
+            if gameManager.showingUserInfo {
+                UserInfoView()
+                    .offset(x: translation.width+gameManager.offSetX)
+                    .gesture(
+                        DragGesture()
+                            .onChanged({ value in
+                                translation = value.translation
+                            })
+                            .onEnded({ value in
+                                withAnimation {
+                                    let snap = translation.width + gameManager.offSetX
+                                    
+                                    if snap < 0 {
+                                        gameManager.offSetX = -70
+                                        gameManager.showingUserInfo = false
+                                    } else {
+                                        gameManager.offSetX = 0
+                                    }
+                                    translation = .zero
+                                }
+                            })
+                    )
+                    .transition(.move(edge: .leading))
+                    .animation(.default.delay(2), value: gameManager.showingUserInfo)
+                    .zIndex(1)
+                    
             }
-            .mask(RoundedRectangle(cornerRadius: 34))
-            .shadow(color: .secondary.opacity(0.8), radius: 15, x: -5, y: -5)
-            .offset(x: translation.width + gameManager.offSetX)
-            .gesture(
-                DragGesture()
-                    .onChanged({ value in
-                        translation = value.translation
-                    })
-                    .onEnded({ value in
-                        withAnimation {
-                            let snap = translation.width + gameManager.offSetX
-                            
-                            if snap > 35 {
-                                gameManager.offSetX = 70
-                            } else {
-                                gameManager.offSetX = 0
-                            }
-                            translation = .zero
-                        }
-                    })
-            )
-            .ignoresSafeArea()
+            }
         }
     }
 }

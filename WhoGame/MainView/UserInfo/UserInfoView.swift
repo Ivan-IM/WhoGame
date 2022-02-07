@@ -12,44 +12,60 @@ struct UserInfoView: View {
     @EnvironmentObject var gameManager: GameManager
     
     var body: some View {
-        HStack {
+        ZStack {
             VStack(spacing: 24) {
+                Button {
+                    
+                } label: {
+                    Image(systemName: "person.2")
+                        .font(.system(size: 32, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            gameManager.mainColorSheme(color: .blue)
+                        )
+                }
                 
-                Image(systemName: "person.2")
-                    .font(.system(size: 32, weight: .regular))
-                    .symbolVariant(.circle.fill)
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(
-                        Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: .blue)
-                    )
-                Image(systemName: "envelope")
-                    .font(.system(size: 32, weight: .regular))
-                    .symbolVariant(.circle.fill)
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(
-                        Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: .green)
-                    )
-                Image(systemName: "xmark")
-                    .font(.system(size: 32, weight: .regular))
-                    .symbolVariant(.circle.fill)
-                    .symbolRenderingMode(.palette)
-                    .foregroundStyle(
-                        Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: .red)
-                    )
+                Button {
+                    
+                } label: {
+                    Image(systemName: "envelope")
+                        .font(.system(size: 32, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            gameManager.mainColorSheme(color: .green)
+                        )
+                }
+                
+                Button {
+                    
+                } label: {
+                    Image(systemName: "xmark")
+                        .font(.system(size: 32, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            gameManager.mainColorSheme(color: .red)
+                        )
+                }
                 Spacer()
-                
             }
-            Spacer()
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 34)
+                    .fill(.secondary)
+                    .opacity(0.8)
+                    .ignoresSafeArea()
+            )
+            RoundedRectangle(cornerRadius: 8)
+                .fill(.ultraThinMaterial)
+                .frame(width: 8, height: 100)
+                .offset(x: 20)
         }
-        .padding(16)
-        .background(
-            RoundedRectangle(cornerRadius: 34)
-                .fill(.secondary)
-                .ignoresSafeArea()
-        )
     }
 }
 
