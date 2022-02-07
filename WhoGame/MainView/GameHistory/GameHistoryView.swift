@@ -67,7 +67,7 @@ struct GameHistoryView: View {
             .padding()
             .onAppear {
                 gameManager.showingUserInfo = false
-                gameManager.offSetX = 0
+                gameManager.offSetX = -gameManager.width+56
             }
             .edgesIgnoringSafeArea(.bottom)
             .alert("Delete all history?", isPresented: $showingDaleteAlert) {

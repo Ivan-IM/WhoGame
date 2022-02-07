@@ -16,33 +16,27 @@ struct MainView: View {
         ZStack(alignment: .leading) {
             GameMenuView()
             Group {
-            if gameManager.showingUserInfo {
-                UserInfoView()
-                    .offset(x: translation.width+gameManager.offSetX)
-                    .gesture(
-                        DragGesture()
-                            .onChanged({ value in
-                                translation = value.translation
-                            })
-                            .onEnded({ value in
-                                withAnimation {
-                                    let snap = translation.width + gameManager.offSetX
-                                    
-                                    if snap < 0 {
-                                        gameManager.offSetX = -60
+                if gameManager.showingUserInfo {
+                    UserInfoView()
+                        .offset(x: translation.width + gameManager.offSetX)
+                        .gesture(
+                            DragGesture()
+                                .onChanged({ value in
+                                    translation = value.translation
+                                })
+                                .onEnded({ value in
+                                    withAnimation {
+                                        gameManager.offSetX = -gameManager.width
                                         gameManager.showingUserInfo = false
-                                    } else {
-                                        gameManager.offSetX = 0
+                                        translation = .zero
                                     }
-                                    translation = .zero
-                                }
-                            })
-                    )
-                    .transition(.move(edge: .leading))
-                    .animation(.default.delay(2), value: gameManager.showingUserInfo)
-                    .zIndex(1)
+                                })
+                        )
+                        .transition(.move(edge: .leading))
+                        .animation(.default, value: gameManager.showingUserInfo)
+                        .zIndex(1)
                     
-            }
+                }
             }
             Group {
                 if gameManager.showingFriendsView {

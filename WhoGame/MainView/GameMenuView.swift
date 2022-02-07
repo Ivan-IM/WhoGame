@@ -21,7 +21,11 @@ struct GameMenuView: View {
                         Button {
                             withAnimation {
                                 gameManager.showingUserInfo.toggle()
-                                gameManager.offSetX = 0
+                                if gameManager.showingUserInfo {
+                                    gameManager.offSetX = -gameManager.width+56
+                                } else {
+                                    gameManager.offSetX = -gameManager.width
+                                }
                             }
                         } label: {
                             Image(systemName: "w")

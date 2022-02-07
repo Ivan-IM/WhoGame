@@ -131,7 +131,7 @@ struct GameListView: View {
             }
             .onAppear {
                 gameManager.showingUserInfo = false
-                gameManager.offSetX = 0
+                gameManager.offSetX = -gameManager.width+56
             }
             .navigationBarHidden(true)
             .padding()

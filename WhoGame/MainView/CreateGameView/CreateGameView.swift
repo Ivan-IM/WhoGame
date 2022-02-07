@@ -75,7 +75,7 @@ struct CreateGameView: View {
             .navigationBarHidden(true)
             .onAppear {
                 gameManager.showingUserInfo = false
-                gameManager.offSetX = 0
+                gameManager.offSetX = -gameManager.width+56
             }
             .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
                 Button("OK", role: .destructive) {
