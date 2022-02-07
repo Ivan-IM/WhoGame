@@ -44,6 +44,20 @@ struct MainView: View {
                     
             }
             }
+            Group {
+                if gameManager.showingFriendsView {
+                    FriendsView()
+                        .transition(.move(edge: .trailing))
+                        .animation(.default, value: gameManager.showingFriendsView)
+                        .zIndex(2)
+                }
+                if gameManager.showingMailView {
+                    GameMailView()
+                        .transition(.move(edge: .trailing))
+                        .animation(.default, value: gameManager.showingMailView)
+                        .zIndex(3)
+                }
+            }
         }
     }
 }

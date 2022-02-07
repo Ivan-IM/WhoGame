@@ -18,6 +18,10 @@ final class GameManager: ObservableObject {
     @Published var showingUserInfo: Bool = false
     @Published var offSetX: CGFloat = 0
     
+    @Published var showingFriendsView: Bool = false
+    @Published var showingMailView: Bool = false
+    @Published var showingLogoutAlert: Bool = false
+    
     let width = UIScreen.main.bounds.size.width
     let height = UIScreen.main.bounds.size.height
     

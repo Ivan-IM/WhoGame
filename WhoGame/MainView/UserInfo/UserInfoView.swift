@@ -15,7 +15,9 @@ struct UserInfoView: View {
         ZStack {
             VStack(spacing: 24) {
                 Button {
-                    
+                    withAnimation {
+                        gameManager.showingFriendsView = true
+                    }
                 } label: {
                     Image(systemName: "person.2")
                         .font(.system(size: 32, weight: .regular))
@@ -28,7 +30,9 @@ struct UserInfoView: View {
                 }
                 
                 Button {
-                    
+                    withAnimation {
+                        gameManager.showingMailView = true
+                    }
                 } label: {
                     Image(systemName: "envelope")
                         .font(.system(size: 32, weight: .regular))
@@ -41,9 +45,9 @@ struct UserInfoView: View {
                 }
                 
                 Button {
-                    
+                    gameManager.showingLogoutAlert = true
                 } label: {
-                    Image(systemName: "xmark")
+                    Image(systemName: "figure.walk")
                         .font(.system(size: 32, weight: .regular))
                         .symbolVariant(.circle.fill)
                         .symbolRenderingMode(.palette)
@@ -66,7 +70,14 @@ struct UserInfoView: View {
                 .fill(.ultraThinMaterial)
                 .frame(width: 6, height: 100)
                 .offset(x: 20)
+                .alert("Logout", isPresented: $gameManager.showingLogoutAlert) {
+                    Button("OK", role: .destructive) {
+                        
+                    }
+                    Button("Cancel", role: .cancel) {}
+                }
         }
+        
     }
 }
 

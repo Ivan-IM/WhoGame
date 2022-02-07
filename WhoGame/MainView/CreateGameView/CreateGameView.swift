@@ -83,9 +83,9 @@ struct CreateGameView: View {
                     presentationMode.wrappedValue.dismiss()
                 }
                 Button("Cancel", role: .cancel) {}
+            }
         }
-        }
-
+        
     }
 }
 
