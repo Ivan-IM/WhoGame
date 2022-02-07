@@ -29,7 +29,7 @@ struct MainView: View {
                                     let snap = translation.width + gameManager.offSetX
                                     
                                     if snap < 0 {
-                                        gameManager.offSetX = -70
+                                        gameManager.offSetX = -60
                                         gameManager.showingUserInfo = false
                                     } else {
                                         gameManager.offSetX = 0

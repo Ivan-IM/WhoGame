@@ -54,7 +54,8 @@ struct UserInfoView: View {
                 }
                 Spacer()
             }
-            .padding()
+            .padding(.horizontal, 10)
+            .padding(.vertical, 20)
             .background(
                 RoundedRectangle(cornerRadius: 34)
                     .fill(.secondary)
@@ -63,7 +64,7 @@ struct UserInfoView: View {
             )
             RoundedRectangle(cornerRadius: 8)
                 .fill(.ultraThinMaterial)
-                .frame(width: 8, height: 100)
+                .frame(width: 6, height: 100)
                 .offset(x: 20)
         }
     }
