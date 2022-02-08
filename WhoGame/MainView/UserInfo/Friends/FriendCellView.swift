@@ -12,6 +12,7 @@ struct FriendCellView: View {
     @EnvironmentObject var gameManager: GameManager
     @ObservedObject var viewModel: FriendsViewModel
     @State private var showingInfo: Bool = false
+    @State private var showingDeleteAlert: Bool = false
     var friend: Friend
     
     var body: some View {
@@ -60,7 +61,7 @@ struct FriendCellView: View {
                             )
                     }
                     Button {
-                        
+                        showingDeleteAlert = true
                     } label: {
                         Image(systemName: "trash")
                             .font(.system(size: 32, weight: .regular))
@@ -76,6 +77,12 @@ struct FriendCellView: View {
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+        .alert("Delete game?", isPresented: $showingDeleteAlert) {
+            Button("OK", role: .destructive) {
+                viewModel.removeFriend(friend)
+            }
+            Button("Cancel", role: .cancel) {}
+        }
     }
 }
 

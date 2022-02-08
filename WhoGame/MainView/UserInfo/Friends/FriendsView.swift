@@ -69,6 +69,7 @@ struct FriendsView: View {
                                 .foregroundColor(.secondary)
                         }
                         Button {
+                            viewModel.search()
                             showingKeyboard = false
                         } label: {
                             Image(systemName: "magnifyingglass")
@@ -131,19 +132,18 @@ struct FriendsView: View {
                     }
                 }
                 
-                if !viewModel.friendRequests.isEmpty {
-                    ScrollView(showsIndicators: false) {
-                        ForEach(viewModel.friendRequests) { request in
-                            FriendRequestCellView(viewModel: viewModel, request: request)
-                        }
+                ScrollView(showsIndicators: false) {
+                    ForEach(viewModel.friendRequests) { request in
+                        FriendRequestCellView(viewModel: viewModel, request: request)
                     }
                 }
+                .frame(height: viewModel.friendRequests.isEmpty ? 0:150)
                 ScrollView(showsIndicators: false) {
                     ForEach(viewModel.friends) { friend in
                         FriendCellView(viewModel: viewModel, friend: friend)
                     }
                     .padding(.bottom, 32)
-                }                
+                }
             }
             .padding()
         }

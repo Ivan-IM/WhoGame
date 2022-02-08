@@ -21,7 +21,7 @@ struct FriendRequestCellView: View {
                 .foregroundColor(.primary)
             Spacer()
             Button {
-                
+                viewModel.addFriend(request)
             } label: {
                 Image(systemName: "checkmark")
                     .font(.system(size: 32, weight: .regular))
@@ -33,7 +33,7 @@ struct FriendRequestCellView: View {
                     )
             }
             Button {
-                
+                viewModel.removeFriendRequest(request)
             } label: {
                 Image(systemName: "xmark")
                     .font(.system(size: 32, weight: .regular))
