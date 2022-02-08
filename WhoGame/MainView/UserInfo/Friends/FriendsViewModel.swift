@@ -24,31 +24,27 @@ final class FriendsViewModel: ObservableObject {
     
     private let store = Firestore.firestore()
     
-    @Published var friends: [Friend] = [
-    Friend(name: "Test1", uid: ""),
-    Friend(name: "Test2", uid: ""),
-    Friend(name: "Test3", uid: ""),
-    Friend(name: "Test4", uid: ""),
-    Friend(name: "Test1", uid: ""),
-    Friend(name: "Test2", uid: ""),
-    Friend(name: "Test3", uid: ""),
-    Friend(name: "Test4", uid: ""),
-    Friend(name: "Test1", uid: ""),
-    Friend(name: "Test2", uid: ""),
-    Friend(name: "Test3", uid: ""),
-    Friend(name: "Test4", uid: ""),
-    Friend(name: "Test1", uid: ""),
-    Friend(name: "Test2", uid: ""),
-    Friend(name: "Test3", uid: ""),
-    Friend(name: "Test4", uid: ""),
-    Friend(name: "Test1", uid: ""),
-    Friend(name: "Test2", uid: ""),
-    Friend(name: "Test3", uid: ""),
-    Friend(name: "Test4", uid: ""),
-    ]
+    @Published var friends = [Friend]()
     
     init() {
         self.uid = Auth.auth().currentUser?.uid ?? ""
+        getFriends()
+        getFriendRequests()
+    }
+    
+    func getFriends() {
+        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("friends/\(currentUserId)/friendsList").addSnapshotListener { (snapshot, error) in
+            switch error {
+            case .none:
+                self.friends = snapshot?.documents.compactMap {
+                    try? $0.data(as: Friend.self)
+                } ?? []
+            case .some(_):
+                print("\(String(describing: error?.localizedDescription))")
+            }
+        }
     }
     
     func getFriendRequests() {
