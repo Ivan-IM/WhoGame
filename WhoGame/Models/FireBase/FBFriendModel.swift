@@ -19,8 +19,6 @@ struct FriendRequest: Codable, Identifiable {
     @DocumentID var id: String?
     var sendID: String
     var sendName: String
-    var sendEmail: String
     var receiveID: String
     var receiveName: String
-    var receiveEmail: String
 }

@@ -40,7 +40,9 @@ struct GameListView: View {
                     }
                     Spacer()
                     Button {
-                        showingSearch.toggle()
+                        withAnimation {
+                            showingSearch.toggle()
+                        }
                         searchText = ""
                         showingKeyboard = false
                         isFavorite = false

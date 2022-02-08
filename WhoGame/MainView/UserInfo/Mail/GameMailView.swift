@@ -1,5 +1,5 @@
 //
-//  FriendsView.swift
+//  GameMailView.swift
 //  WhoGame
 //
 //  Created by Иван Маришин on 07.02.2022.
@@ -7,24 +7,39 @@
 
 import SwiftUI
 
-struct FriendsView: View {
+struct GameMailView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @ObservedObject var viewModel: GameMailViewModel = GameMailViewModel()
     
     var body: some View {
         ZStack {
             VStack {
                 HStack {
-                    Text("Friends")
+                    Text("Mail")
                         .lineLimit(1)
                         .font(.system(size: 32, weight: .bold))
                         .foregroundStyle(
-                            gameManager.mainColorSheme(color: .blue)
+                            gameManager.mainColorSheme(color: .green)
                         )
                     Spacer()
                     Button {
                         withAnimation {
-                            gameManager.showingFriendsView = false
+                            
+                        }
+                    } label: {
+                        Image(systemName: "magnifyingglass")
+                            .font(.system(size: 32, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .green)
+                            )
+                    }
+                    Button {
+                        withAnimation {
+                            gameManager.showingMailView = false
                         }
                     } label: {
                         Image(systemName: "multiply.circle")
@@ -49,8 +64,8 @@ struct FriendsView: View {
     }
 }
 
-struct FriendsView_Previews: PreviewProvider {
+struct GameMailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendsView()
+        GameMailView()
     }
 }

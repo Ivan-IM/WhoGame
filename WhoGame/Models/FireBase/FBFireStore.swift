@@ -47,7 +47,7 @@ enum FBFirestore {
     static func mergeFBFriend(_ data: [String: Any], sendUid: String, receiveUid: String, completion: @escaping (Result<Bool, Error>) -> ()) {
         let reference = Firestore
             .firestore()
-            .collection("users/\(receiveUid)/friendsList")
+            .collection("friends/\(receiveUid)/friendsList")
             .document(sendUid)
         reference.setData(data, merge: true) { (err) in
             if let err = err {

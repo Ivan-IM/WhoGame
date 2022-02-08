@@ -12,6 +12,7 @@ enum FBKeys {
     
     enum CollectionPath {
         static let users = "users"
+        static let friends = "friends"
         static let friendRequest = "friendRequest"
     }
     

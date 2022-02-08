@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct UserInfoView: View {
+struct UserInfoPanelView: View {
     
     @EnvironmentObject var gameManager: GameManager
     
@@ -88,9 +88,9 @@ struct UserInfoView: View {
     }
 }
 
-struct UserInfoView_Previews: PreviewProvider {
+struct UserInfoPanelView_Previews: PreviewProvider {
     static var previews: some View {
-        UserInfoView()
+        UserInfoPanelView()
             .environmentObject(GameManager())
     }
 }

@@ -17,7 +17,7 @@ struct MainView: View {
             GameMenuView()
             Group {
                 if gameManager.showingUserInfo {
-                    UserInfoView()
+                    UserInfoPanelView()
                         .offset(x: translation.width + gameManager.offSetX)
                         .gesture(
                             DragGesture()
