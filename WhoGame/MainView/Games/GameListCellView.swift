@@ -84,35 +84,50 @@ struct GameListCellView: View {
                     }
                 } else {
                     HStack {
-                        Button {
-                            if isFavorite {
-                                game.favorite = false
-                                PersistenceController.shared.save { error in
-                                    switch error {
-                                    case .none:
-                                        print("Game is not favorite")
-                                        self.isFavorite = false
-                                    case .some(_):
-                                        print(String(describing: error?.localizedDescription))
+                        VStack(spacing: 8) {
+                            Button {
+                                if isFavorite {
+                                    game.favorite = false
+                                    PersistenceController.shared.save { error in
+                                        switch error {
+                                        case .none:
+                                            print("Game is not favorite")
+                                            self.isFavorite = false
+                                        case .some(_):
+                                            print(String(describing: error?.localizedDescription))
+                                        }
+                                    }
+                                } else {
+                                    game.favorite = true
+                                    PersistenceController.shared.save { error in
+                                        switch error {
+                                        case .none:
+                                            print("Game is favorite")
+                                            self.isFavorite = true
+                                        case .some(_):
+                                            print(String(describing: error?.localizedDescription))
+                                        }
                                     }
                                 }
-                            } else {
-                                game.favorite = true
-                                PersistenceController.shared.save { error in
-                                    switch error {
-                                    case .none:
-                                        print("Game is favorite")
-                                        self.isFavorite = true
-                                    case .some(_):
-                                        print(String(describing: error?.localizedDescription))
-                                    }
-                                }
+                            } label: {
+                                Image(systemName: "star")
+                                    .font(.system(size: 24, weight: .regular))
+                                    .symbolVariant(isFavorite ? .fill:.none)
+                                    .foregroundColor(isFavorite ? .yellow:.secondary)
                             }
-                        } label: {
-                            Image(systemName: "star")
-                                .font(.system(size: 24, weight: .regular))
-                                .symbolVariant(isFavorite ? .fill:.none)
-                                .foregroundColor(isFavorite ? .yellow:.secondary)
+                            
+                            Button {
+                                
+                            } label: {
+                                Image(systemName: "paperplane")
+                                    .font(.system(size: 24, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .blue)
+                                    )
+                            }
                         }
                         Image(systemName: "chevron.right")
                             .font(.system(size: 44, weight: .regular))

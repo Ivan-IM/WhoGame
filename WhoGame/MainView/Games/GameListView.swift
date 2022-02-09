@@ -131,10 +131,6 @@ struct GameListView: View {
                 }
                 FilterListView(searchText: searchText, doYouWantToPlay: doYouWantToPlay, isFavorite: isFavorite, showingSearch: showingSearch)
             }
-            .onAppear {
-                gameManager.showingUserInfo = false
-                gameManager.offSetX = -gameManager.width+56
-            }
             .navigationBarHidden(true)
             .padding()
             .edgesIgnoringSafeArea(.bottom)
