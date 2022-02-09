@@ -78,8 +78,11 @@ struct UserInfoPanelView: View {
             .padding(10)
             .alert("Logout", isPresented: $gameManager.showingLogoutAlert) {
                 Button("OK", role: .destructive) {
-                    gameManager.showingUserInfo = false
-                    gameManager.offSetX = -gameManager.width
+                    FBAuth.logout { result in
+                        print("Logged out")
+                        gameManager.showingUserInfo = false
+                        gameManager.offSetX = -gameManager.width
+                    }
                 }
                 Button("Cancel", role: .cancel) {}
             }

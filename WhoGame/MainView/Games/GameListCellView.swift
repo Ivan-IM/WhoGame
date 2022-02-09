@@ -21,7 +21,7 @@ struct GameListCellView: View {
                     if symbolType {
                         Text("\(game.name ?? "Unknown")")
                             .lineLimit(1)
-                            .font(.system(size: 24, weight: .bold))
+                            .font(.system(size: 22, weight: .bold))
                             .foregroundStyle(
                                 gameManager.mainColorSheme(color: .blue)
                             )
@@ -45,7 +45,7 @@ struct GameListCellView: View {
                     } else {
                         Text("\(game.name ?? "Unknown")")
                             .lineLimit(1)
-                            .font(.system(size: 24, weight: .bold))
+                            .font(.system(size: 22, weight: .bold))
                             .foregroundStyle(
                                 gameManager.mainColorSheme(color: .red)
                             )

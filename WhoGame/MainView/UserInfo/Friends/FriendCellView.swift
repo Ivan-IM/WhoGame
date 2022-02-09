@@ -77,7 +77,7 @@ struct FriendCellView: View {
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-        .alert("Delete game?", isPresented: $showingDeleteAlert) {
+        .alert("Delete friend?", isPresented: $showingDeleteAlert) {
             Button("OK", role: .destructive) {
                 viewModel.removeFriend(friend)
             }

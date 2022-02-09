@@ -28,14 +28,21 @@ struct GameMenuView: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: "w")
-                                .font(.system(size: 44, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: gameManager.leftHande ? .blue:.green)
+                            ZStack {
+                                Image(systemName: "gear")
+                                    .font(.system(size: 22, weight: .regular))
+                                    .foregroundColor(.secondary)
+                                    .opacity(0.3)
+                                    .offset(x: 12, y: -12)
+                                Image(systemName: "w")
+                                    .font(.system(size: 44, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: gameManager.leftHande ? .blue:.green)
                                 )
+                            }
                         }
                         Image(systemName: "h")
                             .font(.system(size: 44, weight: .regular))
@@ -50,17 +57,23 @@ struct GameMenuView: View {
                                 gameManager.leftHande.toggle()
                             }
                         } label: {
-                            Image(systemName: "o")
-                                .font(.system(size: 44, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: gameManager.leftHande ? .green:.blue)
+                            ZStack {
+                                Image(systemName: "hand.raised")
+                                    .font(.system(size: 22, weight: .regular))
+                                    .foregroundColor(.secondary)
+                                    .opacity(0.3)
+                                    .offset(x: 12, y: -12)
+                                Image(systemName: "o")
+                                    .font(.system(size: 44, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: gameManager.leftHande ? .green:.blue)
                                 )
+                            }
                         }
                     }
-                    .opacity(0.8)
                     
                     Spacer()
                     NavigationLink {

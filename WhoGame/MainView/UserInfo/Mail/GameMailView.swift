@@ -25,20 +25,6 @@ struct GameMailView: View {
                     Spacer()
                     Button {
                         withAnimation {
-                            
-                        }
-                    } label: {
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 32, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .green)
-                            )
-                    }
-                    Button {
-                        withAnimation {
                             gameManager.showingMailView = false
                         }
                     } label: {
@@ -52,10 +38,16 @@ struct GameMailView: View {
                             )
                     }
                 }
-                Spacer()
+                ScrollView(showsIndicators: false) {
+                    ForEach(viewModel.games) { game in
+                        GameMailCellView(viewModel: viewModel, game: game)
+                    }
+                    .padding(.bottom, 32)
+                }
             }
             .padding()
         }
+        .edgesIgnoringSafeArea(.bottom)
         .background(
             RoundedRectangle(cornerRadius: 34)
                 .fill(.ultraThinMaterial)

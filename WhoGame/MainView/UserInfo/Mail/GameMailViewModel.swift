@@ -14,9 +14,11 @@ import FirebaseFirestoreSwift
 final class GameMailViewModel: ObservableObject {
     
     @Published var games = [Game]()
+    @Published var friends = [Friend]()
     
     init() {
         getGames()
+        getFriends()
     }
     
     func getGames() {
@@ -59,7 +61,7 @@ final class GameMailViewModel: ObservableObject {
                 } ?? []
                 
                 let newGame = GameCD(context: PersistenceController.shared.container.viewContext)
-                newGame.id = UUID().uuidString
+                newGame.id = gameId
                 newGame.favorite = false
                 newGame.author = game.author
                 newGame.date = game.date
@@ -76,7 +78,7 @@ final class GameMailViewModel: ObservableObject {
                         print("Game save")
                         for gameCard in gameCards {
                             let newGameCard = GameCardCD(context: PersistenceController.shared.container.viewContext)
-                            newGameCard.id = UUID().uuidString
+                            newGameCard.id = gameCard.id ?? UUID().uuidString
                             newGameCard.answer = gameCard.answer
                             newGameCard.fakeAnswerFourth = gameCard.fakeAnswerFourth
                             newGameCard.fakeAnswerSecond = gameCard.fakeAnswerSecond
@@ -106,6 +108,22 @@ final class GameMailViewModel: ObservableObject {
                 print("\(String(describing: error?.localizedDescription))")
             }
         }
-        
+    }
+    
+    func getFriends() {
+        if friends.isEmpty {
+            guard let currentUserId = Auth.auth().currentUser?.uid else { return }
+            
+            Firestore.firestore().collection("friends/\(currentUserId)/friendsList").addSnapshotListener { (snapshot, error) in
+                switch error {
+                case .none:
+                    self.friends = snapshot?.documents.compactMap {
+                        try? $0.data(as: Friend.self)
+                    } ?? []
+                case .some(_):
+                    print("\(String(describing: error?.localizedDescription))")
+                }
+            }
+        }
     }
 }

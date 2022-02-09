@@ -137,7 +137,7 @@ struct FriendsView: View {
                         FriendRequestCellView(viewModel: viewModel, request: request)
                     }
                 }
-                .frame(height: viewModel.friendRequests.isEmpty ? 0:CGFloat(viewModel.friendRequests.count)*30)
+                .frame(height: viewModel.friendRequests.isEmpty ? 0:CGFloat(viewModel.friendRequests.count)*72)
                 ScrollView(showsIndicators: false) {
                     ForEach(viewModel.friends) { friend in
                         FriendCellView(viewModel: viewModel, friend: friend)
