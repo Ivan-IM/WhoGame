@@ -58,8 +58,8 @@
 		CF618B6027AF9CD100B7DC30 /* FBUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5527AF9CD100B7DC30 /* FBUser.swift */; };
 		CF618B6127AF9CD100B7DC30 /* FBFireStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5627AF9CD100B7DC30 /* FBFireStoreError.swift */; };
 		CF618B6227AF9CD100B7DC30 /* FBAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5727AF9CD100B7DC30 /* FBAuth.swift */; };
-		CF618B6327AF9CD100B7DC30 /* FBWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5827AF9CD100B7DC30 /* FBWorkout.swift */; };
-		CF618B6427AF9CD100B7DC30 /* FBExercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5927AF9CD100B7DC30 /* FBExercise.swift */; };
+		CF618B6327AF9CD100B7DC30 /* FBGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5827AF9CD100B7DC30 /* FBGame.swift */; };
+		CF618B6427AF9CD100B7DC30 /* FBGameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5927AF9CD100B7DC30 /* FBGameCard.swift */; };
 		CF618B6527AF9CD100B7DC30 /* FBFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */; };
 		CF618B6627AF9CD100B7DC30 /* FBWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */; };
 		CF618B6827AFC55F00B7DC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */; };
@@ -125,8 +125,8 @@
 		CF618B5527AF9CD100B7DC30 /* FBUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBUser.swift; sourceTree = "<group>"; };
 		CF618B5627AF9CD100B7DC30 /* FBFireStoreError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFireStoreError.swift; sourceTree = "<group>"; };
 		CF618B5727AF9CD100B7DC30 /* FBAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBAuth.swift; sourceTree = "<group>"; };
-		CF618B5827AF9CD100B7DC30 /* FBWorkout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBWorkout.swift; sourceTree = "<group>"; };
-		CF618B5927AF9CD100B7DC30 /* FBExercise.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBExercise.swift; sourceTree = "<group>"; };
+		CF618B5827AF9CD100B7DC30 /* FBGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBGame.swift; sourceTree = "<group>"; };
+		CF618B5927AF9CD100B7DC30 /* FBGameCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBGameCard.swift; sourceTree = "<group>"; };
 		CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendModel.swift; sourceTree = "<group>"; };
 		CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBWorkoutModel.swift; sourceTree = "<group>"; };
 		CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -354,8 +354,8 @@
 				CF618B5527AF9CD100B7DC30 /* FBUser.swift */,
 				CF618B5627AF9CD100B7DC30 /* FBFireStoreError.swift */,
 				CF618B5727AF9CD100B7DC30 /* FBAuth.swift */,
-				CF618B5827AF9CD100B7DC30 /* FBWorkout.swift */,
-				CF618B5927AF9CD100B7DC30 /* FBExercise.swift */,
+				CF618B5827AF9CD100B7DC30 /* FBGame.swift */,
+				CF618B5927AF9CD100B7DC30 /* FBGameCard.swift */,
 				CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */,
 				CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */,
 			);
@@ -520,7 +520,7 @@
 				CF298941275D159700D3C3C1 /* WhoGameApp.swift in Sources */,
 				CF618B4027AF97D000B7DC30 /* LoginView.swift in Sources */,
 				CF618B7127B1354200B7DC30 /* FriendsView.swift in Sources */,
-				CF618B6427AF9CD100B7DC30 /* FBExercise.swift in Sources */,
+				CF618B6427AF9CD100B7DC30 /* FBGameCard.swift in Sources */,
 				CF2062E32788527C00EABCCE /* GameCardListIView.swift in Sources */,
 				CF618B4327AF97D000B7DC30 /* SignUpView.swift in Sources */,
 				CF618B6127AF9CD100B7DC30 /* FBFireStoreError.swift in Sources */,
@@ -530,7 +530,7 @@
 				CF618B4E27AF9CA800B7DC30 /* ErrorExt.swift in Sources */,
 				CF2062D827878DBB00EABCCE /* NewGameView.swift in Sources */,
 				CF618B5F27AF9CD100B7DC30 /* FBFriendRequest.swift in Sources */,
-				CF618B6327AF9CD100B7DC30 /* FBWorkout.swift in Sources */,
+				CF618B6327AF9CD100B7DC30 /* FBGame.swift in Sources */,
 				CF61753A27902594009953BB /* NewGameCardTestView.swift in Sources */,
 				CF76C3682792E6E000F13626 /* GameStageTastyView.swift in Sources */,
 			);

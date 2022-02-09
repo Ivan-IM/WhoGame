@@ -31,30 +31,27 @@ enum FBKeys {
         static let receiveEmail = "receiveEmail"
     }
     
-    enum Workout {
+    enum Game {
         static let author = "author"
-        static let athletes = "athletes"
         static let date = "date"
-        static let name = "name"
         static let type = "type"
-        static let comment = "comment"
+        static let name = "name"
+        static let theme = "theme"
+        static let showAnswer = "showAnswer"
+        static let showHelp = "showHelp"
+        static let showScore = "showScore"
     }
     
-    enum Exercise {
-        static let name = "name"
+    enum GameCard {
+        static let answer = "answer"
+        static let fakeAnswerFourth = "fakeAnswerFourth"
+        static let fakeAnswerSecond = "fakeAnswerSecond"
+        static let fakeAnswerThird = "fakeAnswerThird"
+        static let gameId = "gameId"
+        static let help = "help"
+        static let mark = "mark"
+        static let question = "question"
         static let result = "result"
-        static let order = "order"
-        static let type = "type"
-        static let aerZone = "aerZone"
-        static let workoutId = "workoutId"
-        static let sets = "sets"
-        static let setsResult = "setsResult"
-        static let reps = "reps"
-        static let weight = "weight"
-        static let weightValue = "weightValue"
-        static let distance = "distance"
-        static let distanceValue = "distanceValue"
-        static let hours = "hours"
-        static let minutes = "minutes"
+        static let score = "score"
     }
 }

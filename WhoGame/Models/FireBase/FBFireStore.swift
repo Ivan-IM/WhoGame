@@ -58,11 +58,11 @@ enum FBFirestore {
         }
     }
     
-    static func mergeFBWorkout(_ data: [String: Any], userId: String, workoutId: String, completion: @escaping (Result<Bool, Error>) -> ()) {
+    static func mergeFBGame(_ data: [String: Any], userId: String, gameId: String, completion: @escaping (Result<Bool, Error>) -> ()) {
         let reference = Firestore
             .firestore()
-            .collection("users/\(userId)/workouts")
-            .document(workoutId)
+            .collection("games/\(userId)/games")
+            .document(gameId)
         reference.setData(data, merge: true) { (err) in
             if let err = err {
                 completion(.failure(err))
@@ -72,11 +72,11 @@ enum FBFirestore {
         }
     }
     
-    static func mergeFBExercise(_ data: [String: Any], userId: String, workoutId: String, exerciseId: String, completion: @escaping (Result<Bool, Error>) -> ()) {
+    static func mergeFBGameCard(_ data: [String: Any], userId: String, gameId: String, gameCardId: String, completion: @escaping (Result<Bool, Error>) -> ()) {
         let reference = Firestore
             .firestore()
-            .collection("users/\(userId)/workouts/\(workoutId)/exercises")
-            .document(exerciseId)
+            .collection("games/\(userId)/games/\(gameId)/gameCards")
+            .document(gameCardId)
         reference.setData(data, merge: true) { (err) in
             if let err = err {
                 completion(.failure(err))

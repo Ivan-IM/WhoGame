@@ -8,12 +8,16 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Workout: Codable, Identifiable {
+struct Game: Codable, Identifiable {
     @DocumentID var id: String?
     var author: String
     var date: Date
     var type: Int
-    var comment: String
+    var name: String
+    var theme: String
+    var showAnswer: Bool
+    var showHelp: Bool
+    var showScore: Bool
 }
 
 struct Exercise: Codable, Identifiable {
