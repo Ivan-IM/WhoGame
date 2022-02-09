@@ -204,7 +204,7 @@ struct NewGameView: View {
                     } else {
                         Button {
                             withAnimation {
-                                viewModel.saveNewGame()
+                                viewModel.saveNewGame(gameManager.uid)
                             }
                             showingKeyboard = false
                         } label: {

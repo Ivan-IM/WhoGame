@@ -12,7 +12,6 @@ import FirebaseFirestoreSwift
 
 final class FriendsViewModel: ObservableObject {
     
-    @Published var uid: String = ""
     @Published var userId: String = ""
     @Published var searchUserName: String = ""
     @Published var showingSearch: Bool = false
@@ -27,7 +26,6 @@ final class FriendsViewModel: ObservableObject {
     @Published var friends = [Friend]()
     
     init() {
-        self.uid = Auth.auth().currentUser?.uid ?? ""
         getFriends()
         getFriendRequests()
     }

@@ -92,7 +92,7 @@ struct FriendsView: View {
                                 .foregroundColor(.primary)
                             Spacer()
                             Group {
-                                if viewModel.searchUser.uid == viewModel.uid {
+                                if viewModel.searchUser.uid == gameManager.uid {
                                     Image(systemName: "theatermasks")
                                         .font(.system(size: 32, weight: .regular))
                                         .symbolVariant(.circle.fill)
@@ -137,7 +137,7 @@ struct FriendsView: View {
                         FriendRequestCellView(viewModel: viewModel, request: request)
                     }
                 }
-                .frame(height: viewModel.friendRequests.isEmpty ? 0:150)
+                .frame(height: viewModel.friendRequests.isEmpty ? 0:CGFloat(viewModel.friendRequests.count)*30)
                 ScrollView(showsIndicators: false) {
                     ForEach(viewModel.friends) { friend in
                         FriendCellView(viewModel: viewModel, friend: friend)

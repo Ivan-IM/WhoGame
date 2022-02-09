@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 final class GameManager: ObservableObject {
     
@@ -25,7 +26,7 @@ final class GameManager: ObservableObject {
     @Published var showingMailView: Bool = false
     @Published var showingLogoutAlert: Bool = false
     
-    
+    @Published var uid: String = ""
     
     enum ColorSchemeEnum {
        case red, green, blue
@@ -34,6 +35,7 @@ final class GameManager: ObservableObject {
     init() {
         self.leftHande = UserDefaults.standard.object(forKey: "Hande") as? Bool ?? false
         self.offSetX = -self.width
+        self.uid = Auth.auth().currentUser?.uid ?? ""
     }
     
     func mainColorSheme(color: ColorSchemeEnum) -> LinearGradient {
