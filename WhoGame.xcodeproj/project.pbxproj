@@ -61,7 +61,7 @@
 		CF618B6327AF9CD100B7DC30 /* FBGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5827AF9CD100B7DC30 /* FBGame.swift */; };
 		CF618B6427AF9CD100B7DC30 /* FBGameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5927AF9CD100B7DC30 /* FBGameCard.swift */; };
 		CF618B6527AF9CD100B7DC30 /* FBFriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */; };
-		CF618B6627AF9CD100B7DC30 /* FBWorkoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */; };
+		CF618B6627AF9CD100B7DC30 /* FBGameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B5B27AF9CD100B7DC30 /* FBGameModel.swift */; };
 		CF618B6827AFC55F00B7DC30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */; };
 		CF618B6C27B0E6C100B7DC30 /* UserInfoPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B6B27B0E6C100B7DC30 /* UserInfoPanelView.swift */; };
 		CF618B6F27B10B0100B7DC30 /* GameMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B6E27B10B0100B7DC30 /* GameMenuView.swift */; };
@@ -128,7 +128,7 @@
 		CF618B5827AF9CD100B7DC30 /* FBGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBGame.swift; sourceTree = "<group>"; };
 		CF618B5927AF9CD100B7DC30 /* FBGameCard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBGameCard.swift; sourceTree = "<group>"; };
 		CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBFriendModel.swift; sourceTree = "<group>"; };
-		CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBWorkoutModel.swift; sourceTree = "<group>"; };
+		CF618B5B27AF9CD100B7DC30 /* FBGameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBGameModel.swift; sourceTree = "<group>"; };
 		CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CF618B6927AFC82900B7DC30 /* WhoGame.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WhoGame.entitlements; sourceTree = "<group>"; };
 		CF618B6A27AFC9E000B7DC30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -357,7 +357,7 @@
 				CF618B5827AF9CD100B7DC30 /* FBGame.swift */,
 				CF618B5927AF9CD100B7DC30 /* FBGameCard.swift */,
 				CF618B5A27AF9CD100B7DC30 /* FBFriendModel.swift */,
-				CF618B5B27AF9CD100B7DC30 /* FBWorkoutModel.swift */,
+				CF618B5B27AF9CD100B7DC30 /* FBGameModel.swift */,
 			);
 			path = FireBase;
 			sourceTree = "<group>";
@@ -499,7 +499,7 @@
 				CF618B7727B23D7D00B7DC30 /* GameMailViewModel.swift in Sources */,
 				CF2062DE2788189600EABCCE /* NewGameCardView.swift in Sources */,
 				CF2062D22787885000EABCCE /* CreateGameViewModel.swift in Sources */,
-				CF618B6627AF9CD100B7DC30 /* FBWorkoutModel.swift in Sources */,
+				CF618B6627AF9CD100B7DC30 /* FBGameModel.swift in Sources */,
 				CF61753C27904369009953BB /* GameStageTestView.swift in Sources */,
 				CF618B4127AF97D000B7DC30 /* SignInView.swift in Sources */,
 				CF618B6227AF9CD100B7DC30 /* FBAuth.swift in Sources */,

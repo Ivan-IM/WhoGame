@@ -20,20 +20,16 @@ struct Game: Codable, Identifiable {
     var showScore: Bool
 }
 
-struct Exercise: Codable, Identifiable {
+struct GameCard: Codable, Identifiable {
     @DocumentID var id: String?
-    var name: String
+    var answer: String
+    var fakeAnswerFourth: String
+    var fakeAnswerSecond: String
+    var fakeAnswerThird: String
+    var gameId: String
+    var help: String
+    var mark: Int
+    var question: String
     var result: Bool
-    var order: Int
-    var type: Int
-    var workoutId: String
-    var sets: Int?
-    var setsResult: Int?
-    var reps: Int?
-    var weight: Double?
-    var weightValue: Int?
-    var distance: Double?
-    var distanceValue: Int?
-    var hours: Int?
-    var minutes: Int?
+    var score: Int
 }
