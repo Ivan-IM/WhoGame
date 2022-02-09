@@ -73,11 +73,7 @@ struct CreateGameView: View {
             }
             .padding()
             .navigationBarHidden(true)
-            .onAppear {
-                gameManager.showingUserInfo = false
-                gameManager.offSetX = -gameManager.width+56
-            }
-            .alert("Delete friend?", isPresented: $viewModel.showingDaleteAlert) {
+            .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
                 Button("OK", role: .destructive) {
                     viewModel.deleteGame()
                     presentationMode.wrappedValue.dismiss()

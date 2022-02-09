@@ -78,6 +78,10 @@ struct GameMenuView: View {
                     Spacer()
                     NavigationLink {
                         GameListView()
+                            .onAppear {
+                                gameManager.showingUserInfo = false
+                                gameManager.offSetX = -gameManager.width+56
+                            }
                     } label: {
                         Image(systemName: "play")
                             .font(.system(size: 88, weight: .regular))
@@ -92,6 +96,10 @@ struct GameMenuView: View {
                     .offset(x: gameManager.leftHande ? -gameManager.width*0.22:gameManager.width*0.22)
                     NavigationLink {
                         CreateGameView(viewModel: CreateGameViewModel())
+                            .onAppear {
+                                gameManager.showingUserInfo = false
+                                gameManager.offSetX = -gameManager.width+56
+                            }
                     } label: {
                         Image(systemName: "plus")
                             .font(.system(size: 88, weight: .regular))
@@ -105,6 +113,10 @@ struct GameMenuView: View {
                     }
                     NavigationLink {
                         GameHistoryView()
+                            .onAppear {
+                                gameManager.showingUserInfo = false
+                                gameManager.offSetX = -gameManager.width+56
+                            }
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .font(.system(size: 88, weight: .regular))
