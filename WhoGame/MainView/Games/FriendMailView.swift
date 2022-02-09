@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct FriendRequestView: View {
+struct FriendMailView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct FriendRequestView_Previews: PreviewProvider {
+struct FriendMailView_Previews: PreviewProvider {
     static var previews: some View {
-        FriendRequestView()
+        FriendMailView()
     }
 }

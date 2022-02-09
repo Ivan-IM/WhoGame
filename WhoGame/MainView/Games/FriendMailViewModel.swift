@@ -7,6 +7,6 @@
 
 import SwiftUI
 
-final class FriendRequestViewModel: ObservableObject {
+final class FriendMailViewModel: ObservableObject {
     
 }
