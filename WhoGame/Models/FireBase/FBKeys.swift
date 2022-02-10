@@ -51,7 +51,6 @@ enum FBKeys {
         static let help = "help"
         static let mark = "mark"
         static let question = "question"
-        static let result = "result"
         static let score = "score"
     }
 }

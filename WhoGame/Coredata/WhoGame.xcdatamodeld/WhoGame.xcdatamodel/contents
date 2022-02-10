@@ -10,7 +10,6 @@
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="mark" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="question" optional="YES" attributeType="String"/>
-        <attribute name="result" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="score" attributeType="Integer 64" defaultValueString="1" usesScalarValueType="YES"/>
         <relationship name="toGameCD" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="GameCD" inverseName="toGameCardCD" inverseEntity="GameCD"/>
     </entity>
@@ -42,7 +41,7 @@
         <attribute name="showScore" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="209"/>
+        <element name="GameCardCD" positionX="-63" positionY="9" width="128" height="194"/>
         <element name="GameCD" positionX="-63" positionY="-18" width="128" height="194"/>
         <element name="GameHistoryCD" positionX="-54" positionY="63" width="128" height="209"/>
     </elements>

@@ -16,12 +16,11 @@ struct FBGameCard {
     let help: String
     let mark: Int
     let question: String
-    let result: Bool
     let score: Int
     
     // App Specific properties can be added here
     
-    init(answer: String, fakeAnswerFourth: String, fakeAnswerSecond: String, fakeAnswerThird: String, gameId: String, help: String, mark: Int, question: String, result: Bool, score: Int) {
+    init(answer: String, fakeAnswerFourth: String, fakeAnswerSecond: String, fakeAnswerThird: String, gameId: String, help: String, mark: Int, question: String, score: Int) {
         self.answer = answer
         self.fakeAnswerFourth = fakeAnswerFourth
         self.fakeAnswerSecond = fakeAnswerSecond
@@ -30,7 +29,6 @@ struct FBGameCard {
         self.help = help
         self.mark = mark
         self.question = question
-        self.result = result
         self.score = score
     }
     
@@ -46,16 +44,15 @@ extension FBGameCard {
         let help = documentData[FBKeys.GameCard.help] as? String ?? ""
         let mark = documentData[FBKeys.GameCard.mark] as? Int ?? 0
         let question = documentData[FBKeys.GameCard.question] as? String ?? ""
-        let result = documentData[FBKeys.GameCard.result] as? Bool ?? false
         let score = documentData[FBKeys.GameCard.score] as? Int ?? 0
         
         // Make sure you also initialize any app specific properties if you have them
         
         
-        self.init(answer: answer, fakeAnswerFourth: fakeAnswerFourth, fakeAnswerSecond: fakeAnswerSecond, fakeAnswerThird: fakeAnswerThird, gameId: gameId, help: help, mark: mark, question: question, result: result, score: score)
+        self.init(answer: answer, fakeAnswerFourth: fakeAnswerFourth, fakeAnswerSecond: fakeAnswerSecond, fakeAnswerThird: fakeAnswerThird, gameId: gameId, help: help, mark: mark, question: question, score: score)
     }
     
-    static func dataDict(answer: String, fakeAnswerFourth: String, fakeAnswerSecond: String, fakeAnswerThird: String, gameId: String, help: String, mark: Int, question: String, result: Bool, score: Int) -> [String: Any] {
+    static func dataDict(answer: String, fakeAnswerFourth: String, fakeAnswerSecond: String, fakeAnswerThird: String, gameId: String, help: String, mark: Int, question: String, score: Int) -> [String: Any] {
         var data: [String: Any]
         
         data = [
@@ -67,7 +64,6 @@ extension FBGameCard {
             FBKeys.GameCard.help: help,
             FBKeys.GameCard.mark: mark,
             FBKeys.GameCard.question: question,
-            FBKeys.GameCard.result: result,
             FBKeys.GameCard.score: score
         ]
         return data

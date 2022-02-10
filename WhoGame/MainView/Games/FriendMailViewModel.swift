@@ -58,7 +58,7 @@ final class FriendMailViewModel: ObservableObject {
                         print("Game send")
                         
                         for gameCard in self.gameCards {
-                            let dataGameCard = FBGameCard.dataDict(answer: gameCard.answer ?? "", fakeAnswerFourth: gameCard.fakeAnswerFourth ?? "", fakeAnswerSecond: gameCard.fakeAnswerSecond ?? "", fakeAnswerThird: gameCard.fakeAnswerThird ?? "", gameId: gameId, help: gameCard.help ?? "", mark: Int(gameCard.mark), question: gameCard.question ?? "", result: gameCard.result, score: Int(gameCard.score))
+                            let dataGameCard = FBGameCard.dataDict(answer: gameCard.answer ?? "", fakeAnswerFourth: gameCard.fakeAnswerFourth ?? "", fakeAnswerSecond: gameCard.fakeAnswerSecond ?? "", fakeAnswerThird: gameCard.fakeAnswerThird ?? "", gameId: gameId, help: gameCard.help ?? "", mark: Int(gameCard.mark), question: gameCard.question ?? "", score: Int(gameCard.score))
                             
                             FBFirestore.mergeFBGameCard(dataGameCard, userId: friend.uid, gameId: gameId, gameCardId: gameCard.id ?? "") { (result) in
                                 switch result {

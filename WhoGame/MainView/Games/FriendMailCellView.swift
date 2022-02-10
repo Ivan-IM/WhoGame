@@ -11,6 +11,7 @@ struct FriendMailCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
     @ObservedObject var viewModel: FriendMailViewModel
+    @State var sendGame: Bool = false
     let friend: Friend
     
     var body: some View {
@@ -21,17 +22,19 @@ struct FriendMailCellView: View {
                 .foregroundColor(.primary)
             Spacer()
             Button {
-                
+                viewModel.sendGame(friend: friend)
+                sendGame = true
             } label: {
-                Image(systemName: "paperplane")
+                Image(systemName: sendGame ? "checkmark":"paperplane")
                     .font(.system(size: 32, weight: .regular))
                     .symbolVariant(.circle.fill)
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: .blue)
+                        gameManager.mainColorSheme(color: sendGame ? .green:.blue)
                     )
             }
+            .disabled(sendGame)
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))

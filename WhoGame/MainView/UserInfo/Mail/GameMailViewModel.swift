@@ -86,7 +86,6 @@ final class GameMailViewModel: ObservableObject {
                             newGameCard.help = gameCard.help
                             newGameCard.mark = Int64(gameCard.mark)
                             newGameCard.question = gameCard.question
-                            newGameCard.result = gameCard.result
                             newGameCard.score = Int64(gameCard.score)
                             newGameCard.toGameCD = newGame
                             

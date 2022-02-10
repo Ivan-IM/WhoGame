@@ -30,6 +30,5 @@ struct GameCard: Codable, Identifiable {
     var help: String
     var mark: Int
     var question: String
-    var result: Bool
     var score: Int
 }
