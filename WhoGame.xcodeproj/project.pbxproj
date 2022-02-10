@@ -77,6 +77,7 @@
 		CFAEB5A927B3FCEB00758D80 /* FirebaseFirestoreSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = CFAEB5A827B3FCEB00758D80 /* FirebaseFirestoreSwift-Beta */; };
 		CFAEB5AB27B401F600758D80 /* FriendMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEB5AA27B401F600758D80 /* FriendMailView.swift */; };
 		CFAEB5AD27B4021000758D80 /* FriendMailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEB5AC27B4021000758D80 /* FriendMailViewModel.swift */; };
+		CFAEB5AF27B5103000758D80 /* FriendMailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEB5AE27B5103000758D80 /* FriendMailCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -149,6 +150,7 @@
 		CF76C3692792F7F100F13626 /* EndStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageTastyView.swift; sourceTree = "<group>"; };
 		CFAEB5AA27B401F600758D80 /* FriendMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMailView.swift; sourceTree = "<group>"; };
 		CFAEB5AC27B4021000758D80 /* FriendMailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMailViewModel.swift; sourceTree = "<group>"; };
+		CFAEB5AE27B5103000758D80 /* FriendMailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMailCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +306,7 @@
 				CF617535278EDF76009953BB /* FilterListView.swift */,
 				CF617527278C387B009953BB /* GameListCellView.swift */,
 				CFAEB5AA27B401F600758D80 /* FriendMailView.swift */,
+				CFAEB5AE27B5103000758D80 /* FriendMailCellView.swift */,
 				CFAEB5AC27B4021000758D80 /* FriendMailViewModel.swift */,
 			);
 			path = Games;
@@ -491,6 +494,7 @@
 				CF618B5D27AF9CD100B7DC30 /* FBFireStore.swift in Sources */,
 				CF2062CE2787882C00EABCCE /* CreateGameView.swift in Sources */,
 				CF618B7327B1355500B7DC30 /* GameMailView.swift in Sources */,
+				CFAEB5AF27B5103000758D80 /* FriendMailCellView.swift in Sources */,
 				CF618B7B27B27C4200B7DC30 /* FriendRequestCellView.swift in Sources */,
 				CF617531278D9296009953BB /* GameHistoryView.swift in Sources */,
 				CF618B6027AF9CD100B7DC30 /* FBUser.swift in Sources */,

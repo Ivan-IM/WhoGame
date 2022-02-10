@@ -116,10 +116,10 @@ struct GameListCellView: View {
                                     .foregroundColor(isFavorite ? .yellow:.secondary)
                             }
                             
-                            Button {
-                                
+                            NavigationLink {
+                                FriendMailView(viewModel: FriendMailViewModel(game: game))
                             } label: {
-                                Image(systemName: "paperplane")
+                                Image(systemName: "envelope")
                                     .font(.system(size: 24, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
