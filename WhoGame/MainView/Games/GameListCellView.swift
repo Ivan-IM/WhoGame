@@ -129,14 +129,18 @@ struct GameListCellView: View {
                                     )
                             }
                         }
-                        Image(systemName: "chevron.right")
-                            .font(.system(size: 44, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .red)
-                            )
+                        NavigationLink {
+                            CreateGameView(viewModel: CreateGameViewModel(game: game))
+                        } label: {
+                            Image(systemName: "chevron.right")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .red)
+                                )
+                        }
                     }
                 }
             }

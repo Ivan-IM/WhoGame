@@ -41,11 +41,7 @@ struct FilterListView: View {
                                 }
                                 .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
                             } else {
-                                NavigationLink {
-                                    CreateGameView(viewModel: CreateGameViewModel(game: game))
-                                } label: {
-                                    GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                                }
+                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
                             }
                         }
                     }
@@ -61,11 +57,7 @@ struct FilterListView: View {
                             }
                             .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
                         } else {
-                            NavigationLink {
-                                CreateGameView(viewModel: CreateGameViewModel(game: game))
-                            } label: {
-                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                            }
+                            GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
                         }
                     }
                 }
