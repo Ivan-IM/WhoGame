@@ -11,6 +11,7 @@ struct GameListCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
     @State var isFavorite: Bool = false
+    @State var showingDaleteAlert: Bool = false
     let game: GameCD
     let symbolType: Bool
     
@@ -72,15 +73,20 @@ struct GameListCellView: View {
                                 .symbolVariant(.fill)
                                 .foregroundColor(.yellow)
                         }
-                        Image(systemName: "play")
-                            .font(.system(size: 44, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .blue)
-                            )
-                            .opacity(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? 0.2:1.0)
+                        NavigationLink {
+                            GameView(viewModel: GameViewModel(game: game))
+                        } label: {
+                            Image(systemName: "play")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .blue)
+                                )
+                        }
+                        .opacity(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? 0.2:1.0)
+                        .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
                     }
                 } else {
                     HStack {
@@ -129,17 +135,49 @@ struct GameListCellView: View {
                                     )
                             }
                         }
-                        NavigationLink {
-                            CreateGameView(viewModel: CreateGameViewModel(game: game))
-                        } label: {
-                            Image(systemName: "chevron.right")
-                                .font(.system(size: 44, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .red)
+                        if game.author == gameManager.uid {
+                            NavigationLink {
+                                CreateGameView(viewModel: CreateGameViewModel(game: game))
+                            } label: {
+                                Image(systemName: "chevron.right")
+                                    .font(.system(size: 44, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .red)
+                                    )
+                            }
+                        } else {
+                            ZStack {
+                                Image(systemName: "eye.slash")
+                                    .font(.system(size: 44, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .blue)
                                 )
+                                Button {
+                                    showingDaleteAlert = true
+                                } label: {
+                                    Image(systemName: "trash")
+                                        .font(.system(size: 22, weight: .regular))
+                                        .symbolVariant(.circle.fill)
+                                        .symbolRenderingMode(.palette)
+                                        .foregroundStyle(
+                                            Color.white.opacity(0.8),
+                                            gameManager.mainColorSheme(color: .red)
+                                    )
+                                }
+                                .offset(x: 15, y: -15)
+                                .alert("Delete game?", isPresented: $showingDaleteAlert) {
+                                    Button("OK", role: .destructive) {
+                                        gameManager.deleteGame(game: game)
+                                    }
+                                    Button("Cancel", role: .cancel) {}
+                                }
+                            }
                         }
                     }
                 }

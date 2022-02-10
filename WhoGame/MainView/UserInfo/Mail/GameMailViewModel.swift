@@ -20,6 +20,14 @@ final class GameMailViewModel: ObservableObject {
         getFriends()
     }
     
+    func checkGameAdd(game: Game) -> Bool {
+        if PersistenceController.shared.fetchGames(for: game.id ?? "").isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func getGames() {
         guard let currentUserId = Auth.auth().currentUser?.uid else { return }
         

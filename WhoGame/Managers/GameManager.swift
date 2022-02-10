@@ -48,4 +48,19 @@ final class GameManager: ObservableObject {
             return LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
     }
+    
+    func deleteGame(game: GameCD) {
+        guard let gameId = game.id else { return }
+        let gameCards = PersistenceController.shared.fetchGameCards(for: gameId)
+        PersistenceController.shared.delete(game) { error in
+            switch error {
+            case .none:
+                for gameCard in gameCards {
+                    PersistenceController.shared.delete(gameCard)
+                }
+            case .some(_):
+                print(String(describing: error?.localizedDescription))
+            }
+        }
+    }
 }

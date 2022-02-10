@@ -33,32 +33,14 @@ struct FilterListView: View {
                 ScrollView(showsIndicators: false) {
                     ForEach(games) { game in
                         if game.favorite {
-                            if doYouWantToPlay {
-                                NavigationLink {
-                                    GameView(viewModel: GameViewModel(game: game))
-                                } label: {
-                                    GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                                }
-                                .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
-                            } else {
-                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                            }
+                            GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
                         }
                     }
                 }
             } else {
                 ScrollView(showsIndicators: false) {
                     ForEach(games) { game in
-                        if doYouWantToPlay {
-                            NavigationLink {
-                                GameView(viewModel: GameViewModel(game: game))
-                            } label: {
-                                GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                            }
-                            .disabled(PersistenceController.shared.fetchGameCards(for: game.id ?? "").isEmpty ? true:false)
-                        } else {
-                            GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
-                        }
+                        GameListCellView(isFavorite: game.favorite, game: game, symbolType: doYouWantToPlay)
                     }
                 }
             }

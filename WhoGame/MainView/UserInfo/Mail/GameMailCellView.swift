@@ -17,7 +17,7 @@ struct GameMailCellView: View {
     
     var body: some View {
         HStack {
-            VStack {
+            VStack(alignment: .leading, spacing: 3) {
                 Text("\(game.name)")
                     .lineLimit(1)
                     .font(.system(size: 22, weight: .bold))
@@ -28,26 +28,37 @@ struct GameMailCellView: View {
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.secondary)
-                Text("Author: \(viewModel.friends.filter{ $0.uid == game.author }.first?.name ?? "Unknown"))")
+                Text("Author: \(viewModel.friends.filter{ $0.uid == game.author }.first?.name ?? "Unknown")")
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .light))
                     .foregroundColor(.secondary)
             }
             Spacer()
-            Button {
-                viewModel.addGame(game: game)
-                saveGame = true
-            } label: {
-                Image(systemName: saveGame ? "checkmark":"plus")
+            if viewModel.checkGameAdd(game: game) && !saveGame {
+                Button {
+                    viewModel.addGame(game: game)
+                    saveGame = true
+                } label: {
+                    Image(systemName: "plus")
+                        .font(.system(size: 32, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            gameManager.mainColorSheme(color: .blue)
+                        )
+                }
+            } else {
+                Image(systemName: "checkmark")
                     .font(.system(size: 32, weight: .regular))
                     .symbolVariant(.circle.fill)
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: saveGame ? .green:.blue)
+                        gameManager.mainColorSheme(color: .green)
                     )
             }
-            .disabled(saveGame)
+            
             Button {
                 showingDeleteAlert = true
             } label: {
