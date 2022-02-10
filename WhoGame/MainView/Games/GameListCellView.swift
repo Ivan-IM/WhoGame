@@ -156,7 +156,7 @@ struct GameListCellView: View {
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
                                         Color.white.opacity(0.8),
-                                        gameManager.mainColorSheme(color: .blue)
+                                        gameManager.mainColorSheme(color: .green)
                                 )
                                 Button {
                                     showingDaleteAlert = true
