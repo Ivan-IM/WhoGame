@@ -37,6 +37,32 @@ struct UserInfoView: View {
                             )
                     }
                 }
+                VStack(alignment: .leading) {
+                    Text("\(gameManager.userName)")
+                        .lineLimit(1)
+                        .font(.system(size: 22, weight: .semibold))
+                        .foregroundColor(.primary)
+                    Text("User ID:")
+                        .lineLimit(1)
+                        .font(.system(size: 16, weight: .semibold))
+                    .foregroundColor(.primary)
+                    HStack {
+                        Text("\(gameManager.uid)")
+                            .lineLimit(1)
+                            .font(.system(size: 14, weight: .regular))
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Button {
+                            UIPasteboard.general.string = gameManager.uid
+                        } label: {
+                            Image(systemName: "doc.on.doc")
+                                .font(.system(size: 14, weight: .regular))
+                                .foregroundColor(.primary)
+                                .opacity(0.8)
+                        }
+                        .padding(.trailing, 9)
+                    }
+                }
                 Spacer()
             }
             .padding()

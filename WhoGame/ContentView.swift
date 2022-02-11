@@ -10,6 +10,7 @@ import CoreData
 
 struct ContentView: View {
 
+    @EnvironmentObject var gameManager: GameManager
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
     var body: some View {
@@ -22,6 +23,10 @@ struct ContentView: View {
             }
             else {
                 MainView()
+                    .onAppear {
+                        gameManager.uid = viewModel.user.uid
+                        gameManager.userName = viewModel.user.name
+                    }
             }
         }
     }

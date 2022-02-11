@@ -27,7 +27,16 @@ final class GameManager: ObservableObject {
     @Published var showingMailView: Bool = false
     @Published var showingLogoutAlert: Bool = false
     
-    @Published var uid: String = ""
+    @Published var uid: String {
+        didSet {
+            UserDefaults.standard.set(uid, forKey: "UID")
+        }
+    }
+    @Published var userName: String {
+        didSet {
+            UserDefaults.standard.set(userName, forKey: "UserName")
+        }
+    }
     
     enum ColorSchemeEnum {
         case red, green, blue, purple
@@ -35,8 +44,9 @@ final class GameManager: ObservableObject {
     
     init() {
         self.leftHande = UserDefaults.standard.object(forKey: "Hande") as? Bool ?? false
+        self.uid = UserDefaults.standard.object(forKey: "UID") as? String ?? ""
+        self.userName = UserDefaults.standard.object(forKey: "UserName") as? String ?? ""
         self.offSetX = -self.width
-        self.uid = Auth.auth().currentUser?.uid ?? ""
     }
     
     func mainColorSheme(color: ColorSchemeEnum) -> LinearGradient {
