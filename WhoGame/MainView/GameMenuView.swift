@@ -10,7 +10,8 @@ import SwiftUI
 struct GameMenuView: View {
     
     @EnvironmentObject var gameManager: GameManager
-    @State var animate = false
+    @State var animateOne = true
+    @State var animateTwo = true
     
     var body: some View {
         NavigationView {
@@ -28,7 +29,7 @@ struct GameMenuView: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: "w")
+                            Image(systemName: animateOne ? "gear":"w")
                                 .font(.system(size: 44, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
@@ -37,6 +38,7 @@ struct GameMenuView: View {
                                     gameManager.mainColorSheme(color: gameManager.leftHande ? .blue:.green)
                                 )
                         }
+                        
                         Image(systemName: "h")
                             .font(.system(size: 44, weight: .regular))
                             .symbolVariant(.circle.fill)
@@ -50,7 +52,7 @@ struct GameMenuView: View {
                                 gameManager.leftHande.toggle()
                             }
                         } label: {
-                            Image(systemName: "o")
+                            Image(systemName: animateTwo ? "hand.raised":"o")
                                 .font(.system(size: 44, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
@@ -119,9 +121,18 @@ struct GameMenuView: View {
                 .padding()
             }
             .navigationBarHidden(true)
+            .onAppear {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    withAnimation {
+                        animateOne = false
+                        animateTwo = false
+                    }
+                }
+            }
         }
     }
 }
+
 
 struct GameMenuView_Previews: PreviewProvider {
     static var previews: some View {
