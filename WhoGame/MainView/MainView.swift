@@ -16,7 +16,7 @@ struct MainView: View {
         ZStack(alignment: .leading) {
             GameMenuView()
             Group {
-                if gameManager.showingUserInfo {
+                if gameManager.showingUserInfoPanel {
                     UserInfoPanelView()
                         .offset(x: translation.width + gameManager.offSetX)
                         .gesture(
@@ -27,13 +27,13 @@ struct MainView: View {
                                 .onEnded({ value in
                                     withAnimation {
                                         gameManager.offSetX = -gameManager.width
-                                        gameManager.showingUserInfo = false
+                                        gameManager.showingUserInfoPanel = false
                                         translation = .zero
                                     }
                                 })
                         )
                         .transition(.move(edge: .leading))
-                        .animation(.default, value: gameManager.showingUserInfo)
+                        .animation(.default, value: gameManager.showingUserInfoPanel)
                         .zIndex(1)
                     
                 }
@@ -50,6 +50,12 @@ struct MainView: View {
                         .transition(.move(edge: .trailing))
                         .animation(.default, value: gameManager.showingMailView)
                         .zIndex(3)
+                }
+                if gameManager.showingUserInfoView {
+                    UserInfoView()
+                        .transition(.move(edge: .trailing))
+                        .animation(.default, value: gameManager.showingUserInfoView)
+                        .zIndex(4)
                 }
             }
         }

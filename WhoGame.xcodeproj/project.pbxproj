@@ -78,6 +78,7 @@
 		CFAEB5AB27B401F600758D80 /* FriendMailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEB5AA27B401F600758D80 /* FriendMailView.swift */; };
 		CFAEB5AD27B4021000758D80 /* FriendMailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEB5AC27B4021000758D80 /* FriendMailViewModel.swift */; };
 		CFAEB5AF27B5103000758D80 /* FriendMailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEB5AE27B5103000758D80 /* FriendMailCellView.swift */; };
+		CFAEB5B127B62D3C00758D80 /* UserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAEB5B027B62D3C00758D80 /* UserInfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -151,6 +152,7 @@
 		CFAEB5AA27B401F600758D80 /* FriendMailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMailView.swift; sourceTree = "<group>"; };
 		CFAEB5AC27B4021000758D80 /* FriendMailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMailViewModel.swift; sourceTree = "<group>"; };
 		CFAEB5AE27B5103000758D80 /* FriendMailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendMailCellView.swift; sourceTree = "<group>"; };
+		CFAEB5B027B62D3C00758D80 /* UserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				CF618B6B27B0E6C100B7DC30 /* UserInfoPanelView.swift */,
+				CFAEB5B027B62D3C00758D80 /* UserInfoView.swift */,
 				CF618B7827B23D8400B7DC30 /* Friends */,
 				CF618B7927B23D8E00B7DC30 /* Mail */,
 			);
@@ -523,6 +526,7 @@
 				CF298943275D159700D3C3C1 /* ContentView.swift in Sources */,
 				CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */,
 				CF61752E278D69E5009953BB /* EndStageView.swift in Sources */,
+				CFAEB5B127B62D3C00758D80 /* UserInfoView.swift in Sources */,
 				CF61753827901B95009953BB /* TypeGameView.swift in Sources */,
 				CF618B6F27B10B0100B7DC30 /* GameMenuView.swift in Sources */,
 				CF617528278C387B009953BB /* GameListCellView.swift in Sources */,

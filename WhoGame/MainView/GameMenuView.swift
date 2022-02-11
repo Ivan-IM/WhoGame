@@ -21,8 +21,8 @@ struct GameMenuView: View {
                     HStack {
                         Button {
                             withAnimation {
-                                gameManager.showingUserInfo.toggle()
-                                if gameManager.showingUserInfo {
+                                gameManager.showingUserInfoPanel.toggle()
+                                if gameManager.showingUserInfoPanel {
                                     gameManager.offSetX = -gameManager.width+56
                                 } else {
                                     gameManager.offSetX = -gameManager.width
@@ -67,7 +67,7 @@ struct GameMenuView: View {
                     NavigationLink {
                         GameListView()
                             .onAppear {
-                                gameManager.showingUserInfo = false
+                                gameManager.showingUserInfoPanel = false
                                 gameManager.offSetX = -gameManager.width+56
                             }
                     } label: {
@@ -85,7 +85,7 @@ struct GameMenuView: View {
                     NavigationLink {
                         CreateGameView(viewModel: CreateGameViewModel())
                             .onAppear {
-                                gameManager.showingUserInfo = false
+                                gameManager.showingUserInfoPanel = false
                                 gameManager.offSetX = -gameManager.width+56
                             }
                     } label: {
@@ -102,7 +102,7 @@ struct GameMenuView: View {
                     NavigationLink {
                         GameHistoryView()
                             .onAppear {
-                                gameManager.showingUserInfo = false
+                                gameManager.showingUserInfoPanel = false
                                 gameManager.offSetX = -gameManager.width+56
                             }
                     } label: {

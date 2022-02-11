@@ -18,6 +18,21 @@ struct UserInfoPanelView: View {
                 VStack(spacing: 24) {
                     Button {
                         withAnimation {
+                            gameManager.showingUserInfoView = true
+                        }
+                    } label: {
+                        Image(systemName: "person")
+                            .font(.system(size: 32, weight: .regular))
+                            .symbolVariant(.circle.fill)
+                            .symbolRenderingMode(.palette)
+                            .foregroundStyle(
+                                Color.white.opacity(0.8),
+                                gameManager.mainColorSheme(color: .purple)
+                            )
+                    }
+                    
+                    Button {
+                        withAnimation {
                             gameManager.showingFriendsView = true
                         }
                     } label: {
@@ -80,7 +95,7 @@ struct UserInfoPanelView: View {
                 Button("OK", role: .destructive) {
                     FBAuth.logout { result in
                         print("Logged out")
-                        gameManager.showingUserInfo = false
+                        gameManager.showingUserInfoPanel = false
                         gameManager.offSetX = -gameManager.width
                     }
                 }

@@ -19,9 +19,10 @@ final class GameManager: ObservableObject {
         }
     }
     
-    @Published var showingUserInfo: Bool = false
+    @Published var showingUserInfoPanel: Bool = false
     @Published var offSetX: CGFloat = 0
     
+    @Published var showingUserInfoView: Bool = false
     @Published var showingFriendsView: Bool = false
     @Published var showingMailView: Bool = false
     @Published var showingLogoutAlert: Bool = false
@@ -29,7 +30,7 @@ final class GameManager: ObservableObject {
     @Published var uid: String = ""
     
     enum ColorSchemeEnum {
-       case red, green, blue
+        case red, green, blue, purple
     }
     
     init() {
@@ -46,6 +47,8 @@ final class GameManager: ObservableObject {
             return LinearGradient(colors: [Color.mint, Color.green], startPoint: .topLeading, endPoint: .bottomTrailing)
         case .blue:
             return LinearGradient(colors: [Color.teal, Color.blue], startPoint: .topLeading, endPoint: .bottomTrailing)
+        case .purple:
+            return LinearGradient(colors: [Color.indigo, Color.purple], startPoint: .topLeading, endPoint: .bottomTrailing)
         }
     }
     
