@@ -24,8 +24,12 @@ struct ContentView: View {
             else {
                 MainView()
                     .onAppear {
-                        gameManager.uid = viewModel.user.uid
-                        gameManager.userName = viewModel.user.name
+                        if gameManager.uid.isEmpty {
+                            gameManager.uid = viewModel.user.uid
+                        }
+                        if gameManager.userName.isEmpty {
+                            gameManager.userName = viewModel.user.name
+                        }
                     }
             }
         }

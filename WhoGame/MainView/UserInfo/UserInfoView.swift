@@ -42,6 +42,7 @@ struct UserInfoView: View {
                         .lineLimit(1)
                         .font(.system(size: 22, weight: .semibold))
                         .foregroundColor(.primary)
+                        .padding(.vertical, 2)
                     Text("User ID:")
                         .lineLimit(1)
                         .font(.system(size: 16, weight: .semibold))

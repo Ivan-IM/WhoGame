@@ -97,6 +97,8 @@ struct UserInfoPanelView: View {
                         print("Logged out")
                         gameManager.showingUserInfoPanel = false
                         gameManager.offSetX = -gameManager.width
+                        gameManager.uid.removeAll()
+                        gameManager.userName.removeAll()
                     }
                 }
                 Button("Cancel", role: .cancel) {}
