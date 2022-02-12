@@ -49,6 +49,22 @@ final class GameManager: ObservableObject {
         self.offSetX = -self.width
     }
     
+    func getUserInfo() {
+        if self.uid.isEmpty {
+            guard let userId = Auth.auth().currentUser?.uid else { return }
+            
+            FBFirestore.retrieveFBUser(uid: userId) { result in
+                switch result {
+                case .failure(let error):
+                    print(error.localizedDescription)
+                case .success(let user):
+                    self.uid = user.uid
+                    self.userName = user.name
+                }
+            }
+        }
+    }
+    
     func mainColorSheme(color: ColorSchemeEnum) -> LinearGradient {
         switch color {
         case .red:

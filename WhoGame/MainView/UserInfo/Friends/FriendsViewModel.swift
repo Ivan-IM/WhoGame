@@ -21,6 +21,9 @@ final class FriendsViewModel: ObservableObject {
     @Published var searchUser: FBUser = .init(uid: "", name: "", email: "")
     @Published var hideSearchUser: Bool = false
     
+    @Published var showingSendGameView: Bool = false
+    @Published var friendIdSend: String = ""
+    
     private let store = Firestore.firestore()
     
     @Published var friends = [Friend]()

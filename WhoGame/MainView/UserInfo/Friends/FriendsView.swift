@@ -146,6 +146,12 @@ struct FriendsView: View {
                 }
             }
             .padding()
+            if viewModel.showingSendGameView {
+                FriendSendGameView(viewModel: viewModel)
+                    .transition(.move(edge: .bottom))
+                    .animation(.default, value: viewModel.showingSendGameView)
+                    .zIndex(1)
+            }
         }
         .edgesIgnoringSafeArea(.bottom)
         .background(

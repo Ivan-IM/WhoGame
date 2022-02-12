@@ -49,9 +49,12 @@ struct FriendCellView: View {
                     }
                     Spacer()
                     Button {
-                        
+                        withAnimation {
+                            viewModel.friendIdSend = friend.uid
+                            viewModel.showingSendGameView = true
+                        }
                     } label: {
-                        Image(systemName: "paperplane")
+                        Image(systemName: "envelope")
                             .font(.system(size: 32, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)

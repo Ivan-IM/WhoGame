@@ -1,42 +1,31 @@
 //
-//  GameListView.swift
+//  FriendSendGameView.swift
 //  WhoGame
 //
-//  Created by Иван Маришин on 08.01.2022.
+//  Created by Иван Маришин on 12.02.2022.
 //
 
 import SwiftUI
 
-struct GameListView: View {
+struct FriendSendGameView: View {
     
     @EnvironmentObject var gameManager: GameManager
-    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel: FriendsViewModel
     @FocusState private var showingKeyboard: Bool
-    @State var doYouWantToPlay: Bool = true
     @State var isFavorite: Bool = false
     @State var showingSearch: Bool = false
     @State var searchText: String = ""
     
     var body: some View {
         ZStack {
-            BackgroundView()
             VStack {
                 HStack {
-                    Group {
-                        if doYouWantToPlay {
-                            Text("Play")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundStyle(
-                                    gameManager.mainColorSheme(color: .blue)
-                                )
-                        } else {
-                            Text("Edit")
-                                .font(.system(size: 32, weight: .bold))
-                                .foregroundStyle(
-                                    gameManager.mainColorSheme(color: .red)
-                                )
-                        }
-                    }
+                    Text("Games")
+                        .lineLimit(1)
+                        .font(.system(size: 32, weight: .bold))
+                        .foregroundStyle(
+                            gameManager.mainColorSheme(color: .green)
+                        )
                     Spacer()
                     Button {
                         withAnimation {
@@ -56,33 +45,11 @@ struct GameListView: View {
                             )
                     }
                     Button {
-                        doYouWantToPlay.toggle()
-                        showingKeyboard = false
-                    } label: {
-                        if doYouWantToPlay {
-                            Image(systemName: "line.3.horizontal")
-                                .font(.system(size: 32, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .red)
-                                )
-                        } else {
-                            Image(systemName: "play")
-                                .font(.system(size: 32, weight: .regular))
-                                .symbolVariant(.circle.fill)
-                                .symbolRenderingMode(.palette)
-                                .foregroundStyle(
-                                    Color.white.opacity(0.8),
-                                    gameManager.mainColorSheme(color: .blue)
-                                )
+                        withAnimation {
+                            viewModel.showingSendGameView = false
                         }
-                    }
-                    Button {
-                        presentationMode.wrappedValue.dismiss()
                     } label: {
-                        Image(systemName: "multiply")
+                        Image(systemName: "multiply.circle")
                             .font(.system(size: 32, weight: .regular))
                             .symbolVariant(.circle.fill)
                             .symbolRenderingMode(.palette)
@@ -128,17 +95,16 @@ struct GameListView: View {
                     .padding(.vertical, 3)
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 16))
                 }
-                FilterListView(searchText: searchText, doYouWantToPlay: doYouWantToPlay, isFavorite: isFavorite, showingSearch: showingSearch)
+                FriendSendGameListView(searchText: searchText, isFavorite: isFavorite, showingSearch: showingSearch, viewModel: viewModel)
             }
-            .navigationBarHidden(true)
             .padding()
+            .navigationBarHidden(true)
             .edgesIgnoringSafeArea(.bottom)
+            .background(
+                RoundedRectangle(cornerRadius: 34)
+                    .fill(.ultraThinMaterial)
+                    .ignoresSafeArea()
+            )
         }
-    }
-}
-
-struct GameListView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameListView()
     }
 }

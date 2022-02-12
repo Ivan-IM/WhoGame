@@ -63,7 +63,7 @@ final class FriendMailViewModel: ObservableObject {
                             FBFirestore.mergeFBGameCard(dataGameCard, userId: friend.uid, gameId: gameId, gameCardId: gameCard.id ?? "") { (result) in
                                 switch result {
                                 case .success(_):
-                                    print("Exercise send")
+                                    print("GameCard send")
                                 case .failure(let error):
                                     print(error.localizedDescription)
                                 }
