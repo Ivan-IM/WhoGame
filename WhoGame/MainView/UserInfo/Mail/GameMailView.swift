@@ -40,7 +40,7 @@ struct GameMailView: View {
                     }
                 }
                 ScrollView(showsIndicators: false) {
-                    ForEach(fbManager.games) { game in
+                    ForEach(fbManager.games.sorted{ $0.date < $1.date }) { game in
                         GameMailCellView(viewModel: viewModel, game: game)
                     }
                     .padding(.bottom, 32)

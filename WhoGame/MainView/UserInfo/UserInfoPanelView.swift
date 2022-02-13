@@ -46,16 +46,16 @@ struct UserInfoPanelView: View {
                                     Color.white.opacity(0.8),
                                     gameManager.mainColorSheme(color: .blue)
                                 )
-                            if fbManager.friendRequests.count > 0 {
+                            if fbManager.friendRequests.count > 0 && fbManager.friendRequests.count < 50 {
                                 Image(systemName: "\(fbManager.friendRequests.count)")
-                                    .font(.system(size: 12, weight: .regular))
+                                    .font(.system(size: 16, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
-                                        Color.white.opacity(0.8),
-                                        gameManager.mainColorSheme(color: .red)
+                                        Color.black,
+                                        Color.yellow
                                     )
-                                    .offset(x: 10, y: -10)
+                                    .offset(x: 12, y: -12)
                             }
                         }
                     }
@@ -63,8 +63,10 @@ struct UserInfoPanelView: View {
                     Button {
                         withAnimation {
                             gameManager.showingMailView = true
+                            fbManager.newMail = fbManager.games.count
                         }
                     } label: {
+                        ZStack {
                         Image(systemName: "envelope")
                             .font(.system(size: 32, weight: .regular))
                             .symbolVariant(.circle.fill)
@@ -73,6 +75,18 @@ struct UserInfoPanelView: View {
                                 Color.white.opacity(0.8),
                                 gameManager.mainColorSheme(color: .green)
                             )
+                            if (fbManager.games.count - fbManager.newMail) > 0 && (fbManager.games.count - fbManager.newMail) < 50 {
+                                Image(systemName: "\(fbManager.games.count - fbManager.newMail)")
+                                    .font(.system(size: 16, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.black,
+                                        Color.yellow
+                                    )
+                                    .offset(x: 12, y: -12)
+                            }
+                        }
                     }
                     
                     Button {

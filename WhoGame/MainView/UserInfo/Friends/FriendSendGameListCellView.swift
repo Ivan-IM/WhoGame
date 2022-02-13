@@ -42,7 +42,7 @@ struct FriendSendGameListCellView: View {
             Button {
                 guard let gameId = self.game.id else { return }
                 
-                let dataGame = FBGame.dataDict(author: game.author ?? "", authorName: game.authorName ?? "", date: game.date ?? Date(), type: Int(game.type), name: game.name ?? "Unknown", theme: game.theme ?? "Unknown", showAnswer: game.showAnswer, showHelp: game.showHelp, showScore: game.showScore)
+                let dataGame = FBGame.dataDict(author: game.author ?? "", authorName: game.authorName ?? "", date: Date(), type: Int(game.type), name: game.name ?? "Unknown", theme: game.theme ?? "Unknown", showAnswer: game.showAnswer, showHelp: game.showHelp, showScore: game.showScore)
                 
                 FBFirestore.mergeFBGame(dataGame, userId: friendId, gameId: gameId) { (result) in
                     switch result {
