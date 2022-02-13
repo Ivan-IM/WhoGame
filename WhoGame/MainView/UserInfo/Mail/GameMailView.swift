@@ -54,6 +54,9 @@ struct GameMailView: View {
                 .fill(.ultraThinMaterial)
                 .ignoresSafeArea()
         )
+        .onDisappear {
+            fbManager.newMail = fbManager.games.count
+        }
     }
 }
 

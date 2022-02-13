@@ -41,14 +41,14 @@ struct FriendSendGameListCellView: View {
             }
             Button {
                 guard let gameId = self.game.id else { return }
-                
+                sending = true
                 let dataGame = FBGame.dataDict(author: game.author ?? "", authorName: game.authorName ?? "", date: Date(), type: Int(game.type), name: game.name ?? "Unknown", theme: game.theme ?? "Unknown", showAnswer: game.showAnswer, showHelp: game.showHelp, showScore: game.showScore)
                 
                 FBFirestore.mergeFBGame(dataGame, userId: friendId, gameId: gameId) { (result) in
                     switch result {
                     case .success(_):
                         print("Game send")
-                        sending = true
+                        
                         for gameCard in PersistenceController.shared.fetchGameCards(for: gameId) {
                             let dataGameCard = FBGameCard.dataDict(answer: gameCard.answer ?? "", fakeAnswerFourth: gameCard.fakeAnswerFourth ?? "", fakeAnswerSecond: gameCard.fakeAnswerSecond ?? "", fakeAnswerThird: gameCard.fakeAnswerThird ?? "", gameId: gameId, help: gameCard.help ?? "", mark: Int(gameCard.mark), question: gameCard.question ?? "", score: Int(gameCard.score))
                             

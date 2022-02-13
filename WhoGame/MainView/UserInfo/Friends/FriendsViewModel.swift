@@ -18,6 +18,7 @@ final class FriendsViewModel: ObservableObject {
     
     @Published var searchUser: FBUser = .init(uid: "", name: "", email: "")
     @Published var hideSearchUser: Bool = false
+    @Published var blockAdding: Bool = false
     
     @Published var showingSendGameView: Bool = false
     @Published var friendIdSend: String = ""
