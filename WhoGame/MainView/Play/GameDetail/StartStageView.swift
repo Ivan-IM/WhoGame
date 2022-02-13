@@ -19,8 +19,12 @@ struct StartStageView: View {
             Group {
                 switch viewModel.rulesSystem {
                 case .name:
-                    Text("Enter your name")
-                        .foregroundColor(.secondary)
+                    HStack {
+                        Image(systemName: "arrow.down")
+                        Text("Enter your name")
+                        Image(systemName: "arrow.down")
+                    }
+                    .foregroundColor(.secondary)
                 case .scoreOn:
                     Text("Score system is on")
                 case .scoreOff:

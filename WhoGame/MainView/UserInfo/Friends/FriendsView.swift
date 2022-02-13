@@ -105,6 +105,7 @@ struct FriendsView: View {
                                 }
                                 else if fbManager.friends.filter{ $0.uid == viewModel.searchUser.uid }.count == 0 {
                                     Button {
+                                        viewModel.blockAdding = true
                                         viewModel.addFriendRequest()
                                     } label: {
                                         Image(systemName: "plus")
@@ -116,6 +117,7 @@ struct FriendsView: View {
                                                 gameManager.mainColorSheme(color: .blue)
                                             )
                                     }
+                                    .disabled(viewModel.blockAdding)
                                 } else {
                                     Image(systemName: "checkmark")
                                         .font(.system(size: 32, weight: .regular))
