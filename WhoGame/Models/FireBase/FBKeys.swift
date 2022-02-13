@@ -33,6 +33,7 @@ enum FBKeys {
     
     enum Game {
         static let author = "author"
+        static let authorName = "authorName"
         static let date = "date"
         static let type = "type"
         static let name = "name"

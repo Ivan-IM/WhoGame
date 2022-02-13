@@ -37,14 +37,27 @@ struct UserInfoPanelView: View {
                             gameManager.showingFriendsView = true
                         }
                     } label: {
-                        Image(systemName: "person.2")
-                            .font(.system(size: 32, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .blue)
-                            )
+                        ZStack {
+                            Image(systemName: "person.2")
+                                .font(.system(size: 32, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .blue)
+                                )
+                            if fbManager.friendRequests.count > 0 {
+                                Image(systemName: "\(fbManager.friendRequests.count)")
+                                    .font(.system(size: 12, weight: .regular))
+                                    .symbolVariant(.circle.fill)
+                                    .symbolRenderingMode(.palette)
+                                    .foregroundStyle(
+                                        Color.white.opacity(0.8),
+                                        gameManager.mainColorSheme(color: .red)
+                                    )
+                                    .offset(x: 10, y: -10)
+                            }
+                        }
                     }
                     
                     Button {

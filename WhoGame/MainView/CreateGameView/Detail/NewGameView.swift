@@ -205,7 +205,7 @@ struct NewGameView: View {
                     } else {
                         Button {
                             withAnimation {
-                                viewModel.saveNewGame(fbManager.uid)
+                                viewModel.saveNewGame(uid: fbManager.uid, userName: fbManager.userName)
                             }
                             showingKeyboard = false
                         } label: {

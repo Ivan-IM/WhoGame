@@ -23,6 +23,11 @@ final class FBManager: ObservableObject {
             UserDefaults.standard.set(userName, forKey: "UserName")
         }
     }
+    @Published var newMail: Int {
+        didSet {
+            UserDefaults.standard.set(newMail, forKey: "NewMail")
+        }
+    }
     @Published var user: FBUser = .init(uid: "", name: "", email: "")
     
     @Published var friendRequests = [FriendRequest]()
@@ -34,6 +39,7 @@ final class FBManager: ObservableObject {
     init() {
         self.uid = UserDefaults.standard.object(forKey: "UID") as? String ?? ""
         self.userName = UserDefaults.standard.object(forKey: "UserName") as? String ?? ""
+        self.newMail = UserDefaults.standard.object(forKey: "NewMail") as? Int ?? 0
     }
     
     func getFBData() {
@@ -53,7 +59,7 @@ final class FBManager: ObservableObject {
                     self.userName = user.name
                 }
             }
-
+            
             Firestore.firestore().collection("friends/\(user.uid)/friendsList").addSnapshotListener { (snapshot, error) in
                 switch error {
                 case .none:

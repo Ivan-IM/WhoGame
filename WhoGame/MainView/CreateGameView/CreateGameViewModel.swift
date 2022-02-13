@@ -39,7 +39,7 @@ final class CreateGameViewModel: ObservableObject {
         self.showHelp = game.showHelp
     }
     
-    func saveNewGame(_ uid: String) {
+    func saveNewGame(uid: String, userName: String) {
         tastyGameBlock()
         let game = GameCD(context: PersistenceController.shared.container.viewContext)
         game.id = UUID().uuidString
@@ -51,6 +51,7 @@ final class CreateGameViewModel: ObservableObject {
         game.showAnswer = self.showAnswer
         game.showHelp = self.showHelp
         game.author = uid
+        game.authorName = userName
         
         PersistenceController.shared.save { error in
             switch error {

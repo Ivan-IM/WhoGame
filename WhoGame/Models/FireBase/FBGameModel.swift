@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct Game: Codable, Identifiable {
     @DocumentID var id: String?
     var author: String
+    var authorName: String?
     var date: Date
     var type: Int
     var name: String

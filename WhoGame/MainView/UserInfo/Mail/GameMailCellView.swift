@@ -29,7 +29,7 @@ struct GameMailCellView: View {
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.secondary)
-                Text("Author: \(fbManager.friends.filter{ $0.uid == game.author }.first?.name ?? "Unknown")")
+                Text("Author: \(game.authorName ?? "Unknown")")
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .light))
                     .foregroundColor(.secondary)
