@@ -12,9 +12,8 @@ import FirebaseFirestoreSwift
 
 final class FriendMailViewModel: ObservableObject {
     
-    @Published var friends = [Friend]()
-    
     let game: GameCD
+    
     @Published var gameCards = [GameCardCD]()
     
     init(game: GameCD) {
@@ -27,23 +26,6 @@ final class FriendMailViewModel: ObservableObject {
             return PersistenceController.shared.fetchGameCards(for: gameId)
         } else {
             return []
-        }
-    }
-    
-    func getFriends() {
-        if friends.isEmpty {
-            guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-            
-            Firestore.firestore().collection("friends/\(currentUserId)/friendsList").addSnapshotListener { (snapshot, error) in
-                switch error {
-                case .none:
-                    self.friends = snapshot?.documents.compactMap {
-                        try? $0.data(as: Friend.self)
-                    } ?? []
-                case .some(_):
-                    print("\(String(describing: error?.localizedDescription))")
-                }
-            }
         }
     }
     

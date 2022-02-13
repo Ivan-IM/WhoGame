@@ -10,6 +10,7 @@ import SwiftUI
 struct FriendMailView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: FriendMailViewModel
     @Environment(\.presentationMode) var presentationMode
     
@@ -41,7 +42,7 @@ struct FriendMailView: View {
                     }
                 }
                 ScrollView(showsIndicators: false) {
-                    ForEach(viewModel.friends) { friend in
+                    ForEach(fbManager.friends) { friend in
                         FriendMailCellView(viewModel: viewModel, friend: friend)
                     }
                     .padding(.bottom, 32)
@@ -55,9 +56,6 @@ struct FriendMailView: View {
                     .fill(.ultraThinMaterial)
                     .ignoresSafeArea()
             )
-            .onAppear {
-                viewModel.getFriends()
-            }
         }
     }
 }

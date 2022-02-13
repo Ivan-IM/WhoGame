@@ -10,6 +10,7 @@ import SwiftUI
 struct FriendsView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: FriendsViewModel = FriendsViewModel()
     @FocusState private var showingKeyboard: Bool
     
@@ -92,7 +93,7 @@ struct FriendsView: View {
                                 .foregroundColor(.primary)
                             Spacer()
                             Group {
-                                if viewModel.searchUser.uid == gameManager.uid {
+                                if viewModel.searchUser.uid == fbManager.uid {
                                     Image(systemName: "theatermasks")
                                         .font(.system(size: 32, weight: .regular))
                                         .symbolVariant(.circle.fill)
@@ -102,7 +103,7 @@ struct FriendsView: View {
                                             gameManager.mainColorSheme(color: .red)
                                         )
                                 }
-                                else if viewModel.friends.filter{ $0.uid == viewModel.searchUser.uid }.count == 0 {
+                                else if fbManager.friends.filter{ $0.uid == viewModel.searchUser.uid }.count == 0 {
                                     Button {
                                         viewModel.addFriendRequest()
                                     } label: {
@@ -133,13 +134,13 @@ struct FriendsView: View {
                 }
                 
                 ScrollView(showsIndicators: false) {
-                    ForEach(viewModel.friendRequests) { request in
+                    ForEach(fbManager.friendRequests) { request in
                         FriendRequestCellView(viewModel: viewModel, request: request)
                     }
                 }
-                .frame(height: viewModel.friendRequests.isEmpty ? 0:CGFloat(viewModel.friendRequests.count)*72)
+                .frame(height: fbManager.friendRequests.isEmpty ? 0:CGFloat(fbManager.friendRequests.count)*72)
                 ScrollView(showsIndicators: false) {
-                    ForEach(viewModel.friends) { friend in
+                    ForEach(fbManager.friends) { friend in
                         FriendCellView(viewModel: viewModel, friend: friend)
                     }
                     .padding(.bottom, 32)

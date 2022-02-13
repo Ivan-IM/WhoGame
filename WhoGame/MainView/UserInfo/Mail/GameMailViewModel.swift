@@ -12,12 +12,8 @@ import FirebaseFirestoreSwift
 
 final class GameMailViewModel: ObservableObject {
     
-    @Published var games = [Game]()
-    @Published var friends = [Friend]()
-    
     init() {
-        getGames()
-        getFriends()
+        
     }
     
     func checkGameAdd(game: Game) -> Bool {
@@ -25,22 +21,6 @@ final class GameMailViewModel: ObservableObject {
             return true
         } else {
             return false
-        }
-    }
-    
-    func getGames() {
-        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-        
-        Firestore.firestore().collection("games/\(currentUserId)/games").addSnapshotListener { (snapshot, error) in
-            switch error {
-            case .none:
-                self.games = snapshot?.documents.compactMap {
-                    try? $0.data(as: Game.self)
-                } ?? []
-                
-            case .some(_):
-                print("\(String(describing: error?.localizedDescription))")
-            }
         }
     }
     
@@ -112,23 +92,6 @@ final class GameMailViewModel: ObservableObject {
                 }
             case .some(_):
                 print("\(String(describing: error?.localizedDescription))")
-            }
-        }
-    }
-    
-    func getFriends() {
-        if friends.isEmpty {
-            guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-            
-            Firestore.firestore().collection("friends/\(currentUserId)/friendsList").addSnapshotListener { (snapshot, error) in
-                switch error {
-                case .none:
-                    self.friends = snapshot?.documents.compactMap {
-                        try? $0.data(as: Friend.self)
-                    } ?? []
-                case .some(_):
-                    print("\(String(describing: error?.localizedDescription))")
-                }
             }
         }
     }

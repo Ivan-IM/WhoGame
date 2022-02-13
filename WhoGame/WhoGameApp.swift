@@ -21,6 +21,7 @@ struct WhoGameApp: App {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(GameManager())
+                .environmentObject(FBManager())
         }
     }
 }

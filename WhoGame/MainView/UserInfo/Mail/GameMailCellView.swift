@@ -10,6 +10,7 @@ import SwiftUI
 struct GameMailCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: GameMailViewModel
     @State private var saveGame: Bool = false
     @State private var showingDeleteAlert: Bool = false
@@ -28,7 +29,7 @@ struct GameMailCellView: View {
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .semibold))
                     .foregroundColor(.secondary)
-                Text("Author: \(viewModel.friends.filter{ $0.uid == game.author }.first?.name ?? "Unknown")")
+                Text("Author: \(fbManager.friends.filter{ $0.uid == game.author }.first?.name ?? "Unknown")")
                     .lineLimit(1)
                     .font(.system(size: 16, weight: .light))
                     .foregroundColor(.secondary)

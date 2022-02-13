@@ -10,6 +10,7 @@ import SwiftUI
 struct GameMailView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: GameMailViewModel = GameMailViewModel()
     
     var body: some View {
@@ -39,7 +40,7 @@ struct GameMailView: View {
                     }
                 }
                 ScrollView(showsIndicators: false) {
-                    ForEach(viewModel.games) { game in
+                    ForEach(fbManager.games) { game in
                         GameMailCellView(viewModel: viewModel, game: game)
                     }
                     .padding(.bottom, 32)

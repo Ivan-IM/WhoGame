@@ -10,6 +10,7 @@ import SwiftUI
 struct UserInfoPanelView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     
     var body: some View {
         ZStack {
@@ -97,8 +98,7 @@ struct UserInfoPanelView: View {
                         print("Logged out")
                         gameManager.showingUserInfoPanel = false
                         gameManager.offSetX = -gameManager.width
-                        gameManager.uid.removeAll()
-                        gameManager.userName.removeAll()
+                        fbManager.clearFBmanager()
                     }
                 }
                 Button("Cancel", role: .cancel) {}

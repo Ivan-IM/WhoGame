@@ -36,7 +36,6 @@ final class LoginViewModel: ObservableObject {
     //MARK: login?
     @Published var isUserAuthenticated: FBAuthState = .undefined
     @Published var user: FBUser = .init(uid: "", name: "", email: "")
-    @Published var friends = [Friend]()
     
     var authStateDidChangeListenerHandle: AuthStateDidChangeListenerHandle?
     
@@ -62,17 +61,6 @@ final class LoginViewModel: ObservableObject {
                     print(error.localizedDescription)
                 case .success(let user):
                     self.user = user
-                }
-            }
-            
-            Firestore.firestore().collection("users/\(user.uid)/friendsList").addSnapshotListener { (snapshot, error) in
-                switch error {
-                case .none:
-                    self.friends = snapshot?.documents.compactMap {
-                        try? $0.data(as: Friend.self)
-                    } ?? []
-                case .some(_):
-                    print("\(String(describing: error?.localizedDescription))")
                 }
             }
         })

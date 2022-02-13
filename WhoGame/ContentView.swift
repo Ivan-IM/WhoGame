@@ -11,6 +11,7 @@ import CoreData
 struct ContentView: View {
 
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
     var body: some View {
@@ -24,7 +25,7 @@ struct ContentView: View {
             else {
                 MainView()
                     .onAppear {
-                        gameManager.getUserInfo()
+                        fbManager.getFBData()
                     }
             }
         }
@@ -35,5 +36,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
             .environmentObject(GameManager())
+            .environmentObject(FBManager())
     }
 }

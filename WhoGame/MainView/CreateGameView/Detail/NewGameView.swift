@@ -10,6 +10,7 @@ import SwiftUI
 struct NewGameView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: CreateGameViewModel
     @FocusState private var showingKeyboard: Bool
     
@@ -204,7 +205,7 @@ struct NewGameView: View {
                     } else {
                         Button {
                             withAnimation {
-                                viewModel.saveNewGame(gameManager.uid)
+                                viewModel.saveNewGame(fbManager.uid)
                             }
                             showingKeyboard = false
                         } label: {

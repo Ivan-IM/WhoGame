@@ -16,8 +16,6 @@ final class FriendsViewModel: ObservableObject {
     @Published var searchUserName: String = ""
     @Published var showingSearch: Bool = false
     
-    @Published var friendRequests = [FriendRequest]()
-    
     @Published var searchUser: FBUser = .init(uid: "", name: "", email: "")
     @Published var hideSearchUser: Bool = false
     
@@ -26,43 +24,8 @@ final class FriendsViewModel: ObservableObject {
     
     private let store = Firestore.firestore()
     
-    @Published var friends = [Friend]()
-    
     init() {
-        getFriends()
-        getFriendRequests()
-    }
-    
-    func getFriends() {
-        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
         
-        Firestore.firestore().collection("friends/\(currentUserId)/friendsList").addSnapshotListener { (snapshot, error) in
-            switch error {
-            case .none:
-                self.friends = snapshot?.documents.compactMap {
-                    try? $0.data(as: Friend.self)
-                } ?? []
-            case .some(_):
-                print("\(String(describing: error?.localizedDescription))")
-            }
-        }
-    }
-    
-    func getFriendRequests() {
-        guard let currentUserId = Auth.auth().currentUser?.uid else { return }
-        var requests = [FriendRequest]()
-        
-        Firestore.firestore().collection(FBKeys.CollectionPath.friendRequest).addSnapshotListener { (snapshot, error) in
-            switch error {
-            case .none:
-                requests = snapshot?.documents.compactMap {
-                    try? $0.data(as: FriendRequest.self)
-                } ?? []
-                self.friendRequests = requests.filter{ $0.receiveID == currentUserId }
-            case .some(_):
-                print("\(String(describing: error?.localizedDescription))")
-            }
-        }
     }
     
     func search() {

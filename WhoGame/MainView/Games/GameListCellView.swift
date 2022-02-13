@@ -10,6 +10,7 @@ import SwiftUI
 struct GameListCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @State var isFavorite: Bool = false
     @State var showingDaleteAlert: Bool = false
     let game: GameCD
@@ -135,7 +136,7 @@ struct GameListCellView: View {
                                     )
                             }
                         }
-                        if game.author == gameManager.uid {
+                        if game.author == fbManager.uid {
                             NavigationLink {
                                 CreateGameView(viewModel: CreateGameViewModel(game: game))
                             } label: {
@@ -173,7 +174,7 @@ struct GameListCellView: View {
                                 .offset(x: 15, y: -15)
                                 .alert("Delete game?", isPresented: $showingDaleteAlert) {
                                     Button("OK", role: .destructive) {
-                                        gameManager.deleteGame(game: game)
+                                        fbManager.deleteGame(game: game)
                                     }
                                     Button("Cancel", role: .cancel) {}
                                 }
