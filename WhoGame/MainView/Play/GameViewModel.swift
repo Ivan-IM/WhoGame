@@ -128,7 +128,7 @@ final class GameViewModel: ObservableObject {
     
     func checkAnswer() -> CheckAnswerSystem {
         if let answer = self.gameCards[self.index].answer {
-            if self.answer.caseInsensitiveCompare(answer) == .orderedSame {
+            if self.answer.trimmingCharacters(in: .whitespacesAndNewlines).caseInsensitiveCompare(answer.trimmingCharacters(in: .whitespacesAndNewlines)) == .orderedSame {
                 return .right
             } else {
                 return .wrong
