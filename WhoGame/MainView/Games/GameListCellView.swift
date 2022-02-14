@@ -55,7 +55,7 @@ struct GameListCellView: View {
                             .lineLimit(1)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.secondary)
-                        Text("Date of creation: \(game.date?.longDate ?? "Unknown")")
+                        Text("Author: \(game.authorName ?? "Unknown")")
                             .lineLimit(1)
                             .font(.system(size: 16, weight: .ultraLight))
                             .foregroundColor(.primary)
