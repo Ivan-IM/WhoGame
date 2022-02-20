@@ -33,6 +33,20 @@ struct LoginView: View {
                     .animation(.default, value: viewModel.loginView)
                     .zIndex(3)
             }
+            VStack {
+                Spacer()
+                Button {
+                    withAnimation {
+                        gameManager.showingPrivacy = true
+                    }
+                } label: {
+                    Text("Terms & Privacy")
+                        .lineLimit(1)
+                        .font(.system(size: 16, weight: .semibold))
+                        .foregroundColor(.secondary)
+                }
+            }
+            .padding()
         }
     }
 }

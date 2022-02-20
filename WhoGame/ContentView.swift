@@ -9,24 +9,32 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-
+    
     @EnvironmentObject var gameManager: GameManager
     @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
     var body: some View {
-        Group {
-            if viewModel.isUserAuthenticated == .undefined {
-                Text("Loading...")
+        ZStack {
+            Group {
+                if viewModel.isUserAuthenticated == .undefined {
+                    Text("Loading...")
+                }
+                else if viewModel.isUserAuthenticated == .signedOut {
+                    LoginView(viewModel: viewModel)
+                }
+                else {
+                    MainView()
+                        .onAppear {
+                            fbManager.getFBData()
+                        }
+                }
             }
-            else if viewModel.isUserAuthenticated == .signedOut {
-                LoginView(viewModel: viewModel)
-            }
-            else {
-                MainView()
-                    .onAppear {
-                        fbManager.getFBData()
-                    }
+            if gameManager.showingPrivacy {
+                TermsPrivacyView()
+                    .transition(.move(edge: .bottom))
+                    .animation(.default, value: gameManager.showingPrivacy)
+                    .zIndex(1)
             }
         }
     }

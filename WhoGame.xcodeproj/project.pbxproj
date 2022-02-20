@@ -19,6 +19,7 @@
 		CF2062DE2788189600EABCCE /* NewGameCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2062DD2788189600EABCCE /* NewGameCardView.swift */; };
 		CF2062E32788527C00EABCCE /* GameCardListIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2062E22788527C00EABCCE /* GameCardListIView.swift */; };
 		CF25EA0227B8D48C008EBF98 /* FBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF25EA0127B8D48C008EBF98 /* FBManager.swift */; };
+		CF25EA0427C232C3008EBF98 /* TermsPrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF25EA0327C232C3008EBF98 /* TermsPrivacyView.swift */; };
 		CF298941275D159700D3C3C1 /* WhoGameApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF298940275D159700D3C3C1 /* WhoGameApp.swift */; };
 		CF298943275D159700D3C3C1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF298942275D159700D3C3C1 /* ContentView.swift */; };
 		CF298945275D159900D3C3C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CF298944275D159900D3C3C1 /* Assets.xcassets */; };
@@ -98,6 +99,7 @@
 		CF2062DD2788189600EABCCE /* NewGameCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardView.swift; sourceTree = "<group>"; };
 		CF2062E22788527C00EABCCE /* GameCardListIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCardListIView.swift; sourceTree = "<group>"; };
 		CF25EA0127B8D48C008EBF98 /* FBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FBManager.swift; sourceTree = "<group>"; };
+		CF25EA0327C232C3008EBF98 /* TermsPrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsPrivacyView.swift; sourceTree = "<group>"; };
 		CF29893D275D159700D3C3C1 /* WhoGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhoGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF298940275D159700D3C3C1 /* WhoGameApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoGameApp.swift; sourceTree = "<group>"; };
 		CF298942275D159700D3C3C1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				CF298953275D162A00D3C3C1 /* MainView.swift */,
 				CF618B6E27B10B0100B7DC30 /* GameMenuView.swift */,
 				CF618B052793E73200B7DC30 /* BackgroundView.swift */,
+				CF25EA0327C232C3008EBF98 /* TermsPrivacyView.swift */,
 				CF618B6D27B0E6C600B7DC30 /* UserInfo */,
 				CF617532278D929D009953BB /* GameHistory */,
 				CF0A2DE32789CE4000DDDE68 /* Play */,
@@ -527,6 +530,7 @@
 				CF618B062793E73200B7DC30 /* BackgroundView.swift in Sources */,
 				CF618B7727B23D7D00B7DC30 /* GameMailViewModel.swift in Sources */,
 				CF2062DE2788189600EABCCE /* NewGameCardView.swift in Sources */,
+				CF25EA0427C232C3008EBF98 /* TermsPrivacyView.swift in Sources */,
 				CF2062D22787885000EABCCE /* CreateGameViewModel.swift in Sources */,
 				CF618B6627AF9CD100B7DC30 /* FBGameModel.swift in Sources */,
 				CF61753C27904369009953BB /* GameStageTestView.swift in Sources */,

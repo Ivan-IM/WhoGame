@@ -18,6 +18,7 @@ final class GameManager: ObservableObject {
         }
     }
     
+    @Published var showingPrivacy: Bool = false
     @Published var showingUserInfoPanel: Bool = false
     @Published var offSetX: CGFloat = 0
     
