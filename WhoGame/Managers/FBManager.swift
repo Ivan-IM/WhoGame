@@ -117,5 +117,6 @@ final class FBManager: ObservableObject {
         self.friendRequests.removeAll()
         self.friends.removeAll()
         self.games.removeAll()
+        self.newMail = 0
     }
 }

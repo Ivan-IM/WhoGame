@@ -96,8 +96,7 @@ struct GameCardListIView: View {
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 }
             }
-//            .onMove(perform: moveGameCard)
-//            .onDelete(perform: removeGameCard)
+            .padding(.bottom, 16)
         }
     }
     

@@ -140,7 +140,7 @@ struct FriendsView: View {
                         FriendRequestCellView(viewModel: viewModel, request: request)
                     }
                 }
-                .frame(height: fbManager.friendRequests.isEmpty ? 0:CGFloat(fbManager.friendRequests.count)*72)
+                .frame(height: fbManager.friendRequests.isEmpty ? 0:CGFloat(fbManager.friendRequests.count)*80)
                 ScrollView(showsIndicators: false) {
                     ForEach(fbManager.friends) { friend in
                         FriendCellView(viewModel: viewModel, friend: friend)

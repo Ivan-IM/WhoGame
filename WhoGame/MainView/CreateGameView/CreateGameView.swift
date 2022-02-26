@@ -47,10 +47,10 @@ struct CreateGameView: View {
                     }
                 }
                 if viewModel.id.isEmpty {
-                    Spacer()
                     TypeGameView(viewModel: viewModel)
                         .transition(.move(edge: .leading))
                         .animation(.default, value: viewModel.id)
+                        .padding(.top, 16)
                     Spacer()
                 }
                 if viewModel.showingNewCard && !viewModel.id.isEmpty {
@@ -73,6 +73,7 @@ struct CreateGameView: View {
             }
             .padding()
             .navigationBarHidden(true)
+            .edgesIgnoringSafeArea(.bottom)
             .alert("Delete game?", isPresented: $viewModel.showingDaleteAlert) {
                 Button("OK", role: .destructive) {
                     viewModel.deleteGame()
