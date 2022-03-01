@@ -29,10 +29,10 @@ final class FriendMailViewModel: ObservableObject {
         }
     }
     
-    func sendGame(friend: Friend) {
+    func sendGame(friend: Friend, uid: String, userName: String) {
             guard let gameId = self.game.id else { return }
             
-        let dataGame = FBGame.dataDict(author: game.author ?? "", authorName: game.authorName ?? "", date: Date(), type: Int(game.type), name: game.name ?? "Unknown", theme: game.theme ?? "Unknown", showAnswer: game.showAnswer, showHelp: game.showHelp, showScore: game.showScore)
+        let dataGame = FBGame.dataDict(author: checkEmpty(checkValue: game.author ?? "", optionalValue: uid), authorName: checkEmpty(checkValue: game.authorName ?? "", optionalValue: userName), date: Date(), type: Int(game.type), name: game.name ?? "Unknown", theme: game.theme ?? "Unknown", showAnswer: game.showAnswer, showHelp: game.showHelp, showScore: game.showScore)
             
         FBFirestore.mergeFBGame(dataGame, userId: friend.uid, gameId: gameId) { (result) in
                     switch result {
@@ -56,5 +56,13 @@ final class FriendMailViewModel: ObservableObject {
                         print(error.localizedDescription)
                     }
                 }
+    }
+    
+    func checkEmpty(checkValue: String, optionalValue: String) -> String {
+        if checkValue.isEmpty {
+            return optionalValue
+        } else {
+            return checkValue
+        }
     }
 }

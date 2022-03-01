@@ -10,6 +10,7 @@ import SwiftUI
 struct FriendSendGameListCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @State var sending: Bool = false
     let game: GameCD
     let friendId: String
@@ -42,7 +43,7 @@ struct FriendSendGameListCellView: View {
             Button {
                 guard let gameId = self.game.id else { return }
                 sending = true
-                let dataGame = FBGame.dataDict(author: game.author ?? "", authorName: game.authorName ?? "", date: Date(), type: Int(game.type), name: game.name ?? "Unknown", theme: game.theme ?? "Unknown", showAnswer: game.showAnswer, showHelp: game.showHelp, showScore: game.showScore)
+                let dataGame = FBGame.dataDict(author: checkEmpty(checkValue: game.author ?? "", optionalValue: fbManager.uid), authorName: checkEmpty(checkValue: game.authorName ?? "", optionalValue: fbManager.userName), date: Date(), type: Int(game.type), name: game.name ?? "Unknown", theme: game.theme ?? "Unknown", showAnswer: game.showAnswer, showHelp: game.showHelp, showScore: game.showScore)
                 
                 FBFirestore.mergeFBGame(dataGame, userId: friendId, gameId: gameId) { (result) in
                     switch result {
@@ -80,5 +81,13 @@ struct FriendSendGameListCellView: View {
         }
         .padding()
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+    }
+    
+    private func checkEmpty(checkValue: String, optionalValue: String) -> String {
+        if checkValue.isEmpty {
+            return optionalValue
+        } else {
+            return checkValue
+        }
     }
 }

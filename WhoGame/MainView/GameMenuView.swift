@@ -35,7 +35,7 @@ struct GameMenuView: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: animateOne ? "gear":"w")
+                            Image(systemName: animateOne ? "theatermasks":"w")
                                 .font(.system(size: 44, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)

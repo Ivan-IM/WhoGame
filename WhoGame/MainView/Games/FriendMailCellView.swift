@@ -10,6 +10,7 @@ import SwiftUI
 struct FriendMailCellView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: FriendMailViewModel
     @State var sending: Bool = false
     let friend: Friend
@@ -22,7 +23,7 @@ struct FriendMailCellView: View {
                 .foregroundColor(.primary)
             Spacer()
             Button {
-                viewModel.sendGame(friend: friend)
+                viewModel.sendGame(friend: friend, uid: fbManager.uid, userName: fbManager.userName)
                 sending = true
             } label: {
                 Image(systemName: sending ? "checkmark":"paperplane")

@@ -187,7 +187,7 @@ struct NewGameView: View {
                                     )
                             }
                             Button {
-                                viewModel.updateGame()
+                                viewModel.updateGame(uid: fbManager.uid, userName: fbManager.userName)
                                 showingKeyboard = false
                             } label: {
                                 Image(systemName: "arrow.triangle.2.circlepath")

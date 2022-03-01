@@ -136,7 +136,7 @@ struct GameListCellView: View {
                                     )
                             }
                         }
-                        if game.author == fbManager.uid {
+                        if game.author == fbManager.uid || game.author == "" {
                             NavigationLink {
                                 CreateGameView(viewModel: CreateGameViewModel(game: game))
                             } label: {

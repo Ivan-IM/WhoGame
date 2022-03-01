@@ -66,7 +66,7 @@ final class CreateGameViewModel: ObservableObject {
         }
     }
     
-    func updateGame() {
+    func updateGame(uid: String, userName: String) {
         tastyGameBlock()
         guard let game = PersistenceController.shared.fetchGames(for: id).first else { return }
         game.name = self.name
@@ -74,6 +74,8 @@ final class CreateGameViewModel: ObservableObject {
         game.showScore = self.showScore
         game.showAnswer = self.showAnswer
         game.showHelp = self.showHelp
+        game.author = uid
+        game.authorName = userName
         
         PersistenceController.shared.save { error in
             switch error {
