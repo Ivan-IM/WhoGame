@@ -107,6 +107,9 @@
 "History" = "История";
 
 /* No comment provided by engineer. */
+"Login, if you want to use the application's network features." = "Авторизуйтесь, если вы хотите использовать сетевые функции приложения.";
+
+/* No comment provided by engineer. */
 "Logout" = "Выйти";
 
 /* No comment provided by engineer. */

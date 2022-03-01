@@ -59,7 +59,7 @@ struct SignInWithAppleButtonView: View {
                 }
             }
         })
-            .frame(width: 200, height: 38)
+            .frame(width: 200, height: 44)
             .signInWithAppleButtonStyle(.white)
             .blendMode(.overlay)
         

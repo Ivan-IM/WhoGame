@@ -31,7 +31,7 @@ struct SignInView: View {
                             gameManager.mainColorSheme(color: .blue)
                         )
                 }
-                .offset(x: 16, y: -16)
+                .offset(x: 10, y: -10)
             }
             .frame(width: 250)
             TextField("Email", text: $viewModel.email)
@@ -99,7 +99,10 @@ struct SignInView: View {
                 }
             }
             SignInWithAppleButtonView()
-            
+            Text("Login, if you want to use the application's network features.")
+                .frame(width: 250)
+                .font(.system(size: 12, weight: .regular))
+                .foregroundColor(.secondary)
         }
         .padding(32)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
