@@ -38,6 +38,9 @@
 "Classic game" = "Классическая игра";
 
 /* No comment provided by engineer. */
+"Confirm password" = "Повторить пароль";
+
+/* No comment provided by engineer. */
 "Date of creation" = "Дата создания";
 
 /* No comment provided by engineer. */
@@ -86,6 +89,9 @@
 "Friends" = "Друзья";
 
 /* No comment provided by engineer. */
+"forgot" = "забыл";
+
+/* No comment provided by engineer. */
 "Game name" = "Название игры";
 
 /* No comment provided by engineer. */
@@ -107,6 +113,9 @@
 "History" = "История";
 
 /* No comment provided by engineer. */
+"Login" = "Войти";
+
+/* No comment provided by engineer. */
 "Login, if you want to use the application's network features." = "Авторизуйтесь, если вы хотите использовать сетевые функции приложения.";
 
 /* No comment provided by engineer. */
@@ -122,6 +131,9 @@
 "Mark your dish:" = "Маркировка вашего блюда:";
 
 /* No comment provided by engineer. */
+"Must be 8 characters containing at least one number and one Capital letter." = "Должен состоять из 8 символов, содержать одну цифру и одну заглавную букву";
+
+/* No comment provided by engineer. */
 "Name" = "Имя";
 
 /* No comment provided by engineer. */
@@ -129,6 +141,9 @@
 
 /* No comment provided by engineer. */
 "Options" = "Опции";
+
+/* No comment provided by engineer. */
+"Password" = "Пароль";
 
 /* No comment provided by engineer. */
 "Play" = "Играть";
@@ -167,6 +182,15 @@
 "Right answers: %lld/%lld" = "Правильных ответов: %lld/%lld";
 
 /* No comment provided by engineer. */
+"Register" = "Регистрация";
+
+/* No comment provided by engineer. */
+"Reset" = "Восстановить";
+
+/* No comment provided by engineer. */
+"Sign up" = "Регистрация";
+
+/* No comment provided by engineer. */
 "Score" = "Баллы";
 
 /* No comment provided by engineer. */
@@ -201,3 +225,6 @@
 
 /* No comment provided by engineer. */
 "User" = "Пользователь";
+
+/* No comment provided by engineer. */
+"User Name" = "Имя пользователя";
