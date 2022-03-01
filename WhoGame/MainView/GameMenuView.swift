@@ -20,12 +20,18 @@ struct GameMenuView: View {
                 VStack(spacing: 16) {
                     HStack {
                         Button {
-                            withAnimation {
-                                gameManager.showingUserInfoPanel.toggle()
-                                if gameManager.showingUserInfoPanel {
-                                    gameManager.offSetX = -gameManager.width+56
-                                } else {
-                                    gameManager.offSetX = -gameManager.width
+                            if gameManager.skipSignIn {
+                                withAnimation {
+                                    gameManager.skipSignIn = false
+                                }
+                            } else {
+                                withAnimation {
+                                    gameManager.showingUserInfoPanel.toggle()
+                                    if gameManager.showingUserInfoPanel {
+                                        gameManager.offSetX = -gameManager.width+56
+                                    } else {
+                                        gameManager.offSetX = -gameManager.width
+                                    }
                                 }
                             }
                         } label: {

@@ -62,7 +62,7 @@ struct GameStageTastyView: View {
                                 moveGameCardDown(gameCard: card)
                             } label: {
                                 Image(systemName: "chevron.down")
-                                    .font(.system(size: 18, weight: .regular))
+                                    .font(.system(size: 22, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(
@@ -76,7 +76,7 @@ struct GameStageTastyView: View {
                                 moveGameCardUp(gameCard: card)
                             } label: {
                                 Image(systemName: "chevron.up")
-                                    .font(.system(size: 18, weight: .regular))
+                                    .font(.system(size: 22, weight: .regular))
                                     .symbolVariant(.circle.fill)
                                     .symbolRenderingMode(.palette)
                                     .foregroundStyle(

@@ -16,18 +16,26 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            BackgroundView()
             Group {
-                if viewModel.isUserAuthenticated == .undefined {
-                    Text("Loading...")
-                }
-                else if viewModel.isUserAuthenticated == .signedOut {
-                    LoginView(viewModel: viewModel)
-                }
-                else {
+                if gameManager.skipSignIn {
                     MainView()
-                        .onAppear {
-                            fbManager.getFBData()
-                        }
+                } else {
+                    if viewModel.isUserAuthenticated == .undefined {
+                        Text("Loading...")
+                    }
+                    else if viewModel.isUserAuthenticated == .signedOut {
+                        LoginView(viewModel: viewModel)
+                            .transition(.move(edge: .leading))
+                            .animation(.default, value: viewModel.isUserAuthenticated)
+                            .zIndex(3)
+                    }
+                    else {
+                        MainView()
+                            .onAppear {
+                                fbManager.getFBData()
+                            }
+                    }
                 }
             }
             if gameManager.showingPrivacy {

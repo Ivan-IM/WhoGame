@@ -96,6 +96,14 @@ final class LoginViewModel: ObservableObject {
         return passwordTest.evaluate(with: email)
     }
     
+    func clearModel() {
+        self.email.removeAll()
+        self.fullname.removeAll()
+        self.password.removeAll()
+        self.confirmPassword.removeAll()
+        self.loginView = .signIn
+    }
+    
     var isSignInComplete:Bool  {
         if  !isEmailValid(_email: email) ||
             isEmpty(_field: fullname) ||

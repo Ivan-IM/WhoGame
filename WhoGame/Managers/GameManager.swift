@@ -18,6 +18,12 @@ final class GameManager: ObservableObject {
         }
     }
     
+    @Published var skipSignIn: Bool {
+        didSet {
+            UserDefaults.standard.set(skipSignIn, forKey: "SkipSignIn")
+        }
+    }
+    
     @Published var showingPrivacy: Bool = false
     @Published var showingUserInfoPanel: Bool = false
     @Published var offSetX: CGFloat = 0
@@ -35,6 +41,7 @@ final class GameManager: ObservableObject {
     
     init() {
         self.leftHande = UserDefaults.standard.object(forKey: "Hande") as? Bool ?? false
+        self.skipSignIn = UserDefaults.standard.object(forKey: "SkipSignIn") as? Bool ?? false
         self.offSetX = -self.width
     }
     

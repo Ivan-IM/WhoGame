@@ -15,6 +15,25 @@ struct SignInView: View {
     
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                Button {
+                    withAnimation {
+                        gameManager.skipSignIn = true
+                    }
+                } label: {
+                    Image(systemName: "multiply.circle")
+                        .font(.system(size: 32, weight: .regular))
+                        .symbolVariant(.circle.fill)
+                        .symbolRenderingMode(.palette)
+                        .foregroundStyle(
+                            Color.white.opacity(0.8),
+                            gameManager.mainColorSheme(color: .blue)
+                        )
+                }
+                .offset(x: 16, y: -16)
+            }
+            .frame(width: 250)
             TextField("Email", text: $viewModel.email)
                 .font(.system(size: 18, weight: .semibold))
                 .autocapitalization(.none)
@@ -57,6 +76,7 @@ struct SignInView: View {
                                 self.viewModel.showingLoginError = true
                             case .success( _):
                                 print("Signed in")
+                                viewModel.clearModel()
                             }
                         }
                         showingKeyboard = false

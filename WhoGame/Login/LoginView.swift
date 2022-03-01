@@ -15,7 +15,6 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView()
             switch viewModel.loginView {
             case .signIn:
                 SignInView(viewModel: viewModel)

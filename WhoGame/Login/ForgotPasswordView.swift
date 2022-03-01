@@ -58,7 +58,7 @@ struct ForgotPasswordView: View {
         .alert(isPresented: $viewModel.showingForgotAlert) {
             Alert(title: Text(NSLocalizedString("Request a password reset", comment: "")), message: Text(self.viewModel.errorString ?? NSLocalizedString("Success. Check your email.", comment: "")), dismissButton: .default(Text("OK")) {
                 withAnimation {
-                    viewModel.loginView = .signIn
+                    viewModel.clearModel()
                 }
             })
         }

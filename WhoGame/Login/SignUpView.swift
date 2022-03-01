@@ -94,6 +94,7 @@ struct SignUpView: View {
                             self.viewModel.showingSignUpError = true
                         case .success( _):
                             print("Account creation successful")
+                            viewModel.clearModel()
                         }
                     }
                     showingKeyboard = false
