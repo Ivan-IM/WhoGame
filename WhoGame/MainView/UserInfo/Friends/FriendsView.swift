@@ -56,7 +56,7 @@ struct FriendsView: View {
                 }
                 if viewModel.showingSearch {
                     HStack {
-                        TextField("User ID", text: $viewModel.userId)
+                        TextField("Search for User ID", text: $viewModel.userId)
                             .focused($showingKeyboard)
                             .font(.system(size: 16, weight: .semibold))
                             .foregroundColor(.secondary)
