@@ -24,6 +24,10 @@ struct ForgotPasswordView: View {
             Rectangle()
                 .fill(viewModel.isEmailValid(_email: viewModel.email) ? .blue.opacity(0.6):.secondary)
                 .frame(width: 250, height: 2)
+            Text("To reset your password, please enter your email.")
+                .frame(width: 250)
+                .font(.system(size: 12, weight: .regular))
+                .foregroundColor(.secondary)
             HStack {
                 Button {
                     withAnimation {
@@ -50,8 +54,10 @@ struct ForgotPasswordView: View {
                         .foregroundColor(viewModel.isEmailValid(_email: viewModel.email) ? .primary:.secondary)
                 }
                 .disabled(viewModel.isEmailValid(_email: viewModel.email) ? false:true)
+                
             }
             .frame(width: 250)
+            .padding(.top, 10)
         }
         .padding(32)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))

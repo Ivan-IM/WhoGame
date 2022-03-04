@@ -89,7 +89,7 @@
 "Friends" = "Друзья";
 
 /* No comment provided by engineer. */
-"forgot" = "забыл";
+"forgot password?" = "забыли пароль?";
 
 /* No comment provided by engineer. */
 "Game name" = "Название игры";
@@ -131,19 +131,22 @@
 "Mark your dish:" = "Маркировка вашего блюда:";
 
 /* No comment provided by engineer. */
-"Must be 8 characters containing at least one number and one Capital letter." = "Должен состоять из 8 символов, содержать одну цифру и одну заглавную букву";
-
-/* No comment provided by engineer. */
 "Name" = "Имя";
 
 /* No comment provided by engineer. */
 "New game" = "Новая игра";
 
 /* No comment provided by engineer. */
+"Not a member?" = "Еще не участник?";
+
+/* No comment provided by engineer. */
 "Options" = "Опции";
 
 /* No comment provided by engineer. */
 "Password" = "Пароль";
+
+/* No comment provided by engineer. */
+"Password must be 8 characters containing at least one number and one Capital letter." = "Пароль должен состоять из 8 символов, содержать одну цифру и одну заглавную букву.";
 
 /* No comment provided by engineer. */
 "Play" = "Играть";
@@ -221,10 +224,13 @@
 "Theme: %@" = "Тема: %@";
 
 /* No comment provided by engineer. */
+"To reset your password, please enter your email." = "Для сброса пароля введи ваш email.";
+
+/* No comment provided by engineer. */
 "Wrong answer" = "Неверный ответ";
 
 /* No comment provided by engineer. */
 "User" = "Пользователь";
 
 /* No comment provided by engineer. */
-"User Name" = "Имя пользователя";
+"User name" = "Имя пользователя";

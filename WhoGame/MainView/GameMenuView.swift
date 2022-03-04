@@ -12,6 +12,7 @@ struct GameMenuView: View {
     @EnvironmentObject var gameManager: GameManager
     @State var animateOne = true
     @State var animateTwo = true
+    @State var animateThree: CGFloat = 0
     
     var body: some View {
         NavigationView {
@@ -22,7 +23,7 @@ struct GameMenuView: View {
                         Button {
                             if gameManager.skipSignIn {
                                 withAnimation {
-                                    gameManager.skipSignIn = false
+                                    self.animateThree += 3
                                 }
                             } else {
                                 withAnimation {
@@ -35,7 +36,7 @@ struct GameMenuView: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: animateOne ? "theatermasks":"w")
+                            Image(systemName: animateOne ? "gear":"w")
                                 .font(.system(size: 44, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
@@ -44,15 +45,24 @@ struct GameMenuView: View {
                                     gameManager.mainColorSheme(color: gameManager.leftHande ? .blue:.green)
                                 )
                         }
+                        Button {
+                            withAnimation {
+                                gameManager.skipSignIn = false
+                            }
+                        } label: {
+                            Image(systemName: gameManager.skipSignIn ? "lock.circle":"h")
+                                .font(.system(size: 44, weight: .regular))
+                                .symbolVariant(.circle.fill)
+                                .symbolRenderingMode(.palette)
+                                .foregroundStyle(
+                                    Color.white.opacity(0.8),
+                                    gameManager.mainColorSheme(color: .red)
+                                )
+                                .modifier(Shake(shakeNumber: animateThree))
+                                .animation(.easeInOut(duration: 0.6), value: animateThree)
+                        }
+                        .disabled(!gameManager.skipSignIn)
                         
-                        Image(systemName: "h")
-                            .font(.system(size: 44, weight: .regular))
-                            .symbolVariant(.circle.fill)
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(
-                                Color.white.opacity(0.8),
-                                gameManager.mainColorSheme(color: .red)
-                            )
                         Button {
                             withAnimation(.default) {
                                 gameManager.leftHande.toggle()
@@ -128,7 +138,7 @@ struct GameMenuView: View {
             }
             .navigationBarHidden(true)
             .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     withAnimation {
                         animateOne = false
                         animateTwo = false

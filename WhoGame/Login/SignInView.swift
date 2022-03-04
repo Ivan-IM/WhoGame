@@ -52,57 +52,62 @@ struct SignInView: View {
                 .frame(width: 250, height: 2)
             HStack {
                 Spacer()
+                
                 Button {
                     withAnimation {
                         viewModel.loginView = .forgot
                     }
                 } label: {
-                    Text("forgot")
-                        .font(.system(size: 16, weight: .light))
+                    Text("forgot password?")
+                        .font(.system(size: 12, weight: .light))
                         .foregroundColor(.secondary)
                 }
-                
             }
             .frame(width: 250)
             
-            Group {
-                if !viewModel.email.isEmpty || !viewModel.password.isEmpty {
-                    Button {
-                        FBAuth.authenticate(withEmail: self.viewModel.email,
-                                            password: self.viewModel.password) { (result) in
-                            switch result {
-                            case .failure(let error):
-                                self.viewModel.authError = error
-                                self.viewModel.showingLoginError = true
-                            case .success( _):
-                                print("Signed in")
-                                viewModel.clearModel()
-                            }
-                        }
-                        showingKeyboard = false
-                    } label: {
-                        Text("Login")
-                            .font(.system(size: 22, weight: .semibold))
-                            .foregroundColor(viewModel.isLogInComplete ? .primary:.secondary)
-                    }
-                    .disabled(viewModel.isLogInComplete ? false:true)
-                } else {
-                    Button {
-                        withAnimation {
-                            viewModel.loginView = .signUp
-                        }
-                    } label: {
-                        Text("Sign up")
-                            .font(.system(size: 22, weight: .semibold))
-                            .foregroundColor(.primary)
+            Button {
+                FBAuth.authenticate(withEmail: self.viewModel.email,
+                                    password: self.viewModel.password) { (result) in
+                    switch result {
+                    case .failure(let error):
+                        self.viewModel.authError = error
+                        self.viewModel.showingLoginError = true
+                    case .success( _):
+                        print("Signed in")
+                        viewModel.clearModel()
                     }
                 }
+                showingKeyboard = false
+            } label: {
+                Text("Login")
+                    .font(.system(size: 22, weight: .semibold))
+                    .foregroundColor(viewModel.isLogInComplete ? .primary:.secondary)
             }
+            .disabled(viewModel.isLogInComplete ? false:true)
+            .padding(.top, 10)
+            
             SignInWithAppleButtonView()
             Text("Login, if you want to use the application's network features.")
                 .frame(width: 250)
                 .font(.system(size: 12, weight: .regular))
                 .foregroundColor(.secondary)
+            HStack {
+                Text("Not a member?")
+                    .font(.system(size: 12, weight: .regular))
+                    .foregroundColor(.secondary)
+                Button {
+                    withAnimation {
+                        viewModel.loginView = .signUp
+                    }
+                } label: {
+                    Text("Sign up")
+                        .font(.system(size: 12, weight: .regular))
+                        .underline()
+                        .foregroundColor(.primary)
+                }
+            }
+            .frame(width: 250)
+            .padding(.top, 10)
         }
         .padding(32)
         .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))

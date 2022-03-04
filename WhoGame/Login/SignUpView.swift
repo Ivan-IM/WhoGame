@@ -15,62 +15,52 @@ struct SignUpView: View {
     
     var body: some View {
         VStack {
-            ZStack(alignment: .top) {
-                VStack {
-                    TextField("User name", text: $viewModel.fullname)
-                        .font(.system(size: 18, weight: .semibold))
-                        .focused($showingKeyboard)
-                        .frame(width: 250, height: 28)
-                    Rectangle()
-                        .fill(!viewModel.fullname.isEmpty ? .blue.opacity(0.6):.secondary)
-                        .frame(width: 250, height: 2)
-                    TextField("Email", text: $viewModel.email)
-                        .font(.system(size: 18, weight: .semibold))
-                        .focused($showingKeyboard)
-                        .frame(width: 250, height: 28)
-                        .autocapitalization(.none)
-                        .keyboardType(.emailAddress)
-                    Rectangle()
-                        .fill(viewModel.isEmailValid(_email: viewModel.email) ? .blue.opacity(0.6):.secondary)
-                        .frame(width: 250, height: 2)
-                    HStack {
-                        SecureField(NSLocalizedString("Password", comment: "Login view"), text: $viewModel.password)
-                            .font(.system(size: 18, weight: .semibold))
-                            .focused($showingKeyboard)
-                        if showingKeyboard {
-                            Button {
-                                viewModel.showingPasswordMessage.toggle()
-                            } label: {
-                                Image(systemName: "questionmark.circle")
-                                    .foregroundColor(.secondary)
-                            }
-                        } else {}
-                    }
+            VStack {
+                TextField("User name", text: $viewModel.fullname)
+                    .font(.system(size: 18, weight: .semibold))
+                    .focused($showingKeyboard)
                     .frame(width: 250, height: 28)
-                    Rectangle()
-                        .fill(viewModel.isPasswordValid(_password: viewModel.password) ? .blue.opacity(0.6):.secondary)
-                        .frame(width: 250, height: 2)
-                    SecureField(NSLocalizedString("Confirm password", comment: "Login view"), text: $viewModel.confirmPassword)
+                Rectangle()
+                    .fill(!viewModel.fullname.isEmpty ? .blue.opacity(0.6):.secondary)
+                    .frame(width: 250, height: 2)
+                TextField("Email", text: $viewModel.email)
+                    .font(.system(size: 18, weight: .semibold))
+                    .focused($showingKeyboard)
+                    .frame(width: 250, height: 28)
+                    .autocapitalization(.none)
+                    .keyboardType(.emailAddress)
+                Rectangle()
+                    .fill(viewModel.isEmailValid(_email: viewModel.email) ? .blue.opacity(0.6):.secondary)
+                    .frame(width: 250, height: 2)
+                HStack {
+                    SecureField(NSLocalizedString("Password", comment: "Login view"), text: $viewModel.password)
                         .font(.system(size: 18, weight: .semibold))
                         .focused($showingKeyboard)
-                        .frame(width: 250, height: 28)
-                    Rectangle()
-                        .fill(viewModel.passConfirm())
-                        .frame(width: 250, height: 2)
-                }
-                VStack {
-                    if viewModel.showingPasswordMessage {
-                        if showingKeyboard {
-                            Text("Must be 8 characters containing at least one number and one Capital letter.")
-                                .font(.footnote)
-                                .padding()
-                                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 8))
-                                .frame(width: 250)
-                                .opacity(0.8)
+                    if showingKeyboard {
+                        Button {
+                            viewModel.showingPasswordMessage.toggle()
+                        } label: {
+                            Image(systemName: "questionmark.circle")
+                                .foregroundColor(.secondary)
                         }
                     } else {}
                 }
+                .frame(width: 250, height: 28)
+                Rectangle()
+                    .fill(viewModel.isPasswordValid(_password: viewModel.password) ? .blue.opacity(0.6):.secondary)
+                    .frame(width: 250, height: 2)
+                SecureField(NSLocalizedString("Confirm password", comment: "Login view"), text: $viewModel.confirmPassword)
+                    .font(.system(size: 18, weight: .semibold))
+                    .focused($showingKeyboard)
+                    .frame(width: 250, height: 28)
+                Rectangle()
+                    .fill(viewModel.passConfirm())
+                    .frame(width: 250, height: 2)
             }
+            Text("Password must be 8 characters containing at least one number and one Capital letter.")
+                .frame(width: 250)
+                .font(.system(size: 12, weight: .regular))
+                .foregroundColor(.secondary)
             HStack {
                 Button {
                     withAnimation {
@@ -107,6 +97,7 @@ struct SignUpView: View {
                 .disabled(viewModel.isSignInComplete ? false:true)
             }
             .frame(width: 250)
+            .padding(.top, 10)
             
         }
         .padding(32)

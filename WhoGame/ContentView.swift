@@ -28,7 +28,7 @@ struct ContentView: View {
                         LoginView(viewModel: viewModel)
                             .transition(.move(edge: .leading))
                             .animation(.default, value: viewModel.isUserAuthenticated)
-                            .zIndex(3)
+                            .zIndex(1)
                     }
                     else {
                         MainView()
@@ -42,7 +42,7 @@ struct ContentView: View {
                 TermsPrivacyView()
                     .transition(.move(edge: .bottom))
                     .animation(.default, value: gameManager.showingPrivacy)
-                    .zIndex(1)
+                    .zIndex(2)
             }
         }
     }
