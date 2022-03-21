@@ -67,8 +67,13 @@ struct CreateGameView: View {
                     .transition(.move(edge: .leading))
                     .animation(.default, value: viewModel.showingNewCard)
                 }
+                if viewModel.editCardMode && !viewModel.showingNewCard {
+                    EditGameCardView(viewModel: NewGameCardViewModel(showingEditCard: $viewModel.editCardMode, gameCard: viewModel.gameCard ?? GameCardCD(), gameType: viewModel.type, showScore: viewModel.showScore, showHelp: viewModel.showHelp))
+                        .transition(.move(edge: .leading))
+                        .animation(.default, value: viewModel.editCardMode)
+                }
                 if !viewModel.id.isEmpty {
-                    GameCardListIView(gameId: viewModel.id, gameType: viewModel.type, editMode: viewModel.listEditMode, showScore: viewModel.showScore, showHelp: viewModel.showHelp)
+                    GameCardListIView(viewModel: viewModel)
                 }
             }
             .padding()

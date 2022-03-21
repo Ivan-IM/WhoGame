@@ -153,8 +153,11 @@ struct SaveGameView: View {
                     }
                 }
                 Button {
-                    viewModel.editMode = true
-                    viewModel.showingNewCard = false
+                    withAnimation {
+                        viewModel.editMode = true
+                        viewModel.showingNewCard = false
+                        viewModel.editCardMode = false
+                    }
                 } label: {
                     Image(systemName: "pencil")
                         .font(.system(size: 44, weight: .regular))
@@ -168,6 +171,7 @@ struct SaveGameView: View {
                 Button {
                     withAnimation {
                         viewModel.showingNewCard = true
+                        viewModel.editCardMode = false
                     }
                 } label: {
                     Image(systemName: "plus")

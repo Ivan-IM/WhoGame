@@ -17,11 +17,10 @@ final class NewGameCardViewModel: ObservableObject {
     @Published var help: String = ""
     @Published var score: Int = 1
     
-    @Published var showingDaleteAlert: Bool = false
-    
     var scoreArray = (1...10).map { $0 }
     
     var showingNewCard: Binding<Bool>
+    var showingEditCard: Binding<Bool>
     let gameType: Int
     let gameId: String
     let showScore: Bool
@@ -31,16 +30,18 @@ final class NewGameCardViewModel: ObservableObject {
     
     init(showingNewCard: Binding<Bool>, gameType: Int , gameId: String, showScore: Bool, showHelp: Bool) {
         self.showingNewCard = showingNewCard
+        self.showingEditCard = .constant(false)
         self.gameType = gameType
         self.gameId = gameId
         self.showScore = showScore
         self.showHelp = showHelp
     }
     
-    init(gameCard: GameCardCD, gameType: Int, showScore: Bool, showHelp: Bool) {
+    init(showingEditCard: Binding<Bool>, gameCard: GameCardCD, gameType: Int, showScore: Bool, showHelp: Bool) {
         self.gameCard = gameCard
         self.gameType = gameType
         self.gameId = gameCard.gameId ?? ""
+        self.showingEditCard = showingEditCard
         self.showingNewCard = .constant(false)
         self.showScore = showScore
         self.showHelp = showHelp
@@ -104,6 +105,9 @@ final class NewGameCardViewModel: ObservableObject {
             switch error {
             case .none:
                 print("GameCard update")
+                withAnimation {
+                    self.showingEditCard.wrappedValue = false
+                }
             case .some(_):
                 print(String(describing: error?.localizedDescription))
             }
@@ -113,6 +117,7 @@ final class NewGameCardViewModel: ObservableObject {
     func deleteGameCard() {
         guard let gameCard = self.gameCard else { return }
         PersistenceController.shared.delete(gameCard)
+        self.showingEditCard.wrappedValue = false
     }
     
     func isValidForm() -> Bool {

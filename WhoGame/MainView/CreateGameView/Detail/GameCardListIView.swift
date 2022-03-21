@@ -10,27 +10,19 @@ import SwiftUI
 struct GameCardListIView: View {
     
     @EnvironmentObject var gameManager: GameManager
-    let editMode: Bool
-    let gameId: String
-    let showScore: Bool
-    let showHelp: Bool
-    let gameType: Int
+    @ObservedObject var viewModel: CreateGameViewModel
     var gameCardRequest : FetchRequest<GameCardCD>
     var gameCards : FetchedResults<GameCardCD>{gameCardRequest.wrappedValue}
     
-    init(gameId: String, gameType: Int, editMode: Bool, showScore: Bool, showHelp: Bool) {
-        self.gameId = gameId
-        self.editMode = editMode
-        self.gameCardRequest = FetchRequest(entity: GameCardCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)], predicate: NSPredicate(format: "gameId == %@", gameId))
-        self.showScore = showScore
-        self.showHelp = showHelp
-        self.gameType = gameType
+    init(viewModel: CreateGameViewModel) {
+        self.gameCardRequest = FetchRequest(entity: GameCardCD.entity(), sortDescriptors: [NSSortDescriptor(keyPath: \GameCardCD.mark, ascending: true)], predicate: NSPredicate(format: "gameId == %@", viewModel.id))
+        self.viewModel = viewModel
     }
     
     var body: some View {
         ScrollView(showsIndicators: false) {
             ForEach(gameCards) { card in
-                if editMode {
+                if viewModel.editMode {
                     HStack {
                         Text("\(card.mark).")
                             .fontWeight(.semibold)
@@ -71,8 +63,12 @@ struct GameCardListIView: View {
                     .padding()
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 } else {
-                    NavigationLink {
-                        EditGameCardView(viewModel: NewGameCardViewModel(gameCard: card, gameType: gameType, showScore: showScore, showHelp: showHelp))
+                    Button {
+                        withAnimation {
+                            viewModel.gameCard = card
+                            viewModel.showingNewCard = false
+                            viewModel.editCardMode = true
+                        }
                     } label: {
                         HStack {
                             Text("\(card.mark).")
@@ -142,8 +138,8 @@ struct GameCardListIView: View {
     }
 }
 
-struct GameCardListIView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameCardListIView(gameId: "", gameType: 0, editMode: true, showScore: true, showHelp: true)
-    }
-}
+//struct GameCardListIView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        GameCardListIView(gameId: "", gameType: 0, editMode: true, showScore: true, showHelp: true)
+//    }
+//}

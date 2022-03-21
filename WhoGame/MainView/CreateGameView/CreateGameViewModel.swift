@@ -19,11 +19,14 @@ final class CreateGameViewModel: ObservableObject {
     @Published var showHelp: Bool = false
     
     @Published var editMode: Bool = false
+    @Published var editCardMode: Bool = false
     @Published var listEditMode: Bool = false
     @Published var saveGame: Bool = false
     @Published var showingNewCard: Bool = false
     
     @Published var showingDaleteAlert: Bool = false
+    
+    var gameCard: GameCardCD?
     
     init() { }
     

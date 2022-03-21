@@ -36,7 +36,7 @@ struct GameMenuView: View {
                                 }
                             }
                         } label: {
-                            Image(systemName: animateOne ? "gear":"w")
+                            Image(systemName: animateOne ? "wifi":"w")
                                 .font(.system(size: 44, weight: .regular))
                                 .symbolVariant(.circle.fill)
                                 .symbolRenderingMode(.palette)
