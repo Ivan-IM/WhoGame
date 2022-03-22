@@ -71,7 +71,7 @@ struct StartStageView: View {
                     }
                 case 2:
                     Button {
-                        viewModel.rulesSystem = .test2
+                        viewModel.rulesSystem = .test4
                     } label: {
                         Image(systemName: "4")
                             .font(.system(size: 44, weight: .regular))

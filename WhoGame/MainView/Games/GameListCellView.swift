@@ -135,6 +135,7 @@ struct GameListCellView: View {
                                         gameManager.mainColorSheme(color: .blue)
                                     )
                             }
+                            .disabled(gameManager.skipSignIn)
                         }
                         if game.author == fbManager.uid || game.author == "" {
                             NavigationLink {

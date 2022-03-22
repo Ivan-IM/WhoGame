@@ -14,6 +14,10 @@ struct ContentView: View {
     @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
+    init() {
+        UINavigationBar.appearance().backgroundColor = .clear
+    }
+    
     var body: some View {
         ZStack {
             BackgroundView()
