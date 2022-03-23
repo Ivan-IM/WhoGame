@@ -22,7 +22,7 @@ struct FakeMenuView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .green)
+                            Color.blue.opacity(0.9)
                         )
                     Image(systemName: "h")
                         .font(.system(size: 44, weight: .regular))
@@ -30,7 +30,7 @@ struct FakeMenuView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .red)
+                            Color.orange.opacity(0.9)
                         )
                     Image(systemName: "o")
                         .font(.system(size: 44, weight: .regular))
@@ -38,7 +38,7 @@ struct FakeMenuView: View {
                         .symbolRenderingMode(.palette)
                         .foregroundStyle(
                             Color.white.opacity(0.8),
-                            gameManager.mainColorSheme(color: .blue)
+                            Color.green.opacity(0.9)
                         )
                 }
                 Spacer()
@@ -49,7 +49,7 @@ struct FakeMenuView: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: .blue)
+                        Color.blue.opacity(0.9)
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: gameManager.width*0.22)
@@ -61,7 +61,7 @@ struct FakeMenuView: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: .red)
+                        Color.orange.opacity(0.9)
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                 
@@ -71,13 +71,15 @@ struct FakeMenuView: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        gameManager.mainColorSheme(color: .green)
+                        Color.green.opacity(0.9)
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: -gameManager.width*0.22)
             }
             .padding()
         }
+        .mask(RoundedRectangle(cornerRadius: 34))
+        .scaleEffect(0.7)
     }
 }
 

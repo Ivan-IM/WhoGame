@@ -15,11 +15,21 @@ struct OnboardingView: View {
         ZStack {
             VStack {
                 FakeMenuView()
-                    .scaleEffect(0.8)
+                    .shadow(color: .black.opacity(0.6), radius: 4, x: 4, y: 4)
+            }
+            
+            VStack {
+                Text("top")
+                Spacer()
+            }
+            .padding()
+            
+            VStack {
+                Spacer()
+                Text("bottom")
             }
             .padding()
         }
-        .edgesIgnoringSafeArea(.bottom)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             RoundedRectangle(cornerRadius: 34)
