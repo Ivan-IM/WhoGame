@@ -14,10 +14,6 @@ struct ContentView: View {
     @EnvironmentObject var fbManager: FBManager
     @ObservedObject var viewModel: LoginViewModel = LoginViewModel()
     
-    init() {
-        UINavigationBar.appearance().backgroundColor = .clear
-    }
-    
     var body: some View {
         ZStack {
             BackgroundView()
@@ -27,6 +23,8 @@ struct ContentView: View {
                 } else {
                     if viewModel.isUserAuthenticated == .undefined {
                         Text("Loading...")
+                            .font(.system(size: 18, weight: .semibold))
+                            .foregroundColor(.primary)
                     }
                     else if viewModel.isUserAuthenticated == .signedOut {
                         LoginView(viewModel: viewModel)
@@ -47,6 +45,9 @@ struct ContentView: View {
                     .transition(.move(edge: .bottom))
                     .animation(.default, value: gameManager.showingPrivacy)
                     .zIndex(2)
+            }
+            if gameManager.firstEnter {
+                OnboardingView()
             }
         }
     }

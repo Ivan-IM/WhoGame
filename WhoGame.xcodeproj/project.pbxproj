@@ -70,6 +70,8 @@
 		CF618B7B27B27C4200B7DC30 /* FriendRequestCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B7A27B27C4200B7DC30 /* FriendRequestCellView.swift */; };
 		CF618B7D27B2857500B7DC30 /* FriendCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B7C27B2857500B7DC30 /* FriendCellView.swift */; };
 		CF618B7F27B3AB5400B7DC30 /* GameMailCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF618B7E27B3AB5400B7DC30 /* GameMailCellView.swift */; };
+		CF64C93B27EAEF4A00A6B8ED /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64C93A27EAEF4A00A6B8ED /* OnboardingView.swift */; };
+		CF64C93E27EAF7F000A6B8ED /* FakeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64C93D27EAF7F000A6B8ED /* FakeMenuView.swift */; };
 		CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */; };
 		CF76C3682792E6E000F13626 /* GameStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3672792E6E000F13626 /* GameStageTastyView.swift */; };
 		CF76C36A2792F7F100F13626 /* EndStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3692792F7F100F13626 /* EndStageTastyView.swift */; };
@@ -154,6 +156,8 @@
 		CF618B7A27B27C4200B7DC30 /* FriendRequestCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestCellView.swift; sourceTree = "<group>"; };
 		CF618B7C27B2857500B7DC30 /* FriendCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendCellView.swift; sourceTree = "<group>"; };
 		CF618B7E27B3AB5400B7DC30 /* GameMailCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMailCellView.swift; sourceTree = "<group>"; };
+		CF64C93A27EAEF4A00A6B8ED /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		CF64C93D27EAF7F000A6B8ED /* FakeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMenuView.swift; sourceTree = "<group>"; };
 		CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTastyView.swift; sourceTree = "<group>"; };
 		CF76C3672792E6E000F13626 /* GameStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageTastyView.swift; sourceTree = "<group>"; };
 		CF76C3692792F7F100F13626 /* EndStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageTastyView.swift; sourceTree = "<group>"; };
@@ -290,6 +294,7 @@
 				CF0853812761B25F001DDC70 /* Managers */,
 				CF08537C2761B169001DDC70 /* MainView */,
 				CF298955275D169E00D3C3C1 /* Coredata */,
+				CF64C93C27EAEF5B00A6B8ED /* Onboarding */,
 				CF298940275D159700D3C3C1 /* WhoGameApp.swift */,
 				CF618B6727AFC55F00B7DC30 /* GoogleService-Info.plist */,
 				CF298942275D159700D3C3C1 /* ContentView.swift */,
@@ -425,6 +430,15 @@
 			path = Mail;
 			sourceTree = "<group>";
 		};
+		CF64C93C27EAEF5B00A6B8ED /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				CF64C93A27EAEF4A00A6B8ED /* OnboardingView.swift */,
+				CF64C93D27EAF7F000A6B8ED /* FakeMenuView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -521,6 +535,7 @@
 				CF617531278D9296009953BB /* GameHistoryView.swift in Sources */,
 				CF618B6027AF9CD100B7DC30 /* FBUser.swift in Sources */,
 				CF2C02D527887F2400392BAA /* EditGameCardView.swift in Sources */,
+				CF64C93B27EAEF4A00A6B8ED /* OnboardingView.swift in Sources */,
 				CF29894D275D159900D3C3C1 /* WhoGame.xcdatamodeld in Sources */,
 				CF0A2DE5278AB0F700DDDE68 /* GameView.swift in Sources */,
 				CF08538B2761CEDC001DDC70 /* NewGameCardViewModel.swift in Sources */,
@@ -569,6 +584,7 @@
 				CFAEB5B527B7E02100758D80 /* FriendSendGameListView.swift in Sources */,
 				CF618B6127AF9CD100B7DC30 /* FBFireStoreError.swift in Sources */,
 				CF618B7527B23D6A00B7DC30 /* FriendsViewModel.swift in Sources */,
+				CF64C93E27EAF7F000A6B8ED /* FakeMenuView.swift in Sources */,
 				CF618B5E27AF9CD100B7DC30 /* FBKeys.swift in Sources */,
 				CF61752C278D69D9009953BB /* GameStageView.swift in Sources */,
 				CF618B4E27AF9CA800B7DC30 /* ErrorExt.swift in Sources */,
