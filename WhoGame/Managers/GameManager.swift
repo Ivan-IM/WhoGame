@@ -39,7 +39,7 @@ final class GameManager: ObservableObject {
     @Published var showingMailView: Bool = false
     @Published var showingLogoutAlert: Bool = false
     
-    
+    @Published var onboardingViewChanger: Int = 0
     
     enum ColorSchemeEnum {
         case red, green, blue, purple

@@ -13,22 +13,37 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack {
-            VStack {
-                FakeMenuView()
-                    .shadow(color: .black.opacity(0.6), radius: 4, x: 4, y: 4)
+            switch gameManager.onboardingViewChanger {
+            case 1:
+                SecondOBView()
+                    .transition(.move(edge: .trailing))
+                    .animation(.default, value: gameManager.onboardingViewChanger)
+                    .zIndex(1)
+            default:
+                FirstOBView()
+                    .transition(.opacity)
+                    .animation(.default, value: gameManager.onboardingViewChanger)
+                    .zIndex(0)
             }
             
             VStack {
-                Text("top")
-                Spacer()
+                Spacer ()
+                Button {
+                    withAnimation {
+                        gameManager.onboardingViewChanger += 1
+                    }
+                } label: {
+                    Text("Next")
+                        .font(.system(size: 33, weight: .semibold))
+                        .foregroundColor(Color.white.opacity(0.8))
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
+                        .background(
+                        RoundedRectangle(cornerRadius: 34)
+                            .fill(gameManager.mainColorSheme(color: .blue))
+                        )
+                }
             }
-            .padding()
-            
-            VStack {
-                Spacer()
-                Text("bottom")
-            }
-            .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(

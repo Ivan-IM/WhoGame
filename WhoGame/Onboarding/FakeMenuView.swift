@@ -10,6 +10,10 @@ import SwiftUI
 struct FakeMenuView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @State var animateCreate = false
+    @State var animatePlay = false
+    @State var animateHistory = false
+    @State var animateW = false
     
     var body: some View {
         ZStack {
@@ -24,6 +28,8 @@ struct FakeMenuView: View {
                             Color.white.opacity(0.8),
                             Color.blue.opacity(0.9)
                         )
+                        .scaleEffect(animateW ? 1.3:1.0)
+                        .animation(animateW ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animateW)
                     Image(systemName: "h")
                         .font(.system(size: 44, weight: .regular))
                         .symbolVariant(.circle.fill)
@@ -53,6 +59,8 @@ struct FakeMenuView: View {
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: gameManager.width*0.22)
+                    .scaleEffect(animatePlay ? 1.2:1.0)
+                    .animation(animatePlay ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animatePlay)
                 
                 
                 Image(systemName: "plus")
@@ -64,6 +72,8 @@ struct FakeMenuView: View {
                         Color.orange.opacity(0.9)
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
+                    .scaleEffect(animateCreate ? 1.2:1.0)
+                    .animation(animateCreate ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animateCreate)
                 
                 Image(systemName: "line.3.horizontal")
                     .font(.system(size: 88, weight: .regular))
@@ -75,11 +85,41 @@ struct FakeMenuView: View {
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: -gameManager.width*0.22)
+                    .scaleEffect(animateHistory ? 1.2:1.0)
+                    .animation(animateHistory ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animateHistory)
             }
             .padding()
         }
         .mask(RoundedRectangle(cornerRadius: 34))
         .scaleEffect(0.7)
+        .onAppear {
+            withAnimation {
+                animateCreate = true
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                withAnimation {
+                    animateCreate = false
+                    animatePlay = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+                withAnimation {
+                    animatePlay = false
+                    animateHistory = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+                withAnimation {
+                    animateHistory = false
+                    animateW = true
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 40) {
+                withAnimation {
+                    animateW = false
+                }
+            }
+        }
     }
 }
 
