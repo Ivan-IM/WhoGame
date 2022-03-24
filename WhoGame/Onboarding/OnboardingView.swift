@@ -10,6 +10,7 @@ import SwiftUI
 struct OnboardingView: View {
     
     @EnvironmentObject var gameManager: GameManager
+    @State private var startAnimation = true
     
     var body: some View {
         ZStack {
@@ -43,6 +44,8 @@ struct OnboardingView: View {
                             .fill(gameManager.mainColorSheme(color: .blue))
                         )
                 }
+                .opacity(startAnimation ? 0.0:1.0)
+                .animation(.easeInOut(duration: 1), value: startAnimation)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -51,6 +54,13 @@ struct OnboardingView: View {
                 .fill(.ultraThinMaterial)
                 .ignoresSafeArea()
         )
+        .onAppear() {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                withAnimation {
+                    startAnimation = false
+                }
+            }
+        }
     }
 }
 

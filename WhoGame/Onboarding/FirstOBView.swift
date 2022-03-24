@@ -13,6 +13,9 @@ struct FirstOBView: View {
     
     var body: some View {
         VStack(spacing: 16) {
+            Image("logo")
+                .resizable()
+                .frame(width: gameManager.width*0.7, height: gameManager.width*0.7)
             HStack(spacing: 3) {
                 Image(systemName: "h")
                     .font(.system(size: 44, weight: .regular))

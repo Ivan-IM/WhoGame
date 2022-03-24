@@ -10,10 +10,10 @@ import SwiftUI
 struct FakeMenuView: View {
     
     @EnvironmentObject var gameManager: GameManager
-    @State var animateCreate = false
-    @State var animatePlay = false
-    @State var animateHistory = false
-    @State var animateW = false
+    @State private var animateCreate = false
+    @State private var animatePlay = false
+    @State private var animateHistory = false
+    @State private var animateW = false
     
     var body: some View {
         ZStack {
