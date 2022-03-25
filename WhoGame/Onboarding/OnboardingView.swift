@@ -31,7 +31,14 @@ struct OnboardingView: View {
                 Spacer ()
                 Button {
                     withAnimation {
-                        gameManager.onboardingViewChanger += 1
+                        if gameManager.onboardingViewChanger < 1 {
+                            gameManager.onboardingViewChanger += 1
+                            if gameManager.onboardingViewChanger == 1 {
+                                gameManager.disableSkipOnboarding = true
+                            }
+                        } else {
+                            gameManager.firstEnter = false
+                        }
                     }
                 } label: {
                     Text("Next")
@@ -41,9 +48,10 @@ struct OnboardingView: View {
                         .padding(.vertical, 8)
                         .background(
                         RoundedRectangle(cornerRadius: 34)
-                            .fill(gameManager.mainColorSheme(color: .blue))
+                            .fill(gameManager.disableSkipOnboarding ? gameManager.mainColorSheme(color: .red):gameManager.mainColorSheme(color: .blue))
                         )
                 }
+                .disabled(gameManager.disableSkipOnboarding)
                 .opacity(startAnimation ? 0.0:1.0)
                 .animation(.easeInOut(duration: 1), value: startAnimation)
             }
@@ -55,7 +63,7 @@ struct OnboardingView: View {
                 .ignoresSafeArea()
         )
         .onAppear() {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
                 withAnimation {
                     startAnimation = false
                 }

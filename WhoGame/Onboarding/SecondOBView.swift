@@ -42,14 +42,15 @@ struct SecondOBView: View {
             }
             .padding(32)
             .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                        title = 1
+                DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+                    title = 1
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
-                        title = 2
+                DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
+                    title = 2
                 }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
-                        title = 3
+                DispatchQueue.main.asyncAfter(deadline: .now() + 35) {
+                    title = 3
+                    gameManager.disableSkipOnboarding = false
                 }
             }
         }

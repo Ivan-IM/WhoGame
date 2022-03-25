@@ -55,7 +55,7 @@ struct FakeMenuView: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        Color.blue.opacity(0.9)
+                        Color.blue
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: gameManager.width*0.22)
@@ -69,7 +69,7 @@ struct FakeMenuView: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        Color.orange.opacity(0.9)
+                        Color.orange
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .scaleEffect(animateCreate ? 1.2:1.0)
@@ -81,7 +81,7 @@ struct FakeMenuView: View {
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(
                         Color.white.opacity(0.8),
-                        Color.green.opacity(0.9)
+                        Color.green
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: -gameManager.width*0.22)
@@ -96,25 +96,25 @@ struct FakeMenuView: View {
             withAnimation {
                 animateCreate = true
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
                 withAnimation {
                     animateCreate = false
                     animatePlay = true
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
                 withAnimation {
                     animatePlay = false
                     animateHistory = true
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 35) {
                 withAnimation {
                     animateHistory = false
                     animateW = true
                 }
             }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 40) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 45) {
                 withAnimation {
                     animateW = false
                 }

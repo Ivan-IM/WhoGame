@@ -48,6 +48,9 @@ struct ContentView: View {
             }
             if gameManager.firstEnter {
                 OnboardingView()
+                    .transition(.move(edge: .leading))
+                    .animation(.default, value: gameManager.firstEnter)
+                    .zIndex(3)
             }
         }
     }
