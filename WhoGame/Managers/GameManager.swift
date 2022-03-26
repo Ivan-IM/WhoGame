@@ -47,7 +47,7 @@ final class GameManager: ObservableObject {
     }
     
     init() {
-        self.firstEnter = UserDefaults.standard.object(forKey: "FirstEnter!") as? Bool ?? true
+        self.firstEnter = UserDefaults.standard.object(forKey: "FirstEnter") as? Bool ?? true
         self.leftHande = UserDefaults.standard.object(forKey: "Hande") as? Bool ?? false
         self.skipSignIn = UserDefaults.standard.object(forKey: "SkipSignIn") as? Bool ?? false
         self.offSetX = -self.width

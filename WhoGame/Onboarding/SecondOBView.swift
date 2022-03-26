@@ -31,7 +31,7 @@ struct SecondOBView: View {
                         .foregroundColor(.secondary)
                 case 3:
                     Text("You can use network features after login (friends system and game sending system).")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.secondary)
                 default:
                     Text("Use the Game Creator and make your own game.")

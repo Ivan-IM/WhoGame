@@ -2,6 +2,9 @@
 "Add to favorites" = "В избранное";
 
 /* No comment provided by engineer. */
+"After creating, you can play it." = "После создания вы сможете играть в них.";
+
+/* No comment provided by engineer. */
 "Answer" = "Ответ";
 
 /* No comment provided by engineer. */
@@ -90,6 +93,9 @@
 
 /* No comment provided by engineer. */
 "forgot password?" = "забыли пароль?";
+
+/* No comment provided by engineer. */
+"Game history is saved automaticlly." = "Игровая история сохраняется автоматически.";
 
 /* No comment provided by engineer. */
 "Game name" = "Название игры";
@@ -237,3 +243,9 @@
 
 /* No comment provided by engineer. */
 "User name" = "Имя пользователя";
+
+/* No comment provided by engineer. */
+"Use the Game Creator and make your own game." = "Используйте Игровой Редактор для создания собственных игр.";
+
+/* No comment provided by engineer. */
+"You can use network features after login (friends system and game sending system)." = "Вы сможете использовать интернет функции после авторизации (система друзей и система пересылки игр).";
