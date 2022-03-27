@@ -74,6 +74,7 @@
 		CF64C93E27EAF7F000A6B8ED /* FakeMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64C93D27EAF7F000A6B8ED /* FakeMenuView.swift */; };
 		CF64C94027EC59EB00A6B8ED /* FirstOBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64C93F27EC59EB00A6B8ED /* FirstOBView.swift */; };
 		CF64C94227EC5A1900A6B8ED /* SecondOBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64C94127EC5A1900A6B8ED /* SecondOBView.swift */; };
+		CF64C94427F0288800A6B8ED /* ThirdOBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF64C94327F0288800A6B8ED /* ThirdOBView.swift */; };
 		CF76C36427929F8900F13626 /* NewGameCardTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */; };
 		CF76C3682792E6E000F13626 /* GameStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3672792E6E000F13626 /* GameStageTastyView.swift */; };
 		CF76C36A2792F7F100F13626 /* EndStageTastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF76C3692792F7F100F13626 /* EndStageTastyView.swift */; };
@@ -162,6 +163,7 @@
 		CF64C93D27EAF7F000A6B8ED /* FakeMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMenuView.swift; sourceTree = "<group>"; };
 		CF64C93F27EC59EB00A6B8ED /* FirstOBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstOBView.swift; sourceTree = "<group>"; };
 		CF64C94127EC5A1900A6B8ED /* SecondOBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondOBView.swift; sourceTree = "<group>"; };
+		CF64C94327F0288800A6B8ED /* ThirdOBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdOBView.swift; sourceTree = "<group>"; };
 		CF76C36327929F8900F13626 /* NewGameCardTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewGameCardTastyView.swift; sourceTree = "<group>"; };
 		CF76C3672792E6E000F13626 /* GameStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStageTastyView.swift; sourceTree = "<group>"; };
 		CF76C3692792F7F100F13626 /* EndStageTastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndStageTastyView.swift; sourceTree = "<group>"; };
@@ -441,6 +443,7 @@
 				CF64C93F27EC59EB00A6B8ED /* FirstOBView.swift */,
 				CF64C94127EC5A1900A6B8ED /* SecondOBView.swift */,
 				CF64C93D27EAF7F000A6B8ED /* FakeMenuView.swift */,
+				CF64C94327F0288800A6B8ED /* ThirdOBView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -555,6 +558,7 @@
 				CF618B7727B23D7D00B7DC30 /* GameMailViewModel.swift in Sources */,
 				CF2062DE2788189600EABCCE /* NewGameCardView.swift in Sources */,
 				CF25EA0427C232C3008EBF98 /* TermsPrivacyView.swift in Sources */,
+				CF64C94427F0288800A6B8ED /* ThirdOBView.swift in Sources */,
 				CF2062D22787885000EABCCE /* CreateGameViewModel.swift in Sources */,
 				CF618B6627AF9CD100B7DC30 /* FBGameModel.swift in Sources */,
 				CF61753C27904369009953BB /* GameStageTestView.swift in Sources */,
@@ -747,7 +751,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhoGame/WhoGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"WhoGame/Preview Content\"";
 				DEVELOPMENT_TEAM = 5S24UZWM65;
 				ENABLE_PREVIEWS = YES;
@@ -780,7 +784,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = WhoGame/WhoGame.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"WhoGame/Preview Content\"";
 				DEVELOPMENT_TEAM = 5S24UZWM65;
 				ENABLE_PREVIEWS = YES;

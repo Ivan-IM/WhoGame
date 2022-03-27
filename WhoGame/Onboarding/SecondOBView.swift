@@ -10,7 +10,7 @@ import SwiftUI
 struct SecondOBView: View {
     
     @EnvironmentObject var gameManager: GameManager
-    @State private var title: Int = 0
+    
     
     var body: some View {
         ZStack {
@@ -20,16 +20,20 @@ struct SecondOBView: View {
             }
             
             VStack {
-                switch title {
+                switch gameManager.onboardingTitle {
                 case 1:
-                    Text("After creating, you can play it.")
+                    Text("Use the Game Creator and make your own game.")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(.secondary)
                 case 2:
-                    Text("Game history is saved automaticlly.")
+                    Text("After creating, you can play it.")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundColor(.secondary)
                 case 3:
+                    Text("Game history is saved automaticlly.")
+                        .font(.system(size: 18, weight: .semibold))
+                        .foregroundColor(.secondary)
+                case 4:
                     Text("You can use network features after login (friends system and game sending system).")
                         .font(.system(size: 16, weight: .semibold))
                         .foregroundColor(.secondary)
@@ -41,18 +45,6 @@ struct SecondOBView: View {
                 Spacer()
             }
             .padding(32)
-            .onAppear() {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-                    title = 1
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
-                    title = 2
-                }
-                DispatchQueue.main.asyncAfter(deadline: .now() + 35) {
-                    title = 3
-                    gameManager.disableSkipOnboarding = false
-                }
-            }
         }
     }
 }

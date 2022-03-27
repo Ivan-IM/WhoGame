@@ -20,6 +20,11 @@ struct OnboardingView: View {
                     .transition(.move(edge: .trailing))
                     .animation(.default, value: gameManager.onboardingViewChanger)
                     .zIndex(1)
+            case 2:
+                ThirdOBView()
+                    .transition(.opacity)
+                    .animation(.default, value: gameManager.onboardingViewChanger)
+                    .zIndex(2)
             default:
                 FirstOBView()
                     .transition(.opacity)
@@ -31,10 +36,15 @@ struct OnboardingView: View {
                 Spacer ()
                 Button {
                     withAnimation {
-                        if gameManager.onboardingViewChanger < 1 {
-                            gameManager.onboardingViewChanger += 1
+                        if gameManager.onboardingViewChanger < 2 {
                             if gameManager.onboardingViewChanger == 1 {
-                                gameManager.disableSkipOnboarding = true
+                                if gameManager.onboardingTitle < 4 {
+                                    gameManager.onboardingTitle += 1
+                                } else {
+                                    gameManager.onboardingViewChanger += 1
+                                }
+                            } else {
+                                gameManager.onboardingViewChanger += 1
                             }
                         } else {
                             gameManager.firstEnter = false
@@ -51,10 +61,10 @@ struct OnboardingView: View {
                             .fill(gameManager.disableSkipOnboarding ? gameManager.mainColorSheme(color: .red):gameManager.mainColorSheme(color: .blue))
                         )
                 }
-                .disabled(gameManager.disableSkipOnboarding)
                 .opacity(startAnimation ? 0.0:1.0)
                 .animation(.easeInOut(duration: 1), value: startAnimation)
             }
+            .padding()
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(

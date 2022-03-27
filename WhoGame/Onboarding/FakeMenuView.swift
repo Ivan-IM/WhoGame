@@ -11,9 +11,6 @@ struct FakeMenuView: View {
     
     @EnvironmentObject var gameManager: GameManager
     @State private var animateCreate = false
-    @State private var animatePlay = false
-    @State private var animateHistory = false
-    @State private var animateW = false
     
     var body: some View {
         ZStack {
@@ -28,8 +25,8 @@ struct FakeMenuView: View {
                             Color.white.opacity(0.8),
                             Color.blue.opacity(0.9)
                         )
-                        .scaleEffect(animateW ? 1.3:1.0)
-                        .animation(animateW ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animateW)
+                        .scaleEffect(gameManager.onboardingTitle == 4 ? 1.3:1.0)
+                        .animation(gameManager.onboardingTitle == 4 ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: gameManager.onboardingTitle)
                     Image(systemName: "h")
                         .font(.system(size: 44, weight: .regular))
                         .symbolVariant(.circle.fill)
@@ -59,8 +56,8 @@ struct FakeMenuView: View {
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: gameManager.width*0.22)
-                    .scaleEffect(animatePlay ? 1.2:1.0)
-                    .animation(animatePlay ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animatePlay)
+                    .scaleEffect(gameManager.onboardingTitle == 2 ? 1.2:1.0)
+                    .animation(gameManager.onboardingTitle == 2 ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: gameManager.onboardingTitle)
                 
                 
                 Image(systemName: "plus")
@@ -72,8 +69,8 @@ struct FakeMenuView: View {
                         Color.orange
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
-                    .scaleEffect(animateCreate ? 1.2:1.0)
-                    .animation(animateCreate ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animateCreate)
+                    .scaleEffect(gameManager.onboardingTitle == 1 ? 1.2:1.0)
+                    .animation(gameManager.onboardingTitle == 1 ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: gameManager.onboardingTitle)
                 
                 Image(systemName: "line.3.horizontal")
                     .font(.system(size: 88, weight: .regular))
@@ -85,8 +82,8 @@ struct FakeMenuView: View {
                     )
                     .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 32))
                     .offset(x: -gameManager.width*0.22)
-                    .scaleEffect(animateHistory ? 1.2:1.0)
-                    .animation(animateHistory ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: animateHistory)
+                    .scaleEffect(gameManager.onboardingTitle == 3 ? 1.2:1.0)
+                    .animation(gameManager.onboardingTitle == 3 ? .easeInOut(duration: 1).repeatForever(autoreverses: true) : .default, value: gameManager.onboardingTitle)
             }
             .padding()
         }
@@ -94,30 +91,7 @@ struct FakeMenuView: View {
         .scaleEffect(0.7)
         .onAppear {
             withAnimation {
-                animateCreate = true
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
-                withAnimation {
-                    animateCreate = false
-                    animatePlay = true
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 25) {
-                withAnimation {
-                    animatePlay = false
-                    animateHistory = true
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 35) {
-                withAnimation {
-                    animateHistory = false
-                    animateW = true
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 45) {
-                withAnimation {
-                    animateW = false
-                }
+                gameManager.onboardingTitle = 1
             }
         }
     }
