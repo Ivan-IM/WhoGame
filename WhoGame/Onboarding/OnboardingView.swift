@@ -52,13 +52,13 @@ struct OnboardingView: View {
                     }
                 } label: {
                     Text("Next")
-                        .font(.system(size: 33, weight: .semibold))
+                        .font(.system(size: 28, weight: .semibold))
                         .foregroundColor(Color.white.opacity(0.8))
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                         .background(
                         RoundedRectangle(cornerRadius: 34)
-                            .fill(gameManager.disableSkipOnboarding ? gameManager.mainColorSheme(color: .red):gameManager.mainColorSheme(color: .blue))
+                            .fill(gameManager.mainColorSheme(color: .blue))
                         )
                 }
                 .opacity(startAnimation ? 0.0:1.0)

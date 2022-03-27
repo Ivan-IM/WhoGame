@@ -31,7 +31,6 @@ final class GameManager: ObservableObject {
     }
     
     @Published var onboardingTitle: Int = 0
-    @Published var disableSkipOnboarding: Bool = false
     @Published var showingPrivacy: Bool = false
     @Published var showingUserInfoPanel: Bool = false
     @Published var offSetX: CGFloat = 0
@@ -48,7 +47,7 @@ final class GameManager: ObservableObject {
     }
     
     init() {
-        self.firstEnter = UserDefaults.standard.object(forKey: "FirstEnter!") as? Bool ?? true
+        self.firstEnter = UserDefaults.standard.object(forKey: "FirstEnter") as? Bool ?? true
         self.leftHande = UserDefaults.standard.object(forKey: "Hande") as? Bool ?? false
         self.skipSignIn = UserDefaults.standard.object(forKey: "SkipSignIn") as? Bool ?? false
         self.offSetX = -self.width

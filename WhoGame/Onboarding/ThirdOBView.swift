@@ -16,7 +16,9 @@ struct ThirdOBView: View {
             Image("logo")
                 .resizable()
                 .frame(width: gameManager.width*0.7, height: gameManager.width*0.7)
-            
+            Text("You are only limited by your own imagination.")
+                .font(.system(size: 22, weight: .semibold))
+                .foregroundColor(.secondary)
         }
     }
 }
